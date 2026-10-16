@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: theme('colors.border.DEFAULT');
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: theme('colors.canvas');
+    color: theme('colors.text.primary');
+    font-family: theme('fontFamily.sans');
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tabular numbers for all stats, counts, timers, and code */
+  .tnum {
+    font-feature-settings: 'tnum';
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #242830;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #343a46;
+  }
+
+  ::selection {
+    background: rgba(200, 245, 96, 0.25);
+    color: #f3f4f6;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 1px;
+  }
+}
+
+@layer components {
+  /* Surface Containers */
+  .panel {
+    @apply bg-surface-1 border border-border rounded-lg;
+  }
+
+  .panel-subtle {
+    @apply bg-surface-0 border border-border-subtle rounded-lg;
+  }
+
+  .panel-interactive {
+    @apply panel transition-all duration-150 hover:border-border-hover hover:bg-surface-2;
+  }
+
+  /* Custom Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-1.5 text-xs font-semibold
+      bg-accent text-accent-text rounded
+      hover:bg-accent-hover active:bg-accent-active
+      focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-1 focus:ring-offset-surface-0
+      transition-all duration-150
+      disabled:opacity-40 disabled:cursor-not-allowed select-none shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium
+      bg-surface-2 text-text-primary border border-border rounded
+      hover:bg-surface-3 hover:border-border-hover
+      active:bg-surface-4
+      focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-1 focus:ring-offset-surface-0
+      transition-all duration-150
+      disabled:opacity-40 disabled:cursor-not-allowed select-none;
+  }
+
+  .btn-subtle {
+    @apply inline-flex items-center justify-center gap-1.5 px-2.5 py-1 text-xs font-medium
+      text-text-secondary bg-surface-1/60 border border-border-subtle rounded
+      hover:text-text-primary hover:bg-surface-2 hover:border-border
+      transition-all duration-150;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-xs font-medium
+      text-text-secondary rounded
+      hover:bg-surface-2 hover:text-text-primary
+      focus:outline-none focus:ring-2 focus:ring-accent/30
+      transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium
+      bg-danger-muted text-danger border border-danger-border rounded
+      hover:bg-danger/20 hover:border-danger/40
+      focus:outline-none focus:ring-2 focus:ring-danger/30
+      transition-all duration-150;
+  }
+
+  /* Form Inputs */
+  .input-field {
+    @apply w-full px-3 py-1.5 text-xs
+      bg-surface-0 border border-border rounded text-text-primary
+      placeholder:text-text-quaternary
+      focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+      transition-all duration-150;
+  }
+
+  /* Badges & Tags */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xxs font-mono font-medium rounded border tracking-wide uppercase;
+  }
+
+  .badge-accent {
+    @apply bg-accent-muted text-accent border-accent-border;
+  }
+
+  /* Navigation Links */
+  .nav-item {
+    @apply flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded
+      text-text-secondary
+      hover:bg-surface-2 hover:text-text-primary
+      transition-colors duration-150 select-none;
+  }
+
+  .nav-item-active {
+    @apply nav-item bg-surface-2 text-text-primary border-l-2 border-accent font-semibold;
+  }
+
+  /* Progress bars */
+  .track-bar {
+    @apply h-1 rounded-full bg-surface-3 overflow-hidden;
+  }
+
+  .track-fill {
+    @apply h-full rounded-full transition-all duration-300 ease-out;
+  }
+}
