@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { useApp } from '../context';
 import { exportProgress, importProgress } from '../store';
+import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import {
   Download,
   Upload,
@@ -11,16 +12,41 @@ import {
   Target,
   FileCheck,
   ShieldAlert,
+  HardDrive,
 } from 'lucide-react';
 
 export default function Settings() {
   const { state, dispatch } = useApp();
   const { curriculum, progress } = state;
+  const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
 
   const [dailyGoal, setDailyGoal] = useState<number>(progress.settings?.dailyGoal || 5);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Compute local storage statistics
+  const storageMetrics = useMemo(() => {
+    let rawBytes = 0;
+    try {
+      const raw = localStorage.getItem('dsa-mastery-progress');
+      if (raw) rawBytes = new Blob([raw]).size;
+    } catch {
+      rawBytes = 0;
+    }
+
+    const totalProblemsTracked = Object.keys(progress.problems).length;
+    const solvedCount = Object.values(progress.problems).filter((p) => p.status === 'solved').length;
+    const notesCount = Object.values(progress.problems).filter((p) => p.notes && p.notes.trim().length > 0).length;
+
+    return {
+      bytes: rawBytes,
+      totalProblemsTracked,
+      solvedCount,
+      notesCount,
+      activityEvents: progress.activity.length,
+    };
+  }, [progress]);
 
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,7 +108,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    <div className="space-y-6 max-w-4xl animate-fade-in">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-4 border-b border-border">
         <div>
@@ -106,16 +132,16 @@ export default function Settings() {
 
       {statusMessage && (
         <div
-          className={`p-3 rounded border flex items-center gap-2 text-xs font-mono animate-fade-in ${
+          className={`p-3 rounded-lg border flex items-center gap-2 text-xs font-mono animate-fade-in ${
             statusMessage.type === 'success'
-              ? 'bg-success-muted text-success border-success-border'
+              ? 'bg-success-muted text-emerald-400 border-success-border'
               : 'bg-danger-muted text-danger border-danger-border'
           }`}
         >
           {statusMessage.type === 'success' ? (
-            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
           ) : (
-            <AlertTriangle className="w-4 h-4 shrink-0" />
+            <AlertTriangle className="w-4 h-4 shrink-0 text-danger" />
           )}
           <span>{statusMessage.text}</span>
         </div>
@@ -158,8 +184,8 @@ export default function Settings() {
           <Database className="w-3.5 h-3.5 text-accent" />
           Data Portability & Backup
         </h2>
-        <p className="text-xs text-text-secondary">
-          Your solution notes, approach invariants, Big-O complexities, and spaced repetition schedules are persisted in your browser's localStorage. Export a backup JSON to sync across machines or prevent browser cache clearing.
+        <p className="text-xs text-text-secondary leading-relaxed">
+          Your solution notes, approach invariants, Big-O complexities, and spaced repetition schedules are persisted in your browser's localStorage. Export a backup JSON to sync across machines or prevent accidental browser cache clearing.
         </p>
 
         <div className="flex flex-wrap items-center gap-2.5 pt-2">
@@ -190,40 +216,79 @@ export default function Settings() {
         </div>
       </div>
 
+      {/* Local Storage Health & Telemetry */}
+      <div className="panel p-5 space-y-3">
+        <h2 className="text-xs font-semibold uppercase tracking-wider font-mono text-text-primary flex items-center gap-2 pb-2 border-b border-border">
+          <HardDrive className="w-3.5 h-3.5 text-accent" />
+          Local Storage Health & Telemetry
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+          <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
+            <span className="text-[10px] font-mono text-text-tertiary block">PAYLOAD SIZE</span>
+            <p className="text-xs font-mono font-bold text-text-primary mt-0.5 tnum">
+              {(storageMetrics.bytes / 1024).toFixed(2)} KB
+            </p>
+          </div>
+          <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
+            <span className="text-[10px] font-mono text-text-tertiary block">PROBLEMS ATTEMPTED</span>
+            <p className="text-xs font-mono font-bold text-text-primary mt-0.5 tnum">
+              {storageMetrics.totalProblemsTracked}
+            </p>
+          </div>
+          <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
+            <span className="text-[10px] font-mono text-text-tertiary block">NOTES LOGGED</span>
+            <p className="text-xs font-mono font-bold text-text-primary mt-0.5 tnum">
+              {storageMetrics.notesCount}
+            </p>
+          </div>
+          <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
+            <span className="text-[10px] font-mono text-text-tertiary block">ACTIVITY EVENTS</span>
+            <p className="text-xs font-mono font-bold text-accent mt-0.5 tnum">
+              {storageMetrics.activityEvents}
+            </p>
+          </div>
+        </div>
+
+        <p className="text-[10px] font-mono text-text-tertiary leading-relaxed pt-1">
+          Key: <code className="text-text-secondary bg-surface-2 px-1 py-0.5 rounded">localStorage['dsa-mastery-progress']</code> · Schema Version 1 · Zero cloud dependency required.
+        </p>
+      </div>
+
       {/* Curriculum Metadata Summary */}
       {curriculum && (
         <div className="panel p-5 space-y-3">
           <h2 className="text-xs font-semibold uppercase tracking-wider font-mono text-text-primary flex items-center gap-2 pb-2 border-b border-border">
-            <FileCheck className="w-3.5 h-3.5 text-success" />
+            <FileCheck className="w-3.5 h-3.5 text-emerald-400" />
             Curriculum Verification
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-            <div className="p-2.5 bg-surface-0 rounded border border-border-subtle">
+            <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
               <span className="text-[10px] font-mono text-text-tertiary block">CURRICULUM</span>
               <p className="text-xs font-semibold text-text-primary truncate mt-0.5">
                 {curriculum.title}
               </p>
             </div>
-            <div className="p-2.5 bg-surface-0 rounded border border-border-subtle">
+            <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
               <span className="text-[10px] font-mono text-text-tertiary block">LANGUAGE / VER</span>
               <p className="text-xs font-mono font-semibold text-text-primary mt-0.5">
                 {curriculum.language} (v{curriculum.version})
               </p>
             </div>
-            <div className="p-2.5 bg-surface-0 rounded border border-border-subtle">
+            <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
               <span className="text-[10px] font-mono text-text-tertiary block">PATTERNS / VARS</span>
               <p className="text-xs font-mono font-semibold text-text-primary mt-0.5 tnum">
-                {curriculum.patterns.length} / {curriculum.patterns.reduce((s, p) => s + p.variations.length, 0)}
+                {curriculumStats?.patternCount} / {curriculumStats?.variationCount}
               </p>
             </div>
-            <div className="p-2.5 bg-surface-0 rounded border border-border-subtle">
-              <span className="text-[10px] font-mono text-text-tertiary block">TOTAL PROBLEMS</span>
+            <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
+              <span className="text-[10px] font-mono text-text-tertiary block">PLACEMENTS</span>
               <p className="text-xs font-mono font-semibold text-accent mt-0.5 tnum">
-                {curriculum.patterns.reduce(
-                  (s, p) => s + p.variations.reduce((vs, v) => vs + v.problems.length, 0),
-                  0
-                )}
+                {curriculumStats?.placementCount}
               </p>
+              <span className="text-[10px] font-mono text-text-tertiary block mt-0.5">
+                {curriculumStats ? countLabel(curriculumStats.uniqueCanonicalProblemCount, 'unique problem', 'unique problems') : ''}
+              </span>
             </div>
           </div>
         </div>
@@ -235,8 +300,9 @@ export default function Settings() {
           <ShieldAlert className="w-3.5 h-3.5" />
           Danger Zone
         </h2>
-        <p className="text-xs text-text-secondary">
-          Erases your recorded attempts, solution notes, and spaced repetition calendar. The underlying 575 curriculum problems remain 100% intact.
+        <p className="text-xs text-text-secondary leading-relaxed">
+          Erases your recorded attempts, solution notes, and spaced repetition calendar. The underlying curriculum stays intact
+          {curriculumStats ? ` (${countLabel(curriculumStats.placementCount, 'placement', 'placements')}).` : '.'}
         </p>
 
         {!showResetConfirm ? (
@@ -249,7 +315,7 @@ export default function Settings() {
             Reset All Progress...
           </button>
         ) : (
-          <div className="p-3.5 rounded bg-surface-0 border border-danger/40 space-y-2.5 animate-fade-in max-w-md">
+          <div className="p-3.5 rounded-lg bg-surface-0 border border-danger/40 space-y-2.5 animate-fade-in max-w-md">
             <p className="text-xs text-danger font-medium font-mono">
               Confirm reset: All your personal solution notes and dates will be permanently removed.
             </p>

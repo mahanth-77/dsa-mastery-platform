@@ -6,6 +6,8 @@ import {
   difficultyBg,
   statusLabel,
 } from '../store';
+import { studyFrame } from '../lib/studyFrames';
+import { hasDemonstratedRecall } from '../lib/learningSignals';
 import {
   X,
   ExternalLink,
@@ -17,8 +19,6 @@ import {
   Layers,
   Star,
   Save,
-  Terminal,
-  Bookmark,
   Sparkles,
   FileCode,
 } from 'lucide-react';
@@ -84,12 +84,20 @@ export default function ProblemWorkspaceModal({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft' && hasPrev && onNavigate) onNavigate('prev');
-      if (e.key === 'ArrowRight' && hasNext && onNavigate) onNavigate('next');
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        handleSave();
+      }
+      if (e.key === 'ArrowLeft' && hasPrev && onNavigate && (e.altKey || e.metaKey)) {
+        onNavigate('prev');
+      }
+      if (e.key === 'ArrowRight' && hasNext && onNavigate && (e.altKey || e.metaKey)) {
+        onNavigate('next');
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose, onNavigate, hasPrev, hasNext]);
+  }, [onClose, onNavigate, hasPrev, hasNext, status, attempts, notes, approach, timeComplexity, spaceComplexity, confidence, nextRevisionAt]);
 
   const handleSave = () => {
     updateProblem(
@@ -147,7 +155,7 @@ export default function ProblemWorkspaceModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-xs overflow-y-auto animate-fade-in">
-      <div className="relative w-full max-w-3xl my-auto bg-surface-1 border border-border rounded-lg shadow-elevated flex flex-col max-h-[92vh] overflow-hidden">
+      <div className="relative w-full max-w-3xl my-auto bg-surface-1 border border-border rounded-xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
         {/* Modal Header */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-border bg-surface-0">
           <div className="flex items-center gap-3 min-w-0">
@@ -166,13 +174,13 @@ export default function ProblemWorkspaceModal({
 
           <div className="flex items-center gap-2 shrink-0">
             {onNavigate && (
-              <div className="flex items-center gap-0.5 bg-surface-2 border border-border rounded p-0.5">
+              <div className="flex items-center gap-0.5 bg-surface-2 border border-border rounded-lg p-0.5">
                 <button
                   type="button"
                   onClick={() => onNavigate('prev')}
                   disabled={!hasPrev}
                   className="p-1 text-text-tertiary hover:text-text-primary disabled:opacity-30 disabled:hover:text-text-tertiary rounded"
-                  title="Previous problem (←)"
+                  aria-label="Previous problem"
                 >
                   <ChevronLeft className="w-3.5 h-3.5" />
                 </button>
@@ -181,7 +189,7 @@ export default function ProblemWorkspaceModal({
                   onClick={() => onNavigate('next')}
                   disabled={!hasNext}
                   className="p-1 text-text-tertiary hover:text-text-primary disabled:opacity-30 disabled:hover:text-text-tertiary rounded"
-                  title="Next problem (→)"
+                  aria-label="Next problem"
                 >
                   <ChevronRight className="w-3.5 h-3.5" />
                 </button>
@@ -190,7 +198,7 @@ export default function ProblemWorkspaceModal({
 
             <button
               onClick={onClose}
-              className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-2 rounded transition-colors"
+              className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-2 rounded-lg transition-colors"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />
@@ -200,21 +208,30 @@ export default function ProblemWorkspaceModal({
 
         {/* Modal Body */}
         <div className="p-5 overflow-y-auto space-y-5 flex-1">
+          <div className="text-xs text-text-secondary space-y-1">
+            <p>
+              <a className="text-accent underline" href={problem.url} target="_blank" rel="noopener noreferrer">Open the original problem</a>
+              . The statement stays on that site. This workspace stores your notes only.
+            </p>
+            <p><span className="text-text-primary font-medium">Why this variation. </span>{studyFrame(patternId, variationName).recognize} You are practicing “{variationName}”.</p>
+            <p><span className="text-text-primary font-medium">Concept. </span>{studyFrame(patternId, variationName).concept}</p>
+            <p>{hasDemonstratedRecall(currentProgress) ? 'A review with confidence 4 or 5 is recorded for this placement.' : 'Solved is not mastery. Recall is a completed review with confidence 4 or 5.'}</p>
+          </div>
           {/* Quick Status Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded bg-surface-0 border border-border">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg bg-surface-0 border border-border">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">
                 Status:
               </span>
-              <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded border border-border-subtle">
+              <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded-lg border border-border-subtle">
                 {(['not_started', 'attempted', 'solved', 'revisit'] as StatusOption[]).map((st) => (
                   <button
                     key={st}
                     type="button"
                     onClick={() => handleStatusChange(st)}
-                    className={`px-2.5 py-1 text-xs font-mono rounded transition-all ${
+                    className={`px-2.5 py-1 text-xs font-mono rounded-md transition-all ${
                       status === st
-                        ? 'bg-accent text-accent-text font-bold shadow-sm'
+                        ? 'bg-accent text-accent-text font-bold shadow-xs'
                         : 'text-text-secondary hover:text-text-primary'
                     }`}
                   >
@@ -274,13 +291,13 @@ export default function ProblemWorkspaceModal({
                     key={lvl}
                     type="button"
                     onClick={() => setConfidence(lvl)}
-                    className="p-1 text-text-tertiary hover:text-warning transition-colors"
+                    className="p-1 text-text-tertiary hover:text-amber-400 transition-colors"
                     title={CONFIDENCE_LEVELS[lvl - 1].label}
                   >
                     <Star
                       className={`w-3.5 h-3.5 ${
                         lvl <= confidence
-                          ? 'fill-warning text-warning'
+                          ? 'fill-amber-400 text-amber-400'
                           : 'text-surface-4'
                       }`}
                     />
@@ -364,7 +381,7 @@ export default function ProblemWorkspaceModal({
             </label>
             <textarea
               rows={3}
-              placeholder="What is the key takeaway? (e.g. two pointers starting from ends, prefix sum with hashmap count, monotonic stack for next greater element)"
+              placeholder="What is the core algorithmic invariant? (e.g. two pointers starting from ends, prefix sum with hashmap count, monotonic stack for next greater element)"
               value={approach}
               onChange={(e) => setApproach(e.target.value)}
               className="input-field text-xs resize-y font-mono"
@@ -374,7 +391,7 @@ export default function ProblemWorkspaceModal({
           {/* Personal Solution Notes / Edge Cases */}
           <div>
             <label className="text-xs font-semibold text-text-secondary flex items-center gap-1.5 mb-1 font-mono">
-              <FileCode className="w-3 h-3 text-accent" /> Personal Notes & Gotchas
+              <FileCode className="w-3 h-3 text-accent" /> Personal Notes & Edge Cases
             </label>
             <textarea
               rows={4}
@@ -395,7 +412,7 @@ export default function ProblemWorkspaceModal({
                 {currentProgress.reviewHistory.map((rev, i) => (
                   <div key={i} className="flex items-center justify-between text-[11px] font-mono text-text-secondary">
                     <span>{rev.date}</span>
-                    <span className="text-warning">Score: {rev.confidence}/5</span>
+                    <span className="text-amber-400">Score: {rev.confidence}/5</span>
                   </div>
                 ))}
               </div>
@@ -408,7 +425,8 @@ export default function ProblemWorkspaceModal({
           <div className="flex items-center gap-2">
             {savedToast && (
               <span className="text-xs text-accent flex items-center gap-1 font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5" /> CHANGES PERSISTED
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span className="text-emerald-400">CHANGES PERSISTED</span>
               </span>
             )}
             {currentProgress.lastSolvedAt && !savedToast && (

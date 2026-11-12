@@ -1,12 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useApp } from '../context';
 import {
   getPatternStats,
   getProblemProgress,
-  getEffectiveStatus,
   difficultyBg,
-  statusLabel,
 } from '../store';
 import type { CurriculumProblem, StatusOption } from '../types';
 import {
@@ -17,13 +15,10 @@ import {
   CheckCircle2,
   Clock,
   RotateCcw,
-  Sparkles,
   FileEdit,
-  Binary,
-  Layers,
-  Star,
 } from 'lucide-react';
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
+import { studyFrame } from '../lib/studyFrames';
 
 export default function PatternDetail() {
   const { patternId } = useParams<{ patternId: string }>();
@@ -101,7 +96,7 @@ export default function PatternDetail() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       {/* Top Nav Breadcrumb & Pattern Navigator */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-border">
         <Link
@@ -116,7 +111,7 @@ export default function PatternDetail() {
           {prevPattern && (
             <Link
               to={`/patterns/${prevPattern.id}`}
-              className="btn-secondary text-xxs py-1 px-2 font-mono flex items-center gap-1"
+              className="btn-secondary text-xxs py-1 px-2.5 font-mono flex items-center gap-1"
               title={prevPattern.name}
             >
               <ChevronLeft className="w-3 h-3" /> Prev Pattern
@@ -125,7 +120,7 @@ export default function PatternDetail() {
           {nextPattern && (
             <Link
               to={`/patterns/${nextPattern.id}`}
-              className="btn-secondary text-xxs py-1 px-2 font-mono flex items-center gap-1"
+              className="btn-secondary text-xxs py-1 px-2.5 font-mono flex items-center gap-1"
               title={nextPattern.name}
             >
               Next Pattern <ChevronRight className="w-3 h-3" />
@@ -155,7 +150,7 @@ export default function PatternDetail() {
           </div>
 
           {/* Progress metric box */}
-          <div className="flex items-center gap-4 bg-surface-2 p-3 rounded border border-border shrink-0">
+          <div className="flex items-center gap-4 bg-surface-2 p-3 rounded-lg border border-border shrink-0">
             <div className="text-right">
               <span className="text-[10px] font-mono text-text-tertiary block">COMPLETION</span>
               <span className="text-lg font-bold font-mono text-text-primary tnum">
@@ -169,7 +164,7 @@ export default function PatternDetail() {
                   style={{ width: `${completionPct}%` }}
                 />
               </div>
-              <span className="text-[10px] font-mono text-accent text-right tnum">
+              <span className="text-[10px] font-mono text-accent text-right tnum font-semibold">
                 {completionPct}%
               </span>
             </div>
@@ -179,19 +174,19 @@ export default function PatternDetail() {
         {/* Difficulty breakdown pills */}
         <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-border/60 text-xs font-mono text-text-secondary">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-success" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
             Easy: <strong className="text-text-primary tnum">{stats.easySolved}</strong>/{stats.easy}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-warning" />
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
             Med: <strong className="text-text-primary tnum">{stats.mediumSolved}</strong>/{stats.medium}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-danger" />
+            <span className="w-2 h-2 rounded-full bg-rose-400" />
             Hard: <strong className="text-text-primary tnum">{stats.hardSolved}</strong>/{stats.hard}
           </span>
           {stats.revisit > 0 && (
-            <span className="flex items-center gap-1.5 text-info font-medium ml-auto">
+            <span className="flex items-center gap-1.5 text-indigo-400 font-medium ml-auto">
               <Clock className="w-3.5 h-3.5" />
               {stats.revisit} Scheduled for Review
             </span>
@@ -203,8 +198,10 @@ export default function PatternDetail() {
       <div className="space-y-4">
         {pattern.variations.map((variation, vIdx) => {
           const varSolvedCount = variation.problems.filter(
-            (p) => getEffectiveStatus(progress, p.id) === 'solved'
+            (p) => getProblemProgress(progress, p.id).status === 'solved'
           ).length;
+          const frame = studyFrame(pattern.id, variation.name);
+          const siblings = pattern.variations.filter((item) => item.id !== variation.id).map((item) => item.name);
 
           return (
             <div
@@ -222,6 +219,20 @@ export default function PatternDetail() {
                 <span className="text-[10px] font-mono text-text-tertiary tnum">
                   {varSolvedCount}/{variation.problems.length} SOLVED
                 </span>
+              </div>
+              <div className="px-4 py-3 text-xs text-text-secondary space-y-1 border-b border-border/60 bg-surface-0/40">
+                <p><span className="text-text-primary font-medium">Concept. </span>{frame.concept}</p>
+                <p><span className="text-text-primary font-medium">Recognize. </span>{frame.recognize} This variation is “{variation.name}”.</p>
+                <p><span className="text-text-primary font-medium">Use when. </span>{frame.useWhen}</p>
+                <p><span className="text-text-primary font-medium">Avoid when. </span>{frame.avoidWhen}</p>
+                <p><span className="text-text-primary font-medium">Mistake. </span>{frame.mistake}</p>
+                <p><span className="text-text-primary font-medium">Complexity. </span>{frame.complexity}</p>
+                {siblings.length > 0 && (
+                  <p><span className="text-text-primary font-medium">Differs from. </span>{siblings.join('; ')}.</p>
+                )}
+                {vIdx > 0 && (
+                  <p><span className="text-text-primary font-medium">Earlier in this pattern. </span>{pattern.variations[vIdx - 1].name}. That order is the curriculum sequence, not a proof that it is a formal prerequisite.</p>
+                )}
               </div>
 
               {/* Problem Rows */}
@@ -247,11 +258,11 @@ export default function PatternDetail() {
                       <div className="flex items-start sm:items-center gap-3 min-w-0">
                         <div className="pt-0.5 sm:pt-0 shrink-0">
                           {status === 'solved' ? (
-                            <CheckCircle2 className="w-4 h-4 text-success" />
+                            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                           ) : status === 'attempted' ? (
-                            <Clock className="w-4 h-4 text-warning" />
+                            <Clock className="w-4 h-4 text-amber-400" />
                           ) : status === 'revisit' ? (
-                            <RotateCcw className="w-4 h-4 text-info" />
+                            <RotateCcw className="w-4 h-4 text-indigo-400" />
                           ) : (
                             <span className="w-4 h-4 rounded-full border border-surface-4 block" />
                           )}
@@ -268,7 +279,7 @@ export default function PatternDetail() {
                               </span>
                             )}
                             {probProgress.confidence > 0 && (
-                              <span className="text-[10px] font-mono text-warning">
+                              <span className="text-[10px] font-mono text-amber-400">
                                 ★{probProgress.confidence}
                               </span>
                             )}
@@ -298,7 +309,7 @@ export default function PatternDetail() {
                               e.target.value as StatusOption
                             )
                           }
-                          className="bg-surface-2 border border-border text-text-secondary hover:text-text-primary text-[11px] font-mono rounded px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
+                          className="bg-surface-2 border border-border text-text-secondary hover:text-text-primary text-[11px] font-mono rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
                         >
                           <option value="not_started">Not Started</option>
                           <option value="attempted">Attempted</option>
@@ -318,7 +329,7 @@ export default function PatternDetail() {
                               variationIndex: vIdx,
                             });
                           }}
-                          className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-3 rounded transition-colors"
+                          className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-3 rounded-md transition-colors"
                           title="Open workspace"
                         >
                           <FileEdit className="w-3.5 h-3.5" />
@@ -330,7 +341,7 @@ export default function PatternDetail() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1.5 text-text-tertiary hover:text-accent hover:bg-surface-3 rounded transition-colors"
+                          className="p-1.5 text-text-tertiary hover:text-accent hover:bg-surface-3 rounded-md transition-colors"
                           title="Open original problem in new tab"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />

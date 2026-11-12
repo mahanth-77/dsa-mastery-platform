@@ -6,6 +6,7 @@ import {
   getActivityByDate,
   getPatternStats,
 } from '../store';
+import { summarizeLearning, weakVariations } from '../lib/learningSignals';
 import {
   BarChart,
   Bar,
@@ -19,12 +20,8 @@ import {
   BarChart2,
   Calendar,
   Flame,
-  Award,
-  TrendingUp,
   AlertCircle,
-  Clock,
   Layers,
-  Terminal,
 } from 'lucide-react';
 
 export default function Analytics() {
@@ -34,6 +31,8 @@ export default function Analytics() {
   if (!curriculum) return null;
 
   const globalStats = useMemo(() => getGlobalStats(curriculum, progress), [curriculum, progress]);
+  const learning = useMemo(() => summarizeLearning(curriculum, progress), [curriculum, progress]);
+  const weak = useMemo(() => weakVariations(curriculum, progress), [curriculum, progress]);
   const streak = useMemo(() => getStreak(progress), [progress]);
   const activityMap = useMemo(() => getActivityByDate(progress, 90), [progress]);
 
@@ -96,7 +95,7 @@ export default function Analytics() {
   }, [activityMap]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-4 border-b border-border">
         <div>
@@ -106,7 +105,7 @@ export default function Analytics() {
             </span>
             <span className="text-border">·</span>
             <span className="text-[10px] font-mono text-text-tertiary">
-              HONEST UNFABRICATED METRICS
+              UNFABRICATED LOCAL METRICS
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
@@ -128,7 +127,7 @@ export default function Analytics() {
             {globalStats.total > 0 ? ((globalStats.solved / globalStats.total) * 100).toFixed(1) : '0.0'}%
           </p>
           <p className="text-[10px] font-mono text-text-tertiary mt-1 tnum">
-            {globalStats.solved} of {globalStats.total} solved
+            {globalStats.solved} solved of {globalStats.total} placements
           </p>
         </div>
 
@@ -159,16 +158,54 @@ export default function Analytics() {
 
         <div className="panel p-4">
           <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">
-            Needs Revision
+            Marked revisit
           </span>
-          <p className="text-2xl font-bold font-mono text-info mt-1 tnum">
+          <p className="text-2xl font-bold font-mono text-indigo-400 mt-1 tnum">
             {globalStats.revisit}
           </p>
           <p className="text-[10px] font-mono text-text-tertiary mt-1">
-            Scheduled for recall
+            Not the same as a completed review
           </p>
         </div>
       </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="panel p-4">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">Attempted</span>
+          <p className="text-2xl font-bold font-mono mt-1 tnum">{learning.attempted}</p>
+          <p className="text-[10px] font-mono text-text-tertiary mt-1">Status attempted, not solved</p>
+        </div>
+        <div className="panel p-4">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">Reviews recorded</span>
+          <p className="text-2xl font-bold font-mono mt-1 tnum">{learning.revised}</p>
+          <p className="text-[10px] font-mono text-text-tertiary mt-1">Placements with at least one review</p>
+        </div>
+        <div className="panel p-4">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">Demonstrated recall</span>
+          <p className="text-2xl font-bold font-mono mt-1 tnum">{learning.demonstratedRecall}</p>
+          <p className="text-[10px] font-mono text-text-tertiary mt-1">Solved, reviewed, confidence 4 or 5</p>
+        </div>
+        <div className="panel p-4">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">Placements</span>
+          <p className="text-2xl font-bold font-mono mt-1 tnum">{learning.placements}</p>
+          <p className="text-[10px] font-mono text-text-tertiary mt-1">Counted by placement, not by URL</p>
+        </div>
+      </div>
+
+      <section className="panel p-4 space-y-2" aria-label="Weak variations">
+        <h2 className="text-xs font-semibold uppercase tracking-wider font-mono">Weak variations with saved evidence</h2>
+        {weak.length === 0 ? (
+          <p className="text-xs text-text-secondary">None yet. A variation appears here only after a revisit, a repeated unsolved attempt, or a solved item you rated below 3.</p>
+        ) : (
+          <ul className="space-y-1">
+            {weak.slice(0, 8).map((row) => (
+              <li key={row.variationId} className="text-xs text-text-secondary">
+                {row.patternName} · {row.variationName}: {row.revisit} revisit, {row.unsolvedAttempts} repeated unsolved, {row.lowConfidenceSolved} low-confidence solved, of {row.touched} touched
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       {/* Activity Heatmap Grid */}
       <div className="panel p-5 space-y-3">
@@ -183,7 +220,7 @@ export default function Analytics() {
         </div>
 
         {!hasActivity ? (
-          <div className="p-8 text-center bg-surface-0/60 rounded border border-dashed border-border/80">
+          <div className="p-8 text-center bg-surface-0/60 rounded-lg border border-dashed border-border/80">
             <AlertCircle className="w-5 h-5 text-text-tertiary mx-auto mb-2 opacity-60" />
             <p className="text-xs font-bold text-text-secondary">
               Zero-state: No study events recorded yet
@@ -197,7 +234,7 @@ export default function Analytics() {
             <div className="grid grid-flow-col grid-rows-7 gap-1.5 overflow-x-auto py-2">
               {heatmapDays.map((d) => {
                 let bgClass = 'bg-surface-3';
-                if (d.count >= 5) bgClass = 'bg-accent shadow-sm shadow-accent/20';
+                if (d.count >= 5) bgClass = 'bg-accent shadow-xs shadow-accent/20';
                 else if (d.count >= 3) bgClass = 'bg-accent/80';
                 else if (d.count >= 1) bgClass = 'bg-accent/40';
 
@@ -248,7 +285,7 @@ export default function Analytics() {
                       const data = payload[0].payload;
                       const pct = data.total > 0 ? Math.round((data.solved / data.total) * 100) : 0;
                       return (
-                        <div className="bg-surface-0 border border-border p-2.5 rounded text-xs font-mono shadow-elevated space-y-1">
+                        <div className="bg-surface-0 border border-border p-2.5 rounded-lg text-xs font-mono shadow-xl space-y-1">
                           <p className="font-bold text-text-primary">{data.name}</p>
                           <p className="text-text-secondary">
                             Solved: <span className="text-accent">{data.solved}</span> / {data.total}
@@ -260,8 +297,8 @@ export default function Analytics() {
                     return null;
                   }}
                 />
-                <Bar dataKey="total" fill="#1e2227" radius={[2, 2, 0, 0]} name="Total" />
-                <Bar dataKey="solved" radius={[2, 2, 0, 0]} name="Solved">
+                <Bar dataKey="total" fill="#181c22" radius={[3, 3, 0, 0]} name="Total" />
+                <Bar dataKey="solved" radius={[3, 3, 0, 0]} name="Solved">
                   {difficultyData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
@@ -272,7 +309,7 @@ export default function Analytics() {
 
           <div className="grid grid-cols-3 gap-2 text-center pt-2 border-t border-border/60">
             {difficultyData.map((d) => (
-              <div key={d.name} className="p-2 rounded bg-surface-0 border border-border-subtle">
+              <div key={d.name} className="p-2 rounded-lg bg-surface-0 border border-border-subtle">
                 <span className="text-[10px] font-mono text-text-tertiary block">{d.name}</span>
                 <span className="text-xs font-mono font-bold text-text-primary mt-0.5 block tnum">
                   {d.solved} / {d.total}
@@ -293,14 +330,14 @@ export default function Analytics() {
             {patternProgressData.map((item) => (
               <div
                 key={item.id}
-                className="p-2 rounded bg-surface-0 hover:bg-surface-2 border border-border-subtle transition-colors flex items-center justify-between gap-3"
+                className="p-2 rounded-lg bg-surface-0 hover:bg-surface-2 border border-border-subtle transition-colors flex items-center justify-between gap-3"
               >
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-medium text-text-primary truncate">
                     {item.name}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
-                    <div className="flex-1 track-bar h-1">
+                    <div className="flex-1 track-bar h-1.5">
                       <div
                         className="track-fill bg-accent"
                         style={{ width: `${item.pct}%` }}

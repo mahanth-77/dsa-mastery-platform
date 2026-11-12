@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context';
 import type { CurriculumProblem } from '../types';
 import {
   Search,
   X,
-  ExternalLink,
   ChevronRight,
+  ArrowRight,
   Layers,
   Sparkles,
-  Command,
+  CornerDownLeft,
 } from 'lucide-react';
 import { difficultyBg, getEffectiveStatus } from '../store';
+import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ interface CommandPaletteProps {
 export default function CommandPalette({ isOpen, onClose, onSelectProblem }: CommandPaletteProps) {
   const { state } = useApp();
   const { curriculum, progress } = state;
-  const navigate = useNavigate();
+  const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
 
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -104,29 +104,30 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
       <div
-        className="w-full max-w-2xl bg-surface-1 border border-border rounded-xl shadow-elevated overflow-hidden flex flex-col"
+        className="w-full max-w-2xl bg-surface-1 border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-surface-0">
-          <Search className="w-4 h-4 text-text-tertiary shrink-0" />
+          <Search className="w-4 h-4 text-accent shrink-0" />
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search all 575 problems, patterns, or variations..."
+            placeholder="Type a problem name, pattern, or variation..."
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
               setSelectedIndex(0);
             }}
-            className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-quaternary focus:outline-none font-mono"
+            className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-quaternary focus:outline-none font-sans"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
               className="p-1 text-text-tertiary hover:text-text-primary rounded"
+              title="Clear search"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -139,10 +140,10 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
         {/* Results List */}
         <div className="max-h-96 overflow-y-auto p-2 space-y-1">
           {filteredProblems.length === 0 ? (
-            <div className="py-12 text-center text-xs text-text-tertiary">
-              <p>No matching problems found for "{query}".</p>
-              <p className="text-[10px] text-text-quaternary mt-1">
-                Try searching for "Two Sum", "Sliding Window", "Graph", "DFS", etc.
+            <div className="py-12 text-center text-xs text-text-tertiary space-y-1">
+              <p className="text-text-secondary font-medium">No problems matched "{query}".</p>
+              <p className="text-[11px] text-text-quaternary font-mono">
+                Search examples: "Two Sum", "Sliding Window", "Graph", "DFS", "Binary Search".
               </p>
             </div>
           ) : (
@@ -159,18 +160,20 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
                   }}
                   onMouseEnter={() => setSelectedIndex(idx)}
                   className={`flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors ${
-                    isSelected ? 'bg-surface-2 border border-border' : 'hover:bg-surface-2/60 border border-transparent'
+                    isSelected
+                      ? 'bg-surface-2 border border-border shadow-xs'
+                      : 'hover:bg-surface-2/60 border border-transparent'
                   }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span
                       className={`w-2 h-2 rounded-full shrink-0 ${
                         status === 'solved'
-                          ? 'bg-success'
+                          ? 'bg-emerald-400'
                           : status === 'attempted'
-                          ? 'bg-warning'
+                          ? 'bg-amber-400'
                           : status === 'revisit'
-                          ? 'bg-info'
+                          ? 'bg-indigo-400'
                           : 'bg-surface-4'
                       }`}
                     />
@@ -188,7 +191,11 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
                     <span className={`badge ${difficultyBg(item.problem.difficulty)} text-[9px]`}>
                       {item.problem.difficulty}
                     </span>
-                    <ChevronRight className="w-3.5 h-3.5 text-text-tertiary" />
+                    {isSelected && (
+                      <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-accent">
+                        Open <CornerDownLeft className="w-2.5 h-2.5" />
+                      </span>
+                    )}
                   </div>
                 </div>
               );
@@ -198,8 +205,12 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
 
         {/* Footer shortcuts */}
         <div className="px-4 py-2 border-t border-border bg-surface-0/60 flex items-center justify-between text-[10px] font-mono text-text-tertiary">
-          <span>Navigate with ↑ and ↓ · Enter to select</span>
-          <span>575 Total Problems Available</span>
+          <span>Navigate with ↑ and ↓ · ↵ to select</span>
+          <span>
+            {curriculumStats
+              ? `${countLabel(curriculumStats.placementCount, 'placement', 'placements')} · ${countLabel(curriculumStats.uniqueCanonicalProblemCount, 'unique problem', 'unique problems')}`
+              : 'No curriculum loaded'}
+          </span>
         </div>
       </div>
     </div>

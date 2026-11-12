@@ -28,7 +28,7 @@ npm run preview
 ## 📦 What Was Built
 
 ### 1. Dashboard (`/`)
-- **Key Metrics**: Real-time counter of total problems solved vs 575 problems across all 21 pattern families.
+- **Key Metrics**: Real-time counter of total problems solved vs 941 placements across all 21 pattern families.
 - **Consecutive Streak**: Authentic streak counter and personal best tracking calculated strictly from timestamped user actions.
 - **Today & Week Activity**: Dynamic tracking against daily target goals.
 - **Continue Learning**: Direct recommendation engine pointing to the next unstarted or in-progress problem.
@@ -36,7 +36,7 @@ npm run preview
 - **Patterns Needing Attention**: Real-time identification of lowest-completion pattern families.
 
 ### 2. Pattern Explorer (`/patterns`)
-- **Comprehensive Catalog**: Displays all 21 patterns, 115 variations, and 575 problems without omission.
+- **Comprehensive Catalog**: Displays all 21 patterns, 115 variations, and 941 placements without omission.
 - **Live Search**: Instant multi-level search across pattern family name, inner variation, and problem title.
 - **Multi-criteria Filtering**: Filter by difficulty (`Easy`, `Medium`, `Hard`) and status (`Solved`, `Attempted`, `Needs Revision`, `Not Started`).
 - **Pattern Selector & Sorter**: Filter by specific pattern family, sort by completion percentage, problem count, or alphabetical.
@@ -57,7 +57,7 @@ npm run preview
 
 ### 5. Revision Center (`/revisions`)
 - **Spaced-Repetition System**: Automated recall queue categorized into **Overdue**, **Due Today**, and **Upcoming**.
-- **Recall Grading**: Quick buttons (`Hard (+1d)`, `Good (+3d)`, `Easy (+7d)`) to reinforce weak memory nodes.
+- **Recall Grading**: Review buttons record confidence. The next date follows the review count: 1, 3, 7, 14, 30, then 60 days.
 - **Review History**: Persistent audit trail of all past review sessions.
 
 ### 6. Analytics & Insights (`/analytics`)
@@ -70,7 +70,7 @@ npm run preview
 - **Daily Target**: Configurable problem goals (e.g. 5 problems/day).
 - **Full Data Export**: Download backup JSON containing all notes, complexity specs, review history, and timestamps.
 - **Safe Import**: Schema-validated import with error handling to restore progress across machines.
-- **Curriculum Metadata**: Read-only dataset verification (21 patterns, 115 variations, 575 problems).
+- **Curriculum Metadata**: Read-only dataset verification (21 patterns, 115 variations, 941 placements).
 - **Destructive Action Protection**: Reset progress with explicit confirmation step (leaves curriculum JSON untouched).
 
 ---

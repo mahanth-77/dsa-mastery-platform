@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono.woff2') format('woff2');
+}
+
 @layer base {
   * {
     border-color: theme('colors.border.DEFAULT');
@@ -20,7 +36,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Tabular numbers for all stats, counts, timers, and code */
+  /* Tabular numbers for stats, counts, timers, and code */
   .tnum {
     font-feature-settings: 'tnum';
     font-variant-numeric: tabular-nums;
@@ -36,17 +52,17 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #242830;
-    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #343a46;
+    background: rgba(255, 255, 255, 0.22);
   }
 
   ::selection {
-    background: rgba(200, 245, 96, 0.25);
-    color: #f3f4f6;
+    background: rgba(99, 102, 241, 0.35);
+    color: #ffffff;
   }
 
   :focus-visible {
@@ -56,83 +72,99 @@
 }
 
 @layer components {
-  /* Surface Containers */
+  /* Surface Containers with Apple/Linear-grade micro-highlights */
   .panel {
-    @apply bg-surface-1 border border-border rounded-lg;
+    @apply bg-surface-1 border border-border rounded-xl;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
   }
 
   .panel-subtle {
-    @apply bg-surface-0 border border-border-subtle rounded-lg;
+    @apply bg-surface-0 border border-border-subtle rounded-xl;
   }
 
   .panel-interactive {
     @apply panel transition-all duration-150 hover:border-border-hover hover:bg-surface-2;
   }
 
-  /* Custom Buttons */
+  /* Linear-grade Buttons */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-3.5 py-1.5 text-xs font-semibold
-      bg-accent text-accent-text rounded
+      bg-accent text-accent-text rounded-lg
       hover:bg-accent-hover active:bg-accent-active
-      focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-1 focus:ring-offset-surface-0
+      focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-1 focus:ring-offset-canvas
       transition-all duration-150
       disabled:opacity-40 disabled:cursor-not-allowed select-none shadow-sm;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium
-      bg-surface-2 text-text-primary border border-border rounded
+      bg-surface-2 text-text-primary border border-border rounded-lg
       hover:bg-surface-3 hover:border-border-hover
       active:bg-surface-4
-      focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-1 focus:ring-offset-surface-0
+      focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-1 focus:ring-offset-canvas
       transition-all duration-150
       disabled:opacity-40 disabled:cursor-not-allowed select-none;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
   }
 
   .btn-subtle {
     @apply inline-flex items-center justify-center gap-1.5 px-2.5 py-1 text-xs font-medium
-      text-text-secondary bg-surface-1/60 border border-border-subtle rounded
+      text-text-secondary bg-surface-1/80 border border-border-subtle rounded-md
       hover:text-text-primary hover:bg-surface-2 hover:border-border
-      transition-all duration-150;
+      transition-all duration-150 select-none;
   }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-xs font-medium
-      text-text-secondary rounded
+      text-text-secondary rounded-md
       hover:bg-surface-2 hover:text-text-primary
       focus:outline-none focus:ring-2 focus:ring-accent/30
-      transition-all duration-150;
+      transition-all duration-150 select-none;
   }
 
   .btn-danger {
     @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium
-      bg-danger-muted text-danger border border-danger-border rounded
+      bg-danger-muted text-danger border border-danger-border rounded-lg
       hover:bg-danger/20 hover:border-danger/40
       focus:outline-none focus:ring-2 focus:ring-danger/30
-      transition-all duration-150;
+      transition-all duration-150 select-none;
   }
 
   /* Form Inputs */
   .input-field {
     @apply w-full px-3 py-1.5 text-xs
-      bg-surface-0 border border-border rounded text-text-primary
+      bg-surface-0 border border-border rounded-lg text-text-primary
       placeholder:text-text-quaternary
       focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
       transition-all duration-150;
+    box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   }
 
   /* Badges & Tags */
   .badge {
-    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xxs font-mono font-medium rounded border tracking-wide uppercase;
+    @apply inline-flex items-center gap-1 px-2 py-0.5 text-xxs font-mono font-medium rounded-md border tracking-wide uppercase;
   }
 
   .badge-accent {
     @apply bg-accent-muted text-accent border-accent-border;
   }
 
+  .badge-easy {
+    @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
+  }
+
+  .badge-medium {
+    @apply bg-amber-500/10 text-amber-400 border-amber-500/20;
+  }
+
+  .badge-hard {
+    @apply bg-rose-500/10 text-rose-400 border-rose-500/20;
+  }
+
   /* Navigation Links */
   .nav-item {
-    @apply flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded
+    @apply flex items-center gap-2.5 px-3 py-2 text-xs font-medium rounded-lg
       text-text-secondary
       hover:bg-surface-2 hover:text-text-primary
       transition-colors duration-150 select-none;
@@ -142,9 +174,14 @@
     @apply nav-item bg-surface-2 text-text-primary border-l-2 border-accent font-semibold;
   }
 
+  /* Keyboard shortcut pill */
+  .kbd-key {
+    @apply px-1.5 py-0.5 text-[10px] font-mono text-text-tertiary bg-surface-2 border border-border rounded;
+  }
+
   /* Progress bars */
   .track-bar {
-    @apply h-1 rounded-full bg-surface-3 overflow-hidden;
+    @apply h-1.5 rounded-full bg-surface-3 overflow-hidden;
   }
 
   .track-fill {

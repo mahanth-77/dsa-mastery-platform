@@ -1,28 +1,22 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context';
+import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import {
   getPatternStats,
   getEffectiveStatus,
   difficultyBg,
   statusLabel,
 } from '../store';
-import type { CurriculumPattern, Difficulty, StatusOption, CurriculumProblem } from '../types';
+import type { Difficulty, StatusOption, CurriculumProblem } from '../types';
 import {
   Search,
   ChevronDown,
   ChevronRight,
   ExternalLink,
   Layers,
-  ArrowUpDown,
   List,
   LayoutGrid,
-  Filter,
-  CheckCircle2,
-  Clock,
-  RotateCcw,
-  Sparkles,
-  FileCode,
   X,
 } from 'lucide-react';
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
@@ -49,7 +43,7 @@ export default function PatternExplorer() {
     variationName: string;
   } | null>(null);
 
-  // Keyboard shortcut '/' or 'Cmd+K' to focus search
+  // Keyboard shortcut '/' to focus search
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.key === '/' || (e.metaKey && e.key === 'k')) && document.activeElement !== searchInputRef.current) {
@@ -62,6 +56,7 @@ export default function PatternExplorer() {
   }, []);
 
   if (!curriculum) return null;
+  const curriculumStats = getCurriculumStats(curriculum);
 
   const togglePattern = (patternId: string) => {
     setExpandedPatterns((prev) => ({
@@ -165,7 +160,7 @@ export default function PatternExplorer() {
             </span>
             <span className="text-border">·</span>
             <span className="text-[10px] font-mono text-text-tertiary">
-              21 PATTERNS · 115 VARIATIONS · 575 PROBLEMS
+              {countLabel(curriculumStats.patternCount, 'PATTERN', 'PATTERNS').toUpperCase()} · {countLabel(curriculumStats.variationCount, 'VARIATION', 'VARIATIONS').toUpperCase()} · {countLabel(curriculumStats.placementCount, 'PLACEMENT', 'PLACEMENTS').toUpperCase()}
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
@@ -202,7 +197,7 @@ export default function PatternExplorer() {
         </div>
       </div>
 
-      {/* Filter and Search Bar (Developer tool style) */}
+      {/* Filter and Search Bar */}
       <div className="panel p-3.5 space-y-3">
         <div className="flex flex-col lg:flex-row gap-2.5">
           {/* Search box with shortcut hint */}
@@ -214,7 +209,7 @@ export default function PatternExplorer() {
               placeholder="Filter by problem, pattern, or variation (Press '/' to focus)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="input-field pl-9 pr-14 text-xs font-mono"
+              className="input-field pl-9 pr-14 text-xs font-sans"
             />
             {searchQuery ? (
               <button
@@ -237,7 +232,7 @@ export default function PatternExplorer() {
             <select
               value={selectedPatternId}
               onChange={(e) => setSelectedPatternId(e.target.value)}
-              className="input-field text-xs cursor-pointer font-mono"
+              className="input-field text-xs cursor-pointer font-sans"
             >
               <option value="All">All 21 Patterns</option>
               {curriculum.patterns.map((p, idx) => (
@@ -253,7 +248,7 @@ export default function PatternExplorer() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="input-field text-xs cursor-pointer font-mono"
+              className="input-field text-xs cursor-pointer font-sans"
             >
               <option value="default">Default Order</option>
               <option value="progress-asc">Weakest First</option>
@@ -274,9 +269,9 @@ export default function PatternExplorer() {
               <button
                 key={diff}
                 onClick={() => setDifficultyFilter(diff)}
-                className={`px-2 py-0.5 text-xxs font-mono rounded transition-colors ${
+                className={`px-2 py-0.5 text-xxs font-mono rounded-md transition-colors ${
                   difficultyFilter === diff
-                    ? 'bg-accent text-accent-text font-bold'
+                    ? 'bg-accent text-accent-text font-bold shadow-xs'
                     : 'bg-surface-2 text-text-secondary hover:text-text-primary border border-border-subtle'
                 }`}
               >
@@ -293,9 +288,9 @@ export default function PatternExplorer() {
               <button
                 key={st}
                 onClick={() => setStatusFilter(st)}
-                className={`px-2 py-0.5 text-xxs font-mono rounded transition-colors ${
+                className={`px-2 py-0.5 text-xxs font-mono rounded-md transition-colors ${
                   statusFilter === st
-                    ? 'bg-accent text-accent-text font-bold'
+                    ? 'bg-accent text-accent-text font-bold shadow-xs'
                     : 'bg-surface-2 text-text-secondary hover:text-text-primary border border-border-subtle'
                 }`}
               >
@@ -305,7 +300,7 @@ export default function PatternExplorer() {
           </div>
 
           <span className="text-[10px] font-mono text-text-tertiary ml-auto tnum">
-            {totalMatchingProblems} PROBLEMS MATCHED
+            {countLabel(totalMatchingProblems, 'PLACEMENT', 'PLACEMENTS')} MATCHED
           </span>
         </div>
       </div>
@@ -319,7 +314,7 @@ export default function PatternExplorer() {
             <p className="text-xs text-text-tertiary">Adjust your search query or reset your filters.</p>
           </div>
         ) : (
-          filteredPatterns.map(({ pattern, stats, variations }, pIdx) => {
+          filteredPatterns.map(({ pattern, stats, variations }) => {
             const isExpanded = expandedPatterns[pattern.id] ?? false;
             const completionPct = stats.total > 0 ? Math.round((stats.solved / stats.total) * 100) : 0;
 
@@ -362,7 +357,7 @@ export default function PatternExplorer() {
 
                   <div className="flex items-center gap-3.5 shrink-0 self-end sm:self-center">
                     <div className="w-24 sm:w-32 flex flex-col items-end gap-1">
-                      <div className="w-full track-bar">
+                      <div className="w-full track-bar h-1.5">
                         <div
                           className="track-fill bg-accent"
                           style={{ width: `${completionPct}%` }}
@@ -391,10 +386,10 @@ export default function PatternExplorer() {
                         No problems match the current filter in this pattern.
                       </p>
                     ) : (
-                      variations.map((variation, vIdx) => (
+                      variations.map((variation) => (
                         <div
                           key={variation.id}
-                          className="rounded border border-border/80 bg-surface-1/70 p-3 space-y-2"
+                          className="rounded-lg border border-border/80 bg-surface-1/70 p-3 space-y-2"
                         >
                           <div className="flex items-center justify-between pb-1.5 border-b border-border/40">
                             <span className="text-xs font-semibold text-text-primary flex items-center gap-2">
@@ -418,7 +413,7 @@ export default function PatternExplorer() {
                               return (
                                 <div
                                   key={problem.id}
-                                  className="flex items-center justify-between gap-2.5 px-2.5 py-1.5 rounded bg-surface-0/80 hover:bg-surface-2 border border-border/40 hover:border-border transition-colors group"
+                                  className="flex items-center justify-between gap-2.5 px-2.5 py-1.5 rounded-md bg-surface-0/80 hover:bg-surface-2 border border-border/40 hover:border-border transition-colors group"
                                 >
                                   <div className="flex items-center gap-2 min-w-0">
                                     <StatusDot status={probStatus} />
@@ -486,11 +481,11 @@ export default function PatternExplorer() {
 function StatusDot({ status }: { status: StatusOption }) {
   switch (status) {
     case 'solved':
-      return <span className="w-2 h-2 rounded-full bg-success shrink-0" title="Solved" />;
+      return <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Solved" />;
     case 'attempted':
-      return <span className="w-2 h-2 rounded-full bg-warning shrink-0" title="Attempted" />;
+      return <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" title="Attempted" />;
     case 'revisit':
-      return <span className="w-2 h-2 rounded-full bg-info shrink-0" title="Needs Revision" />;
+      return <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" title="Needs Revision" />;
     default:
       return <span className="w-2 h-2 rounded-full bg-surface-4 shrink-0" title="Not Started" />;
   }

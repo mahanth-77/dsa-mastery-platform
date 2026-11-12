@@ -54,16 +54,30 @@ export function defaultUserProgress(): UserProgress {
 
 // ─── Curriculum loader ───────────────────────────────────────────────────────
 
+const DIFFICULTY_VALUES = new Set(['Easy', 'Medium', 'Hard']);
+const STATUS_VALUES = new Set(['not_started', 'attempted', 'solved', 'revisit']);
+
 export function validateCurriculum(raw: unknown): CurriculumData {
   const data = raw as CurriculumData;
   if (!data || !Array.isArray(data.patterns)) {
     throw new Error('Invalid curriculum: missing patterns array');
   }
-  // Ensure every pattern has an id
+  // Missing ids are filled. Present ids, URLs, and parent links are checked.
+  // The same canonical URL may appear on more than one placement.
+  const seenPatternIds = new Set<string>();
+  const seenVariationIds = new Set<string>();
+  const seenPlacementIds = new Set<string>();
   data.patterns.forEach((p, pi) => {
     if (!p.id) {
       p.id = `pattern-${String(pi + 1).padStart(2, '0')}`;
     }
+    if (!/^pattern-\d{2}$/.test(p.id)) {
+      throw new Error(`Invalid curriculum: invalid pattern id ${p.id}`);
+    }
+    if (seenPatternIds.has(p.id)) {
+      throw new Error(`Invalid curriculum: duplicate pattern id ${p.id}`);
+    }
+    seenPatternIds.add(p.id);
     if (!Array.isArray(p.variations)) {
       p.variations = [];
     }
@@ -71,6 +85,13 @@ export function validateCurriculum(raw: unknown): CurriculumData {
       if (!v.id) {
         v.id = `${p.id}-variation-${String(vi + 1).padStart(2, '0')}`;
       }
+      if (!v.id.startsWith(`${p.id}-variation-`)) {
+        throw new Error(`Invalid curriculum: invalid variation reference ${v.id}`);
+      }
+      if (seenVariationIds.has(v.id)) {
+        throw new Error(`Invalid curriculum: duplicate variation id ${v.id}`);
+      }
+      seenVariationIds.add(v.id);
       if (!Array.isArray(v.problems)) {
         v.problems = [];
       }
@@ -78,9 +99,43 @@ export function validateCurriculum(raw: unknown): CurriculumData {
         if (!prob.id) {
           prob.id = `${v.id}-problem-${String(probi + 1).padStart(2, '0')}`;
         }
-        prob.status = prob.status || 'not_started';
-        prob.attempts = prob.attempts || 0;
-        prob.difficulty = prob.difficulty || 'Medium';
+        if (seenPlacementIds.has(prob.id)) {
+          throw new Error(`Invalid curriculum: duplicate placement id ${prob.id}`);
+        }
+        seenPlacementIds.add(prob.id);
+        if (!String(prob.title || '').trim()) {
+          throw new Error(`Invalid curriculum: malformed title ${prob.id}`);
+        }
+        if (!String(prob.url || '').trim()) {
+          throw new Error(`Invalid curriculum: missing canonical url ${prob.id}`);
+        }
+        const difficulty = prob.difficulty as unknown;
+        if (difficulty == null || difficulty === '') {
+          prob.difficulty = 'Medium';
+        } else if (typeof difficulty !== 'string' || !DIFFICULTY_VALUES.has(difficulty)) {
+          throw new Error(`Invalid curriculum: invalid difficulty ${prob.id}`);
+        }
+        const status = prob.status as unknown;
+        if (status == null || status === '') {
+          prob.status = 'not_started';
+        } else if (typeof status !== 'string' || !STATUS_VALUES.has(status)) {
+          throw new Error(`Invalid curriculum: invalid status ${prob.id}`);
+        }
+        if (prob.attempts == null) {
+          prob.attempts = 0;
+        } else if (typeof prob.attempts !== 'number' || !Number.isInteger(prob.attempts) || prob.attempts < 0) {
+          throw new Error(`Invalid curriculum: invalid attempts ${prob.id}`);
+        }
+        if (prob.lastSolvedAt == null) {
+          prob.lastSolvedAt = null;
+        } else if (typeof prob.lastSolvedAt !== 'string' || !prob.lastSolvedAt.trim()) {
+          throw new Error(`Invalid curriculum: invalid lastSolvedAt ${prob.id}`);
+        }
+        if (prob.nextRevisionAt == null) {
+          prob.nextRevisionAt = null;
+        } else if (typeof prob.nextRevisionAt !== 'string' || !prob.nextRevisionAt.trim()) {
+          throw new Error(`Invalid curriculum: invalid nextRevisionAt ${prob.id}`);
+        }
       });
     });
   });

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context';
 import { Link } from 'react-router-dom';
+import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import {
   getGlobalStats,
   getStreak,
@@ -11,7 +12,6 @@ import {
   getWeakPatterns,
   getPatternStats,
   difficultyBg,
-  getEffectiveStatus,
 } from '../store';
 import {
   Binary,
@@ -26,7 +26,6 @@ import {
   ExternalLink,
   Target,
   BarChart2,
-  Sparkles,
   BookOpen,
 } from 'lucide-react';
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
@@ -48,13 +47,14 @@ export default function Dashboard() {
       <div className="flex items-center justify-center h-80">
         <div className="flex items-center gap-2.5 text-text-tertiary font-mono text-xs">
           <div className="w-3.5 h-3.5 border border-accent border-t-transparent rounded-full animate-spin" />
-          <span>SYNCHRONIZING CURRICULUM DATA...</span>
+          <span>LOADING CURRICULUM DATA...</span>
         </div>
       </div>
     );
   }
 
   const stats = getGlobalStats(curriculum, progress);
+  const curriculumStats = getCurriculumStats(curriculum);
   const streak = getStreak(progress);
   const todayActivity = getTodayActivity(progress);
   const weekActivity = getWeekActivity(progress);
@@ -79,12 +79,12 @@ export default function Dashboard() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[10px] font-mono tracking-wider uppercase text-accent font-semibold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               DEVELOPER COCKPIT
             </span>
             <span className="text-border">·</span>
             <span className="text-[10px] font-mono text-text-tertiary">
-              21 PATTERNS · 115 VARIATIONS · 575 PROBLEMS
+              {countLabel(curriculumStats.patternCount, 'PATTERN', 'PATTERNS').toUpperCase()} · {countLabel(curriculumStats.variationCount, 'VARIATION', 'VARIATIONS').toUpperCase()} · {countLabel(curriculumStats.placementCount, 'PLACEMENT', 'PLACEMENTS').toUpperCase()}
             </span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
@@ -92,7 +92,7 @@ export default function Dashboard() {
           </h1>
           <p className="text-xs text-text-secondary mt-0.5">
             You have solved <strong className="text-text-primary tnum font-mono">{stats.solved}</strong> of{' '}
-            <span className="font-mono tnum">{stats.total}</span> problems (<span className="text-accent font-mono tnum">{completionPct}%</span> overall completion).
+            <span className="font-mono tnum">{stats.total}</span> problems (<span className="text-accent font-mono tnum font-semibold">{completionPct}%</span> overall completion).
           </p>
         </div>
 
@@ -143,8 +143,8 @@ export default function Dashboard() {
                 <p className="text-xs text-text-secondary mt-1">
                   Variation: <strong className="text-text-primary">{nextUp.variationName}</strong>
                 </p>
-                <div className="p-2.5 rounded bg-surface-0/60 border border-border-subtle mt-2.5 space-y-1">
-                  <span className="text-[10px] font-mono text-accent uppercase tracking-wider block">
+                <div className="p-3 rounded-lg bg-surface-0/70 border border-border-subtle mt-3 space-y-1">
+                  <span className="text-[10px] font-mono text-accent uppercase tracking-wider block font-semibold">
                     Algorithmic Objective
                   </span>
                   <p className="text-xxs text-text-secondary font-mono leading-relaxed">
@@ -219,7 +219,7 @@ export default function Dashboard() {
             </div>
 
             <div className="mt-3">
-              <div className="track-bar h-1">
+              <div className="track-bar h-1.5">
                 <div
                   className="track-fill bg-accent"
                   style={{ width: `${todayPct}%` }}
@@ -250,7 +250,7 @@ export default function Dashboard() {
               </div>
             </div>
             <p className="text-[10px] font-mono text-text-tertiary mt-3">
-              Best record: <strong className="text-text-secondary tnum">{streak.best}d</strong>
+              Personal record: <strong className="text-text-secondary tnum">{streak.best}d</strong>
             </p>
           </div>
 
@@ -261,7 +261,7 @@ export default function Dashboard() {
                 <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary font-medium">
                   Revision Due
                 </span>
-                <Clock className="w-3.5 h-3.5 text-info" />
+                <Clock className="w-3.5 h-3.5 text-indigo-400" />
               </div>
               <div className="mt-2 flex items-baseline gap-1.5">
                 <span className={`text-2xl font-bold font-mono tnum ${overdueCount > 0 ? 'text-danger' : 'text-text-primary'}`}>
@@ -307,12 +307,12 @@ export default function Dashboard() {
       </div>
 
       {/* Global Mastery Track */}
-      <div className="panel p-4 space-y-2">
+      <div className="panel p-4 space-y-2.5">
         <div className="flex items-center justify-between text-xs">
           <span className="font-semibold text-text-primary tracking-tight">Curriculum Mastery Track</span>
-          <span className="font-mono text-accent tnum">{stats.solved} / {stats.total} Solved</span>
+          <span className="font-mono text-accent tnum font-semibold">{stats.solved} / {stats.total} Solved</span>
         </div>
-        <div className="track-bar h-1.5 bg-surface-3">
+        <div className="track-bar h-2 bg-surface-3">
           <div
             className="track-fill bg-accent"
             style={{ width: `${completionPct}%` }}
@@ -320,13 +320,13 @@ export default function Dashboard() {
         </div>
         <div className="flex items-center justify-between text-[11px] font-mono text-text-tertiary pt-1">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-success" /> Easy: {stats.easySolved}/{stats.easy}
+            <span className="w-2 h-2 rounded-full bg-emerald-400" /> Easy: {stats.easySolved}/{stats.easy}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-warning" /> Med: {stats.mediumSolved}/{stats.medium}
+            <span className="w-2 h-2 rounded-full bg-amber-400" /> Med: {stats.mediumSolved}/{stats.medium}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-danger" /> Hard: {stats.hardSolved}/{stats.hard}
+            <span className="w-2 h-2 rounded-full bg-rose-400" /> Hard: {stats.hardSolved}/{stats.hard}
           </span>
           <span>Target: 100%</span>
         </div>
@@ -350,9 +350,10 @@ export default function Dashboard() {
 
           <div className="divide-y divide-border/60 py-1 flex-1">
             {revisionQueue.length === 0 ? (
-              <div className="py-8 text-center text-xs text-text-tertiary">
-                <CheckCircle2 className="w-5 h-5 text-success mx-auto mb-1.5 opacity-60" />
-                No problems scheduled for revision yet. When you solve problems, they will appear here.
+              <div className="py-8 text-center text-xs text-text-tertiary space-y-1">
+                <CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto opacity-70" />
+                <p>No problems scheduled for revision yet.</p>
+                <p className="text-[10px] text-text-quaternary font-mono">When you solve problems, they will appear here automatically.</p>
               </div>
             ) : (
               revisionQueue.slice(0, 4).map((item) => (
@@ -366,7 +367,7 @@ export default function Dashboard() {
                       variationName: item.variationName,
                     })
                   }
-                  className="py-2.5 flex items-center justify-between gap-3 hover:bg-surface-2/60 -mx-2 px-2 rounded cursor-pointer transition-colors group"
+                  className="py-2.5 flex items-center justify-between gap-3 hover:bg-surface-2/60 -mx-2 px-2 rounded-lg cursor-pointer transition-colors group"
                 >
                   <div className="min-w-0">
                     <p className="text-xs font-medium text-text-primary group-hover:text-accent truncate">
@@ -385,7 +386,7 @@ export default function Dashboard() {
                         item.daysOverdue > 0
                           ? 'text-danger font-semibold'
                           : item.daysOverdue === 0
-                          ? 'text-warning'
+                          ? 'text-amber-400'
                           : 'text-text-tertiary'
                       }`}
                     >
@@ -423,7 +424,7 @@ export default function Dashboard() {
                 <Link
                   key={pattern.id}
                   to={`/patterns/${pattern.id}`}
-                  className="py-2.5 flex items-center justify-between gap-3 hover:bg-surface-2/60 -mx-2 px-2 rounded transition-colors group"
+                  className="py-2.5 flex items-center justify-between gap-3 hover:bg-surface-2/60 -mx-2 px-2 rounded-lg transition-colors group"
                 >
                   <div className="min-w-0 flex-1 flex items-center gap-2.5">
                     <span className="text-[10px] font-mono text-text-quaternary w-4">
@@ -434,7 +435,7 @@ export default function Dashboard() {
                         {pattern.name}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <div className="w-24 track-bar h-1">
+                        <div className="w-24 track-bar h-1.5">
                           <div className="track-fill bg-accent" style={{ width: `${pct}%` }} />
                         </div>
                         <span className="text-[10px] font-mono text-text-tertiary tnum">
@@ -475,7 +476,7 @@ export default function Dashboard() {
               <Link
                 key={p.id}
                 to={`/patterns/${p.id}`}
-                className="p-2.5 rounded bg-surface-0 hover:bg-surface-2 border border-border-subtle hover:border-border transition-colors flex items-center justify-between gap-2.5 group"
+                className="p-2.5 rounded-lg bg-surface-0 hover:bg-surface-2 border border-border-subtle hover:border-border transition-colors flex items-center justify-between gap-2.5 group"
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <span className="text-[10px] font-mono text-text-quaternary shrink-0">

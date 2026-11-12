@@ -4,6 +4,7 @@ import {
   getRevisionQueue,
   difficultyBg,
 } from '../store';
+import { struggledPlacements } from '../lib/learningSignals';
 import type { RevisionItem, CurriculumProblem } from '../types';
 import {
   Clock,
@@ -12,7 +13,6 @@ import {
   Calendar,
   ExternalLink,
   FileEdit,
-  Sparkles,
 } from 'lucide-react';
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
 
@@ -34,6 +34,7 @@ export default function RevisionCenter() {
   const fullQueue = useMemo(() => {
     return getRevisionQueue(curriculum, progress);
   }, [curriculum, progress]);
+  const struggled = useMemo(() => struggledPlacements(curriculum, progress), [curriculum, progress]);
 
   const overdueList = useMemo(() => fullQueue.filter((i) => i.daysOverdue > 0), [fullQueue]);
   const todayList = useMemo(() => fullQueue.filter((i) => i.daysOverdue === 0), [fullQueue]);
@@ -56,7 +57,7 @@ export default function RevisionCenter() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 animate-fade-in">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-4 border-b border-border">
         <div>
@@ -73,10 +74,26 @@ export default function RevisionCenter() {
             Revision Center
           </h1>
           <p className="text-xs text-text-secondary mt-0.5">
-            Strengthen algorithmic invariants before memory decays. Complete recalls to extend review intervals.
+            Due dates apply only to placements you marked solved. Solved is not mastery. A recall is recorded only when you complete a review.
           </p>
         </div>
       </div>
+
+      <section className="panel p-4 space-y-2" aria-label="Placements that need more practice">
+        <h2 className="text-xs font-semibold uppercase tracking-wider font-mono text-text-primary">Needs more practice</h2>
+        <p className="text-[11px] text-text-tertiary">Revisit status, or attempted at least twice and not solved. This list uses only saved progress.</p>
+        {struggled.length === 0 ? (
+          <p className="text-xs text-text-secondary">No saved struggle yet.</p>
+        ) : (
+          <ul className="space-y-1">
+            {struggled.slice(0, 8).map((row) => (
+              <li key={row.placementId} className="text-xs text-text-secondary">
+                {row.title} · {row.variationName} · {row.progress.status} · attempts {row.progress.attempts}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       {/* Priority Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -149,14 +166,14 @@ export default function RevisionCenter() {
 
       {/* Tabs and Filters */}
       <div className="panel p-3 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded border border-border">
+        <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded-lg border border-border">
           {(['all', 'overdue', 'today', 'upcoming'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setFilterTab(tab)}
-              className={`px-3 py-1 text-xs font-mono rounded transition-colors uppercase font-medium ${
+              className={`px-3 py-1 text-xs font-mono rounded-md transition-colors uppercase font-medium ${
                 filterTab === tab
-                  ? 'bg-surface-0 text-text-primary shadow-sm border border-border font-bold'
+                  ? 'bg-surface-0 text-text-primary shadow-xs border border-border font-bold'
                   : 'text-text-secondary hover:text-text-primary'
               }`}
             >
@@ -170,7 +187,7 @@ export default function RevisionCenter() {
           <select
             value={selectedDifficulty}
             onChange={(e) => setSelectedDifficulty(e.target.value)}
-            className="input-field text-xs py-1 px-2 w-28 cursor-pointer font-mono"
+            className="input-field text-xs py-1 px-2 w-28 cursor-pointer font-sans"
           >
             <option value="All">All Levels</option>
             <option value="Easy">Easy</option>
@@ -184,7 +201,7 @@ export default function RevisionCenter() {
       <div className="space-y-2.5">
         {displayedList.length === 0 ? (
           <div className="panel p-12 text-center space-y-2">
-            <CheckCircle2 className="w-8 h-8 text-success mx-auto opacity-70" />
+            <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto opacity-70" />
             <h3 className="text-sm font-bold text-text-primary">
               No revisions pending in this view
             </h3>
@@ -210,9 +227,9 @@ export default function RevisionCenter() {
                     <span
                       className={`w-2 h-2 rounded-full block shrink-0 ${
                         isOverdue
-                          ? 'bg-danger shadow-sm shadow-danger/50'
+                          ? 'bg-danger shadow-xs shadow-danger/50'
                           : isToday
-                          ? 'bg-warning shadow-sm shadow-warning/50'
+                          ? 'bg-amber-400 shadow-xs shadow-warning/50'
                           : 'bg-accent'
                       }`}
                     />
@@ -253,7 +270,7 @@ export default function RevisionCenter() {
                       isOverdue
                         ? 'text-danger'
                         : isToday
-                        ? 'text-warning'
+                        ? 'text-amber-400'
                         : 'text-text-tertiary'
                     }`}
                   >
@@ -265,21 +282,21 @@ export default function RevisionCenter() {
                   </span>
 
                   {/* Recall feedback buttons */}
-                  <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded border border-border">
+                  <div className="flex items-center gap-1 bg-surface-2 p-0.5 rounded-lg border border-border">
                     <span className="text-[10px] font-mono text-text-tertiary px-1 hidden sm:inline">
                       Recall:
                     </span>
                     {[
-                      { label: 'Hard', score: 2, offset: '+1d' },
-                      { label: 'Good', score: 4, offset: '+3d' },
-                      { label: 'Easy', score: 5, offset: '+7d' },
+                      { label: 'Hard', score: 2 },
+                      { label: 'Good', score: 4 },
+                      { label: 'Easy', score: 5 },
                     ].map((btn) => (
                       <button
                         key={btn.label}
                         type="button"
                         onClick={() => handleQuickReview(item, btn.score)}
                         className="btn-subtle text-[10px] font-mono py-0.5 px-1.5"
-                        title={`Complete review and set next interval (${btn.offset})`}
+                        title="Record a review. The next date follows the review count: 1, 3, 7, 14, 30, then 60 days."
                       >
                         <CheckCircle2 className="w-2.5 h-2.5 text-accent" />
                         {btn.label}
@@ -298,7 +315,7 @@ export default function RevisionCenter() {
                         variationName: item.variationName,
                       })
                     }
-                    className="p-1 text-text-tertiary hover:text-text-primary hover:bg-surface-2 rounded transition-colors"
+                    className="p-1 text-text-tertiary hover:text-text-primary hover:bg-surface-2 rounded-md transition-colors"
                     title="Open workspace"
                   >
                     <FileEdit className="w-3.5 h-3.5" />
@@ -309,7 +326,7 @@ export default function RevisionCenter() {
                     href={item.problem.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-1 text-text-tertiary hover:text-accent hover:bg-surface-2 rounded transition-colors"
+                    className="p-1 text-text-tertiary hover:text-accent hover:bg-surface-2 rounded-md transition-colors"
                     title="Open LeetCode problem"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />

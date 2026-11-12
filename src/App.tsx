@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider, useApp } from './context';
+import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import PatternExplorer from './pages/PatternExplorer';
-import PatternDetail from './pages/PatternDetail';
-import RevisionCenter from './pages/RevisionCenter';
-import Analytics from './pages/Analytics';
-import Settings from './pages/Settings';
 import { AlertTriangle } from 'lucide-react';
+
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const PatternExplorer = lazy(() => import('./pages/PatternExplorer'));
+const PatternDetail = lazy(() => import('./pages/PatternDetail'));
+const RevisionCenter = lazy(() => import('./pages/RevisionCenter'));
+const Analytics = lazy(() => import('./pages/Analytics'));
+const Settings = lazy(() => import('./pages/Settings'));
 
 function AppRoutes() {
   const { state } = useApp();
@@ -27,6 +29,7 @@ function AppRoutes() {
 
   return (
     <Layout>
+      <Suspense fallback={<p className="p-6 text-sm text-text-secondary" role="status">Loading section…</p>}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/patterns" element={<PatternExplorer />} />
@@ -36,16 +39,19 @@ function AppRoutes() {
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </Suspense>
     </Layout>
   );
 }
 
 export default function App() {
   return (
-    <AppProvider>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </AppProvider>
+    </AuthProvider>
   );
 }

@@ -78,6 +78,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-06",
+              "title": "Intersection of Two Arrays",
+              "url": "https://leetcode.com/problems/intersection-of-two-arrays/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-07",
+              "title": "Isomorphic Strings",
+              "url": "https://leetcode.com/problems/isomorphic-strings/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-08",
+              "title": "Word Pattern",
+              "url": "https://leetcode.com/problems/word-pattern/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-09",
+              "title": "Two Sum III - Data structure design",
+              "url": "https://leetcode.com/problems/two-sum-iii-data-structure-design/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-10",
+              "title": "4Sum II",
+              "url": "https://leetcode.com/problems/4sum-ii/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-11",
+              "title": "Brick Wall",
+              "url": "https://leetcode.com/problems/brick-wall/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-12",
+              "title": "Longest Harmonious Subsequence",
+              "url": "https://leetcode.com/problems/longest-harmonious-subsequence/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-13",
+              "title": "Find All Lonely Numbers in the Array",
+              "url": "https://leetcode.com/problems/find-all-lonely-numbers-in-the-array/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-14",
+              "title": "Destination City",
+              "url": "https://leetcode.com/problems/destination-city/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v01-problem-15",
+              "title": "Contains Duplicate II",
+              "url": "https://leetcode.com/problems/contains-duplicate-ii/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -130,6 +230,106 @@
               "title": "Minimum Number of Steps to Make Two Strings Anagram",
               "url": "https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/",
               "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-06",
+              "title": "First Unique Character in a String",
+              "url": "https://leetcode.com/problems/first-unique-character-in-a-string/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-07",
+              "title": "Find Common Characters",
+              "url": "https://leetcode.com/problems/find-common-characters/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-08",
+              "title": "Unique Number of Occurrences",
+              "url": "https://leetcode.com/problems/unique-number-of-occurrences/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-09",
+              "title": "Check If All Characters Have Equal Number of Occurrences",
+              "url": "https://leetcode.com/problems/check-if-all-characters-have-equal-number-of-occurrences/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-10",
+              "title": "Custom Sort String",
+              "url": "https://leetcode.com/problems/custom-sort-string/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-11",
+              "title": "Reduce Array Size to The Half",
+              "url": "https://leetcode.com/problems/reduce-array-size-to-the-half/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-12",
+              "title": "Minimum Deletions to Make Character Frequencies Unique",
+              "url": "https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-13",
+              "title": "Find Players With Zero or One Losses",
+              "url": "https://leetcode.com/problems/find-players-with-zero-or-one-losses/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-14",
+              "title": "Divide Array in Sets of K Consecutive Numbers",
+              "url": "https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v02-problem-15",
+              "title": "Maximum Number of Balloons",
+              "url": "https://leetcode.com/problems/maximum-number-of-balloons/",
+              "difficulty": "Easy",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -190,6 +390,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-06",
+              "title": "Find the Highest Altitude",
+              "url": "https://leetcode.com/problems/find-the-highest-altitude/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-07",
+              "title": "Minimum Value to Get Positive Step by Step Sum",
+              "url": "https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-08",
+              "title": "Find the Middle Index in Array",
+              "url": "https://leetcode.com/problems/find-the-middle-index-in-array/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-09",
+              "title": "Sum of All Odd Length Subarrays",
+              "url": "https://leetcode.com/problems/sum-of-all-odd-length-subarrays/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-10",
+              "title": "Shifting Letters",
+              "url": "https://leetcode.com/problems/shifting-letters/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-11",
+              "title": "Ways to Make a Fair Array",
+              "url": "https://leetcode.com/problems/ways-to-make-a-fair-array/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-12",
+              "title": "Maximum Score After Splitting a String",
+              "url": "https://leetcode.com/problems/maximum-score-after-splitting-a-string/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-13",
+              "title": "Find Good Days to Rob the Bank",
+              "url": "https://leetcode.com/problems/find-good-days-to-rob-the-bank/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-14",
+              "title": "Can Make Palindrome from Substring",
+              "url": "https://leetcode.com/problems/can-make-palindrome-from-substring/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v03-problem-15",
+              "title": "Count Vowel Strings in Ranges",
+              "url": "https://leetcode.com/problems/count-vowel-strings-in-ranges/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -246,6 +546,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-06",
+              "title": "Maximum Absolute Sum of Any Subarray",
+              "url": "https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-07",
+              "title": "Maximum Subarray Sum with One Deletion",
+              "url": "https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-08",
+              "title": "Maximum Subarray Sum With Length Divisible by K",
+              "url": "https://leetcode.com/problems/maximum-subarray-sum-with-length-divisible-by-k/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-09",
+              "title": "Maximum Frequency After Subarray Operation",
+              "url": "https://leetcode.com/problems/maximum-frequency-after-subarray-operation/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-10",
+              "title": "Maximize Subarray Sum After Removing All Occurrences of One Element",
+              "url": "https://leetcode.com/problems/maximize-subarray-sum-after-removing-all-occurrences-of-one-element/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-11",
+              "title": "Find the Substring With Maximum Cost",
+              "url": "https://leetcode.com/problems/find-the-substring-with-maximum-cost/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-12",
+              "title": "Maximum Good Subarray Sum",
+              "url": "https://leetcode.com/problems/maximum-good-subarray-sum/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-13",
+              "title": "Substring With Largest Variance",
+              "url": "https://leetcode.com/problems/substring-with-largest-variance/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-14",
+              "title": "Maximum Score Of Spliced Array",
+              "url": "https://leetcode.com/problems/maximum-score-of-spliced-array/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-v04-problem-15",
+              "title": "Max Sum of Rectangle No Larger Than K",
+              "url": "https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -297,6 +697,106 @@
               "id": "pattern-01-variation-05-problem-05",
               "title": "Apply Operations to an Array",
               "url": "https://leetcode.com/problems/apply-operations-to-an-array/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-06",
+              "title": "Duplicate Zeros",
+              "url": "https://leetcode.com/problems/duplicate-zeros/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-07",
+              "title": "Replace Elements with Greatest Element on Right Side",
+              "url": "https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-08",
+              "title": "Partition Array According to Given Pivot",
+              "url": "https://leetcode.com/problems/partition-array-according-to-given-pivot/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-09",
+              "title": "Rearrange Array Elements by Sign",
+              "url": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-10",
+              "title": "Find All Duplicates in an Array",
+              "url": "https://leetcode.com/problems/find-all-duplicates-in-an-array/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-11",
+              "title": "Find All Numbers Disappeared in an Array",
+              "url": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-12",
+              "title": "Set Mismatch",
+              "url": "https://leetcode.com/problems/set-mismatch/",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-13",
+              "title": "First Missing Positive",
+              "url": "https://leetcode.com/problems/first-missing-positive/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-14",
+              "title": "Wiggle Sort",
+              "url": "https://leetcode.com/problems/wiggle-sort/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-05-problem-15",
+              "title": "Reverse String",
+              "url": "https://leetcode.com/problems/reverse-string/",
               "difficulty": "Easy",
               "status": "not_started",
               "attempts": 0,
@@ -358,6 +858,36 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-06-problem-08",
+              "title": "Transpose Matrix",
+              "url": "https://leetcode.com/problems/transpose-matrix",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-06-problem-12",
+              "title": "Sort the Matrix Diagonally",
+              "url": "https://leetcode.com/problems/sort-the-matrix-diagonally",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-06-problem-10",
+              "title": "Spiral Matrix III",
+              "url": "https://leetcode.com/problems/spiral-matrix-iii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -414,6 +944,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-07-problem-14",
+              "title": "Capitalize the Title",
+              "url": "https://leetcode.com/problems/capitalize-the-title",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-07-problem-15",
+              "title": "Circular Sentence",
+              "url": "https://leetcode.com/problems/circular-sentence",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-07-problem-06",
+              "title": "Count Binary Substrings",
+              "url": "https://leetcode.com/problems/count-binary-substrings",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-07-problem-12",
+              "title": "Zigzag Conversion",
+              "url": "https://leetcode.com/problems/zigzag-conversion",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -465,6 +1035,106 @@
               "id": "pattern-01-variation-08-problem-05",
               "title": "Frequency of the Most Frequent Element",
               "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-12",
+              "title": "Count Elements With Maximum Frequency",
+              "url": "https://leetcode.com/problems/count-elements-with-maximum-frequency",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-14",
+              "title": "Kth Distinct String in an Array",
+              "url": "https://leetcode.com/problems/kth-distinct-string-in-an-array",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-08",
+              "title": "Relative Sort Array",
+              "url": "https://leetcode.com/problems/relative-sort-array",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-11",
+              "title": "Remove Letter To Equalize Frequency",
+              "url": "https://leetcode.com/problems/remove-letter-to-equalize-frequency",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-07",
+              "title": "Sort Array by Increasing Frequency",
+              "url": "https://leetcode.com/problems/sort-array-by-increasing-frequency",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-13",
+              "title": "Sum of Unique Elements",
+              "url": "https://leetcode.com/problems/sum-of-unique-elements",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-09",
+              "title": "Least Number of Unique Integers after K Removals",
+              "url": "https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-10",
+              "title": "Minimum Rounds to Complete All Tasks",
+              "url": "https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-15",
+              "title": "Reorganize String",
+              "url": "https://leetcode.com/problems/reorganize-string",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-01-variation-08-problem-06",
+              "title": "Top K Frequent Words",
+              "url": "https://leetcode.com/problems/top-k-frequent-words",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -528,6 +1198,66 @@
               "title": "Trapping Rain Water",
               "url": "https://leetcode.com/problems/trapping-rain-water/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-15",
+              "title": "3Sum With Multiplicity",
+              "url": "https://leetcode.com/problems/3sum-with-multiplicity",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-12",
+              "title": "Boats to Save People",
+              "url": "https://leetcode.com/problems/boats-to-save-people",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-14",
+              "title": "Minimize Maximum Pair Sum in Array",
+              "url": "https://leetcode.com/problems/minimize-maximum-pair-sum-in-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-11",
+              "title": "Number of Subsequences That Satisfy the Given Sum Condition",
+              "url": "https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-13",
+              "title": "Sum of Square Numbers",
+              "url": "https://leetcode.com/problems/sum-of-square-numbers",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v01-problem-10",
+              "title": "Valid Triangle Number",
+              "url": "https://leetcode.com/problems/valid-triangle-number",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -644,6 +1374,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v03-problem-11",
+              "title": "Circular Array Loop",
+              "url": "https://leetcode.com/problems/circular-array-loop",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v03-problem-07",
+              "title": "Delete the Middle Node of a Linked List",
+              "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v03-problem-10",
+              "title": "Maximum Twin Sum of a Linked List",
+              "url": "https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-v03-problem-13",
+              "title": "Sort List",
+              "url": "https://leetcode.com/problems/sort-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -696,6 +1466,56 @@
               "title": "Count Number of Pairs With Absolute Difference K",
               "url": "https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/",
               "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-04-problem-07",
+              "title": "Count Pairs Whose Sum is Less than Target",
+              "url": "https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-04-problem-08",
+              "title": "Count the Number of Fair Pairs",
+              "url": "https://leetcode.com/problems/count-the-number-of-fair-pairs",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-04-problem-14",
+              "title": "Find the Maximum Number of Marked Indices",
+              "url": "https://leetcode.com/problems/find-the-maximum-number-of-marked-indices",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-04-problem-09",
+              "title": "K-diff Pairs in an Array",
+              "url": "https://leetcode.com/problems/k-diff-pairs-in-an-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-04-problem-15",
+              "title": "Maximize Greatness of an Array",
+              "url": "https://leetcode.com/problems/maximize-greatness-of-an-array",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -756,6 +1576,36 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-05-problem-09",
+              "title": "Minimum Length of String After Deleting Similar Ends",
+              "url": "https://leetcode.com/problems/minimum-length-of-string-after-deleting-similar-ends",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-05-problem-07",
+              "title": "Split Two Strings to Make Palindrome",
+              "url": "https://leetcode.com/problems/split-two-strings-to-make-palindrome",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-05-problem-06",
+              "title": "Minimum Number of Moves to Make Palindrome",
+              "url": "https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -808,6 +1658,36 @@
               "title": "Squares of a Sorted Array",
               "url": "https://leetcode.com/problems/squares-of-a-sorted-array/",
               "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-06-problem-11",
+              "title": "Merge Two 2D Arrays by Summing Values",
+              "url": "https://leetcode.com/problems/merge-two-2d-arrays-by-summing-values",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-06-problem-09",
+              "title": "Maximum Distance Between a Pair of Values",
+              "url": "https://leetcode.com/problems/maximum-distance-between-a-pair-of-values",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-02-variation-06-problem-10",
+              "title": "Get the Maximum Score",
+              "url": "https://leetcode.com/problems/get-the-maximum-score",
+              "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -874,6 +1754,86 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-14",
+              "title": "Find the K-Beauty of a Number",
+              "url": "https://leetcode.com/problems/find-the-k-beauty-of-a-number",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-10",
+              "title": "Minimum Difference Between Highest and Lowest of K Scores",
+              "url": "https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-08",
+              "title": "Minimum Recolors to Get K Consecutive Black Blocks",
+              "url": "https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-09",
+              "title": "Substrings of Size Three with Distinct Characters",
+              "url": "https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-06",
+              "title": "Grumpy Bookstore Owner",
+              "url": "https://leetcode.com/problems/grumpy-bookstore-owner",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-13",
+              "title": "K Radius Subarray Averages",
+              "url": "https://leetcode.com/problems/k-radius-subarray-averages",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-07",
+              "title": "Maximum Points You Can Obtain from Cards",
+              "url": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v01-problem-11",
+              "title": "Minimum Swaps to Group All 1's Together II",
+              "url": "https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -925,6 +1885,66 @@
               "id": "pattern-03-v02-problem-05",
               "title": "Longest Subarray of 1's After Deleting One Element",
               "url": "https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-15",
+              "title": "Find the Longest Semi-Repetitive Substring",
+              "url": "https://leetcode.com/problems/find-the-longest-semi-repetitive-substring",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-08",
+              "title": "Frequency of the Most Frequent Element",
+              "url": "https://leetcode.com/problems/frequency-of-the-most-frequent-element",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-09",
+              "title": "Length of Longest Subarray With at Most K Frequency",
+              "url": "https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-10",
+              "title": "Longest Nice Subarray",
+              "url": "https://leetcode.com/problems/longest-nice-subarray",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-07",
+              "title": "Maximize the Confusion of an Exam",
+              "url": "https://leetcode.com/problems/maximize-the-confusion-of-an-exam",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v02-problem-13",
+              "title": "Maximum Erasure Value",
+              "url": "https://leetcode.com/problems/maximum-erasure-value",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -986,6 +2006,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v03-problem-07",
+              "title": "Minimum Consecutive Cards to Pick Up",
+              "url": "https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1037,6 +2067,16 @@
               "id": "pattern-03-v04-problem-05",
               "title": "Count Subarrays Where Max Element Appears at Least K Times",
               "url": "https://leetcode.com/problems/count-subarrays-where-max-element-appears-at-least-k-times/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v04-problem-09",
+              "title": "Count Complete Subarrays in an Array",
+              "url": "https://leetcode.com/problems/count-complete-subarrays-in-an-array",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -1098,6 +2138,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-v05-problem-08",
+              "title": "Continuous Subarrays",
+              "url": "https://leetcode.com/problems/continuous-subarrays",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1154,6 +2204,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-variation-06-problem-12",
+              "title": "Longest Substring with At Least K Repeating Characters",
+              "url": "https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-variation-06-problem-14",
+              "title": "Substring with Concatenation of All Words",
+              "url": "https://leetcode.com/problems/substring-with-concatenation-of-all-words",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1206,6 +2276,16 @@
               "title": "Continuous Subarray Sum",
               "url": "https://leetcode.com/problems/continuous-subarray-sum/",
               "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-03-variation-07-problem-08",
+              "title": "Contains Duplicate III",
+              "url": "https://leetcode.com/problems/contains-duplicate-iii",
+              "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -1272,6 +2352,96 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-08",
+              "title": "Longest Subsequence With Limited Sum",
+              "url": "https://leetcode.com/problems/longest-subsequence-with-limited-sum",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-14",
+              "title": "All Divisions With the Highest Score of a Binary Array",
+              "url": "https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-11",
+              "title": "Can You Eat Your Favorite Candy on Your Favorite Day?",
+              "url": "https://leetcode.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-13",
+              "title": "Find the Score of All Prefixes of an Array",
+              "url": "https://leetcode.com/problems/find-the-score-of-all-prefixes-of-an-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-15",
+              "title": "Minimum Amount of Time to Collect Garbage",
+              "url": "https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-07",
+              "title": "Number of Ways to Split Array",
+              "url": "https://leetcode.com/problems/number-of-ways-to-split-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-10",
+              "title": "Plates Between Candles",
+              "url": "https://leetcode.com/problems/plates-between-candles",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-09",
+              "title": "Sum of Absolute Differences in a Sorted Array",
+              "url": "https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v01-problem-12",
+              "title": "XOR Queries of a Subarray",
+              "url": "https://leetcode.com/problems/xor-queries-of-a-subarray",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1323,6 +2493,56 @@
               "id": "pattern-04-v02-problem-05",
               "title": "Make Sum Divisible by P",
               "url": "https://leetcode.com/problems/make-sum-divisible-by-p/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v02-problem-08",
+              "title": "Find the Longest Substring Containing Vowels in Even Counts",
+              "url": "https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v02-problem-07",
+              "title": "Number of Sub-arrays With Odd Sum",
+              "url": "https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v02-problem-13",
+              "title": "Number of Wonderful Substrings",
+              "url": "https://leetcode.com/problems/number-of-wonderful-substrings",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v02-problem-06",
+              "title": "Pairs of Songs With Total Durations Divisible by 60",
+              "url": "https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v02-problem-11",
+              "title": "Remove Zero Sum Consecutive Nodes from Linked List",
+              "url": "https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -1384,6 +2604,56 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v03-problem-10",
+              "title": "Check if All the Integers in a Range Are Covered",
+              "url": "https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v03-problem-06",
+              "title": "Maximum Population Year",
+              "url": "https://leetcode.com/problems/maximum-population-year",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v03-problem-07",
+              "title": "Points That Intersect With Cars",
+              "url": "https://leetcode.com/problems/points-that-intersect-with-cars",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v03-problem-11",
+              "title": "Describe the Painting",
+              "url": "https://leetcode.com/problems/describe-the-painting",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-v03-problem-13",
+              "title": "Zero Array Transformation I",
+              "url": "https://leetcode.com/problems/zero-array-transformation-i",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1435,6 +2705,16 @@
               "id": "pattern-04-variation-04-problem-05",
               "title": "Maximum Sum of Two Non-Overlapping Subarrays",
               "url": "https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-04-problem-10",
+              "title": "Increment Submatrices by One",
+              "url": "https://leetcode.com/problems/increment-submatrices-by-one",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -1492,6 +2772,56 @@
               "title": "Count Subarrays With Median K",
               "url": "https://leetcode.com/problems/count-subarrays-with-median-k/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-05-problem-06",
+              "title": "Binary Prefix Divisible By 5",
+              "url": "https://leetcode.com/problems/binary-prefix-divisible-by-5",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-05-problem-07",
+              "title": "Count Pairs That Form a Complete Day I",
+              "url": "https://leetcode.com/problems/count-pairs-that-form-a-complete-day-i",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-05-problem-08",
+              "title": "Count Pairs That Form a Complete Day II",
+              "url": "https://leetcode.com/problems/count-pairs-that-form-a-complete-day-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-05-problem-14",
+              "title": "Greatest Sum Divisible by Three",
+              "url": "https://leetcode.com/problems/greatest-sum-divisible-by-three",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-04-variation-05-problem-09",
+              "title": "Smallest Integer Divisible by K",
+              "url": "https://leetcode.com/problems/smallest-integer-divisible-by-k",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -1554,6 +2884,96 @@
               "title": "Find Smallest Letter Greater Than Target",
               "url": "https://leetcode.com/problems/find-smallest-letter-greater-than-target/",
               "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-10",
+              "title": "Count Negative Numbers in a Sorted Matrix",
+              "url": "https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-07",
+              "title": "Guess Number Higher or Lower",
+              "url": "https://leetcode.com/problems/guess-number-higher-or-lower",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-09",
+              "title": "Kth Missing Positive Number",
+              "url": "https://leetcode.com/problems/kth-missing-positive-number",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-13",
+              "title": "Maximum Count of Positive Integer and Negative Integer",
+              "url": "https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-11",
+              "title": "Special Array With X Elements Greater Than or Equal X",
+              "url": "https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-08",
+              "title": "The K Weakest Rows in a Matrix",
+              "url": "https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-12",
+              "title": "Find Right Interval",
+              "url": "https://leetcode.com/problems/find-right-interval",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-15",
+              "title": "Minimum Absolute Sum Difference",
+              "url": "https://leetcode.com/problems/minimum-absolute-sum-difference",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v01-problem-14",
+              "title": "Successful Pairs of Spells and Potions",
+              "url": "https://leetcode.com/problems/successful-pairs-of-spells-and-potions",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -1670,6 +3090,56 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v03-problem-06",
+              "title": "Find the Smallest Divisor Given a Threshold",
+              "url": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v03-problem-10",
+              "title": "Maximum Candies Allocated to K Children",
+              "url": "https://leetcode.com/problems/maximum-candies-allocated-to-k-children",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v03-problem-07",
+              "title": "Minimized Maximum of Products Distributed to Any Store",
+              "url": "https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v03-problem-08",
+              "title": "Minimum Speed to Arrive on Time",
+              "url": "https://leetcode.com/problems/minimum-speed-to-arrive-on-time",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v03-problem-09",
+              "title": "Minimum Time to Complete Trips",
+              "url": "https://leetcode.com/problems/minimum-time-to-complete-trips",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1721,6 +3191,16 @@
               "id": "pattern-05-v04-problem-05",
               "title": "Search a 2D Matrix II",
               "url": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-v04-problem-09",
+              "title": "Single Element in a Sorted Array",
+              "url": "https://leetcode.com/problems/single-element-in-a-sorted-array",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -1838,6 +3318,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-05-variation-06-problem-11",
+              "title": "Nth Magical Number",
+              "url": "https://leetcode.com/problems/nth-magical-number",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         }
@@ -1900,6 +3390,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-08",
+              "title": "Baseball Game",
+              "url": "https://leetcode.com/problems/baseball-game",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-07",
+              "title": "Maximum Nesting Depth of the Parentheses",
+              "url": "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-06",
+              "title": "Remove All Adjacent Duplicates In String",
+              "url": "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-10",
+              "title": "Asteroid Collision",
+              "url": "https://leetcode.com/problems/asteroid-collision",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-12",
+              "title": "Check If Word Is Valid After Substitutions",
+              "url": "https://leetcode.com/problems/check-if-word-is-valid-after-substitutions",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-14",
+              "title": "Minimum Add to Make Parentheses Valid",
+              "url": "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-15",
+              "title": "Minimum Remove to Make Valid Parentheses",
+              "url": "https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-09",
+              "title": "Remove All Adjacent Duplicates in String II",
+              "url": "https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-13",
+              "title": "Reverse Substrings Between Each Pair of Parentheses",
+              "url": "https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v01-problem-11",
+              "title": "Validate Stack Sequences",
+              "url": "https://leetcode.com/problems/validate-stack-sequences",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -1956,6 +3546,56 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v02-problem-09",
+              "title": "132 Pattern",
+              "url": "https://leetcode.com/problems/132-pattern",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v02-problem-08",
+              "title": "Car Fleet",
+              "url": "https://leetcode.com/problems/car-fleet",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v02-problem-10",
+              "title": "Maximum Width Ramp",
+              "url": "https://leetcode.com/problems/maximum-width-ramp",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v02-problem-07",
+              "title": "Next Greater Node In Linked List",
+              "url": "https://leetcode.com/problems/next-greater-node-in-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v02-problem-13",
+              "title": "Number of Visible People in a Queue",
+              "url": "https://leetcode.com/problems/number-of-visible-people-in-a-queue",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2007,6 +3647,26 @@
               "id": "pattern-06-v03-problem-05",
               "title": "Trapping Rain Water",
               "url": "https://leetcode.com/problems/trapping-rain-water/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v03-problem-15",
+              "title": "Vowels of All Substrings",
+              "url": "https://leetcode.com/problems/vowels-of-all-substrings",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-v03-problem-09",
+              "title": "Total Appeal of A String",
+              "url": "https://leetcode.com/problems/total-appeal-of-a-string",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
@@ -2068,6 +3728,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-variation-04-problem-09",
+              "title": "Max Chunks To Make Sorted",
+              "url": "https://leetcode.com/problems/max-chunks-to-make-sorted",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2119,6 +3789,26 @@
               "id": "pattern-06-variation-05-problem-05",
               "title": "Decode String",
               "url": "https://leetcode.com/problems/decode-string/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-variation-05-problem-06",
+              "title": "Clumsy Factorial",
+              "url": "https://leetcode.com/problems/clumsy-factorial",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-06-variation-05-problem-07",
+              "title": "Score of Parentheses",
+              "url": "https://leetcode.com/problems/score-of-parentheses",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -2186,6 +3876,66 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-06",
+              "title": "Remove Duplicates from Sorted List",
+              "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-08",
+              "title": "Delete Node in a Linked List",
+              "url": "https://leetcode.com/problems/delete-node-in-a-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-11",
+              "title": "Double a Number Represented as a Linked List",
+              "url": "https://leetcode.com/problems/double-a-number-represented-as-a-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-12",
+              "title": "Insert Greatest Common Divisors in Linked List",
+              "url": "https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-14",
+              "title": "Insertion Sort List",
+              "url": "https://leetcode.com/problems/insertion-sort-list",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v01-problem-15",
+              "title": "Split Linked List in Parts",
+              "url": "https://leetcode.com/problems/split-linked-list-in-parts",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2237,6 +3987,26 @@
               "id": "pattern-07-v02-problem-05",
               "title": "Add Two Numbers",
               "url": "https://leetcode.com/problems/add-two-numbers/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v02-problem-06",
+              "title": "Remove Linked List Elements",
+              "url": "https://leetcode.com/problems/remove-linked-list-elements",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v02-problem-08",
+              "title": "Merge Nodes in Between Zeros",
+              "url": "https://leetcode.com/problems/merge-nodes-in-between-zeros",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -2298,6 +4068,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-v03-problem-06",
+              "title": "Find Closest Node to Given Two Nodes",
+              "url": "https://leetcode.com/problems/find-closest-node-to-given-two-nodes",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2350,6 +4130,16 @@
               "title": "All O`one Data Structure",
               "url": "https://leetcode.com/problems/all-oone-data-structure/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-07-variation-04-problem-07",
+              "title": "Design Browser History",
+              "url": "https://leetcode.com/problems/design-browser-history",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -2472,6 +4262,56 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v01-problem-07",
+              "title": "Find Subsequence of Length K With the Largest Sum",
+              "url": "https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v01-problem-06",
+              "title": "Kth Largest Element in a Stream",
+              "url": "https://leetcode.com/problems/kth-largest-element-in-a-stream",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v01-problem-08",
+              "title": "Last Stone Weight",
+              "url": "https://leetcode.com/problems/last-stone-weight",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v01-problem-10",
+              "title": "Find the Kth Largest Integer in the Array",
+              "url": "https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v01-problem-09",
+              "title": "Reward Top K Students",
+              "url": "https://leetcode.com/problems/reward-top-k-students",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2523,6 +4363,16 @@
               "id": "pattern-08-v02-problem-05",
               "title": "Task Scheduler",
               "url": "https://leetcode.com/problems/task-scheduler/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-v02-problem-06",
+              "title": "Kth Smallest Element in a Sorted Matrix",
+              "url": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -2584,6 +4434,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-variation-03-problem-10",
+              "title": "Seat Reservation Manager",
+              "url": "https://leetcode.com/problems/seat-reservation-manager",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2635,6 +4495,16 @@
               "id": "pattern-08-variation-04-problem-05",
               "title": "Task Scheduler",
               "url": "https://leetcode.com/problems/task-scheduler/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-08-variation-04-problem-09",
+              "title": "Maximum Number of Eaten Apples",
+              "url": "https://leetcode.com/problems/maximum-number-of-eaten-apples",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -2702,6 +4572,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-09-v01-problem-06",
+              "title": "Determine if Two Events Have Conflict",
+              "url": "https://leetcode.com/problems/determine-if-two-events-have-conflict",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2754,6 +4634,16 @@
               "title": "The Skyline Problem",
               "url": "https://leetcode.com/problems/the-skyline-problem/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-09-v02-problem-08",
+              "title": "Divide Intervals Into Minimum Number of Groups",
+              "url": "https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -2870,6 +4760,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-09-variation-04-problem-07",
+              "title": "Video Stitching",
+              "url": "https://leetcode.com/problems/video-stitching",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-09-variation-04-problem-13",
+              "title": "Minimum Number of Taps to Open to Water a Garden",
+              "url": "https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         }
@@ -2932,6 +4842,76 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-06",
+              "title": "Invert Binary Tree",
+              "url": "https://leetcode.com/problems/invert-binary-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-10",
+              "title": "Leaf-Similar Trees",
+              "url": "https://leetcode.com/problems/leaf-similar-trees",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-09",
+              "title": "Merge Two Binary Trees",
+              "url": "https://leetcode.com/problems/merge-two-binary-trees",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-08",
+              "title": "Subtree of Another Tree",
+              "url": "https://leetcode.com/problems/subtree-of-another-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-07",
+              "title": "Symmetric Tree",
+              "url": "https://leetcode.com/problems/symmetric-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-12",
+              "title": "Delete Leaves With a Given Value",
+              "url": "https://leetcode.com/problems/delete-leaves-with-a-given-value",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v01-problem-15",
+              "title": "Distribute Coins in Binary Tree",
+              "url": "https://leetcode.com/problems/distribute-coins-in-binary-tree",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -2988,6 +4968,76 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-13",
+              "title": "Cousins in Binary Tree",
+              "url": "https://leetcode.com/problems/cousins-in-binary-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-06",
+              "title": "Binary Tree Level Order Traversal II",
+              "url": "https://leetcode.com/problems/binary-tree-level-order-traversal-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-11",
+              "title": "Deepest Leaves Sum",
+              "url": "https://leetcode.com/problems/deepest-leaves-sum",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-12",
+              "title": "Even Odd Tree",
+              "url": "https://leetcode.com/problems/even-odd-tree",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-09",
+              "title": "Find Bottom Left Tree Value",
+              "url": "https://leetcode.com/problems/find-bottom-left-tree-value",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-10",
+              "title": "Maximum Width of Binary Tree",
+              "url": "https://leetcode.com/problems/maximum-width-of-binary-tree",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v02-problem-08",
+              "title": "Populating Next Right Pointers in Each Node II",
+              "url": "https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3039,6 +5089,56 @@
               "id": "pattern-10-v03-problem-05",
               "title": "Delete Node in a BST",
               "url": "https://leetcode.com/problems/delete-node-in-a-bst/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v03-problem-10",
+              "title": "Minimum Absolute Difference in BST",
+              "url": "https://leetcode.com/problems/minimum-absolute-difference-in-bst",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v03-problem-09",
+              "title": "Range Sum of BST",
+              "url": "https://leetcode.com/problems/range-sum-of-bst",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v03-problem-06",
+              "title": "Search in a Binary Search Tree",
+              "url": "https://leetcode.com/problems/search-in-a-binary-search-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v03-problem-11",
+              "title": "Convert BST to Greater Tree",
+              "url": "https://leetcode.com/problems/convert-bst-to-greater-tree",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-v03-problem-07",
+              "title": "Insert into a Binary Search Tree",
+              "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -3100,6 +5200,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-04-problem-06",
+              "title": "Binary Tree Paths",
+              "url": "https://leetcode.com/problems/binary-tree-paths",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-04-problem-07",
+              "title": "Sum of Root To Leaf Binary Numbers",
+              "url": "https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-04-problem-09",
+              "title": "Count Good Nodes in Binary Tree",
+              "url": "https://leetcode.com/problems/count-good-nodes-in-binary-tree",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-04-problem-10",
+              "title": "Maximum Difference Between Node and Ancestor",
+              "url": "https://leetcode.com/problems/maximum-difference-between-node-and-ancestor",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3152,6 +5292,26 @@
               "title": "Recover a Tree From Preorder Traversal",
               "url": "https://leetcode.com/problems/recover-a-tree-from-preorder-traversal/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-05-problem-07",
+              "title": "Construct Binary Search Tree from Preorder Traversal",
+              "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-05-problem-09",
+              "title": "Flatten Binary Tree to Linked List",
+              "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -3268,6 +5428,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-07-problem-07",
+              "title": "Minimum Edge Reversals So Every Node Is Reachable",
+              "url": "https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3319,6 +5489,16 @@
               "id": "pattern-10-variation-08-problem-05",
               "title": "Map Sum Pairs",
               "url": "https://leetcode.com/problems/map-sum-pairs/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-10-variation-08-problem-06",
+              "title": "Longest Word in Dictionary",
+              "url": "https://leetcode.com/problems/longest-word-in-dictionary",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -3386,6 +5566,36 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-v01-problem-11",
+              "title": "Keys and Rooms",
+              "url": "https://leetcode.com/problems/keys-and-rooms",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-v01-problem-07",
+              "title": "Pacific Atlantic Water Flow",
+              "url": "https://leetcode.com/problems/pacific-atlantic-water-flow",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-v01-problem-06",
+              "title": "Surrounded Regions",
+              "url": "https://leetcode.com/problems/surrounded-regions",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3437,6 +5647,16 @@
               "id": "pattern-11-v02-problem-05",
               "title": "Redundant Connection",
               "url": "https://leetcode.com/problems/redundant-connection/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-v02-problem-15",
+              "title": "Find All Possible Recipes from Given Supplies",
+              "url": "https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -3498,6 +5718,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-v03-problem-06",
+              "title": "Path with Maximum Probability",
+              "url": "https://leetcode.com/problems/path-with-maximum-probability",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3549,6 +5779,16 @@
               "id": "pattern-11-variation-04-problem-05",
               "title": "Satisfiability of Equality Equations",
               "url": "https://leetcode.com/problems/satisfiability-of-equality-equations/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-variation-04-problem-06",
+              "title": "Lexicographically Smallest Equivalent String",
+              "url": "https://leetcode.com/problems/lexicographically-smallest-equivalent-string",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -3722,6 +5962,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-variation-07-problem-06",
+              "title": "As Far from Land as Possible",
+              "url": "https://leetcode.com/problems/as-far-from-land-as-possible",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3773,6 +6023,16 @@
               "id": "pattern-11-variation-08-problem-05",
               "title": "Smallest Sufficient Team",
               "url": "https://leetcode.com/problems/smallest-sufficient-team/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-11-variation-08-problem-08",
+              "title": "Minimum XOR Sum of Two Arrays",
+              "url": "https://leetcode.com/problems/minimum-xor-sum-of-two-arrays",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
@@ -3840,6 +6100,86 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-10",
+              "title": "Sum of All Subset XOR Totals",
+              "url": "https://leetcode.com/problems/sum-of-all-subset-xor-totals",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-12",
+              "title": "Closest Dessert Cost",
+              "url": "https://leetcode.com/problems/closest-dessert-cost",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-06",
+              "title": "Combination Sum III",
+              "url": "https://leetcode.com/problems/combination-sum-iii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-09",
+              "title": "Iterator for Combination",
+              "url": "https://leetcode.com/problems/iterator-for-combination",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-07",
+              "title": "Letter Case Permutation",
+              "url": "https://leetcode.com/problems/letter-case-permutation",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-08",
+              "title": "Non-decreasing Subsequences",
+              "url": "https://leetcode.com/problems/non-decreasing-subsequences",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-14",
+              "title": "The k-th Lexicographical String of All Happy Strings of Length n",
+              "url": "https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v01-problem-11",
+              "title": "The Number of Beautiful Subsets",
+              "url": "https://leetcode.com/problems/the-number-of-beautiful-subsets",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3896,6 +6236,56 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v02-problem-11",
+              "title": "Beautiful Arrangement",
+              "url": "https://leetcode.com/problems/beautiful-arrangement",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v02-problem-12",
+              "title": "Construct Smallest Number From DI String",
+              "url": "https://leetcode.com/problems/construct-smallest-number-from-di-string",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v02-problem-09",
+              "title": "Letter Tile Possibilities",
+              "url": "https://leetcode.com/problems/letter-tile-possibilities",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v02-problem-06",
+              "title": "Next Permutation",
+              "url": "https://leetcode.com/problems/next-permutation",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v02-problem-07",
+              "title": "Permutation Sequence",
+              "url": "https://leetcode.com/problems/permutation-sequence",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -3947,6 +6337,16 @@
               "id": "pattern-12-v03-problem-05",
               "title": "Expression Add Operators",
               "url": "https://leetcode.com/problems/expression-add-operators/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-v03-problem-06",
+              "title": "N-Queens II",
+              "url": "https://leetcode.com/problems/n-queens-ii",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
@@ -4008,6 +6408,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-variation-04-problem-08",
+              "title": "Additive Number",
+              "url": "https://leetcode.com/problems/additive-number",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-variation-04-problem-07",
+              "title": "Fair Distribution of Cookies",
+              "url": "https://leetcode.com/problems/fair-distribution-of-cookies",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-variation-04-problem-09",
+              "title": "Find the Punishment Number of an Integer",
+              "url": "https://leetcode.com/problems/find-the-punishment-number-of-an-integer",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-variation-04-problem-13",
+              "title": "Splitting a String Into Descending Consecutive Values",
+              "url": "https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4060,6 +6500,16 @@
               "title": "Can I Win",
               "url": "https://leetcode.com/problems/can-i-win/",
               "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-12-variation-05-problem-06",
+              "title": "Tallest Billboard",
+              "url": "https://leetcode.com/problems/tallest-billboard",
+              "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -4126,6 +6576,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v01-problem-08",
+              "title": "Earliest Possible Day of Full Bloom",
+              "url": "https://leetcode.com/problems/earliest-possible-day-of-full-bloom",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4177,6 +6637,86 @@
               "id": "pattern-13-v02-problem-05",
               "title": "Partition Labels",
               "url": "https://leetcode.com/problems/partition-labels/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-06",
+              "title": "Can Place Flowers",
+              "url": "https://leetcode.com/problems/can-place-flowers",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-07",
+              "title": "Bag of Tokens",
+              "url": "https://leetcode.com/problems/bag-of-tokens",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-09",
+              "title": "Broken Calculator",
+              "url": "https://leetcode.com/problems/broken-calculator",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-13",
+              "title": "Find the Minimum Number of Fibonacci Numbers Whose Sum Is K",
+              "url": "https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-14",
+              "title": "Jump Game III",
+              "url": "https://leetcode.com/problems/jump-game-iii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-11",
+              "title": "Maximum Ice Cream Bars",
+              "url": "https://leetcode.com/problems/maximum-ice-cream-bars",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-12",
+              "title": "Maximum Score From Removing Stones",
+              "url": "https://leetcode.com/problems/maximum-score-from-removing-stones",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-v02-problem-10",
+              "title": "Valid Parenthesis String",
+              "url": "https://leetcode.com/problems/valid-parenthesis-string",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -4238,6 +6778,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-13",
+              "title": "Maximize Sum Of Array After K Negations",
+              "url": "https://leetcode.com/problems/maximize-sum-of-array-after-k-negations",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-10",
+              "title": "Minimum Sum of Four Digit Number After Splitting Digits",
+              "url": "https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-14",
+              "title": "Advantage Shuffle",
+              "url": "https://leetcode.com/problems/advantage-shuffle",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-09",
+              "title": "Destroying Asteroids",
+              "url": "https://leetcode.com/problems/destroying-asteroids",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-11",
+              "title": "Largest Number",
+              "url": "https://leetcode.com/problems/largest-number",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-15",
+              "title": "Maximum Bags With Full Capacity of Rocks",
+              "url": "https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-07",
+              "title": "Maximum Element After Decreasing and Rearranging",
+              "url": "https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-06",
+              "title": "Mice and Cheese",
+              "url": "https://leetcode.com/problems/mice-and-cheese",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-12",
+              "title": "Minimum Difference Between Largest and Smallest Value in Three Moves",
+              "url": "https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-03-problem-08",
+              "title": "Minimum Increment to Make Array Unique",
+              "url": "https://leetcode.com/problems/minimum-increment-to-make-array-unique",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4294,6 +6934,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-04-problem-06",
+              "title": "Smallest K-Length Subsequence With Occurrences of a Letter",
+              "url": "https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4345,6 +6995,16 @@
               "id": "pattern-13-variation-05-problem-05",
               "title": "Maximum Length of Pair Chain",
               "url": "https://leetcode.com/problems/maximum-length-of-pair-chain/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-13-variation-05-problem-14",
+              "title": "Minimum Moves to Reach Target Score",
+              "url": "https://leetcode.com/problems/minimum-moves-to-reach-target-score",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -4412,6 +7072,36 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v01-problem-06",
+              "title": "Fibonacci Number",
+              "url": "https://leetcode.com/problems/fibonacci-number",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v01-problem-07",
+              "title": "N-th Tribonacci Number",
+              "url": "https://leetcode.com/problems/n-th-tribonacci-number",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v01-problem-10",
+              "title": "Minimum Cost For Tickets",
+              "url": "https://leetcode.com/problems/minimum-cost-for-tickets",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4463,6 +7153,56 @@
               "id": "pattern-14-v02-problem-05",
               "title": "Last Stone Weight II",
               "url": "https://leetcode.com/problems/last-stone-weight-ii/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v02-problem-08",
+              "title": "Combination Sum IV",
+              "url": "https://leetcode.com/problems/combination-sum-iv",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v02-problem-11",
+              "title": "Number of Dice Rolls With Target Sum",
+              "url": "https://leetcode.com/problems/number-of-dice-rolls-with-target-sum",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v02-problem-06",
+              "title": "Ones and Zeroes",
+              "url": "https://leetcode.com/problems/ones-and-zeroes",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v02-problem-09",
+              "title": "Perfect Squares",
+              "url": "https://leetcode.com/problems/perfect-squares",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v02-problem-10",
+              "title": "Ways to Express an Integer as Sum of Powers",
+              "url": "https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -4524,6 +7264,36 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v03-problem-11",
+              "title": "Count Square Submatrices with All Ones",
+              "url": "https://leetcode.com/problems/count-square-submatrices-with-all-ones",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v03-problem-10",
+              "title": "Maximal Square",
+              "url": "https://leetcode.com/problems/maximal-square",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v03-problem-06",
+              "title": "Minimum Falling Path Sum",
+              "url": "https://leetcode.com/problems/minimum-falling-path-sum",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4575,6 +7345,26 @@
               "id": "pattern-14-v04-problem-05",
               "title": "Longest Palindromic Subsequence",
               "url": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v04-problem-08",
+              "title": "Delete Operation for Two Strings",
+              "url": "https://leetcode.com/problems/delete-operation-for-two-strings",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v04-problem-11",
+              "title": "Interleaving String",
+              "url": "https://leetcode.com/problems/interleaving-string",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -4636,6 +7426,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v05-problem-06",
+              "title": "Guess Number Higher or Lower II",
+              "url": "https://leetcode.com/problems/guess-number-higher-or-lower-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v05-problem-07",
+              "title": "Minimum Score Triangulation of Polygon",
+              "url": "https://leetcode.com/problems/minimum-score-triangulation-of-polygon",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v05-problem-11",
+              "title": "Stone Game",
+              "url": "https://leetcode.com/problems/stone-game",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-v05-problem-12",
+              "title": "Stone Game III",
+              "url": "https://leetcode.com/problems/stone-game-iii",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4687,6 +7517,26 @@
               "id": "pattern-14-variation-06-problem-05",
               "title": "Number of Longest Increasing Subsequence",
               "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-06-problem-09",
+              "title": "Longest Arithmetic Subsequence of Given Difference",
+              "url": "https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-06-problem-07",
+              "title": "Longest String Chain",
+              "url": "https://leetcode.com/problems/longest-string-chain",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -4748,6 +7598,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-07-problem-06",
+              "title": "Unique Binary Search Trees",
+              "url": "https://leetcode.com/problems/unique-binary-search-trees",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4800,6 +7660,16 @@
               "title": "Find the Shortest Superstring",
               "url": "https://leetcode.com/problems/find-the-shortest-superstring/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-08-problem-07",
+              "title": "Maximum Product of the Length of Two Palindromic Subsequences",
+              "url": "https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -4860,6 +7730,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-09-problem-06",
+              "title": "Rotated Digits",
+              "url": "https://leetcode.com/problems/rotated-digits",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-09-problem-07",
+              "title": "Numbers With Repeated Digits",
+              "url": "https://leetcode.com/problems/numbers-with-repeated-digits",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -4912,6 +7802,16 @@
               "title": "Minimum Number of Removals to Make Mountain Array",
               "url": "https://leetcode.com/problems/minimum-number-of-removals-to-make-mountain-array/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-14-variation-10-problem-09",
+              "title": "Maximum Number of Points with Cost",
+              "url": "https://leetcode.com/problems/maximum-number-of-points-with-cost",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -4978,6 +7878,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-06",
+              "title": "Decode XORed Array",
+              "url": "https://leetcode.com/problems/decode-xored-array",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-15",
+              "title": "Count the Number of Beautiful Subarrays",
+              "url": "https://leetcode.com/problems/count-the-number-of-beautiful-subarrays",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-13",
+              "title": "Decode XORed Permutation",
+              "url": "https://leetcode.com/problems/decode-xored-permutation",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-07",
+              "title": "Find The Original Array of Prefix Xor",
+              "url": "https://leetcode.com/problems/find-the-original-array-of-prefix-xor",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-08",
+              "title": "Maximum XOR for Each Query",
+              "url": "https://leetcode.com/problems/maximum-xor-for-each-query",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-14",
+              "title": "Minimize XOR",
+              "url": "https://leetcode.com/problems/minimize-xor",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-09",
+              "title": "Minimum Number of Operations to Make Array XOR Equal to K",
+              "url": "https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-10",
+              "title": "Neighboring Bitwise XOR",
+              "url": "https://leetcode.com/problems/neighboring-bitwise-xor",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-11",
+              "title": "Single Number II",
+              "url": "https://leetcode.com/problems/single-number-ii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v01-problem-12",
+              "title": "Single Number III",
+              "url": "https://leetcode.com/problems/single-number-iii",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5030,6 +8030,16 @@
               "title": "Smallest Sufficient Team",
               "url": "https://leetcode.com/problems/smallest-sufficient-team/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-v02-problem-09",
+              "title": "Special Permutations",
+              "url": "https://leetcode.com/problems/special-permutations",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -5090,6 +8100,106 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-09",
+              "title": "Binary Gap",
+              "url": "https://leetcode.com/problems/binary-gap",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-08",
+              "title": "Binary Number with Alternating Bits",
+              "url": "https://leetcode.com/problems/binary-number-with-alternating-bits",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-11",
+              "title": "Complement of Base 10 Integer",
+              "url": "https://leetcode.com/problems/complement-of-base-10-integer",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-10",
+              "title": "Convert a Number to Hexadecimal",
+              "url": "https://leetcode.com/problems/convert-a-number-to-hexadecimal",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-12",
+              "title": "Minimum Bit Flips to Convert Number",
+              "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-07",
+              "title": "Prime Number of Set Bits in Binary Representation",
+              "url": "https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-06",
+              "title": "Sort Integers by The Number of 1 Bits",
+              "url": "https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-15",
+              "title": "Divide Two Integers",
+              "url": "https://leetcode.com/problems/divide-two-integers",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-13",
+              "title": "Total Hamming Distance",
+              "url": "https://leetcode.com/problems/total-hamming-distance",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-03-problem-14",
+              "title": "UTF-8 Validation",
+              "url": "https://leetcode.com/problems/utf-8-validation",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5142,6 +8252,26 @@
               "title": "Number of Ways to Wear Different Hats to Each Other",
               "url": "https://leetcode.com/problems/number-of-ways-to-wear-different-hats-to-each-other/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-04-problem-07",
+              "title": "Bitwise ORs of Subarrays",
+              "url": "https://leetcode.com/problems/bitwise-ors-of-subarrays",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-15-variation-04-problem-06",
+              "title": "Maximum Product of Word Lengths",
+              "url": "https://leetcode.com/problems/maximum-product-of-word-lengths",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -5208,6 +8338,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-16-v01-problem-06",
+              "title": "Longest Common Prefix",
+              "url": "https://leetcode.com/problems/longest-common-prefix",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5260,6 +8400,16 @@
               "title": "Shortest Palindrome",
               "url": "https://leetcode.com/problems/shortest-palindrome/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-16-v02-problem-06",
+              "title": "Maximum Repeating Substring",
+              "url": "https://leetcode.com/problems/maximum-repeating-substring",
+              "difficulty": "Easy",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -5320,6 +8470,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-16-variation-03-problem-06",
+              "title": "Repeated Substring Pattern",
+              "url": "https://leetcode.com/problems/repeated-substring-pattern",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5372,6 +8532,26 @@
               "title": "Distinct Echo Substrings",
               "url": "https://leetcode.com/problems/distinct-echo-substrings/",
               "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-16-variation-04-problem-06",
+              "title": "String Matching in an Array",
+              "url": "https://leetcode.com/problems/string-matching-in-an-array",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-16-variation-04-problem-07",
+              "title": "Number of Matching Subsequences",
+              "url": "https://leetcode.com/problems/number-of-matching-subsequences",
+              "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -5438,6 +8618,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-v01-problem-06",
+              "title": "Queries on a Permutation With Key",
+              "url": "https://leetcode.com/problems/queries-on-a-permutation-with-key",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5489,6 +8679,26 @@
               "id": "pattern-17-v02-problem-05",
               "title": "The Skyline Problem",
               "url": "https://leetcode.com/problems/the-skyline-problem/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-v02-problem-09",
+              "title": "Handling Sum Queries After Update",
+              "url": "https://leetcode.com/problems/handling-sum-queries-after-update",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-v02-problem-08",
+              "title": "Longest Increasing Subsequence II",
+              "url": "https://leetcode.com/problems/longest-increasing-subsequence-ii",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
@@ -5550,6 +8760,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-variation-03-problem-06",
+              "title": "Minimum Stability Factor of Array",
+              "url": "https://leetcode.com/problems/minimum-stability-factor-of-array",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5601,6 +8821,16 @@
               "id": "pattern-17-variation-04-problem-05",
               "title": "The Skyline Problem",
               "url": "https://leetcode.com/problems/the-skyline-problem/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-variation-04-problem-06",
+              "title": "Threshold Majority Queries",
+              "url": "https://leetcode.com/problems/threshold-majority-queries",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
@@ -5658,6 +8888,16 @@
               "title": "Count Number of Teams",
               "url": "https://leetcode.com/problems/count-number-of-teams/",
               "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-17-variation-05-problem-06",
+              "title": "Rank Transform of an Array",
+              "url": "https://leetcode.com/problems/rank-transform-of-an-array",
+              "difficulty": "Easy",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -5725,6 +8965,86 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-07",
+              "title": "Evaluate Boolean Binary Tree",
+              "url": "https://leetcode.com/problems/evaluate-boolean-binary-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-06",
+              "title": "Find the K-th Character in String Game I",
+              "url": "https://leetcode.com/problems/find-the-k-th-character-in-string-game-i",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-08",
+              "title": "Univalued Binary Tree",
+              "url": "https://leetcode.com/problems/univalued-binary-tree",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-09",
+              "title": "Find Kth Bit in Nth Binary String",
+              "url": "https://leetcode.com/problems/find-kth-bit-in-nth-binary-string",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-10",
+              "title": "Find the Winner of the Circular Game",
+              "url": "https://leetcode.com/problems/find-the-winner-of-the-circular-game",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-12",
+              "title": "Integer Replacement",
+              "url": "https://leetcode.com/problems/integer-replacement",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-13",
+              "title": "Lexicographical Numbers",
+              "url": "https://leetcode.com/problems/lexicographical-numbers",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-01-problem-14",
+              "title": "Integer to English Words",
+              "url": "https://leetcode.com/problems/integer-to-english-words",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5781,6 +9101,46 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-02-problem-10",
+              "title": "Count Subarrays With Even Odd Ratio I",
+              "url": "https://leetcode.com/problems/count-subarrays-with-even-odd-ratio-i",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-02-problem-08",
+              "title": "Count Subarrays With Majority Element I",
+              "url": "https://leetcode.com/problems/count-subarrays-with-majority-element-i",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-02-problem-11",
+              "title": "Count Subarrays With Even Odd Ratio II",
+              "url": "https://leetcode.com/problems/count-subarrays-with-even-odd-ratio-ii",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-02-problem-09",
+              "title": "Count Subarrays With Majority Element II",
+              "url": "https://leetcode.com/problems/count-subarrays-with-majority-element-ii",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -5832,6 +9192,16 @@
               "id": "pattern-18-variation-03-problem-05",
               "title": "Top K Frequent Elements",
               "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-18-variation-03-problem-06",
+              "title": "Count Elements With at Least K Greater Values",
+              "url": "https://leetcode.com/problems/count-elements-with-at-least-k-greater-values",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -5955,6 +9325,76 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-06",
+              "title": "Number of Common Factors",
+              "url": "https://leetcode.com/problems/number-of-common-factors",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-09",
+              "title": "2 Keys Keyboard",
+              "url": "https://leetcode.com/problems/2-keys-keyboard",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-11",
+              "title": "Closest Prime Numbers in Range",
+              "url": "https://leetcode.com/problems/closest-prime-numbers-in-range",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-10",
+              "title": "Distinct Prime Factors of Product of Array",
+              "url": "https://leetcode.com/problems/distinct-prime-factors-of-product-of-array",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-08",
+              "title": "Mirror Reflection",
+              "url": "https://leetcode.com/problems/mirror-reflection",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-12",
+              "title": "Smallest Value After Replacing With Sum of Prime Factors",
+              "url": "https://leetcode.com/problems/smallest-value-after-replacing-with-sum-of-prime-factors",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-01-problem-13",
+              "title": "Water and Jug Problem",
+              "url": "https://leetcode.com/problems/water-and-jug-problem",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6006,6 +9446,26 @@
               "id": "pattern-19-variation-02-problem-05",
               "title": "Knight Dialer",
               "url": "https://leetcode.com/problems/knight-dialer/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-02-problem-06",
+              "title": "Count Collisions of Monkeys on a Polygon",
+              "url": "https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-02-problem-14",
+              "title": "Number of Ways to Reach a Position After Exactly k Steps",
+              "url": "https://leetcode.com/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -6067,6 +9527,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-03-problem-06",
+              "title": "Pascal's Triangle II",
+              "url": "https://leetcode.com/problems/pascals-triangle-ii",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-03-problem-09",
+              "title": "Count Sorted Vowel Strings",
+              "url": "https://leetcode.com/problems/count-sorted-vowel-strings",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6119,6 +9599,96 @@
               "title": "Bulb Switcher",
               "url": "https://leetcode.com/problems/bulb-switcher/",
               "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-06",
+              "title": "Add Digits",
+              "url": "https://leetcode.com/problems/add-digits",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-08",
+              "title": "Divisor Game",
+              "url": "https://leetcode.com/problems/divisor-game",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-07",
+              "title": "Nim Game",
+              "url": "https://leetcode.com/problems/nim-game",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-12",
+              "title": "Airplane Seat Assignment Probability",
+              "url": "https://leetcode.com/problems/airplane-seat-assignment-probability",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-11",
+              "title": "Last Moment Before All Ants Fall Out of a Plank",
+              "url": "https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-13",
+              "title": "Minimum Moves to Equal Array Elements",
+              "url": "https://leetcode.com/problems/minimum-moves-to-equal-array-elements",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-09",
+              "title": "Nth Digit",
+              "url": "https://leetcode.com/problems/nth-digit",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-10",
+              "title": "Reconstruct Original Digits from English",
+              "url": "https://leetcode.com/problems/reconstruct-original-digits-from-english",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-19-variation-04-problem-14",
+              "title": "Chalkboard XOR Game",
+              "url": "https://leetcode.com/problems/chalkboard-xor-game",
+              "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
               "lastSolvedAt": null,
@@ -6241,6 +9811,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-20-variation-01-problem-07",
+              "title": "Number of Students Unable to Eat Lunch",
+              "url": "https://leetcode.com/problems/number-of-students-unable-to-eat-lunch",
+              "difficulty": "Easy",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6292,6 +9872,16 @@
               "id": "pattern-20-variation-02-problem-05",
               "title": "Jump Game VI",
               "url": "https://leetcode.com/problems/jump-game-vi/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-20-variation-02-problem-06",
+              "title": "Design Front Middle Back Queue",
+              "url": "https://leetcode.com/problems/design-front-middle-back-queue",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -6359,6 +9949,16 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-01-problem-14",
+              "title": "Number of Good Ways to Split a String",
+              "url": "https://leetcode.com/problems/number-of-good-ways-to-split-a-string",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6415,6 +10015,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-02-problem-07",
+              "title": "Maximum Tastiness of Candy Basket",
+              "url": "https://leetcode.com/problems/maximum-tastiness-of-candy-basket",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-02-problem-10",
+              "title": "Maximum Running Time of N Computers",
+              "url": "https://leetcode.com/problems/maximum-running-time-of-n-computers",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6466,6 +10086,16 @@
               "id": "pattern-21-variation-03-problem-05",
               "title": "Pseudo-Palindromic Paths in a Binary Tree",
               "url": "https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-03-problem-12",
+              "title": "Binary Search Tree to Greater Sum Tree",
+              "url": "https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree",
               "difficulty": "Medium",
               "status": "not_started",
               "attempts": 0,
@@ -6527,6 +10157,26 @@
               "attempts": 0,
               "lastSolvedAt": null,
               "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-04-problem-12",
+              "title": "Minimum Operations to Convert Number",
+              "url": "https://leetcode.com/problems/minimum-operations-to-convert-number",
+              "difficulty": "Medium",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-04-problem-06",
+              "title": "Minimum Moves to Reach Target with Rotations",
+              "url": "https://leetcode.com/problems/minimum-moves-to-reach-target-with-rotations",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
             }
           ]
         },
@@ -6578,6 +10228,16 @@
               "id": "pattern-21-variation-05-problem-05",
               "title": "Frog Jump",
               "url": "https://leetcode.com/problems/frog-jump/",
+              "difficulty": "Hard",
+              "status": "not_started",
+              "attempts": 0,
+              "lastSolvedAt": null,
+              "nextRevisionAt": null
+            },
+            {
+              "id": "pattern-21-variation-05-problem-09",
+              "title": "Super Egg Drop",
+              "url": "https://leetcode.com/problems/super-egg-drop",
               "difficulty": "Hard",
               "status": "not_started",
               "attempts": 0,
