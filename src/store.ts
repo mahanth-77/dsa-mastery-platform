@@ -610,8 +610,11 @@ export function mergeProgressImport(
   for (const [problemId, record] of Object.entries(incoming.problems)) {
     if (!Object.prototype.hasOwnProperty.call(problems, problemId)) {
       problems[problemId] = {
+        ...defaultProblemProgress(),
         ...record,
-        reviewHistory: record.reviewHistory.map((event) => ({ ...event })),
+        reviewHistory: Array.isArray(record.reviewHistory)
+          ? record.reviewHistory.map((event) => ({ ...event }))
+          : [],
       };
     }
   }
