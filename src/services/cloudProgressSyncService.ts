@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { ProblemProgress, UserProgress } from '../types';
 import { getSupabaseClient, isSupabaseConfigured } from '../lib/supabase';
+import { importProgress } from '../store';
 
 interface SnapshotRow {
   version: number;
@@ -112,7 +113,7 @@ async function readSnapshot(client: SupabaseClient): Promise<SnapshotRow | null>
   }
   return {
     version: Number(data.version),
-    progress: data.progress as UserProgress,
+    progress: importProgress(JSON.stringify(data.progress)),
   };
 }
 
@@ -158,7 +159,7 @@ export async function syncProgressSnapshot(
 
     remote = {
       version: Number(result.version) || 0,
-      progress: result.progress,
+      progress: importProgress(JSON.stringify(result.progress)),
     };
   }
 
