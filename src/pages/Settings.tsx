@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 
 export default function Settings() {
-  const { state, dispatch, canEditProgress, activeStorageKey } = useApp();
+  const { state, dispatch, canEditProgress, activeStorageKey, cloudSyncStatus } = useApp();
   const { curriculum, progress } = state;
   const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
 
@@ -331,6 +331,28 @@ export default function Settings() {
           <HardDrive className="w-3.5 h-3.5 text-accent" />
           Local Storage Health & Telemetry
         </h2>
+
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-border-subtle bg-surface-0 px-3 py-2.5">
+          <div>
+            <p className="text-xs font-medium text-text-primary">Cloud synchronization</p>
+            <p className="text-[10px] text-text-tertiary mt-0.5">
+              {cloudSyncStatus === 'synced'
+                ? 'Your account progress is backed up to the cloud.'
+                : cloudSyncStatus === 'syncing' || cloudSyncStatus === 'connecting'
+                  ? 'Connecting and reconciling your account progress…'
+                  : cloudSyncStatus === 'offline'
+                    ? 'Cloud unavailable. Your account progress remains saved in this browser.'
+                    : 'Guest progress stays on this device until you sign in.'}
+            </p>
+          </div>
+          <span className={`shrink-0 rounded-md px-2 py-1 text-[10px] font-mono uppercase tracking-wide ${
+            cloudSyncStatus === 'synced' ? 'text-emerald-400 bg-emerald-400/10'
+              : cloudSyncStatus === 'offline' ? 'text-amber-400 bg-amber-400/10'
+                : 'text-text-secondary bg-surface-2'
+          }`}>
+            {cloudSyncStatus}
+          </span>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
           <div className="p-2.5 bg-surface-0 rounded-lg border border-border-subtle">
