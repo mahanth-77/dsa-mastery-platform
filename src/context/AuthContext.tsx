@@ -117,10 +117,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const handleSignOut = useCallback(async () => {
     setError(null);
     setIsLoading(true);
-    await authService.signOut();
+    const result = await authService.signOut();
+    setIsLoading(false);
+
+    if (!result.success) {
+      const message = result.error || 'Unable to sign out. Your current account remains active.';
+      setError(message);
+      throw new Error(message);
+    }
+
     setSession(null);
     setUser(null);
-    setIsLoading(false);
   }, []);
 
   const value: AuthContextType = {
