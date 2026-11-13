@@ -29,6 +29,12 @@ function normalizeAuthError(err: any): string {
   if (!err) return 'An unexpected authentication error occurred.';
   const msg = err.message || String(err);
 
+  if (/email not confirmed/i.test(msg) || err.code === 'email_not_confirmed') {
+    return 'Your email address is not verified yet. Open the confirmation email we sent you, then return here to sign in.';
+  }
+  if (/over_email_send_rate_limit/i.test(msg) || err.code === 'over_email_send_rate_limit') {
+    return 'A confirmation email was requested recently. Wait a little before requesting another one.';
+  }
   if (/invalid login credentials/i.test(msg) || /invalid_grant/i.test(msg)) {
     return 'Invalid email or password. Please verify your credentials.';
   }
@@ -51,7 +57,7 @@ function normalizeAuthError(err: any): string {
 /**
  * Registers a new synthetic user account via Supabase Auth.
  */
-export async function signUp(email: string, password: string): Promise<AuthResult<{ user: User | null; session: Session | null }>> {
+export async function signUp(email: string, password: string, fullName: string): Promise<AuthResult<{ user: User | null; session: Session | null }>> {
   if (!isSupabaseConfigured()) {
     return { success: false, error: 'Authentication service is not configured (offline mode).' };
   }
@@ -65,7 +71,10 @@ export async function signUp(email: string, password: string): Promise<AuthResul
   if (!trimmedEmail) {
     return { success: false, error: 'Email address is required.' };
   }
-  if (!password || password.length < 6) {
+  if (!fullName.trim()) {
+    return { success: false, error: 'Please enter your full name.' };
+  }
+  if (!password || password.length < 8) {
     return { success: false, error: 'Password must be at least 6 characters long.' };
   }
 
@@ -73,6 +82,10 @@ export async function signUp(email: string, password: string): Promise<AuthResul
     const { data, error } = await client.auth.signUp({
       email: trimmedEmail,
       password,
+      options: {
+        data: { full_name: fullName.trim() },
+        emailRedirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+      },
     });
 
     if (error) {
@@ -152,6 +165,30 @@ export async function signIn(email: string, password: string): Promise<AuthResul
       success: false,
       error: normalizeAuthError(err),
     };
+  }
+}
+
+
+/**
+ * Resends the signup confirmation email for an existing unconfirmed account.
+ */
+export async function resendSignupConfirmation(email: string): Promise<AuthResult> {
+  if (!isSupabaseConfigured()) return { success: false, error: 'Authentication service is not configured.' };
+  const client = getSupabaseClient();
+  if (!client) return { success: false, error: 'Failed to obtain Supabase client.' };
+  const trimmedEmail = email.trim();
+  if (!trimmedEmail) return { success: false, error: 'Email address is required.' };
+
+  try {
+    const { error } = await client.auth.resend({
+      type: 'signup',
+      email: trimmedEmail,
+      options: { emailRedirectTo: typeof window !== 'undefined' ? window.location.origin : undefined },
+    });
+    if (error) return { success: false, error: normalizeAuthError(error), code: error.code };
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, error: normalizeAuthError(err), code: err?.code };
   }
 }
 
