@@ -99,7 +99,7 @@ Authenticated progress can be synchronized across browsers and devices through S
 ### Configure the hosted backend
 
 1. Use the VERTEX Supabase project.
-2. Apply the SQL migration in `supabase/migrations/20261113102617_user_progress_snapshots.sql`.
+2. Apply both SQL migrations in `supabase/migrations/` in timestamp order. The first creates the snapshot table and version-checked RPC; the second tightens table privileges for least-privilege access.
 3. Copy `.env.example` to `.env.local`.
 4. Set `VITE_SUPABASE_URL` to the hosted project URL and `VITE_SUPABASE_ANON_KEY` to its public publishable key.
 5. Configure the same environment variables in your deployment provider and redeploy the frontend.
@@ -111,7 +111,7 @@ Never expose a Supabase `service_role` or secret key in frontend environment var
 - Each authenticated account has a private cloud snapshot protected by PostgreSQL Row Level Security.
 - Snapshot writes use an atomic expected-version check. Concurrent writes trigger a bounded merge/retry rather than blind overwrite.
 - Placement records merge using per-placement edit timestamps; activity events are deduplicated.
-- Failed cloud requests leave account progress in browser storage and can be retried on the next edit/reload.
+- Failed cloud requests leave account progress in browser storage and are retried when the browser reconnects, on the next edit, or after reload.
 - Guest progress is not uploaded automatically. Use the explicit import flow after signing in if you want to move guest work into an account.
 
 The sync layer is versioned and conflict-aware, but it is not a substitute for regular JSON backups. Keep exports for important work.
