@@ -301,6 +301,7 @@ export default function PatternDetail() {
                         {/* Status Select dropdown */}
                         <select
                           value={status}
+                          disabled={!canEditProgress}
                           onClick={(e) => e.stopPropagation()}
                           onChange={(e) =>
                             handleQuickStatusChange(
