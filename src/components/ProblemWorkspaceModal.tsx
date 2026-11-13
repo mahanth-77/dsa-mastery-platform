@@ -52,7 +52,7 @@ export default function ProblemWorkspaceModal({
   hasPrev = false,
   hasNext = false,
 }: ProblemWorkspaceModalProps) {
-  const { state, updateProblem } = useApp();
+  const { state, updateProblem, canEditProgress } = useApp();
 
   if (!problem) return null;
 
@@ -100,6 +100,7 @@ export default function ProblemWorkspaceModal({
   }, [onClose, onNavigate, hasPrev, hasNext, status, attempts, notes, approach, timeComplexity, spaceComplexity, confidence, nextRevisionAt]);
 
   const handleSave = () => {
+    if (!canEditProgress) return;
     updateProblem(
       problem.id,
       {
@@ -119,6 +120,7 @@ export default function ProblemWorkspaceModal({
   };
 
   const handleStatusChange = (newStatus: StatusOption) => {
+    if (!canEditProgress) return;
     setStatus(newStatus);
     let revDate = nextRevisionAt;
     if (newStatus === 'solved' && !nextRevisionAt) {
@@ -140,6 +142,7 @@ export default function ProblemWorkspaceModal({
   };
 
   const setRevisionIntervalDays = (days: number) => {
+    if (!canEditProgress) return;
     const d = new Date();
     d.setDate(d.getDate() + days);
     const dateStr = d.toISOString().slice(0, 10);
@@ -217,6 +220,12 @@ export default function ProblemWorkspaceModal({
             <p><span className="text-text-primary font-medium">Concept. </span>{studyFrame(patternId, variationName).concept}</p>
             <p>{hasDemonstratedRecall(currentProgress) ? 'A review with confidence 4 or 5 is recorded for this placement.' : 'Solved is not mastery. Recall is a completed review with confidence 4 or 5.'}</p>
           </div>
+          {!canEditProgress && (
+            <p className="rounded-lg border border-accent/25 bg-accent-muted/10 px-3 py-2 text-[11px] text-text-secondary">
+              Read-only guest workspace. Sign in to save attempts, notes, confidence, and revision dates.
+            </p>
+          )}
+          <fieldset disabled={!canEditProgress} className="contents">
           {/* Quick Status Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg bg-surface-0 border border-border">
             <div className="flex items-center gap-2">
@@ -418,6 +427,7 @@ export default function ProblemWorkspaceModal({
               </div>
             </div>
           )}
+          </fieldset>
         </div>
 
         {/* Modal Footer */}
@@ -444,13 +454,15 @@ export default function ProblemWorkspaceModal({
             >
               Close
             </button>
-            <button
-              type="button"
-              onClick={handleSave}
-              className="btn-primary text-xs"
-            >
-              <Save className="w-3.5 h-3.5" /> Save Changes
-            </button>
+            {canEditProgress && (
+              <button
+                type="button"
+                onClick={handleSave}
+                className="btn-primary text-xs"
+              >
+                <Save className="w-3.5 h-3.5" /> Save Changes
+              </button>
+            )}
           </div>
         </div>
       </div>
