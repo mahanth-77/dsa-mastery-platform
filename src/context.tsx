@@ -90,7 +90,9 @@ const AppContext = createContext<AppContextType | null>(null);
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const { user, isLoading: authLoading } = useAuth();
   const [activeStorageKey, setActiveStorageKey] = useState(getProgressStorageKey(null));
-  const [accountReady, setAccountReady] = useState(false);
+  const [hydratedUserId, setHydratedUserId] = useState<string | null | undefined>(undefined);
+  const activeUserId = user?.id ?? null;
+  const accountReady = !authLoading && hydratedUserId === activeUserId;
   const [state, dispatch] = useReducer(reducer, {
     curriculum: null,
     progress: loadProgress(),
@@ -101,16 +103,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Load the correct local namespace only after Supabase has restored the session.
   // Guest data remains untouched and is never copied into an account automatically.
   useEffect(() => {
-    if (authLoading) {
-      setAccountReady(false);
-      return;
-    }
-    const storageKey = getProgressStorageKey(user?.id ?? null);
-    setAccountReady(false);
+    if (authLoading) return;
+    const storageKey = getProgressStorageKey(activeUserId);
     setActiveStorageKey(storageKey);
     dispatch({ type: 'SET_PROGRESS', payload: loadProgress(storageKey) });
-    setAccountReady(true);
-  }, [authLoading, user?.id]);
+    setHydratedUserId(activeUserId);
+  }, [authLoading, activeUserId]);
 
   // Load curriculum
   useEffect(() => {
