@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useCallback, useState } from 'react';
+import { useAuth } from './context/AuthContext';
 import type { CurriculumData, UserProgress, ProblemProgress, StatusOption } from './types';
 import rawCurriculum from '../dsa_pattern_mastery_tracker.json';
 import {
@@ -7,9 +8,9 @@ import {
   updateProblemProgress,
   completeRevision as completeRevisionFn,
   defaultUserProgress,
-  clearProgress as clearProgressFn,
   defaultSettings,
   validateCurriculum,
+  getProgressStorageKey,
 } from './store';
 
 interface AppState {
@@ -58,7 +59,6 @@ function reducer(state: AppState, action: Action): AppState {
       return { ...state, progress: newProgress };
     }
     case 'CLEAR_PROGRESS': {
-      clearProgressFn();
       return { ...state, progress: defaultUserProgress() };
     }
     case 'UPDATE_SETTINGS': {
@@ -80,17 +80,35 @@ interface AppContextType {
   dispatch: React.Dispatch<Action>;
   updateProblem: (problemId: string, update: Partial<ProblemProgress>, patternId: string) => void;
   completeRevision: (problemId: string, confidence: number, patternId: string) => void;
+  accountReady: boolean;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
+  const { user, isLoading: authLoading } = useAuth();
+  const [activeStorageKey, setActiveStorageKey] = useState(getProgressStorageKey(null));
+  const [accountReady, setAccountReady] = useState(false);
   const [state, dispatch] = useReducer(reducer, {
     curriculum: null,
     progress: loadProgress(),
     loading: true,
     error: null,
   });
+
+  // Load the correct local namespace only after Supabase has restored the session.
+  // Guest data remains untouched and is never copied into an account automatically.
+  useEffect(() => {
+    if (authLoading) {
+      setAccountReady(false);
+      return;
+    }
+    const storageKey = getProgressStorageKey(user?.id ?? null);
+    setAccountReady(false);
+    setActiveStorageKey(storageKey);
+    dispatch({ type: 'SET_PROGRESS', payload: loadProgress(storageKey) });
+    setAccountReady(true);
+  }, [authLoading, user?.id]);
 
   // Load curriculum
   useEffect(() => {
@@ -102,10 +120,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Save progress whenever it changes
+  // Persist only after the authenticated identity and its storage namespace are ready.
   useEffect(() => {
-    saveProgress(state.progress);
-  }, [state.progress]);
+    if (!authLoading && accountReady) {
+      saveProgress(state.progress, activeStorageKey);
+    }
+  }, [state.progress, activeStorageKey, accountReady, authLoading]);
 
   const updateProblem = useCallback(
     (problemId: string, update: Partial<ProblemProgress>, patternId: string) => {
@@ -123,7 +143,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AppContext.Provider
-      value={{ state, dispatch, updateProblem, completeRevision: completeRevisionCb }}
+      value={{ state, dispatch, updateProblem, completeRevision: completeRevisionCb, accountReady }}
     >
       {children}
     </AppContext.Provider>
