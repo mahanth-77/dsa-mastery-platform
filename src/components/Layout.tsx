@@ -12,8 +12,12 @@ import {
   Search,
   HardDrive,
   Layers,
+  LogIn,
+  LogOut,
 } from 'lucide-react';
 import { useApp } from '../context';
+import { useAuth } from '../context/AuthContext';
+import AuthModal from './AuthModal';
 import { getGlobalStats, getStreak } from '../store';
 import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import CommandPalette from './CommandPalette';
@@ -31,6 +35,9 @@ const navItems = [
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authActionBusy, setAuthActionBusy] = useState(false);
+  const [authActionError, setAuthActionError] = useState<string | null>(null);
   const [activeWorkspace, setActiveWorkspace] = useState<{
     problem: CurriculumProblem;
     patternId: string;
@@ -39,8 +46,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   } | null>(null);
 
   const navigate = useNavigate();
-  const { state } = useApp();
+  const { state, canEditProgress } = useApp();
+  const { user, isConfigured, signOut } = useAuth();
   const { curriculum, progress } = state;
+
+  const handleSignOut = async () => {
+    setAuthActionError(null);
+    setAuthActionBusy(true);
+    try {
+      await signOut();
+    } catch (error) {
+      setAuthActionError(error instanceof Error ? error.message : 'Unable to sign out.');
+    } finally {
+      setAuthActionBusy(false);
+    }
+  };
 
   const stats = curriculum ? getGlobalStats(curriculum, progress) : null;
   const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
@@ -248,6 +268,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               })}
             </div>
 
+            <div className="flex items-center gap-2 pl-2 border-l border-border">
+              {user ? (
+                <>
+                  <span className="hidden xl:inline max-w-40 truncate text-[10px] text-text-secondary" title={user.email || 'Signed-in account'}>
+                    {user.email || 'Signed-in account'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    disabled={authActionBusy}
+                    className="btn-secondary text-[10px] py-1.5 px-2 flex items-center gap-1.5 disabled:opacity-50"
+                  >
+                    <LogOut className="w-3 h-3" />
+                    {authActionBusy ? 'Signing out…' : 'Sign out'}
+                  </button>
+                </>
+              ) : isConfigured ? (
+                <button
+                  type="button"
+                  onClick={() => setAuthModalOpen(true)}
+                  className="btn-primary text-[10px] py-1.5 px-2 flex items-center gap-1.5"
+                >
+                  <LogIn className="w-3 h-3" />
+                  Sign in
+                </button>
+              ) : (
+                <span className="text-[10px] font-mono text-text-tertiary">Guest</span>
+              )}
+            </div>
+
             <div className="pl-3 border-l border-border hidden sm:flex items-center gap-1.5 text-xxs font-mono text-text-tertiary">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               <span>Offline-Ready</span>
@@ -257,7 +307,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Page Content Container */}
         <main className="flex-1 overflow-y-auto">
-          <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 lg:py-7">
+          <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 lg:py-7 space-y-4">
+            {!canEditProgress && (
+              <div className="rounded-lg border border-accent/25 bg-accent-muted/10 px-3 py-2.5 flex flex-wrap items-center justify-between gap-2" role="status">
+                <p className="text-[11px] text-text-secondary">
+                  <strong className="text-text-primary">Guest mode:</strong> explore patterns and problems freely. Sign in to save attempts, notes, and revision history.
+                </p>
+                {isConfigured && (
+                  <button type="button" onClick={() => setAuthModalOpen(true)} className="text-[11px] font-semibold text-accent hover:underline">
+                    Sign in / Create account
+                  </button>
+                )}
+              </div>
+            )}
+            {authActionError && (
+              <div className="rounded-lg border border-danger/30 bg-danger-muted/10 px-3 py-2 text-[11px] text-danger" role="alert">
+                {authActionError}
+              </div>
+            )}
             {children}
           </div>
         </main>
@@ -287,6 +354,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           onClose={() => setActiveWorkspace(null)}
         />
       )}
+
+      <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </div>
   );
 }
