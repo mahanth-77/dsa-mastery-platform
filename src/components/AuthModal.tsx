@@ -89,7 +89,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
       } else {
         const res = await signUp(trimmedEmail, password);
         if (res.success) {
-          setSuccessMessage('Account created successfully! You are now signed in.');
+          setSuccessMessage(res.message || 'Account created. Check your email before signing in.');
           setTimeout(() => {
             onClose();
           }, 1200);
@@ -174,7 +174,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
             <div className="p-2.5 rounded bg-warning-muted border border-warning-border flex items-start gap-2 text-xxs text-warning">
               <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
               <span>
-                Backend is currently offline or unconfigured. Offline progress tracking remains available locally.
+                Authentication is unavailable because Supabase is not configured. You can still explore the curriculum; existing local progress remains preserved.
               </span>
             </div>
           )}
@@ -292,7 +292,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
           </div>
 
           <p className="text-[10px] text-text-tertiary text-center leading-relaxed">
-            Your progress is securely isolated to your account.
+            Account progress is stored in a separate local browser namespace. Cross-device sync is not connected yet.
           </p>
         </form>
       </div>
