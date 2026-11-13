@@ -1,6 +1,17 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { useApp } from '../context';
-import { exportProgress, importProgress } from '../store';
+import { useAuth } from '../context/AuthContext';
+import {
+  exportProgress,
+  importProgress,
+  previewProgressImport,
+  mergeProgressImport,
+  loadProgress,
+  GUEST_PROGRESS_STORAGE_KEY,
+  hasRecordedProgress,
+  type ProgressImportPreview,
+} from '../store';
+import type { UserProgress } from '../types';
 import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import {
   Download,
@@ -16,20 +27,32 @@ import {
 } from 'lucide-react';
 
 export default function Settings() {
-  const { state, dispatch } = useApp();
+  const { state, dispatch, canEditProgress, activeStorageKey } = useApp();
+  const { user } = useAuth();
   const { curriculum, progress } = state;
   const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
 
   const [dailyGoal, setDailyGoal] = useState<number>(progress.settings?.dailyGoal || 5);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [pendingImport, setPendingImport] = useState<{
+    source: 'guest' | 'file';
+    progress: UserProgress;
+    preview: ProgressImportPreview;
+  } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const guestProgress = useMemo(() => loadProgress(GUEST_PROGRESS_STORAGE_KEY), []);
+  const hasGuestProgress = hasRecordedProgress(guestProgress);
+
+  useEffect(() => {
+    setDailyGoal(progress.settings?.dailyGoal || 5);
+  }, [progress.settings?.dailyGoal]);
 
   // Compute local storage statistics
   const storageMetrics = useMemo(() => {
     let rawBytes = 0;
     try {
-      const raw = localStorage.getItem('dsa-mastery-progress');
+      const raw = localStorage.getItem(activeStorageKey);
       if (raw) rawBytes = new Blob([raw]).size;
     } catch {
       rawBytes = 0;
@@ -46,10 +69,11 @@ export default function Settings() {
       notesCount,
       activityEvents: progress.activity.length,
     };
-  }, [progress]);
+  }, [progress, activeStorageKey]);
 
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!canEditProgress) return;
     dispatch({
       type: 'UPDATE_SETTINGS',
       payload: { dailyGoal: Number(dailyGoal) },
@@ -77,30 +101,57 @@ export default function Settings() {
     }
   };
 
+  const stageImport = (source: 'guest' | 'file', incoming: UserProgress) => {
+    setPendingImport({
+      source,
+      progress: incoming,
+      preview: previewProgressImport(progress, incoming),
+    });
+    setStatusMessage(null);
+  };
+
+  const handleGuestImport = () => {
+    if (!canEditProgress || !hasGuestProgress) return;
+    stageImport('guest', guestProgress);
+  };
+
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (!canEditProgress) {
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
 
     const reader = new FileReader();
     reader.onload = (event) => {
       try {
-        const content = event.target?.result as string;
-        const imported = importProgress(content);
-        dispatch({ type: 'SET_PROGRESS', payload: imported });
-        setStatusMessage({
-          type: 'success',
-          text: `Import verified! Restored progress for ${Object.keys(imported.problems).length} problems.`,
-        });
-        setTimeout(() => setStatusMessage(null), 4000);
+        const imported = importProgress(event.target?.result as string);
+        stageImport('file', imported);
       } catch (err: any) {
         setStatusMessage({ type: 'error', text: `Import rejected: ${err.message}` });
       }
+    };
+    reader.onerror = () => {
+      setStatusMessage({ type: 'error', text: 'Import rejected: unable to read the selected file.' });
     };
     reader.readAsText(file);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
+  const handleConfirmImport = () => {
+    if (!canEditProgress || !pendingImport) return;
+    const result = mergeProgressImport(progress, pendingImport.progress);
+    dispatch({ type: 'SET_PROGRESS', payload: result.progress });
+    setPendingImport(null);
+    setStatusMessage({
+      type: 'success',
+      text: `Import complete: added ${result.preview.newProblems} new placements and ${result.preview.newActivityEvents} activity events. Existing account records were preserved; ${result.preview.existingProblemConflicts} placement conflicts were skipped.`,
+    });
+  };
+
   const handleConfirmReset = () => {
+    if (!canEditProgress) return;
     dispatch({ type: 'CLEAR_PROGRESS' });
     setShowResetConfirm(false);
     setStatusMessage({ type: 'success', text: 'All personal progress has been reset.' });
@@ -129,6 +180,12 @@ export default function Settings() {
           </p>
         </div>
       </div>
+
+      {!canEditProgress && (
+        <div className="panel p-3 border-accent/30 bg-accent-muted/10 text-xs text-text-secondary" role="status">
+          <strong className="text-text-primary">Guest mode.</strong> You can explore the curriculum and open problem explanations. Sign in to record attempts, notes, revisions, and settings. Any existing guest progress remains untouched until you explicitly import it into an account.
+        </div>
+      )}
 
       {statusMessage && (
         <div
@@ -166,13 +223,14 @@ export default function Settings() {
                 max="50"
                 value={dailyGoal}
                 onChange={(e) => setDailyGoal(Math.max(1, parseInt(e.target.value) || 1))}
+                disabled={!canEditProgress}
                 className="input-field text-xs font-mono w-24"
               />
               <span className="text-xs font-mono text-text-secondary">problems</span>
             </div>
           </div>
 
-          <button type="submit" className="btn-primary text-xs">
+          <button type="submit" disabled={!canEditProgress} className="btn-primary text-xs disabled:opacity-40 disabled:cursor-not-allowed">
             Save Target
           </button>
         </form>
@@ -185,7 +243,7 @@ export default function Settings() {
           Data Portability & Backup
         </h2>
         <p className="text-xs text-text-secondary leading-relaxed">
-          Your solution notes, approach invariants, Big-O complexities, and spaced repetition schedules are persisted in your browser's localStorage. Export a backup JSON to sync across machines or prevent accidental browser cache clearing.
+          Progress is stored locally in a separate namespace for each signed-in account. Imports are previewed first; existing account records are never overwritten.
         </p>
 
         <div className="flex flex-wrap items-center gap-2.5 pt-2">
@@ -195,13 +253,14 @@ export default function Settings() {
             className="btn-secondary text-xs flex items-center gap-1.5"
           >
             <Download className="w-3.5 h-3.5 text-accent" />
-            Export Progress JSON
+            Export Current Progress
           </button>
 
           <button
             type="button"
+            disabled={!canEditProgress}
             onClick={() => fileInputRef.current?.click()}
-            className="btn-secondary text-xs flex items-center gap-1.5"
+            className="btn-secondary text-xs flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Upload className="w-3.5 h-3.5 text-accent" />
             Import Backup JSON
@@ -213,7 +272,55 @@ export default function Settings() {
             onChange={handleFileImport}
             className="hidden"
           />
+          {canEditProgress && hasGuestProgress && (
+            <button
+              type="button"
+              onClick={handleGuestImport}
+              className="btn-secondary text-xs flex items-center gap-1.5"
+            >
+              <Upload className="w-3.5 h-3.5 text-accent" />
+              Review Guest Progress Import
+            </button>
+          )}
         </div>
+
+        {pendingImport && (
+          <div className="mt-3 rounded-lg border border-accent/30 bg-surface-0 p-4 space-y-3" aria-live="polite">
+            <div>
+              <h3 className="text-xs font-semibold text-text-primary">
+                Review {pendingImport.source === 'guest' ? 'guest progress' : 'backup'} import
+              </h3>
+              <p className="text-[11px] text-text-secondary mt-1">
+                Nothing has changed yet. Confirming adds only new placement records and activity events. Existing account records and settings remain unchanged.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="p-2 rounded bg-surface-1">
+                <span className="block text-[10px] text-text-tertiary">New placements</span>
+                <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.newProblems}</strong>
+              </div>
+              <div className="p-2 rounded bg-surface-1">
+                <span className="block text-[10px] text-text-tertiary">Existing conflicts skipped</span>
+                <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.existingProblemConflicts}</strong>
+              </div>
+              <div className="p-2 rounded bg-surface-1">
+                <span className="block text-[10px] text-text-tertiary">New activity events</span>
+                <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.newActivityEvents}</strong>
+              </div>
+            </div>
+            <p className="text-[10px] text-text-tertiary">
+              Guest source data is retained. This operation does not upload anything to Supabase.
+            </p>
+            <div className="flex items-center gap-2">
+              <button type="button" onClick={handleConfirmImport} className="btn-primary text-xs">
+                Confirm Non-Destructive Import
+              </button>
+              <button type="button" onClick={() => setPendingImport(null)} className="btn-secondary text-xs">
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Local Storage Health & Telemetry */}
@@ -251,7 +358,7 @@ export default function Settings() {
         </div>
 
         <p className="text-[10px] font-mono text-text-tertiary leading-relaxed pt-1">
-          Key: <code className="text-text-secondary bg-surface-2 px-1 py-0.5 rounded">localStorage['dsa-mastery-progress']</code> · Schema Version 1 · Zero cloud dependency required.
+          Active key: <code className="text-text-secondary bg-surface-2 px-1 py-0.5 rounded break-all">{activeStorageKey}</code> · Guest data remains separate from account namespaces.
         </p>
       </div>
 
@@ -294,7 +401,8 @@ export default function Settings() {
         </div>
       )}
 
-      {/* Danger Zone: Reset Progress */}
+      {/* Danger Zone: Reset Progress — account owners only */}
+      {canEditProgress && (
       <div className="panel p-5 border-danger/30 bg-danger-muted/5 space-y-3">
         <h2 className="text-xs font-semibold uppercase tracking-wider font-mono text-danger flex items-center gap-2 pb-2 border-b border-danger/20">
           <ShieldAlert className="w-3.5 h-3.5" />
@@ -338,6 +446,7 @@ export default function Settings() {
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }
