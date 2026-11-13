@@ -197,6 +197,37 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     };
   }, [state.progress, user, accountReady, cloudReadyUserId, activeUserId, activeStorageKey]);
 
+  // Retry a failed cloud sync when connectivity returns, without requiring a new edit.
+  useEffect(() => {
+    if (!user || !accountReady || cloudReadyUserId !== activeUserId) return;
+    let cancelled = false;
+
+    const handleOnline = () => {
+      setCloudSyncStatus('syncing');
+      syncProgressSnapshot(state.progress)
+        .then((result) => {
+          if (cancelled || activeUserId !== user.id) return;
+          saveProgress(result.progress, activeStorageKey);
+          if (JSON.stringify(result.progress) !== JSON.stringify(state.progress)) {
+            dispatch({ type: 'SET_PROGRESS', payload: result.progress });
+          }
+          setCloudSyncStatus('synced');
+        })
+        .catch((error) => {
+          if (!cancelled) {
+            console.warn('[VERTEX Sync] Reconnect sync failed; local progress remains safe.', error);
+            setCloudSyncStatus('offline');
+          }
+        });
+    };
+
+    window.addEventListener('online', handleOnline);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('online', handleOnline);
+    };
+  }, [user, accountReady, cloudReadyUserId, activeUserId, activeStorageKey, state.progress]);
+
   const canEditProgress = Boolean(user && !authLoading && accountReady && cloudReadyUserId === activeUserId);
 
   // Expose a guarded dispatcher so guest UI cannot mutate or clear legacy progress.
