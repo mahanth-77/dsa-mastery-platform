@@ -17,7 +17,7 @@ import {
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
 
 export default function RevisionCenter() {
-  const { state, completeRevision } = useApp();
+  const { state, completeRevision, canEditProgress } = useApp();
   const { curriculum, progress } = state;
 
   const [filterTab, setFilterTab] = useState<'all' | 'overdue' | 'today' | 'upcoming'>('all');
@@ -295,6 +295,7 @@ export default function RevisionCenter() {
                         key={btn.label}
                         type="button"
                         onClick={() => handleQuickReview(item, btn.score)}
+                        disabled={!canEditProgress}
                         className="btn-subtle text-[10px] font-mono py-0.5 px-1.5"
                         title="Record a review. The next date follows the review count: 1, 3, 7, 14, 30, then 60 days."
                       >
