@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -40,6 +40,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [authActionBusy, setAuthActionBusy] = useState(false);
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [authActionError, setAuthActionError] = useState<string | null>(null);
+  const accountMenuRef = useRef<HTMLDivElement>(null);
   const [activeWorkspace, setActiveWorkspace] = useState<{
     problem: CurriculumProblem;
     patternId: string;
@@ -48,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   } | null>(null);
 
   const navigate = useNavigate();
-  const { state, canEditProgress } = useApp();
+  const { state, canEditProgress, cloudSyncStatus } = useApp();
   const { user, isConfigured, signOut, error: authError } = useAuth();
   const { curriculum, progress } = state;
 
@@ -63,6 +64,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       setAuthActionBusy(false);
     }
   };
+
+  // Close the account menu when focus moves elsewhere or Escape is pressed.
+  useEffect(() => {
+    if (!accountMenuOpen) return;
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!accountMenuRef.current?.contains(event.target as Node)) {
+        setAccountMenuOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setAccountMenuOpen(false);
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [accountMenuOpen]);
 
   const stats = curriculum ? getGlobalStats(curriculum, progress) : null;
   const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
@@ -272,14 +294,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               })}
             </div>
 
+            {user && (
+              <div
+                className="hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-text-tertiary"
+                role="status"
+                aria-live="polite"
+                title={
+                  cloudSyncStatus === 'offline'
+                    ? 'Cloud sync is unavailable. Your account changes remain saved on this device.'
+                    : cloudSyncStatus === 'synced'
+                      ? 'Your account progress is synced to the cloud.'
+                      : 'Account progress synchronization status.'
+                }
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${
+                  cloudSyncStatus === 'synced'
+                    ? 'bg-emerald-400'
+                    : cloudSyncStatus === 'offline'
+                      ? 'bg-amber-400'
+                      : 'bg-sky-400 animate-pulse'
+                }`} />
+                {cloudSyncStatus === 'synced'
+                  ? 'Cloud synced'
+                  : cloudSyncStatus === 'syncing'
+                    ? 'Syncing'
+                    : cloudSyncStatus === 'offline'
+                      ? 'Saved locally'
+                      : 'Connecting'}
+              </div>
+            )}
+
             <div className="flex items-center gap-2 pl-2 border-l border-border">
               {user ? (
-                <div className="relative">
+                <div className="relative" ref={accountMenuRef}>
                   <button
                     type="button"
                     onClick={() => setAccountMenuOpen((open) => !open)}
                     aria-label="Open account menu"
                     aria-expanded={accountMenuOpen}
+                    aria-haspopup="true"
                     className="flex items-center gap-2 rounded-full border border-border bg-surface-1 hover:bg-surface-2 pl-1 pr-2 py-1 transition-colors"
                   >
                     <span className="w-7 h-7 rounded-full bg-accent-muted border border-accent-border text-accent flex items-center justify-center text-[10px] font-bold" aria-hidden="true">{accountInitials}</span>
@@ -329,16 +382,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Page Content Container */}
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 lg:py-7 space-y-4">
-            {!canEditProgress && (
+            {!user && (
               <div className="rounded-lg border border-accent/25 bg-accent-muted/10 px-3 py-2.5 flex flex-wrap items-center justify-between gap-2" role="status">
                 <p className="text-[11px] text-text-secondary">
-                  <strong className="text-text-primary">Guest mode:</strong> explore patterns and problems freely. Sign in to keep a separate progress workspace on this browser. Cross-device sync is not connected yet.
+                  <strong className="text-text-primary">Guest mode:</strong> explore the curriculum freely. Sign in to sync your account progress across browsers and devices. Guest progress stays on this browser and is not copied automatically.
                 </p>
                 {isConfigured && (
                   <button type="button" onClick={() => setAuthModalOpen(true)} className="text-[11px] font-semibold text-accent hover:underline">
                     Sign in / Create account
                   </button>
                 )}
+              </div>
+            )}
+            {user && !canEditProgress && (
+              <div className="rounded-lg border border-border bg-surface-1 px-3 py-2.5 text-[11px] text-text-secondary" role="status" aria-live="polite">
+                Restoring your account workspace and checking cloud progress…
               </div>
             )}
             {(authActionError || authError) && (
