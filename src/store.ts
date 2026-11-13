@@ -37,7 +37,6 @@ export function defaultProblemProgress(): ProblemProgress {
     spaceComplexity: '',
     confidence: 0,
     reviewHistory: [],
-    updatedAt: new Date().toISOString(),
   };
 }
 
@@ -167,7 +166,6 @@ export function loadProgress(storageKey: string = GUEST_PROGRESS_STORAGE_KEY): U
 }
 
 export function saveProgress(progress: UserProgress, storageKey: string = GUEST_PROGRESS_STORAGE_KEY): void {
-  progress.lastUpdated = new Date().toISOString();
   localStorage.setItem(storageKey, JSON.stringify(progress));
 }
 
