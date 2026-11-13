@@ -31,7 +31,7 @@ create policy "Users can update their own progress snapshot"
   with check ((select auth.uid()) is not null and (select auth.uid()) = user_id);
 
 grant usage on schema public to authenticated;
-revoke all on public.user_progress_snapshots from anon;
+revoke all on public.user_progress_snapshots from anon, authenticated, public;
 grant select, insert, update on public.user_progress_snapshots to authenticated;
 
 create or replace function public.save_user_progress_snapshot(
