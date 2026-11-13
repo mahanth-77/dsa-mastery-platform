@@ -9,6 +9,7 @@
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js';
+import type { ProblemProgress } from '../types';
 import { getSupabaseClient } from '../lib/supabase.ts';
 import { offlineQueueService } from './offlineQueueService.ts';
 import { SyncWorkerService } from './syncWorkerService.ts';
