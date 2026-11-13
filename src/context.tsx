@@ -67,7 +67,8 @@ function reducer(state: AppState, action: Action): AppState {
         ...state,
         progress: {
           ...state.progress,
-          settings: { ...state.progress.settings, ...action.payload },
+          settings: { ...state.progress.settings, ...action.payload, updatedAt: new Date().toISOString() },
+          lastUpdated: new Date().toISOString(),
         },
       };
     }
