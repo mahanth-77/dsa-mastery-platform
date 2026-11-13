@@ -1,3 +1,5 @@
+import type { ProblemProgress } from '../types';
+
 /**
  * ============================================================================
  * VERTEX 3.47.2 — CANONICAL SYNCHRONIZATION TYPES & CONTRACTS
