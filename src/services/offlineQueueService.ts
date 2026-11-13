@@ -180,11 +180,22 @@ export class OfflineQueueService {
           const rankNew = PROGRESS_STATUS_RANK[mutation.status];
           const rankOld = PROGRESS_STATUS_RANK[item.mutation.status];
           // Preserve revisit or higher rank
-          if (mutation.status === 'revisit' || rankNew >= rankOld) {
-            item.mutation.status = mutation.status;
-          }
+          const mergedStatus = mutation.status === 'revisit' || rankNew >= rankOld
+            ? mutation.status
+            : item.mutation.status;
+          const mergedAttempts = Math.max(item.mutation.attempts, mutation.attempts);
+          item.mutation.status = mergedStatus;
           item.mutation.confidence = mutation.confidence;
-          item.mutation.attempts = Math.max(item.mutation.attempts, mutation.attempts);
+          item.mutation.attempts = mergedAttempts;
+          // The newest complete snapshot carries edits to notes, approach,
+          // complexity and review history; merge only the monotonic counters/state.
+          item.mutation.progress = {
+            ...mutation.progress,
+            status: mergedStatus,
+            confidence: mutation.confidence,
+            attempts: mergedAttempts,
+          };
+          item.mutation.clientTimestamp = mutation.clientTimestamp;
           if (mutation.baseAttempts !== undefined) {
             item.mutation.baseAttempts = Math.min(item.mutation.baseAttempts ?? mutation.baseAttempts, mutation.baseAttempts);
           }
@@ -226,11 +237,22 @@ export class OfflineQueueService {
             const rankNew = PROGRESS_STATUS_RANK[mutation.status];
             const rankOld = PROGRESS_STATUS_RANK[pendingItem.mutation.status];
 
-            if (mutation.status === 'revisit' || rankNew >= rankOld) {
-              pendingItem.mutation.status = mutation.status;
-            }
+            const mergedStatus = mutation.status === 'revisit' || rankNew >= rankOld
+              ? mutation.status
+              : pendingItem.mutation.status;
+            const mergedAttempts = Math.max(pendingItem.mutation.attempts, mutation.attempts);
+            pendingItem.mutation.status = mergedStatus;
             pendingItem.mutation.confidence = mutation.confidence;
-            pendingItem.mutation.attempts = Math.max(pendingItem.mutation.attempts, mutation.attempts);
+            pendingItem.mutation.attempts = mergedAttempts;
+            // Keep the latest complete learner snapshot, while retaining the
+            // original mutation ID and expected version until this item is sent.
+            pendingItem.mutation.progress = {
+              ...mutation.progress,
+              status: mergedStatus,
+              confidence: mutation.confidence,
+              attempts: mergedAttempts,
+            };
+            pendingItem.mutation.clientTimestamp = mutation.clientTimestamp;
             if (mutation.baseAttempts !== undefined) {
               pendingItem.mutation.baseAttempts = Math.min(
                 pendingItem.mutation.baseAttempts ?? mutation.baseAttempts,
