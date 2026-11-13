@@ -16,7 +16,7 @@ interface AuthContextType {
   isLoading: boolean;
   error: string | null;
   isConfigured: boolean;
-  signUp: (email: string, password: string, fullName: string) => Promise<{ success: boolean; error?: string; message?: string }>;
+  signUp: (email: string, password: string, fullName: string) => Promise<{ success: boolean; authenticated?: boolean; error?: string; message?: string }>;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string; code?: string }>;
   resendConfirmation: (email: string) => Promise<{ success: boolean; error?: string }>;
   signOut: () => Promise<void>;
@@ -90,10 +90,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (res.data?.session && res.data.user) {
       setSession(res.data.session);
       setUser(res.data.user);
-      return { success: true, message: 'Account created and signed in.' };
+      return { success: true, authenticated: true, message: 'Account created and signed in.' };
     }
     return {
       success: true,
+      authenticated: false,
       message: 'Account created. Check your email for the confirmation link, then sign in.',
     };
   }, []);
