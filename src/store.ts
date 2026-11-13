@@ -155,10 +155,20 @@ export function loadProgress(storageKey: string = GUEST_PROGRESS_STORAGE_KEY): U
     const raw = localStorage.getItem(storageKey);
     if (!raw) return defaultUserProgress();
     const data = JSON.parse(raw) as UserProgress;
-    // Ensure settings exist
+    // Normalize legacy records with the snapshot timestamp so cloud merges
+    // compare placement age rather than whichever device synced most recently.
+    const snapshotUpdatedAt = typeof data.lastUpdated === 'string'
+      ? data.lastUpdated
+      : new Date().toISOString();
     if (!data.settings) data.settings = defaultSettings();
+    if (!data.settings.updatedAt) data.settings.updatedAt = snapshotUpdatedAt;
     if (!data.activity) data.activity = [];
     if (!data.problems) data.problems = {};
+    for (const record of Object.values(data.problems)) {
+      if (record && typeof record === 'object' && !record.updatedAt) {
+        record.updatedAt = snapshotUpdatedAt;
+      }
+    }
     return data;
   } catch {
     return defaultUserProgress();
