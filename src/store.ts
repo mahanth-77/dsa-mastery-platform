@@ -550,18 +550,155 @@ export function exportProgress(progress: UserProgress): string {
   return JSON.stringify(progress, null, 2);
 }
 
+export interface ProgressImportPreview {
+  incomingProblems: number;
+  newProblems: number;
+  existingProblemConflicts: number;
+  incomingActivityEvents: number;
+  newActivityEvents: number;
+  duplicateActivityEvents: number;
+}
+
+function activityIdentity(event: ActivityEvent): string {
+  return [event.date, event.problemId, event.action, event.patternId].join('|');
+}
+
+/**
+ * Preview an import without changing either snapshot. Existing account records
+ * always win; collisions are reported instead of silently merged or overwritten.
+ */
+export function previewProgressImport(
+  current: UserProgress,
+  incoming: UserProgress
+): ProgressImportPreview {
+  const currentProblemIds = new Set(Object.keys(current.problems));
+  const incomingProblemIds = Object.keys(incoming.problems);
+  const currentActivityIds = new Set(current.activity.map(activityIdentity));
+  let newActivityEvents = 0;
+
+  for (const event of incoming.activity) {
+    const identity = activityIdentity(event);
+    if (!currentActivityIds.has(identity)) {
+      currentActivityIds.add(identity);
+      newActivityEvents++;
+    }
+  }
+
+  const newProblems = incomingProblemIds.filter((id) => !currentProblemIds.has(id)).length;
+  return {
+    incomingProblems: incomingProblemIds.length,
+    newProblems,
+    existingProblemConflicts: incomingProblemIds.length - newProblems,
+    incomingActivityEvents: incoming.activity.length,
+    newActivityEvents,
+    duplicateActivityEvents: incoming.activity.length - newActivityEvents,
+  };
+}
+
+/**
+ * Apply a user-confirmed import without overwriting account data.
+ * New placement records and unseen activity events are copied; account settings
+ * and all existing placement records remain authoritative.
+ */
+export function mergeProgressImport(
+  current: UserProgress,
+  incoming: UserProgress
+): { progress: UserProgress; preview: ProgressImportPreview } {
+  const preview = previewProgressImport(current, incoming);
+  const problems = { ...current.problems };
+
+  for (const [problemId, record] of Object.entries(incoming.problems)) {
+    if (!Object.prototype.hasOwnProperty.call(problems, problemId)) {
+      problems[problemId] = {
+        ...record,
+        reviewHistory: record.reviewHistory.map((event) => ({ ...event })),
+      };
+    }
+  }
+
+  const activity = [...current.activity];
+  const seenActivity = new Set(activity.map(activityIdentity));
+  for (const event of incoming.activity) {
+    const identity = activityIdentity(event);
+    if (!seenActivity.has(identity)) {
+      activity.push({ ...event });
+      seenActivity.add(identity);
+    }
+  }
+
+  return {
+    progress: {
+      ...current,
+      problems,
+      activity,
+      settings: { ...current.settings },
+      lastUpdated: new Date().toISOString(),
+    },
+    preview,
+  };
+}
+
+export function hasRecordedProgress(progress: UserProgress): boolean {
+  return Object.keys(progress.problems).length > 0 || progress.activity.length > 0;
+}
+
 export function importProgress(jsonStr: string): UserProgress {
-  const data = JSON.parse(jsonStr);
-  if (!data.problems || typeof data.problems !== 'object') {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(jsonStr);
+  } catch {
+    throw new Error('Invalid progress data: file is not valid JSON');
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error('Invalid progress data: expected an object');
+  }
+
+  const data = parsed as Partial<UserProgress>;
+  if (!data.problems || typeof data.problems !== 'object' || Array.isArray(data.problems)) {
     throw new Error('Invalid progress data: missing problems object');
   }
-  if (!data.activity || !Array.isArray(data.activity)) {
-    data.activity = [];
+
+  const problems: UserProgress['problems'] = {};
+  for (const [problemId, rawRecord] of Object.entries(data.problems)) {
+    if (!problemId || !rawRecord || typeof rawRecord !== 'object' || Array.isArray(rawRecord)) {
+      throw new Error('Invalid progress data: malformed problem record');
+    }
+    const record = { ...defaultProblemProgress(), ...(rawRecord as Partial<ProblemProgress>) };
+    if (!STATUS_VALUES.has(record.status)
+      || !Number.isInteger(record.attempts) || record.attempts < 0
+      || !Number.isFinite(record.confidence) || record.confidence < 0 || record.confidence > 5
+      || !Array.isArray(record.reviewHistory)) {
+      throw new Error(`Invalid progress data: malformed problem record ${problemId}`);
+    }
+    problems[problemId] = record;
   }
-  if (!data.settings) {
-    data.settings = defaultSettings();
+
+  const activity = data.activity ?? [];
+  if (!Array.isArray(activity) || activity.some((event) =>
+    !event || typeof event !== 'object'
+    || typeof event.date !== 'string'
+    || typeof event.problemId !== 'string'
+    || typeof event.patternId !== 'string'
+    || !STATUS_VALUES.has(event.action)
+  )) {
+    throw new Error('Invalid progress data: malformed activity history');
   }
-  return data as UserProgress;
+
+  const settings = { ...defaultSettings(), ...(data.settings ?? {}) };
+  if (!Number.isInteger(settings.dailyGoal) || settings.dailyGoal < 1 || settings.dailyGoal > 50
+    || !['dark', 'light'].includes(settings.theme)
+    || typeof settings.compactView !== 'boolean') {
+    throw new Error('Invalid progress data: malformed settings');
+  }
+
+  return {
+    version: Number.isInteger(data.version) && data.version! > 0 ? data.version! : 1,
+    problems,
+    activity: activity.map((event) => ({ ...event })),
+    settings,
+    lastUpdated: typeof data.lastUpdated === 'string' ? data.lastUpdated : new Date().toISOString(),
+  };
 }
 
 // ─── Difficulty color helpers ────────────────────────────────────────────────
