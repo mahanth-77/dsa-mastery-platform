@@ -81,6 +81,8 @@ interface AppContextType {
   updateProblem: (problemId: string, update: Partial<ProblemProgress>, patternId: string) => void;
   completeRevision: (problemId: string, confidence: number, patternId: string) => void;
   accountReady: boolean;
+  canEditProgress: boolean;
+  activeStorageKey: string;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -120,30 +122,57 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Persist only after the authenticated identity and its storage namespace are ready.
+  // Guest mode is read-only. Never rewrite legacy guest data merely because the
+  // app mounted; only authenticated account namespaces are persisted.
   useEffect(() => {
-    if (!authLoading && accountReady) {
+    if (user && !authLoading && accountReady) {
       saveProgress(state.progress, activeStorageKey);
     }
-  }, [state.progress, activeStorageKey, accountReady, authLoading]);
+  }, [state.progress, activeStorageKey, accountReady, authLoading, user]);
+
+  const canEditProgress = Boolean(user && !authLoading && accountReady);
+
+  // Expose a guarded dispatcher so guest UI cannot mutate or clear legacy progress.
+  const guardedDispatch = useCallback((action: Action) => {
+    if (!canEditProgress && (
+      action.type === 'SET_PROGRESS'
+      || action.type === 'UPDATE_PROBLEM'
+      || action.type === 'COMPLETE_REVISION'
+      || action.type === 'CLEAR_PROGRESS'
+      || action.type === 'UPDATE_SETTINGS'
+    )) {
+      return;
+    }
+    dispatch(action);
+  }, [canEditProgress]);
 
   const updateProblem = useCallback(
     (problemId: string, update: Partial<ProblemProgress>, patternId: string) => {
+      if (!canEditProgress) return;
       dispatch({ type: 'UPDATE_PROBLEM', problemId, update, patternId });
     },
-    []
+    [canEditProgress]
   );
 
   const completeRevisionCb = useCallback(
     (problemId: string, confidence: number, patternId: string) => {
+      if (!canEditProgress) return;
       dispatch({ type: 'COMPLETE_REVISION', problemId, confidence, patternId });
     },
-    []
+    [canEditProgress]
   );
 
   return (
     <AppContext.Provider
-      value={{ state, dispatch, updateProblem, completeRevision: completeRevisionCb, accountReady }}
+      value={{
+        state,
+        dispatch: guardedDispatch,
+        updateProblem,
+        completeRevision: completeRevisionCb,
+        accountReady,
+        canEditProgress,
+        activeStorageKey,
+      }}
     >
       {children}
     </AppContext.Provider>
