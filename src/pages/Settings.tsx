@@ -241,7 +241,7 @@ export default function Settings() {
           Data Portability & Backup
         </h2>
         <p className="text-xs text-text-secondary leading-relaxed">
-          Progress is stored locally in a separate namespace for each signed-in account. Imports are previewed first; existing account records are never overwritten.
+          Progress is stored locally in a separate namespace for each signed-in account on this browser. Cross-device sync is not connected yet. Imports are previewed first; existing account records are never overwritten.
         </p>
 
         <div className="flex flex-wrap items-center gap-2.5 pt-2">
