@@ -42,7 +42,7 @@ function normalizeAuthError(err: any): string {
     return 'An account with this email address already exists. Please sign in instead.';
   }
   if (/password should be at least/i.test(msg) || /weak_password/i.test(msg)) {
-    return 'Password is too weak. Please use at least 6 characters.';
+    return 'Password is too weak. Please use at least 8 characters.';
   }
   if (/valid email/i.test(msg) || /invalid email/i.test(msg)) {
     return 'Please enter a valid email address.';
