@@ -457,12 +457,14 @@ export class SyncWorkerService {
         expectedVersion: item.mutation.expectedVersion,
       },
       clientProgress: item.mutation.progress,
-      serverState: {
-        status: serverState?.status ?? 'not_started',
-        confidence: serverState?.confidence ?? 0,
-        attempts: serverState?.attempts ?? 0,
-        serverVersion: serverState?.serverVersion ?? item.mutation.expectedVersion,
-      },
+      serverState: serverState
+        ? {
+            status: serverState.status,
+            confidence: serverState.confidence,
+            attempts: serverState.attempts,
+            serverVersion: serverState.serverVersion,
+          }
+        : null,
       serverProgress,
       resolvedState: null,
       resolutionType: 'MANUAL_REVIEW_REQUIRED',
