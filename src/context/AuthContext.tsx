@@ -78,9 +78,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const handleSignUp = useCallback(async (email: string, password: string) => {
     setError(null);
-    setIsLoading(true);
     const res = await authService.signUp(email, password);
-    setIsLoading(false);
 
     if (!res.success) {
       const err = res.error || 'Failed to create account.';
@@ -101,9 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const handleSignIn = useCallback(async (email: string, password: string) => {
     setError(null);
-    setIsLoading(true);
     const res = await authService.signIn(email, password);
-    setIsLoading(false);
 
     if (!res.success) {
       const err = res.error || 'Failed to sign in.';
