@@ -13,7 +13,15 @@ const Analytics = lazy(() => import('./pages/Analytics'));
 const Settings = lazy(() => import('./pages/Settings'));
 
 function AppRoutes() {
-  const { state } = useApp();
+  const { state, accountReady } = useApp();
+
+  if (!accountReady) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-surface-0 p-4">
+        <p className="text-sm text-text-secondary" role="status">Restoring your progress…</p>
+      </div>
+    );
+  }
 
   if (state.error) {
     return (
