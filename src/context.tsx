@@ -84,6 +84,7 @@ interface AppContextType {
   accountReady: boolean;
   canEditProgress: boolean;
   activeStorageKey: string;
+  cloudSyncStatus: 'local-only' | 'connecting' | 'syncing' | 'synced' | 'offline';
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -93,6 +94,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [activeStorageKey, setActiveStorageKey] = useState(getProgressStorageKey(null));
   const [hydratedUserId, setHydratedUserId] = useState<string | null | undefined>(undefined);
   const [cloudReadyUserId, setCloudReadyUserId] = useState<string | null | undefined>(undefined);
+  const [cloudSyncStatus, setCloudSyncStatus] = useState<'local-only' | 'connecting' | 'syncing' | 'synced' | 'offline'>('connecting');
   const activeUserId = user?.id ?? null;
   const accountReady = !authLoading && hydratedUserId === activeUserId;
   const [state, dispatch] = useReducer(reducer, {
@@ -128,12 +130,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (!accountReady) return;
     if (!activeUserId) {
       setCloudReadyUserId(null);
+      setCloudSyncStatus('local-only');
       return;
     }
 
     let cancelled = false;
     const storageKey = getProgressStorageKey(activeUserId);
     const localSnapshot = loadProgress(storageKey);
+    setCloudSyncStatus('syncing');
 
     syncProgressSnapshot(localSnapshot)
       .then((result) => {
@@ -141,11 +145,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         saveProgress(result.progress, storageKey);
         dispatch({ type: 'SET_PROGRESS', payload: result.progress });
         setCloudReadyUserId(activeUserId);
+        setCloudSyncStatus('synced');
       })
       .catch((error) => {
         if (cancelled) return;
         console.warn('[VERTEX Sync] Cloud hydration failed; continuing with local account progress.', error);
         setCloudReadyUserId(activeUserId);
+        setCloudSyncStatus('offline');
       });
 
     return () => { cancelled = true; };
@@ -166,6 +172,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     let cancelled = false;
     const snapshot = state.progress;
     const timeout = window.setTimeout(() => {
+      setCloudSyncStatus('syncing');
       syncProgressSnapshot(snapshot)
         .then((result) => {
           if (cancelled || activeUserId !== user.id) return;
@@ -173,10 +180,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           if (JSON.stringify(result.progress) !== JSON.stringify(snapshot)) {
             dispatch({ type: 'SET_PROGRESS', payload: result.progress });
           }
+          setCloudSyncStatus('synced');
         })
         .catch((error) => {
           if (!cancelled) {
             console.warn('[VERTEX Sync] Cloud save failed; changes remain in local account storage.', error);
+            setCloudSyncStatus('offline');
           }
         });
     }, 900);
@@ -229,6 +238,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         accountReady,
         canEditProgress,
         activeStorageKey,
+        cloudSyncStatus,
       }}
     >
       {children}
