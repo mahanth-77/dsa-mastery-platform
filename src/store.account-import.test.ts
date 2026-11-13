@@ -106,4 +106,10 @@ describe('non-destructive progress import', () => {
     expect(imported.settings.dailyGoal).toBe(5);
     expect(imported.settings.theme).toBe('dark');
   });
+
+  it('rejects reserved object keys in imported placement identifiers', () => {
+    const payload = '{"problems":{"__proto__":{}}}';
+    expect(() => importProgress(payload)).toThrow(/reserved problem identifier/);
+    expect(({} as { polluted?: boolean }).polluted).toBeUndefined();
+  });
 });
