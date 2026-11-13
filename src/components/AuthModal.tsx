@@ -92,7 +92,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
           setSuccessMessage(res.message || 'Account created. Check your email before signing in.');
           setTimeout(() => {
             onClose();
-          }, 1200);
+          }, 2500);
         } else {
           setLocalError(res.error || 'Failed to create account.');
         }
