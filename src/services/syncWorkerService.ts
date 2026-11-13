@@ -380,6 +380,8 @@ export class SyncWorkerService {
         p_status: mutation.status,
         p_confidence: mutation.confidence,
         p_attempts: mutation.attempts,
+        p_progress_payload: mutation.progress,
+        p_client_updated_at: mutation.clientTimestamp,
         p_expected_version: mutation.expectedVersion,
       }
     );
