@@ -86,7 +86,7 @@ export function mergeCloudProgress(
     problems,
     activity,
     settings,
-    lastUpdated: new Date(Math.max(localTime, remoteTime, Date.now())).toISOString(),
+    lastUpdated: new Date(Math.max(localTime, remoteTime)).toISOString(),
   };
 }
 
