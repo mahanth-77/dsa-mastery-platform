@@ -416,43 +416,36 @@ export class SyncWorkerService {
   private async handleConcurrencyConflict(item: OfflineQueueItem): Promise<void> {
     if (!this.client) return;
 
-    // 1. Fetch current server record to get current server_version and status
+    // Fetch the complete server payload. Summary-only conflict handling is unsafe:
+    // notes, approach, complexity fields and review history must not be overwritten.
     const { data: serverRow, error: fetchErr } = await this.client
       .from('user_placement_progress')
-      .select('placement_id, status, confidence, attempts, server_version, last_solved_at, next_revision_at')
+      .select('placement_id, status, confidence, attempts, server_version, last_solved_at, next_revision_at, payload')
       .eq('placement_id', item.mutation.placementId)
       .single();
 
-    if (fetchErr || !serverRow) {
-      await offlineQueueService.updateItemStatus(item.id, 'FAILED', {
-        lastError: {
-          code: 'FETCH_SERVER_STATE_FAILED',
-          message: fetchErr?.message || 'Failed to fetch server state for conflict resolution',
-          timestamp: new Date().toISOString(),
-        },
-      });
-      return;
-    }
+    const hasFullServerPayload =
+      !fetchErr &&
+      serverRow?.payload &&
+      typeof serverRow.payload === 'object' &&
+      !Array.isArray(serverRow.payload);
 
-    const serverState: LocalPlacementProgress = {
-      placementId: serverRow.placement_id,
-      status: serverRow.status,
-      confidence: serverRow.confidence,
-      attempts: serverRow.attempts,
-      serverVersion: Number(serverRow.server_version),
-      lastSolvedAt: serverRow.last_solved_at,
-      nextRevisionAt: serverRow.next_revision_at,
-      localUpdatedAt: new Date().toISOString(),
-    };
+    const serverProgress = hasFullServerPayload ? serverRow.payload : null;
+    const serverState: LocalPlacementProgress | null = serverRow
+      ? {
+          placementId: serverRow.placement_id,
+          status: serverRow.status,
+          confidence: serverRow.confidence,
+          attempts: serverRow.attempts,
+          serverVersion: Number(serverRow.server_version),
+          lastSolvedAt: serverRow.last_solved_at,
+          nextRevisionAt: serverRow.next_revision_at,
+          localUpdatedAt: new Date().toISOString(),
+        }
+      : null;
 
-    // 2. Run Deterministic Conflict Resolution Engine (DEFECT-04 & DEFECT-05)
-    const resolved = conflictResolutionService.resolvePlacementConflict({
-      placementId: item.mutation.placementId,
-      clientMutation: item.mutation,
-      serverState,
-    });
-
-    // 3. Record resolution in the conflict ledger
+    // Do not automatically merge or retry. The current resolver only understands
+    // status/confidence/attempt counts and cannot safely reconcile rich learner data.
     await offlineQueueService.recordConflict({
       id: crypto.randomUUID(),
       userId: item.userId,
@@ -463,28 +456,30 @@ export class SyncWorkerService {
         attempts: item.mutation.attempts,
         expectedVersion: item.mutation.expectedVersion,
       },
+      clientProgress: item.mutation.progress,
       serverState: {
-        status: serverState.status,
-        confidence: serverState.confidence,
-        attempts: serverState.attempts,
-        serverVersion: serverState.serverVersion,
+        status: serverState?.status ?? 'not_started',
+        confidence: serverState?.confidence ?? 0,
+        attempts: serverState?.attempts ?? 0,
+        serverVersion: serverState?.serverVersion ?? item.mutation.expectedVersion,
       },
-      resolvedState: {
-        status: resolved.reconciledMutation.status,
-        confidence: resolved.reconciledMutation.confidence,
-        attempts: resolved.reconciledMutation.attempts,
-        appliedVersion: resolved.reconciledMutation.expectedVersion,
-      },
-      resolutionType: resolved.resolutionType,
+      serverProgress,
+      resolvedState: null,
+      resolutionType: 'MANUAL_REVIEW_REQUIRED',
       occurredAt: new Date().toISOString(),
       acknowledged: false,
     });
 
-    // 4. Update the queue item with the reconciled mutation bound to fresh expectedVersion
-    await offlineQueueService.updateItemStatus(item.id, 'PENDING', {
-      mutation: resolved.reconciledMutation,
-      retryCount: 0,
-      nextRetryAt: new Date().toISOString(),
+    await offlineQueueService.updateItemStatus(item.id, 'CONFLICT', {
+      lastError: {
+        code: 'MANUAL_CONFLICT_REVIEW_REQUIRED',
+        message: fetchErr
+          ? 'Server state could not be fetched. Both the local snapshot and retry are preserved; automatic retry is paused.'
+          : hasFullServerPayload
+            ? 'Both full snapshots are preserved. Automatic merging is paused until a field-aware conflict review is implemented.'
+            : 'The server returned no valid full progress payload. The local snapshot is preserved and automatic retry is paused.',
+        timestamp: new Date().toISOString(),
+      },
     });
   }
 
