@@ -1,6 +1,5 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { useApp } from '../context';
-import { useAuth } from '../context/AuthContext';
 import {
   exportProgress,
   importProgress,
@@ -28,7 +27,6 @@ import {
 
 export default function Settings() {
   const { state, dispatch, canEditProgress, activeStorageKey } = useApp();
-  const { user } = useAuth();
   const { curriculum, progress } = state;
   const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
 
