@@ -307,7 +307,7 @@ export default function Settings() {
               </div>
             </div>
             <p className="text-[10px] text-text-tertiary">
-              Guest source data is retained. This operation does not upload anything to Supabase.
+              Guest source data is retained. Exact activity matches are treated as overlaps because legacy events have no unique event ID; the source remains unchanged. This operation does not upload anything to Supabase.
             </p>
             <div className="flex items-center gap-2">
               <button type="button" onClick={handleConfirmImport} className="btn-primary text-xs">
