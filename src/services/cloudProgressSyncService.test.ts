@@ -87,4 +87,28 @@ describe('cloud progress reconciliation', () => {
 
     expect(mergeCloudProgress(local, remote).settings.dailyGoal).toBe(4);
   });
+
+  it('keeps placement snapshot time independent from a settings-only edit', () => {
+    const local = snapshot({
+      'placement-1': {
+        ...defaultProblemProgress(),
+        status: 'attempted',
+        updatedAt: '2026-11-13T09:00:00.000Z',
+      },
+    }, '2026-11-13T12:00:00.000Z');
+    local.settings.updatedAt = '2026-11-13T08:00:00.000Z';
+
+    const remote = snapshot({
+      'placement-1': {
+        ...defaultProblemProgress(),
+        status: 'solved',
+        updatedAt: '2026-11-13T10:00:00.000Z',
+      },
+    }, '2026-11-13T11:00:00.000Z');
+
+    const merged = mergeCloudProgress(local, remote);
+
+    expect(merged.problems['placement-1'].status).toBe('solved');
+    expect(merged.lastUpdated).toBe('2026-11-13T12:00:00.000Z');
+  });
 });
