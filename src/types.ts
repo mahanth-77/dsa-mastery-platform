@@ -55,6 +55,8 @@ export interface ProblemProgress {
   spaceComplexity: string;
   confidence: number; // 1-5
   reviewHistory: ReviewEvent[];
+  /** Timestamp of the last edit to this placement, used for cross-device merging. */
+  updatedAt?: string;
 }
 
 export interface ActivityEvent {
