@@ -1,10 +1,11 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 /**
- * VERTEX 3.44 — Supabase Client Foundation
+ * VERTEX — Supabase client foundation.
  *
- * Implements a singleton Supabase client targeting the local Supabase instance.
- * Preserves application uptime with graceful offline fallback when unconfigured.
+ * Cloud features are disabled unless real project URL and publishable/anon key
+ * values are supplied by the build environment. Local progress remains usable
+ * when the backend is not configured.
  */
 
 interface SupabaseConfig {
@@ -15,12 +16,9 @@ interface SupabaseConfig {
 let clientInstance: SupabaseClient | null = null;
 let configurationError: string | null = null;
 
-/**
- * Decodes the role from a JWT token without external dependencies to verify it is NOT a service_role key.
- */
-function extractJwtRole(jwt: string): string | null {
+function extractJwtRole(key: string): string | null {
   try {
-    const parts = jwt.split('.');
+    const parts = key.split('.');
     if (parts.length !== 3) return null;
     const payload = JSON.parse(atob(parts[1]));
     return typeof payload.role === 'string' ? payload.role : null;
@@ -29,69 +27,65 @@ function extractJwtRole(jwt: string): string | null {
   }
 }
 
-/**
- * Validates and retrieves the Supabase client configuration.
- */
 export function getSupabaseConfig(): SupabaseConfig | null {
-  const procEnv = (typeof globalThis !== 'undefined' && (globalThis as any).process?.env) ? (globalThis as any).process.env : {};
-  const env = (typeof import.meta !== 'undefined' && (import.meta as any).env) ? (import.meta as any).env : procEnv;
-  const url = (env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321')?.trim();
-  const anonKey = (env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0')?.trim();
+  const procEnv =
+    typeof globalThis !== 'undefined' && (globalThis as any).process?.env
+      ? (globalThis as any).process.env
+      : {};
+  const env =
+    typeof import.meta !== 'undefined' && (import.meta as any).env
+      ? (import.meta as any).env
+      : procEnv;
+
+  const url = String(env.VITE_SUPABASE_URL || '').trim();
+  const anonKey = String(env.VITE_SUPABASE_ANON_KEY || '').trim();
 
   if (!url || !anonKey) {
-    configurationError = 'Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY in environment.';
+    configurationError =
+      'Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY. Cloud features are disabled; local progress remains available.';
     return null;
   }
 
-  // Security guard: Ensure service-role key is never used in frontend code
-  const role = extractJwtRole(anonKey);
-  if (role === 'service_role') {
-    const fatalMsg = '[VERTEX Security Fatal] SERVICE_ROLE key detected in frontend configuration! Refusing to initialize.';
-    console.error(fatalMsg);
-    throw new Error(fatalMsg);
+  // A frontend bundle must never contain a Supabase service-role secret.
+  if (extractJwtRole(anonKey) === 'service_role') {
+    configurationError =
+      'Unsafe Supabase configuration: a service-role key cannot be used in the browser.';
+    console.error('[VERTEX Security] Refusing to initialize Supabase with a service-role key.');
+    return null;
   }
 
-  // Validate URL shape
   try {
     const parsed = new URL(url);
-    if (!['http:', 'https:'].includes(parsed.protocol)) {
-      configurationError = `Invalid URL protocol: ${parsed.protocol}`;
+    const isLocalHttp =
+      parsed.protocol === 'http:' &&
+      ['localhost', '127.0.0.1', '[::1]'].includes(parsed.hostname);
+    if (parsed.protocol !== 'https:' && !isLocalHttp) {
+      configurationError = 'VITE_SUPABASE_URL must use HTTPS outside local development.';
       return null;
     }
-  } catch (e) {
-    configurationError = `Invalid VITE_SUPABASE_URL: ${url}`;
+  } catch {
+    configurationError = 'VITE_SUPABASE_URL is not a valid absolute URL.';
     return null;
   }
 
+  configurationError = null;
   return { url, anonKey };
 }
 
-/**
- * Returns whether Supabase has a valid, safe configuration available.
- */
 export function isSupabaseConfigured(): boolean {
   return getSupabaseConfig() !== null;
 }
 
-/**
- * Returns the diagnostic configuration error, if any.
- */
 export function getConfigurationError(): string | null {
   return configurationError;
 }
 
-/**
- * Returns the singleton Supabase client instance.
- * Returns null if the client is not configured or in fallback mode.
- */
 export function getSupabaseClient(): SupabaseClient | null {
-  if (clientInstance) {
-    return clientInstance;
-  }
+  if (clientInstance) return clientInstance;
 
   const config = getSupabaseConfig();
   if (!config) {
-    console.warn(`[VERTEX Auth] Supabase not configured: ${configurationError || 'Unknown'}. Operating in local-only fallback mode.`);
+    console.warn(`[VERTEX Auth] ${configurationError || 'Supabase is not configured'}`);
     return null;
   }
 
@@ -105,16 +99,14 @@ export function getSupabaseClient(): SupabaseClient | null {
       },
     });
     return clientInstance;
-  } catch (err: any) {
+  } catch (err) {
+    configurationError =
+      err instanceof Error ? err.message : 'Supabase client initialization failed.';
     console.error('[VERTEX Auth] Failed to initialize Supabase client:', err);
-    configurationError = err.message || 'Initialization failure';
     return null;
   }
 }
 
-/**
- * Verifies backend connectivity by pinging the GoTrue auth health endpoint.
- */
 export async function checkSupabaseHealth(): Promise<boolean> {
   const config = getSupabaseConfig();
   if (!config) return false;
@@ -122,13 +114,10 @@ export async function checkSupabaseHealth(): Promise<boolean> {
   try {
     const response = await fetch(`${config.url}/auth/v1/health`, {
       method: 'GET',
-      headers: {
-        apikey: config.anonKey,
-      },
+      headers: { apikey: config.anonKey },
     });
     return response.ok;
   } catch {
     return false;
   }
 }
-
