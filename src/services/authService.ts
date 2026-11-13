@@ -75,7 +75,7 @@ export async function signUp(email: string, password: string, fullName: string):
     return { success: false, error: 'Please enter your full name.' };
   }
   if (!password || password.length < 8) {
-    return { success: false, error: 'Password must be at least 6 characters long.' };
+    return { success: false, error: 'Password must be at least 8 characters long.' };
   }
 
   try {
