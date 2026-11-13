@@ -10,16 +10,19 @@ interface AuthModalProps {
 
 export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: AuthModalProps) {
   const [mode, setMode] = useState<'signin' | 'signup'>(initialMode);
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [localError, setLocalError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [needsEmailConfirmation, setNeedsEmailConfirmation] = useState(false);
+  const [resendingConfirmation, setResendingConfirmation] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const emailInputRef = useRef<HTMLInputElement>(null);
-  const { signIn, signUp, error: authError, clearError, isConfigured } = useAuth();
+  const { signIn, signUp, resendConfirmation, error: authError, clearError, isConfigured } = useAuth();
 
   useEffect(() => {
     setMode(initialMode);
@@ -29,6 +32,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
     if (isOpen) {
       setLocalError(null);
       setSuccessMessage(null);
+      setNeedsEmailConfirmation(false);
       clearError();
       setTimeout(() => emailInputRef.current?.focus(), 50);
     }
@@ -55,6 +59,10 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
     clearError();
 
     const trimmedEmail = email.trim();
+    if (mode === 'signup' && !fullName.trim()) {
+      setLocalError('Please enter your full name.');
+      return;
+    }
     if (!trimmedEmail) {
       setLocalError('Please enter an email address.');
       return;
@@ -67,8 +75,8 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
       setLocalError('Please enter a password.');
       return;
     }
-    if (password.length < 6) {
-      setLocalError('Password must be at least 6 characters.');
+    if (password.length < 8) {
+      setLocalError('Password must be at least 8 characters.');
       return;
     }
 
@@ -85,14 +93,13 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
           onClose();
         } else {
           setLocalError(res.error || 'Failed to sign in.');
+          setNeedsEmailConfirmation(res.code === 'email_not_confirmed');
         }
       } else {
-        const res = await signUp(trimmedEmail, password);
+        const res = await signUp(trimmedEmail, password, fullName);
         if (res.success) {
-          setSuccessMessage(res.message || 'Account created. Check your email before signing in.');
-          setTimeout(() => {
-            onClose();
-          }, 2500);
+          setNeedsEmailConfirmation(true);
+          setSuccessMessage(`Your VERTEX account has been created. We sent a verification link to ${trimmedEmail}. Verify your email before signing in.`);
         } else {
           setLocalError(res.error || 'Failed to create account.');
         }
@@ -103,6 +110,18 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
   };
 
   const activeError = localError || authError;
+
+  const handleResendConfirmation = async () => {
+    setResendingConfirmation(true);
+    setLocalError(null);
+    const result = await resendConfirmation(email.trim());
+    setResendingConfirmation(false);
+    if (result.success) {
+      setSuccessMessage(`A new verification email has been sent to ${email.trim()}. Check your inbox and spam folder.`);
+    } else {
+      setLocalError(result.error || 'Unable to resend the verification email.');
+    }
+  };
 
   return (
     <div
@@ -193,6 +212,25 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
             </div>
           )}
 
+          {mode === 'signup' && (
+            <div className="space-y-1.5">
+              <label htmlFor="auth-full-name" className="block text-xxs font-medium text-text-secondary uppercase tracking-wider font-mono">
+                Full Name
+              </label>
+              <input
+                id="auth-full-name"
+                type="text"
+                autoComplete="name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Your name"
+                disabled={submitting}
+                className="input-field"
+                required
+              />
+            </div>
+          )}
+
           {/* Email input */}
           <div className="space-y-1.5">
             <label htmlFor="auth-email" className="block text-xxs font-medium text-text-secondary uppercase tracking-wider font-mono">
@@ -273,6 +311,20 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
             </div>
           )}
 
+          {needsEmailConfirmation && (
+            <div className="space-y-2">
+              <p className="text-[10px] text-text-secondary">Haven't received the verification email?</p>
+              <button
+                type="button"
+                onClick={handleResendConfirmation}
+                disabled={resendingConfirmation || !email.trim()}
+                className="btn-secondary w-full py-2 text-xs disabled:opacity-50"
+              >
+                {resendingConfirmation ? 'Sending verification email…' : 'Resend verification email'}
+              </button>
+            </div>
+          )}
+
           {/* Submit button */}
           <div className="pt-2">
             <button
@@ -292,7 +344,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
           </div>
 
           <p className="text-[10px] text-text-tertiary text-center leading-relaxed">
-            Account progress is stored in a separate local browser namespace. Cross-device sync is not connected yet.
+            Your account is secured with email verification. Sign in after confirming your email address.
           </p>
         </form>
       </div>
