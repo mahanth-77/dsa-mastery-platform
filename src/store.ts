@@ -14,7 +14,13 @@ import type {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = 'dsa-mastery-progress';
+export const GUEST_PROGRESS_STORAGE_KEY = 'dsa-mastery-progress';
+const ACCOUNT_PROGRESS_STORAGE_PREFIX = 'vertex-progress:';
+
+/** Progress is isolated by immutable Supabase user UUID. Null means guest storage. */
+export function getProgressStorageKey(userId: string | null): string {
+  return userId ? `${ACCOUNT_PROGRESS_STORAGE_PREFIX}${userId}` : GUEST_PROGRESS_STORAGE_KEY;
+}
 const REVISION_INTERVALS = [1, 3, 7, 14, 30, 60]; // days
 
 // ─── Default factories ───────────────────────────────────────────────────────
@@ -144,9 +150,9 @@ export function validateCurriculum(raw: unknown): CurriculumData {
 
 // ─── LocalStorage persistence ────────────────────────────────────────────────
 
-export function loadProgress(): UserProgress {
+export function loadProgress(storageKey: string = GUEST_PROGRESS_STORAGE_KEY): UserProgress {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey);
     if (!raw) return defaultUserProgress();
     const data = JSON.parse(raw) as UserProgress;
     // Ensure settings exist
@@ -159,13 +165,13 @@ export function loadProgress(): UserProgress {
   }
 }
 
-export function saveProgress(progress: UserProgress): void {
+export function saveProgress(progress: UserProgress, storageKey: string = GUEST_PROGRESS_STORAGE_KEY): void {
   progress.lastUpdated = new Date().toISOString();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  localStorage.setItem(storageKey, JSON.stringify(progress));
 }
 
-export function clearProgress(): void {
-  localStorage.removeItem(STORAGE_KEY);
+export function clearProgress(storageKey: string = GUEST_PROGRESS_STORAGE_KEY): void {
+  localStorage.removeItem(storageKey);
 }
 
 // ─── Progress accessors ─────────────────────────────────────────────────────
