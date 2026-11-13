@@ -47,7 +47,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navigate = useNavigate();
   const { state, canEditProgress } = useApp();
-  const { user, isConfigured, signOut } = useAuth();
+  const { user, isConfigured, signOut, error: authError } = useAuth();
   const { curriculum, progress } = state;
 
   const handleSignOut = async () => {
@@ -320,9 +320,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 )}
               </div>
             )}
-            {authActionError && (
+            {(authActionError || authError) && (
               <div className="rounded-lg border border-danger/30 bg-danger-muted/10 px-3 py-2 text-[11px] text-danger" role="alert">
-                {authActionError}
+                {authActionError || authError}
               </div>
             )}
             {children}
