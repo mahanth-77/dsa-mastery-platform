@@ -88,3 +88,30 @@ npm run preview
   - `src/context.tsx`: Reactive state provider
   - `src/components/`: Reusable modular components (`Layout`, `ProblemWorkspaceModal`)
   - `src/pages/`: Isolated route pages
+
+
+---
+
+## ☁️ Account Cloud Sync
+
+Authenticated progress can be synchronized across browsers and devices through Supabase. Guest progress remains local to the current browser.
+
+### Configure the hosted backend
+
+1. Use the VERTEX Supabase project.
+2. Apply the SQL migration in `supabase/migrations/20261113102617_user_progress_snapshots.sql`.
+3. Copy `.env.example` to `.env.local`.
+4. Set `VITE_SUPABASE_URL` to the hosted project URL and `VITE_SUPABASE_ANON_KEY` to its public publishable key.
+5. Configure the same environment variables in your deployment provider and redeploy the frontend.
+
+Never expose a Supabase `service_role` or secret key in frontend environment variables.
+
+### Synchronization behavior
+
+- Each authenticated account has a private cloud snapshot protected by PostgreSQL Row Level Security.
+- Snapshot writes use an atomic expected-version check. Concurrent writes trigger a bounded merge/retry rather than blind overwrite.
+- Placement records merge using per-placement edit timestamps; activity events are deduplicated.
+- Failed cloud requests leave account progress in browser storage and can be retried on the next edit/reload.
+- Guest progress is not uploaded automatically. Use the explicit import flow after signing in if you want to move guest work into an account.
+
+The sync layer is versioned and conflict-aware, but it is not a substitute for regular JSON backups. Keep exports for important work.
