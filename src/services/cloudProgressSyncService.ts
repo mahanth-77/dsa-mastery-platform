@@ -76,8 +76,8 @@ export function mergeCloudProgress(
     a.action.localeCompare(b.action)
   );
 
-  const localTime = asIso(local.lastUpdated);
-  const remoteTime = asIso(remote.lastUpdated);
+  const localTime = asIso(local.settings?.updatedAt) || asIso(local.lastUpdated);
+  const remoteTime = asIso(remote.settings?.updatedAt) || asIso(remote.lastUpdated);
   const settings = localTime > remoteTime
     ? { ...local.settings }
     : { ...remote.settings };
