@@ -605,7 +605,10 @@ export function mergeProgressImport(
   incoming: UserProgress
 ): { progress: UserProgress; preview: ProgressImportPreview } {
   const preview = previewProgressImport(current, incoming);
-  const problems = { ...current.problems };
+  const problems = Object.assign(
+    Object.create(null) as UserProgress['problems'],
+    current.problems
+  );
 
   for (const [problemId, record] of Object.entries(incoming.problems)) {
     if (!Object.prototype.hasOwnProperty.call(problems, problemId)) {
@@ -664,6 +667,9 @@ export function importProgress(jsonStr: string): UserProgress {
 
   const problems: UserProgress['problems'] = {};
   for (const [problemId, rawRecord] of Object.entries(data.problems)) {
+    if (['__proto__', 'prototype', 'constructor'].includes(problemId)) {
+      throw new Error('Invalid progress data: reserved problem identifier');
+    }
     if (!problemId || !rawRecord || typeof rawRecord !== 'object' || Array.isArray(rawRecord)) {
       throw new Error('Invalid progress data: malformed problem record');
     }
