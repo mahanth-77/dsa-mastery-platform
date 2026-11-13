@@ -292,7 +292,7 @@ export default function Settings() {
                 Nothing has changed yet. Confirming adds only new placement records and activity events. Existing account records and settings remain unchanged.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               <div className="p-2 rounded bg-surface-1">
                 <span className="block text-[10px] text-text-tertiary">New placements</span>
                 <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.newProblems}</strong>
@@ -304,6 +304,10 @@ export default function Settings() {
               <div className="p-2 rounded bg-surface-1">
                 <span className="block text-[10px] text-text-tertiary">New activity events</span>
                 <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.newActivityEvents}</strong>
+              </div>
+              <div className="p-2 rounded bg-surface-1">
+                <span className="block text-[10px] text-text-tertiary">Activity overlaps skipped</span>
+                <strong className="text-sm font-mono text-text-primary">{pendingImport.preview.duplicateActivityEvents}</strong>
               </div>
             </div>
             <p className="text-[10px] text-text-tertiary">
