@@ -136,7 +136,7 @@ export interface ConflictLedgerEntry {
     confidence: number;
     attempts: number;
     serverVersion: number;
-  };
+  } | null;
   /** Null until the backend returns a validated full payload. */
   serverProgress: ProblemProgress | null;
   resolvedState: {
