@@ -16,8 +16,9 @@ interface AuthContextType {
   isLoading: boolean;
   error: string | null;
   isConfigured: boolean;
-  signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string; message?: string }>;
-  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (email: string, password: string, fullName: string) => Promise<{ success: boolean; error?: string; message?: string }>;
+  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string; code?: string }>;
+  resendConfirmation: (email: string) => Promise<{ success: boolean; error?: string }>;
   signOut: () => Promise<void>;
   clearError: () => void;
 }
@@ -78,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const handleSignUp = useCallback(async (email: string, password: string) => {
     setError(null);
-    const res = await authService.signUp(email, password);
+    const res = await authService.signUp(email, password, fullName);
 
     if (!res.success) {
       const err = res.error || 'Failed to create account.';
@@ -97,6 +98,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  const handleResendConfirmation = useCallback(async (email: string) => {
+    const res = await authService.resendSignupConfirmation(email);
+    if (!res.success) {
+      const err = res.error || 'Unable to resend the confirmation email.';
+      setError(err);
+      return { success: false, error: err };
+    }
+    setError(null);
+    return { success: true };
+  }, []);
+
   const handleSignIn = useCallback(async (email: string, password: string) => {
     setError(null);
     const res = await authService.signIn(email, password);
@@ -104,7 +116,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (!res.success) {
       const err = res.error || 'Failed to sign in.';
       setError(err);
-      return { success: false, error: err };
+      return { success: false, error: err, code: res.code };
     }
 
     if (res.data?.session) {
@@ -138,6 +150,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isConfigured,
     signUp: handleSignUp,
     signIn: handleSignIn,
+    resendConfirmation: handleResendConfirmation,
     signOut: handleSignOut,
     clearError,
   };
