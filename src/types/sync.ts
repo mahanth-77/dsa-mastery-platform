@@ -53,6 +53,8 @@ export interface SyncMutation {
   status: ProgressStatus;
   confidence: number;
   attempts: number;
+  /** Complete learner-authored state; never sync only the summary fields. */
+  progress: ProblemProgress;
   expectedVersion: number;
   clientTimestamp: string;
   /**
