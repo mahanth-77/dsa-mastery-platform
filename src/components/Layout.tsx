@@ -311,7 +311,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {!canEditProgress && (
               <div className="rounded-lg border border-accent/25 bg-accent-muted/10 px-3 py-2.5 flex flex-wrap items-center justify-between gap-2" role="status">
                 <p className="text-[11px] text-text-secondary">
-                  <strong className="text-text-primary">Guest mode:</strong> explore patterns and problems freely. Sign in to save attempts, notes, and revision history.
+                  <strong className="text-text-primary">Guest mode:</strong> explore patterns and problems freely. Sign in to keep a separate progress workspace on this browser. Cross-device sync is not connected yet.
                 </p>
                 {isConfigured && (
                   <button type="button" onClick={() => setAuthModalOpen(true)} className="text-[11px] font-semibold text-accent hover:underline">
