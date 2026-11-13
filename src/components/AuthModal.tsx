@@ -29,13 +29,23 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
   }, [initialMode]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
+      // Do not keep passwords in component state while the dialog is closed.
+      setPassword('');
+      setConfirmPassword('');
+      setShowPassword(false);
       setLocalError(null);
       setSuccessMessage(null);
       setNeedsEmailConfirmation(false);
       clearError();
-      setTimeout(() => emailInputRef.current?.focus(), 50);
+      return;
     }
+
+    setLocalError(null);
+    setSuccessMessage(null);
+    setNeedsEmailConfirmation(false);
+    clearError();
+    setTimeout(() => emailInputRef.current?.focus(), 50);
   }, [isOpen, clearError]);
 
   // Keyboard navigation: Escape key closes modal
@@ -98,7 +108,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
       } else {
         const res = await signUp(trimmedEmail, password, fullName);
         if (res.success) {
-          if (res.message?.includes('signed in')) {
+          if (res.authenticated) {
             onClose();
           } else {
             setNeedsEmailConfirmation(true);
@@ -164,6 +174,10 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
             onClick={() => {
               setMode('signin');
               setLocalError(null);
+              setSuccessMessage(null);
+              setNeedsEmailConfirmation(false);
+              setPassword('');
+              setConfirmPassword('');
               clearError();
             }}
             className={`flex-1 py-1.5 text-xs font-medium rounded transition-colors ${
@@ -179,6 +193,10 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
             onClick={() => {
               setMode('signup');
               setLocalError(null);
+              setSuccessMessage(null);
+              setNeedsEmailConfirmation(false);
+              setPassword('');
+              setConfirmPassword('');
               clearError();
             }}
             className={`flex-1 py-1.5 text-xs font-medium rounded transition-colors ${
@@ -272,6 +290,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
                 id="auth-password"
                 type={showPassword ? 'text' : 'password'}
                 autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
+                minLength={mode === 'signup' ? 8 : undefined}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
@@ -348,7 +367,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
           </div>
 
           <p className="text-[10px] text-text-tertiary text-center leading-relaxed">
-            Your account is secured with email verification. Sign in after confirming your email address.
+            Email verification may be required before your first sign-in.
           </p>
         </form>
       </div>
