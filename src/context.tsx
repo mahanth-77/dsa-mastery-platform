@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback, useState } from 'react';
 import { useAuth } from './context/AuthContext';
+import { syncProgressSnapshot } from './services/cloudProgressSyncService';
 import type { CurriculumData, UserProgress, ProblemProgress, StatusOption } from './types';
 import rawCurriculum from '../dsa_pattern_mastery_tracker.json';
 import {
@@ -91,6 +92,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const { user, isLoading: authLoading } = useAuth();
   const [activeStorageKey, setActiveStorageKey] = useState(getProgressStorageKey(null));
   const [hydratedUserId, setHydratedUserId] = useState<string | null | undefined>(undefined);
+  const [cloudReadyUserId, setCloudReadyUserId] = useState<string | null | undefined>(undefined);
   const activeUserId = user?.id ?? null;
   const accountReady = !authLoading && hydratedUserId === activeUserId;
   const [state, dispatch] = useReducer(reducer, {
@@ -120,15 +122,72 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Restore and reconcile the authenticated account snapshot before enabling edits.
+  // If the network is unavailable, retain the account's local copy and allow offline work.
+  useEffect(() => {
+    if (!accountReady) return;
+    if (!activeUserId) {
+      setCloudReadyUserId(null);
+      return;
+    }
+
+    let cancelled = false;
+    const storageKey = getProgressStorageKey(activeUserId);
+    const localSnapshot = loadProgress(storageKey);
+
+    syncProgressSnapshot(localSnapshot)
+      .then((result) => {
+        if (cancelled) return;
+        saveProgress(result.progress, storageKey);
+        dispatch({ type: 'SET_PROGRESS', payload: result.progress });
+        setCloudReadyUserId(activeUserId);
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        console.warn('[VERTEX Sync] Cloud hydration failed; continuing with local account progress.', error);
+        setCloudReadyUserId(activeUserId);
+      });
+
+    return () => { cancelled = true; };
+  }, [accountReady, activeUserId]);
+
   // Guest mode is read-only. Never rewrite legacy guest data merely because the
   // app mounted; only authenticated account namespaces are persisted.
   useEffect(() => {
-    if (user && !authLoading && accountReady) {
+    if (user && !authLoading && accountReady && cloudReadyUserId === activeUserId) {
       saveProgress(state.progress, activeStorageKey);
     }
-  }, [state.progress, activeStorageKey, accountReady, authLoading, user]);
+  }, [state.progress, activeStorageKey, accountReady, authLoading, user, cloudReadyUserId, activeUserId]);
 
-  const canEditProgress = Boolean(user && !authLoading && accountReady);
+  // Debounced snapshot sync. Every save is version-checked in Postgres; concurrent
+  // devices merge and retry instead of silently overwriting each other's records.
+  useEffect(() => {
+    if (!user || !accountReady || cloudReadyUserId !== activeUserId) return;
+    let cancelled = false;
+    const snapshot = state.progress;
+    const timeout = window.setTimeout(() => {
+      syncProgressSnapshot(snapshot)
+        .then((result) => {
+          if (cancelled || activeUserId !== user.id) return;
+          saveProgress(result.progress, activeStorageKey);
+          if (JSON.stringify(result.progress) !== JSON.stringify(snapshot)) {
+            dispatch({ type: 'SET_PROGRESS', payload: result.progress });
+          }
+        })
+        .catch((error) => {
+          if (!cancelled) {
+            console.warn('[VERTEX Sync] Cloud save failed; changes remain in local account storage.', error);
+          }
+        });
+    }, 900);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeout);
+    };
+  }, [state.progress, user, accountReady, cloudReadyUserId, activeUserId, activeStorageKey]);
+
+  const canEditProgress = Boolean(user && !authLoading && accountReady && cloudReadyUserId === activeUserId);
 
   // Expose a guarded dispatcher so guest UI cannot mutate or clear legacy progress.
   const guardedDispatch = useCallback((action: Action) => {
