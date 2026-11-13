@@ -37,6 +37,7 @@ export function defaultProblemProgress(): ProblemProgress {
     spaceComplexity: '',
     confidence: 0,
     reviewHistory: [],
+    updatedAt: new Date().toISOString(),
   };
 }
 
@@ -206,6 +207,7 @@ export function updateProblemProgress(
   const merged: ProblemProgress = {
     ...existing,
     ...update,
+    updatedAt: now.toISOString(),
   };
 
   // Auto-set solved date
@@ -282,6 +284,7 @@ export function completeRevision(
       ...existing.reviewHistory,
       { date: todayStr, confidence },
     ],
+    updatedAt: now.toISOString(),
   };
 
   // Record activity
