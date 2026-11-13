@@ -120,6 +120,12 @@ export class ConflictResolutionService {
       status: resolvedStatus,
       confidence: resolvedConfidence,
       attempts: resolvedAttempts,
+      progress: {
+        ...clientMutation.progress,
+        status: resolvedStatus,
+        confidence: resolvedConfidence,
+        attempts: resolvedAttempts,
+      },
       expectedVersion: serverState.serverVersion,
       clientTimestamp: new Date().toISOString(),
       baseAttempts: serverState.attempts,
