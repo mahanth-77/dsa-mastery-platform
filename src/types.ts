@@ -70,6 +70,7 @@ export interface UserSettings {
   dailyGoal: number;
   theme: 'dark' | 'light';
   compactView: boolean;
+  updatedAt?: string;
 }
 
 export interface UserProgress {
