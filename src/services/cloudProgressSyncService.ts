@@ -76,18 +76,20 @@ export function mergeCloudProgress(
     a.action.localeCompare(b.action)
   );
 
-  const localTime = asIso(local.settings?.updatedAt) || asIso(local.lastUpdated);
-  const remoteTime = asIso(remote.settings?.updatedAt) || asIso(remote.lastUpdated);
-  const settings = localTime > remoteTime
+  const localSettingsTime = asIso(local.settings?.updatedAt) || asIso(local.lastUpdated);
+  const remoteSettingsTime = asIso(remote.settings?.updatedAt) || asIso(remote.lastUpdated);
+  const settings = localSettingsTime > remoteSettingsTime
     ? { ...local.settings }
     : { ...remote.settings };
+  const localSnapshotTime = asIso(local.lastUpdated);
+  const remoteSnapshotTime = asIso(remote.lastUpdated);
 
   return {
     version: Math.max(Number(local.version) || 1, Number(remote.version) || 1),
     problems,
     activity,
     settings,
-    lastUpdated: new Date(Math.max(localTime, remoteTime)).toISOString(),
+    lastUpdated: new Date(Math.max(localSnapshotTime, remoteSnapshotTime)).toISOString(),
   };
 }
 
