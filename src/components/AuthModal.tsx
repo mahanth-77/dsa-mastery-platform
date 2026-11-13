@@ -75,7 +75,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
       setLocalError('Please enter a password.');
       return;
     }
-    if (password.length < 8) {
+    if (mode === 'signup' && password.length < 8) {
       setLocalError('Password must be at least 8 characters.');
       return;
     }
@@ -98,8 +98,12 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'signin' }: A
       } else {
         const res = await signUp(trimmedEmail, password, fullName);
         if (res.success) {
-          setNeedsEmailConfirmation(true);
-          setSuccessMessage(`Your VERTEX account has been created. We sent a verification link to ${trimmedEmail}. Verify your email before signing in.`);
+          if (res.message?.includes('signed in')) {
+            onClose();
+          } else {
+            setNeedsEmailConfirmation(true);
+            setSuccessMessage(`Your VERTEX account has been created. We sent a verification link to ${trimmedEmail}. Verify your email before signing in.`);
+          }
         } else {
           setLocalError(res.error || 'Failed to create account.');
         }
