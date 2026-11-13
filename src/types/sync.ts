@@ -129,19 +129,23 @@ export interface ConflictLedgerEntry {
     attempts: number;
     expectedVersion: number;
   };
+  /** Full local snapshot retained so learner-authored fields are never discarded. */
+  clientProgress: ProblemProgress;
   serverState: {
     status: ProgressStatus;
     confidence: number;
     attempts: number;
     serverVersion: number;
   };
+  /** Null until the backend returns a validated full payload. */
+  serverProgress: ProblemProgress | null;
   resolvedState: {
     status: ProgressStatus;
     confidence: number;
     attempts: number;
     appliedVersion: number;
-  };
-  resolutionType: string;
+  } | null;
+  resolutionType: 'MANUAL_REVIEW_REQUIRED' | string;
   occurredAt: string;
   acknowledged: boolean;
 }
