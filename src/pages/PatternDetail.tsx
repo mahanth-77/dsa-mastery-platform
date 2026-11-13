@@ -22,7 +22,7 @@ import { studyFrame } from '../lib/studyFrames';
 
 export default function PatternDetail() {
   const { patternId } = useParams<{ patternId: string }>();
-  const { state, updateProblem } = useApp();
+  const { state, updateProblem, canEditProgress } = useApp();
   const { curriculum, progress } = state;
 
   const [activeWorkspace, setActiveWorkspace] = useState<{
