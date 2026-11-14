@@ -110,13 +110,13 @@ export default function ScenarioCatalogue() {
       {/* Header */}
       <header className="space-y-2 border-b border-border pb-5">
         <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">
-          <BookOpen className="h-3.5 w-3.5" /> Extended practice collection
+          <BookOpen className="h-3.5 w-3.5" /> Scenario Questions
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-text-primary">Long-Scenario Catalogue</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-text-primary">Scenario Questions</h1>
             <p className="mt-1 text-sm text-text-secondary">
-              A searchable collection of {records.length} problem records from competitive programming platforms, with evidence status shown separately for every record.
+              A dedicated collection of {records.length} scenario-based problems from competitive programming platforms. Browse, search and filter questions independently of the DSA pattern curriculum.
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -174,7 +174,7 @@ export default function ScenarioCatalogue() {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-quaternary" />
             <input
-              aria-label="Search scenarios"
+              aria-label="Search scenario questions"
               value={query}
               onChange={e => setQuery(e.target.value)}
               placeholder="Search title, ID, pattern, context, contest..."
@@ -370,7 +370,7 @@ export default function ScenarioCatalogue() {
 
         {visible.length === 0 && (
           <div className="rounded-xl border border-dashed border-border p-12 text-center space-y-2">
-            <p className="text-sm font-medium text-text-secondary">No scenarios match your search or filter criteria.</p>
+            <p className="text-sm font-medium text-text-secondary">No scenario questions match your search or filter criteria.</p>
             <p className="text-xs text-text-quaternary">Try clearing some filters or searching for a different keyword.</p>
             {hasActiveFilters && (
               <button
