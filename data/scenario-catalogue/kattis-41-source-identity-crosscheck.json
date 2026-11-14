@@ -14,7 +14,9 @@
     "slugConflicts": 1,
     "notFoundInArchiveIndex": 18,
     "officialStatementsVerified": 0,
-    "importApproved": 0
+    "importApproved": 0,
+    "originalStatementIdentityMatches": 6,
+    "officialKattisPagesDirectlyVerified": 0
   },
   "gateDecision": "Keep all 41 as candidate-only. Do not promote any record based on this metadata index alone. Resolve the exactchange2/exactchange3 slug conflict. For unmatched entries, obtain official Kattis statements or authoritative contest statements and verify title, scenario, input, output, constraints, and canonical URL.",
   "records": [
@@ -22,37 +24,55 @@
       "id": "SCENARIO-001",
       "title": "Bank Queue",
       "submittedSlug": "bank",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Bank Queue",
         "slug": "bank",
         "contest": "kth-2013"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://sas.codeforces.com/gym/100185/attachments/download/1605/2013-kth-challenge-en.pdf",
+        "title": "KTH Challenge 2013, Problem F — Bank Queue",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-002",
       "title": "Postal Delivery",
       "submittedSlug": "delivery",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Postal Delivery",
         "slug": "delivery",
         "contest": "mcpc-2016"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://neerc.ifmo.ru/trains/today/train-20161108.pdf",
+        "title": "ACM-ICPC 2016 Mid-Central Regional, Problem I — Postal Delivery",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-003",
       "title": "Planting Trees",
       "submittedSlug": "plantingtrees",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Planting Trees",
         "slug": "plantingtrees",
         "contest": "nordic-ukiepc-2013"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/ncpc/2013/ncpc2013problems.pdf",
+        "title": "NCPC 2013, Problem A — Planting Trees",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-004",
@@ -90,13 +110,19 @@
       "id": "SCENARIO-010",
       "title": "Daydreaming Stockbroker",
       "submittedSlug": "stockbroker",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Daydreaming Stockbroker",
         "slug": "stockbroker",
         "contest": "nordic-2016"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/ncpc/2016/ncpc2016problems.pdf",
+        "title": "NCPC 2016, Problem D — Daydreaming Stockbroker",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-011",
@@ -114,13 +140,19 @@
       "id": "SCENARIO-012",
       "title": "Canvas Painting",
       "submittedSlug": "canvas",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Canvas Painting",
         "slug": "canvas",
         "contest": "swerc-2015"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/swerc/2015/problemset.pdf",
+        "title": "SWERC 2015, Problem C — Canvas Painting",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-013",
@@ -142,9 +174,15 @@
       "id": "SCENARIO-015",
       "title": "Marbles On A Tree",
       "submittedSlug": "marblestree",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/040612/E.html",
+        "title": "Waterloo Programming Contest, Problem E — Marbles on a tree",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
     },
     {
       "id": "SCENARIO-016",
