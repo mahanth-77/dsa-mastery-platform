@@ -150,3 +150,24 @@ A separate metadata cross-check was added at `data/scenario-catalogue/kattis-41-
 - 0 candidates were approved for import.
 
 The ICPC archive index is a secondary metadata source. It can corroborate a title/slug/contest association but cannot establish statement content, input/output rules, constraints, or long-scenario depth. Therefore all 41 remain candidate-only. The next gate is direct official statement retrieval or an authoritative original contest statement for each candidate, with an excerpt and retrieval timestamp captured. No URL should be silently substituted to make a row appear to pass.
+
+
+## Original contest statement retrieval — passes 1 and 2 (2026-11-14)
+
+Two evidence ledgers now capture eight candidate statement matches:
+
+- `data/scenario-catalogue/kattis-41-statement-evidence-pass-1.json` — 6 records: Bank Queue, Postal Delivery, Planting Trees, Canvas Painting, Daydreaming Stockbroker, and Marbles on a Tree.
+- `data/scenario-catalogue/kattis-41-statement-evidence-pass-2.json` — 2 records: Button Bashing and Restaurant Orders.
+
+For each, the ledger records the original contest statement URL, matching title/problem identity, a short statement excerpt, observed input/output contract, constraints, and a separate scenario-depth note.
+
+**Current source gate:**
+- 8/41 original contest statement identities corroborated.
+- 33/41 still need original statement evidence.
+- 0/41 live Kattis pages independently verified in this pass (direct requests remain blocked).
+- 0/41 scenario qualifications approved by this evidence pass.
+- 0 imports approved.
+
+**Quality caution:** statement identity is not long-scenario qualification. For example, Planting Trees, Button Bashing, and Restaurant Orders have valid statement evidence but concise problem formulations. Postal Delivery and Canvas Painting have richer operational narratives, but still require the formal scenario-depth gate. No candidate is promoted merely because its statement was found.
+
+No curriculum data, learner progress, runtime code, or production records were changed.
