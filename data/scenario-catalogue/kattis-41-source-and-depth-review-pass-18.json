@@ -1,0 +1,131 @@
+{
+  "pass": 18,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Continue source identity, original-statement retrieval, and scenario-materiality checks without approving or importing any candidate.",
+  "records": [
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "kattisUrl": "https://open.kattis.com/problems/color",
+      "submittedSource": "KTH Training",
+      "finding": "No authoritative source page or original statement was captured in this pass. Submitted title differs from candidate display title (Colorful Socks); preserve the alias discrepancy rather than silently normalizing it.",
+      "evidenceLevel": "unverified",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Obtain the KTH source page and full original statement; verify title/slug mapping."
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "kattisUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "submittedSource": "Algorithm Design, ITU 2019",
+      "finding": "Virtual Judge metadata identifies the exact Kattis slug, source label Algorithm Design, ITU 2019, and author Thore Husfeldt. This is secondary metadata only; no original ITU statement was captured.",
+      "evidenceLevel": "secondary_metadata_only",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the original ITU 2019 exercise/statement and inspect full input, output, and constraints."
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "kattisUrl": "https://open.kattis.com/problems/woodcutting",
+      "submittedSource": "Alberta Collegiate Programming Contest 2016",
+      "finding": "ICPC archive index maps the exact title and slug woodcutting to alberta-2016. This corroborates contest identity, but the archive index is metadata and does not supply the original statement in this pass.",
+      "evidenceLevel": "archive_metadata_corroborated",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Capture the official Alberta 2016 statement and inspect constraints before deciding whether the queueing task is sufficiently scenario-rich."
+    },
+    {
+      "id": "SCENARIO-027",
+      "title": "Single source shortest path, time table",
+      "kattisUrl": "https://open.kattis.com/problems/shortestpath2",
+      "submittedSource": "KTH CSC Popup 2005",
+      "finding": "A UCF course assignment links the exact Kattis problem and describes the time-dependent Dijkstra modification. This confirms technical shape only; it does not corroborate Popup 2005 provenance or provide the original contest statement.",
+      "evidenceLevel": "secondary_technical_reference",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find the original Popup 2005 source/statement; keep contest provenance unverified."
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "kattisUrl": "https://open.kattis.com/problems/grid",
+      "submittedSource": "2015 Southeast USA Regional Division 1",
+      "finding": "A retrievable 2015 Southeast USA Division 2 PDF contains a different Grid task (digit jumps on a grid). This is explicitly not evidence for the submitted Division 1 candidate. Division identity must not be crossed.",
+      "evidenceLevel": "conflicting_division_statement_excluded",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve Division 1 original statement; do not use the Division 2 PDF."
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "kattisUrl": "https://open.kattis.com/problems/builddeps",
+      "submittedSource": "NWERC 2015 Practice",
+      "finding": "Virtual Judge metadata identifies the exact Kattis slug, NWERC 2015 Practice source label, and author Jeroen Bransen. The ICPC archive contest listing does not independently establish the practice-set provenance; no original 2015 practice statement was captured. A similarly titled NWERC 2025 test-session problem is a different edition and must not be substituted.",
+      "evidenceLevel": "secondary_metadata_only",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the 2015 practice statement and establish the source page; do not substitute NWERC 2025."
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "kattisUrl": "https://open.kattis.com/problems/muddyhike",
+      "submittedSource": "Mount Allison Programming Showdown 2017",
+      "finding": "Earlier secondary catalogue/solution evidence supports a minimax-path technical description and the Kattis slug, but the exact MAPS 2017 provenance and original statement remain unverified.",
+      "evidenceLevel": "secondary_technical_reference",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find original MAPS 2017 statement/source page; keep identity and depth provisional."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "kattisUrl": "https://open.kattis.com/problems/walrusweights",
+      "submittedSource": "Popup 2015 Session 1",
+      "finding": "Earlier VJudge metadata identifies Popup 2015 Session 1 and author Marc Vinyals; third-party solution/discussion describes subset sum closest to 1000. Neither is the original statement, and constraints remain uncaptured.",
+      "evidenceLevel": "secondary_metadata_and_technical_reference",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Obtain original Popup 2015 statement and constraints; do not treat solution code as source evidence."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "kattisUrl": "https://open.kattis.com/problems/commercials",
+      "submittedSource": "KTH Training 2011-01-26",
+      "finding": "No original KTH training statement or authoritative problem-source page was retrieved in this pass. The commonly described maximum-subarray-with-cost-offset technique is not sufficient evidence of source identity or scenario depth.",
+      "evidenceLevel": "unverified",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the KTH training source and original statement."
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "kattisUrl": "https://open.kattis.com/problems/busyschedule",
+      "submittedSource": "Baylor Competitive Learning course",
+      "finding": "Independent educational references list the exact Kattis slug as a sorting exercise. This supports a compact technical-shape concern, not the submitted Baylor contest provenance; no original statement was captured.",
+      "evidenceLevel": "secondary_technical_reference",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find the original Kattis statement and establish whether Baylor is genuinely the source; keep excluded from long-scenario approval pending evidence."
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "kattisUrl": "https://open.kattis.com/problems/exactchange2",
+      "submittedSource": "Waterloo Programming Contest 2008-10-04",
+      "finding": "Official Waterloo 2008 Problem C statement is verified in Pass 16/17. The Kattis slug crosswalk exactchange2 remains unverified; exactchange3 is a distinct task and must not be substituted.",
+      "evidenceLevel": "official_source_statement_verified_slug_crosswalk_pending",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find authoritative mapping from Waterloo Problem C to exactchange2."
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "kattisUrl": "https://open.kattis.com/problems/cranes",
+      "submittedSource": "Waterloo Programming Contest 2008-10-04",
+      "finding": "Official Waterloo 2008 Problem A statement is verified in Pass 16/17. The exact Kattis slug crosswalk remains unverified.",
+      "evidenceLevel": "official_source_statement_verified_slug_crosswalk_pending",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find authoritative mapping from Waterloo Problem A to Kattis cranes."
+    }
+  ],
+  "newPrimaryStatementsCaptured": 0,
+  "importApprovals": 0,
+  "candidateRecordsModified": 0,
+  "safety": "All records remain candidate-only. No curriculum, learner progress, runtime, Supabase, production data, merge, or deployment changes."
+}
