@@ -5,7 +5,8 @@ import rawCatalogue from '../../data/oa-ques/oa-ques.json';
 type OAQuestion = {
   id: string; title: string; company: string | null; assessmentType: string;
   difficulty: string | null; sourceUrl: string;
-  sourceType: 'company_verified' | 'oa_style_practice';
+  sourceType: 'company_verified' | 'candidate_reported_actual_oa' | 'oa_style_practice';
+  evidenceNote?: string;
   verificationStatus: 'verified' | 'pending_review';
   durationMinutes: number | null; statement: string | null;
 };
@@ -29,6 +30,7 @@ export default function OAQuestions() {
   }, [records]);
   const companies = companyCounts.map((item) => item.name);
   const verifiedCount = records.filter((item) => item.sourceType === 'company_verified' && item.verificationStatus === 'verified').length;
+  const candidateReportedCount = records.filter((item) => item.sourceType === 'candidate_reported_actual_oa').length;
   const practiceCount = records.filter((item) => item.sourceType === 'oa_style_practice').length;
   const pendingCount = records.filter((item) => item.verificationStatus === 'pending_review').length;
 
@@ -57,17 +59,18 @@ export default function OAQuestions() {
         </div>
       </header>
 
-      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Total Questions</p><p className="text-xl font-bold text-text-primary font-mono">{records.length}</p><p className="text-[10px] text-text-quaternary">All catalogue records</p></div>
         <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Companies</p><p className="text-xl font-bold text-text-primary font-mono">{companies.length}</p><p className="text-[10px] text-text-quaternary">With tagged questions</p></div>
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Company Verified</p><p className="text-xl font-bold text-emerald-300 font-mono">{verifiedCount}</p><p className="text-[10px] text-emerald-400/70">Verified company attribution</p></div>
+        <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-violet-400">Candidate-reported OA</p><p className="text-xl font-bold text-violet-300 font-mono">{candidateReportedCount}</p><p className="text-[10px] text-violet-400/70">Community evidence, not employer-published</p></div>
         <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-blue-400">OA-Style Practice</p><p className="text-xl font-bold text-blue-300 font-mono">{practiceCount}</p><p className="text-[10px] text-blue-400/70">Not claimed as actual OAs</p></div>
         <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-amber-400">Pending Review</p><p className="text-xl font-bold text-amber-300 font-mono">{pendingCount}</p><p className="text-[10px] text-amber-400/70">Awaiting evidence review</p></div>
       </section>
 
       <div className="rounded-xl border border-border bg-surface-1/40 p-4 flex gap-3 text-xs leading-relaxed text-text-secondary">
         <ShieldCheck className="h-5 w-5 shrink-0 text-accent mt-0.5" />
-        <div className="space-y-1"><p className="text-sm font-semibold text-text-primary">Evidence-first question labels</p><p>Company tags show the company associated with a question. The "Company OA · Verified" label is reserved for questions with reliable evidence of actual company-assessment use. Other useful questions remain labelled OA-style practice.</p></div>
+        <div className="space-y-1"><p className="text-sm font-semibold text-text-primary">Evidence-first question labels</p><p>Candidate-reported records are linked to public placement repositories and cohort references where available; this is not the same as employer-published confirmation. Questions without a campus or year tag remain pending review. OA-style practice is kept separate.</p></div>
       </div>
 
       <section className="panel p-3.5 space-y-3">
@@ -75,7 +78,7 @@ export default function OAQuestions() {
           <div className="relative flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-quaternary" /><input aria-label="Search OA questions" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search question or company name (e.g. Amazon)..." className="input-field pl-9 text-xs w-full" /></div>
           <select aria-label="Filter by company" value={company} onChange={(event) => setCompany(event.target.value)} className="input-field text-xs lg:w-48"><option value="all">All companies</option>{companies.map((name) => <option key={name} value={name}>{name} ({companyCounts.find((item) => item.name === name)?.count || 0})</option>)}</select>
           <select aria-label="Filter by assessment type" value={type} onChange={(event) => setType(event.target.value)} className="input-field text-xs lg:w-48"><option value="all">All assessment types</option>{Array.from(new Set(records.map((item) => item.assessmentType))).sort().map((name) => <option key={name} value={name}>{name}</option>)}</select>
-          <select aria-label="Filter by source type" value={source} onChange={(event) => setSource(event.target.value)} className="input-field text-xs lg:w-52"><option value="all">All question types</option><option value="company_verified">Company-verified</option><option value="oa_style_practice">OA-style practice</option></select>
+          <select aria-label="Filter by source type" value={source} onChange={(event) => setSource(event.target.value)} className="input-field text-xs lg:w-52"><option value="all">All question types</option><option value="company_verified">Employer-verified</option><option value="candidate_reported_actual_oa">Candidate-reported OA</option><option value="oa_style_practice">OA-style practice</option></select>
           {hasFilters && <button onClick={reset} className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-2 hover:bg-surface-3 text-xs text-text-secondary transition-colors shrink-0"><RotateCcw className="h-3.5 w-3.5" /> Reset</button>}
         </div>
         <div className="flex items-center justify-between text-[11px] text-text-tertiary font-mono pt-1"><span>Showing {visible.length} of {records.length} questions</span>{hasFilters && <span className="text-accent">Filtered view active</span>}</div>
@@ -97,8 +100,8 @@ export default function OAQuestions() {
               {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-tertiary border border-border">{item.difficulty || 'Difficulty unverified'}</span>
               {item.durationMinutes && <span className="inline-flex items-center gap-1 text-text-tertiary"><Clock3 className="h-3 w-3" /> {item.durationMinutes} min</span>}
-            </div><h2 className="text-base font-semibold text-text-primary">{item.title}</h2><p className="text-xs text-text-secondary">{item.statement || 'Question statement is available at the original source.'}</p></div>
-            <span className="shrink-0 text-[10px] font-mono px-2.5 py-1 rounded border border-border bg-surface-2 text-text-secondary">{item.sourceType === 'company_verified' && item.verificationStatus === 'verified' ? 'Company OA · Verified' : item.sourceType === 'company_verified' ? 'Company attribution · Pending review' : 'OA-style practice'}</span>
+            </div><h2 className="text-base font-semibold text-text-primary">{item.title}</h2><p className="text-xs text-text-secondary">{item.statement || 'Question statement is available at the original source.'}</p>{item.evidenceNote && <p className="text-[10px] text-text-tertiary">Source context: {item.evidenceNote}</p>}</div>
+            <span className="shrink-0 text-[10px] font-mono px-2.5 py-1 rounded border border-border bg-surface-2 text-text-secondary">{item.sourceType === 'company_verified' && item.verificationStatus === 'verified' ? 'Employer-verified OA' : item.sourceType === 'company_verified' ? 'Employer attribution · Pending review' : item.sourceType === 'candidate_reported_actual_oa' ? (item.verificationStatus === 'verified' ? 'Candidate-reported OA · Evidence linked' : 'Candidate-reported OA · Pending review') : 'OA-style practice'}</span>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-border/50 text-[11px] font-mono text-text-tertiary"><span className="inline-flex items-center gap-1"><Building2 className="h-3 w-3" /> {item.assessmentType}</span><a href={item.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-accent hover:underline font-medium ml-auto">Open original question <ExternalLink className="h-3 w-3" /></a></div>
         </article>)}
