@@ -110,13 +110,13 @@ export default function ScenarioCatalogue() {
       {/* Header */}
       <header className="space-y-2 border-b border-border pb-5">
         <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-accent font-semibold">
-          <BookOpen className="h-3.5 w-3.5" /> Extended practice collection
+          <BookOpen className="h-3.5 w-3.5" /> Scenario question bank
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-text-primary">Long-Scenario Catalogue</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-text-primary">Scenario Questions</h1>
             <p className="mt-1 text-sm text-text-secondary">
-              A searchable collection of {records.length} problem records from competitive programming platforms, with evidence status shown separately for every record.
+              A searchable collection of {records.length} scenario-based problems from competitive programming platforms, with evidence status shown separately for every record.
             </p>
           </div>
           <div className="flex items-center gap-2">
