@@ -442,18 +442,12 @@
       "submittedSlug": "trainsorting",
       "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
+      "note": "Waterloo 2008 Spring A identity and statement corroborated by the DMOJ judge mirror. The exact submitted June 15 date remains unverified. A separate Waterloo 2013 copy exists but is not treated as a provenance conflict.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/trainsorting",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
-      },
-      "alternateSourceConflict": {
-        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
-        "contest": "Waterloo Contests Selection, September 10, 2013",
-        "reviewedOn": "2026-11-14",
-        "decision": "Superseded as a source-conflict flag: Waterloo 2008 Spring A Train Sorting is independently corroborated by the DMOJ judge mirror. The Waterloo 2013 source is an alternate/reused statement, not evidence against the 2008 source claim. Exact submitted June 15 date remains unverified."
       },
       "statementEvidence": {
         "url": "https://dmoj.ca/problem/waterloo2008sa",
