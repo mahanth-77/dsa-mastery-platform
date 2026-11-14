@@ -69,3 +69,49 @@ Research references:
 - Bank Queue archive index row: problem UUID `949781ee-0639-475a-93ee-75f96893a51c`, short name `bank`, set `kth-2013`.
 
 **Recovery status remains unchanged:** 64 records are still `SOURCE_UNVERIFIED_HOLD` until actual statement content is retrieved and compared. The public catalogue's archive-holding flag is metadata about archive availability; it is not a substitute for inspecting the statement. No record was upgraded, and no VERTEX curriculum data was changed.
+
+
+## Kattis 64-record gate — candidate-only staging (2026-11-14)
+
+The supplied final approval CSV and report were imported into a separate, non-runtime data area:
+
+- `data/scenario-catalogue/kattis-41-candidates.json`
+- `data/scenario-catalogue/kattis-64-gate-register.json`
+
+### Reconciled gate counts
+
+| Submitted disposition | Count | Staging treatment |
+|---|---:|---|
+| Reported approved | 41 | Imported as `candidate`; `importApproved: false` |
+| Held for human review | 4 | Retained in audit register only |
+| Disqualified | 19 | Retained in audit register only |
+| **Total** | **64** | **64 unique IDs** |
+
+The independent scenario audit reported 42 long-scenario candidates (20 strong + 22 moderate), but one (SCENARIO-050) remains held for its original/canonical slug mismatch. The 41 submitted approvals are not promoted to schema-level `approved` status.
+
+### Evidence limitation and approval boundary
+
+The supplied CSV contains observed-field booleans and gate notes, but does not include statement excerpts, evidence artifact paths, or retrieval dates. Accordingly, every staged candidate records:
+
+- `reviewStatus: "candidate"`
+- `importApproved: false`
+- `evidence.evidenceKind: "historical_assertion"`
+- `evidence.statementExcerpt: null`
+- `evidence.retrievedAt: null`
+- `review.scenarioFidelity: "inconclusive"`
+- `review.scenarioDepth: "unassessed"`
+
+This preserves the submitted audit claims without misrepresenting them as independently reproducible evidence or satisfying the existing approval gate.
+
+Nine candidates are additionally flagged for scenario-materiality review: SCENARIO-008, 013, 016, 052, 053, 060, 095, 096, and 178. This is a review queue, not a disqualification.
+
+The report names branch `vertex/recover-64-kattis-evidence`, but that branch was not found among the repository's published branches during this import. The evidence files described in the report were not present in the GitHub branch inspected here and were not fabricated or recreated. Only the CSV/report content supplied in the conversation was used.
+
+The report's pre-existing baseline of 121 and combined total of 162 remain **reported, not independently re-certified in this staging change**. The baseline evidence files referenced in the report were not supplied for inspection.
+
+### Integrity boundary
+
+- `dsa_pattern_mastery_tracker.json` was read from the staging branch and its blob SHA remained `5ede9edfe952caebefee9aaa2f5a61e480f25aa9` at verification.
+- No curriculum placement, learner progress, runtime component, Supabase migration, or production dataset was changed.
+- These files are candidate/audit data only; they are not wired into the application.
+- No production import, merge, or deployment was performed.
