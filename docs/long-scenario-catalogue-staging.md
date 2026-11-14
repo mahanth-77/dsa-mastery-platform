@@ -396,3 +396,17 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-19.json`.
 - Cranes: official Waterloo 2008 statement remains verified, but the Kattis `cranes` slug crosswalk remains pending.
 
 Pass 19 captured zero new original statements and approved zero imports. Candidate records remain unchanged; all 41 remain candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
+
+
+
+### Targeted primary-source retrieval and slug-crosswalk pass 20
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-20.json`.
+
+- Wood Cutting: the official Kattis Alberta 2016 problem-source page lists Wood Cutting and links the `woodcutting` problem page; the ICPC archive independently maps the same title/slug to Alberta 2016. This is now direct official Kattis source-list metadata, not statement verification. The problem and English statement endpoints returned 403/disabled fetch, so no statement text, I/O, examples, or constraints were inspected.
+- Radio Commercials: existing Virtual Judge metadata identifies `commercials`, KTH Training 2011-01-26, and author Lukáš Poláček. Direct Kattis problem and KTH Training source-list retrieval returned 403; no original statement captured.
+- Build Dependencies: existing Virtual Judge metadata identifies `builddeps`, NWERC 2015 Practice, and Jeroen Bransen. The official Kattis source-list and problem endpoints returned 403; the NWERC 2025 slide deck remains excluded as a different edition.
+- Coloring Socks: the `color` slug/title association remains secondary-only; the submitted KTH Training source claim is not corroborated. Course references do not establish contest provenance; the unrelated KTH Challenge 2013 PDF remains excluded.
+- Exact Change: `exactchange3` remains a distinct PACNW 2024 variant. The Waterloo 2008 Problem C statement is verified, but no authoritative mapping from candidate slug `exactchange2` to that statement was found.
+- Cranes: the Waterloo 2008 Problem A statement is verified, but no authoritative Kattis `cranes` slug crosswalk was found. Absence from the consulted secondary archive index is not proof of invalidity.
+
+Pass 20 reviewed 6 records, obtained 1 new direct official Kattis source-list metadata confirmation (Wood Cutting), captured 0 new original statements, approved 0 scenario-depth claims, and approved 0 imports. All 41 candidate records remain candidate-only and unchanged. No curriculum, learner progress, runtime, Supabase, or production data changed. PR remains draft; no merge or deployment.
