@@ -423,3 +423,18 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-21.json`.
 - Walrus Weights: Popup 2015 metadata and third-party solution/discussion references remain; no original statement or constraints captured.
 
 Pass 21 reviewed 5 records, captured 0 new primary statements, logged 1 third-party statement copy, excluded 1 false-positive title match, and approved 0 source identities, scenario-depth claims, or imports. All 41 candidate records remain unchanged and candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
+
+
+### Targeted primary-source retrieval and exact crosswalk pass 22
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-22.json`.
+
+- **Build Dependencies:** inspected the complete NWERC 2015 official main-contest statement packet. Its 11-problem index does not include Build Dependencies. This does not rule out a separate practice-session package, but the prior NWERC 2015 Practice label is not corroborated by the main-contest packet. No Build Dependencies statement captured; keep the source attribution unresolved.
+- **Radio Commercials:** prior VJudge metadata remains secondary-only; no KTH Training 2011-01-26 original statement or authoritative source listing retrieved.
+- **Coloring Socks:** slug/title support remains limited to third-party solution indexes; submitted KTH provenance remains unverified. The unrelated KTH Challenge 2013 packet remains excluded.
+- **Grid:** the ICPC Kattis judge index explicitly maps Grid / `grid` to SEUSA 2015 Division 1. The archive marks the problem set partial (18 of 21 problems); the Division 1 statement is still missing. The different Division 2 PDF remains excluded.
+- **Muddy Hike:** no official MAPS 2017 package or exact Kattis source crosswalk retrieved. The third-party statement copy is not upgraded to primary evidence.
+- **Interval Scheduling, Walrus Weights, Busy Schedule:** no original statements or authoritative source exports retrieved. The DMOJ `sched` same-title result remains a false positive for Busy Schedule.
+- **Cranes:** Waterloo 2008 Problem A remains an official statement match, but no authoritative Kattis `cranes` slug crosswalk found.
+- **Exact Change:** Waterloo 2008 Problem C remains an official statement match, but the `exactchange2` crosswalk is unresolved. The archive explicitly maps distinct `exactchange3` to PACNW 2024; do not substitute it.
+
+Pass 22 reviewed 10 records, inspected one official contest statement packet, added one archive source crosswalk for Grid, captured zero new original statements, approved zero scenario-depth claims, and approved zero imports. The NWERC packet creates a source-attribution discrepancy to resolve for Build Dependencies; it does not establish that a separate practice package never existed. All 41 candidates remain candidate-only and `importApproved: false`. No candidate records, curriculum, learner progress, runtime, Supabase, or production data changed. PR remains draft; no merge or deployment.
