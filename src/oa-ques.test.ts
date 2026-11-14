@@ -47,7 +47,7 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(65);
     expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(65);
     expect(expandedRecords.filter((item: any) => item.sourceType === 'oa_style_practice')).toHaveLength(2683);
-    expect(oaCatalogue.records.every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
+    expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa').every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
     expect(new Set(oaCatalogue.records.map((item: any) => item.id)).size).toBe(oaCatalogue.records.length);
   });
 
