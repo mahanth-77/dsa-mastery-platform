@@ -10,8 +10,8 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "originalStatementIdentityVerified": 11,
-    "archiveMetadataOnlyMatch": 13,
+    "originalStatementIdentityVerified": 13,
+    "archiveMetadataOnlyMatch": 11,
     "slugConflict": 1,
     "notFoundInConsultedArchiveIndex": 16,
     "liveKattisPagesDirectlyVerified": 0,
@@ -77,13 +77,19 @@
       "id": "SCENARIO-004",
       "title": "Shopaholic",
       "submittedSlug": "shopaholic",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Shopaholic",
         "slug": "shopaholic",
         "contest": "nordic-2007"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the original NCPC 2007 contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2007/ncpc2007problems.pdf",
+        "title": "NCPC 2007, Problem H — Shopaholic",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-007",
@@ -393,13 +399,19 @@
       "id": "SCENARIO-082",
       "title": "Phone List",
       "submittedSlug": "phonelist",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Phone List",
         "slug": "phonelist",
         "contest": "nordic-2007"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the original NCPC 2007 contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2007/ncpc2007problems.pdf",
+        "title": "NCPC 2007, Problem A — Phone List",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-083",
