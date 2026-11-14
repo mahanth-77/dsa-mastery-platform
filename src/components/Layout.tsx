@@ -12,6 +12,7 @@ import {
   Search,
   HardDrive,
   Layers,
+  BookOpen,
   LogIn,
   LogOut,
   ChevronDown,
@@ -31,6 +32,7 @@ const navItems = [
   { to: '/revisions', label: 'Revision Queue', icon: Clock, shortcut: '3' },
   { to: '/analytics', label: 'Analytics', icon: BarChart2, shortcut: '4' },
   { to: '/settings', label: 'Settings', icon: Sliders, shortcut: '5' },
+  { to: '/scenarios', label: 'Scenario Catalogue', icon: BookOpen, shortcut: '6' },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -98,7 +100,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setCommandPaletteOpen((prev) => !prev);
-      } else if ((e.metaKey || e.altKey) && ['1', '2', '3', '4', '5'].includes(e.key)) {
+      } else if ((e.metaKey || e.altKey) && ['1', '2', '3', '4', '5', '6'].includes(e.key)) {
         e.preventDefault();
         const item = navItems.find((n) => n.shortcut === e.key);
         if (item) navigate(item.to);
