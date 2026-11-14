@@ -277,3 +277,23 @@ Current source inventory after pass 11:
 - 0 imports approved.
 
 The 25 count is not a quality pass count. Water is a strong long-scenario candidate for final rubric review; Fire is a possible moderate candidate; Train Sorting is not a long-scenario candidate. None is import-approved.
+
+
+## Kattis statement evidence and provenance cross-check — pass 12 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-statement-evidence-pass-12.json` for six unresolved candidates:
+
+| ID | Candidate | Finding | Current treatment |
+|---|---|---|---|
+| 011 | Air Conditioned Minions | Singapore 2015 source association corroborated by secondary archive/judge metadata; participant recap describes interval-greedy task, but original statement not captured | Provisional not-long-scenario quality concern; not a final source-content rejection |
+| 035 | Muddy Hike | Kattis problem identity appears in a solution index; MAPS 2017 organizer/site exists, but the accessible evidence does not tie this exact problem to that source | Provenance and statement remain unverified |
+| 052 | Walrus Weights | Popup 2015 Session 1 source association corroborated by secondary judge metadata; statement not captured | Retain human-review flag; depth unassessed |
+| 058 | Spiderman's Workout | Matching full statement inspected on a secondary DOMjudge mirror; claimed Norwegian/Swedish Championships 2003 provenance not corroborated | Provisional not-long-scenario assessment based on the concise single-task statement; source provenance unresolved |
+| 083 | Word Cloud | MCPC 2014 title/slug/source association corroborated by secondary archive and judge metadata; exact 2014 statement not captured | Depth unassessed; do not substitute the distinct 2015 Word Clouds Revisited problem |
+| 200 | Cranes | Only the alternate Waterloo 2013 statement copy was found; claimed Waterloo 2008-10-04 statement not obtained | Keep provenance hold |
+
+Pass 12 adds **zero original contest statements** and **zero import approvals**. Three candidates have secondary metadata corroboration; one has matching statement content on a secondary mirror but unresolved original provenance. Two candidates receive only provisional not-long-scenario quality concerns; these are not counted as final source-content rejections. Direct Kattis page/source-page requests remain blocked with HTTP 403, which is an access limitation and not evidence of invalidity.
+
+The statement-content review for Spiderman's Workout found a short climbing-direction optimization task with at most 101 scenarios, at most 40 distances per scenario, and total distance at most 1000. This is not enough narrative or task breadth for the long-scenario quota under the current rubric. The Air Conditioned Minions assessment is provisional because it relies on a participant recap rather than the full original statement.
+
+**Cumulative integrity status:** all six remain candidate-only; `importApproved: false`; no curriculum, learner-progress, runtime, Supabase, or production data changed. The previously reported 25/41 original-statement identity count is unchanged; pass 12 does not add to that count.
