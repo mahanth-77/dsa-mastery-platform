@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import oaCatalogue from '../data/oa-ques/oa-ques.json';
 import curriculum from '../dsa_pattern_mastery_tracker.json';
+import hackerRank from '../data/oa-ques/hackerrank-kit.json';
+const leetcodeBatches = import.meta.glob('../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: any[] }>;
+const expandedRecords = [...oaCatalogue.records, ...Object.values(leetcodeBatches).flatMap((batch) => batch.records), ...hackerRank.records];
 
 type Record = { id: string; title: string; company: string | null; assessmentType: string };
 
@@ -39,17 +42,19 @@ describe('VERTEX OA Ques company tags and counts', () => {
 
   it('imports only source-linked candidate-reported OA records with company and title', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
-    expect(oaCatalogue.records).toHaveLength(65);
-    expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(24);
-    expect(oaCatalogue.records.every((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toBe(true);
-    expect(oaCatalogue.records.every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
+    expect(oaCatalogue.records).toHaveLength(2531);
+    expect(expandedRecords).toHaveLength(2748);
+    expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(65);
+    expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(65);
+    expect(expandedRecords.filter((item: any) => item.sourceType === 'oa_style_practice')).toHaveLength(2683);
+    expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa').every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
     expect(new Set(oaCatalogue.records.map((item: any) => item.id)).size).toBe(oaCatalogue.records.length);
   });
 
   it('does not import exact-title duplicates already in the DSA curriculum', () => {
     const curriculumTitles = new Set<string>();
     curriculum.patterns.forEach((pattern: any) => pattern.variations.forEach((variation: any) => variation.problems.forEach((problem: any) => curriculumTitles.add(normalize(problem.title)))));
-    const duplicateTitles = oaCatalogue.records.filter((item: any) => curriculumTitles.has(normalize(item.title)));
+    const duplicateTitles = expandedRecords.filter((item: any) => curriculumTitles.has(normalize(item.title)));
     expect(duplicateTitles).toEqual([]);
   });
 
