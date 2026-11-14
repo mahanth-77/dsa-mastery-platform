@@ -41,6 +41,11 @@ export default function OAQuestions() {
   const candidateReportedCount = records.filter((item) => item.sourceType === 'candidate_reported_actual_oa').length;
   const practiceCount = records.filter((item) => item.sourceType === 'oa_style_practice').length;
   const pendingCount = records.filter((item) => item.verificationStatus === 'pending_review').length;
+  const sourceCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    records.forEach((item) => counts.set(item.assessmentType, (counts.get(item.assessmentType) || 0) + 1));
+    return Array.from(counts, ([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  }, [records]);
 
   const visible = useMemo(() => records.filter((item) => {
     const q = query.trim().toLowerCase();
@@ -80,6 +85,13 @@ export default function OAQuestions() {
         <ShieldCheck className="h-5 w-5 shrink-0 text-accent mt-0.5" />
         <div className="space-y-1"><p className="text-sm font-semibold text-text-primary">Evidence-first question labels</p><p>Candidate-reported records are linked to public placement repositories and cohort references where available; this is not the same as employer-published confirmation. Questions without a campus or year tag remain pending review. LeetCode company tags and HackerRank preparation-kit problems are practice evidence only, not proof of actual employer OA use. Sponsored contests are not counted as hiring OAs.</p></div>
       </div>
+
+      <section className="space-y-3">
+        <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. Company-tagged practice is not employer-confirmed OA evidence.</p></div>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {sourceCounts.map((item) => <div key={item.name} className="rounded-lg border border-border bg-surface-1/50 px-3 py-2.5 flex items-center justify-between gap-3"><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></div>)}
+        </div>
+      </section>
 
       <section className="panel p-3.5 space-y-3">
         <div className="flex flex-col lg:flex-row gap-2.5">
