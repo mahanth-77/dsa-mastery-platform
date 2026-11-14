@@ -3,7 +3,7 @@
   "sourceType": "candidate_reported_actual_oa",
   "records": [
     {
-      "id": "OA-TCS-001",
+      "id": "OA-TCS-001-odd-occurring-element-in-o-log-n",
       "title": "Odd Occurring Element in O(log N)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -16,7 +16,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-002",
+      "id": "OA-TCS-002-count-subsets-with-given-sum",
       "title": "Count Subsets with Given Sum",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -29,7 +29,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-003",
+      "id": "OA-TCS-003-chocolate-packets-move-empty-packets-to-end",
       "title": "Chocolate Packets — Move Empty Packets to End",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -42,7 +42,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-004",
+      "id": "OA-TCS-004-covid-handshake-problem",
       "title": "COVID Handshake Problem",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -55,7 +55,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-005",
+      "id": "OA-TCS-005-book-exchange-derangement-count",
       "title": "Book Exchange — Derangement Count",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -68,7 +68,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-006",
+      "id": "OA-TCS-006-xor-coin-denomination-story-based",
       "title": "XOR Coin Denomination (Story-Based)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -81,7 +81,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-007",
+      "id": "OA-TCS-007-income-expenditure-and-savings-tracker",
       "title": "Income, Expenditure and Savings Tracker",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -94,7 +94,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-008",
+      "id": "OA-TCS-008-reverse-words-in-a-sentence",
       "title": "Reverse Words in a Sentence",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -107,7 +107,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-009",
+      "id": "OA-TCS-009-count-vowels-consonants-spaces-and-special-characters",
       "title": "Count Vowels, Consonants, Spaces and Special Characters",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -120,7 +120,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-010",
+      "id": "OA-TCS-010-check-palindrome-case-insensitive",
       "title": "Check Palindrome (Case-Insensitive)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -133,7 +133,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-011",
+      "id": "OA-TCS-011-armstrong-number-check",
       "title": "Armstrong Number Check",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -146,7 +146,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-012",
+      "id": "OA-TCS-012-second-largest-number-in-array",
       "title": "Second Largest Number in Array",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -159,7 +159,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-013",
+      "id": "OA-TCS-013-leap-year-check",
       "title": "Leap Year Check",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -172,7 +172,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-014",
+      "id": "OA-TCS-014-binary-number-conversion",
       "title": "Binary Number Conversion",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -185,7 +185,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-015",
+      "id": "OA-TCS-015-gcd-and-lcm",
       "title": "GCD and LCM",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -198,7 +198,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-016",
+      "id": "OA-TCS-016-digit-sum-repeatedly-until-single-digit",
       "title": "Digit Sum (Repeatedly Until Single Digit)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -211,7 +211,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-017",
+      "id": "OA-TCS-017-26-april-2024-shift-1-average-sales-calculation",
       "title": "26 April 2024 Shift 1 — Average Sales Calculation",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -224,7 +224,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-018",
+      "id": "OA-TCS-018-26-april-2024-shift-2-number-pattern-series",
       "title": "26 April 2024 Shift 2 — Number Pattern Series",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -237,7 +237,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-019",
+      "id": "OA-TCS-019-29-april-2024-shift-1-smallest-number-in-array",
       "title": "29 April 2024 Shift 1 — Smallest Number in Array",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -250,7 +250,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-020",
+      "id": "OA-TCS-020-3-may-2024-shift-1-sorting-algorithm-bubble-sort",
       "title": "3 May 2024 Shift 1 — Sorting Algorithm (Bubble Sort)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -263,7 +263,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-021",
+      "id": "OA-TCS-021-8-may-2024-shift-2-prime-number-check",
       "title": "8 May 2024 Shift 2 — Prime Number Check",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -276,7 +276,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-022",
+      "id": "OA-TCS-022-9-may-2024-shift-1-remove-duplicates-from-array",
       "title": "9 May 2024 Shift 1 — Remove Duplicates from Array",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -289,7 +289,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-023",
+      "id": "OA-TCS-023-14-may-2024-shift-1-fibonacci-series",
       "title": "14 May 2024 Shift 1 — Fibonacci Series",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -302,7 +302,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-024",
+      "id": "OA-TCS-024-14-may-2024-shift-2-pattern-right-angle-triangle-of-numbers",
       "title": "14 May 2024 Shift 2 — Pattern: Right-Angle Triangle of Numbers",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -315,7 +315,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-035",
+      "id": "OA-TCS-035-subset-sum-problem-dp",
       "title": "Subset Sum Problem (DP)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -328,7 +328,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-039",
+      "id": "OA-TCS-039-8-may-2024-basic-closest-multiple-of-y-to-x",
       "title": "8 May 2024 (Basic) — Closest Multiple of Y to X",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -341,7 +341,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-040",
+      "id": "OA-TCS-040-8-may-2024-advanced-password-validator-caesar-cipher",
       "title": "8 May 2024 (Advanced) — Password Validator + Caesar Cipher",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -354,7 +354,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-041",
+      "id": "OA-TCS-041-26-april-2024-all-subarrays-with-sum-equal-to-k",
       "title": "26 April 2024 — All Subarrays with Sum Equal to K",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -367,7 +367,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-042",
+      "id": "OA-TCS-042-29-april-2024-kolkata-q1-fibonacci-sum-up-to-n-terms",
       "title": "29 April 2024 Kolkata (Q1) — Fibonacci Sum up to N Terms",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -380,7 +380,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-043",
+      "id": "OA-TCS-043-29-april-2024-kolkata-q2-distinct-bitwise-or-of-subarrays",
       "title": "29 April 2024 Kolkata (Q2) — Distinct Bitwise OR of Subarrays",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -393,7 +393,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-044",
+      "id": "OA-TCS-044-two-wheeler-and-four-wheeler-production-scenario-based",
       "title": "Two-Wheeler and Four-Wheeler Production (Scenario-Based)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -406,7 +406,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-045",
+      "id": "OA-TCS-045-mpcs-fitness-test-average-oxygen-level-of-trainees",
       "title": "MPCS Fitness Test — Average Oxygen Level of Trainees",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -419,7 +419,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-046",
+      "id": "OA-TCS-046-caesar-cipher-custom-with-digits",
       "title": "Caesar Cipher (Custom — With Digits)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -432,7 +432,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-047",
+      "id": "OA-TCS-047-matrix-addition",
       "title": "Matrix Addition",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -445,7 +445,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-048",
+      "id": "OA-TCS-048-reverse-a-string-without-built-in-functions",
       "title": "Reverse a String Without Built-In Functions",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -458,7 +458,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-049",
+      "id": "OA-TCS-049-check-if-number-is-perfect",
       "title": "Check if Number is Perfect",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -471,7 +471,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-050",
+      "id": "OA-TCS-050-count-frequency-of-each-element-in-array",
       "title": "Count Frequency of Each Element in Array",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -484,7 +484,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-063",
+      "id": "OA-TCS-063-chocolate-factory-push-zeros-to-end",
       "title": "Chocolate Factory — Push Zeros to End",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -497,7 +497,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-064",
+      "id": "OA-TCS-064-toggle-all-bits-after-msb-including-msb",
       "title": "Toggle All Bits After MSB (Including MSB)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -510,7 +510,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-065",
+      "id": "OA-TCS-065-count-sundays-in-n-days-from-a-given-start-day",
       "title": "Count Sundays in N Days from a Given Start Day",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -523,7 +523,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-066",
+      "id": "OA-TCS-066-airport-security-sort-items-by-risk-0-1-2",
       "title": "Airport Security — Sort Items by Risk (0, 1, 2)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -536,7 +536,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-067",
+      "id": "OA-TCS-067-count-elements-greater-than-all-previous-elements",
       "title": "Count Elements Greater Than All Previous Elements",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -549,7 +549,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-068",
+      "id": "OA-TCS-068-supermarket-scanner-product-of-all-digits",
       "title": "Supermarket Scanner — Product of All Digits",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -562,7 +562,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-069",
+      "id": "OA-TCS-069-curtain-factory-max-aqua-curtains-in-any-box",
       "title": "Curtain Factory — Max Aqua Curtains in Any Box",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -575,7 +575,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-051",
+      "id": "OA-TCS-051-weekly-exercise-summary",
       "title": "Weekly Exercise Summary",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -588,7 +588,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-052",
+      "id": "OA-TCS-052-count-palindrome-numbers-in-range-m-to-n",
       "title": "Count Palindrome Numbers in Range M to N",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -601,7 +601,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-053",
+      "id": "OA-TCS-053-train-travel-time-on-bridge",
       "title": "Train Travel Time on Bridge",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -614,7 +614,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-054",
+      "id": "OA-TCS-054-split-array-with-equal-averages",
       "title": "Split Array with Equal Averages",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -627,7 +627,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-055",
+      "id": "OA-TCS-055-perfect-donation-amount",
       "title": "Perfect Donation Amount",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -640,7 +640,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-056",
+      "id": "OA-TCS-056-inventory-frequency-counter",
       "title": "Inventory Frequency Counter",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -653,7 +653,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-057",
+      "id": "OA-TCS-057-calculate-speed-from-distance-and-time",
       "title": "Calculate Speed from Distance and Time",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -666,7 +666,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-058",
+      "id": "OA-TCS-058-jump-game-can-you-reach-the-end",
       "title": "Jump Game — Can You Reach the End?",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -679,7 +679,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-059",
+      "id": "OA-TCS-059-6-may-2024-shift-1-count-subarrays-with-sum-k",
       "title": "6 May 2024 Shift 1 — Count Subarrays with Sum = K",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -692,7 +692,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-060",
+      "id": "OA-TCS-060-6-may-2024-shift-2-first-non-repeating-character",
       "title": "6 May 2024 Shift 2 — First Non-Repeating Character",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -705,7 +705,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-061",
+      "id": "OA-TCS-061-toggle-bits-number-of-bits-to-flip",
       "title": "Toggle Bits — Number of Bits to Flip",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -718,7 +718,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-062",
+      "id": "OA-TCS-062-ap-gp-series-find-nth-term",
       "title": "AP/GP Series: Find Nth Term",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -731,7 +731,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-063",
+      "id": "OA-TCS-063-count-sundays-in-a-month",
       "title": "Count Sundays in a Month",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -744,7 +744,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-064",
+      "id": "OA-TCS-064-toggle-all-bits-of-a-number",
       "title": "Toggle All Bits of a Number",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -757,7 +757,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-065",
+      "id": "OA-TCS-065-number-series-n-2-n-pattern-find-next-term",
       "title": "Number Series: n^2 + n Pattern — Find Next Term",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -770,7 +770,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-066",
+      "id": "OA-TCS-066-alice-s-verbal-kho-kho-digit-passing-game",
       "title": "Alice's Verbal Kho-Kho — Digit Passing Game",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -783,7 +783,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-067",
+      "id": "OA-TCS-067-distinct-elements-in-array",
       "title": "Distinct Elements in Array",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -796,7 +796,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-068",
+      "id": "OA-TCS-068-bfs-breadth-first-search-on-a-graph",
       "title": "BFS (Breadth First Search) on a Graph",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -809,7 +809,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-069",
+      "id": "OA-TCS-069-factory-production-rate-calculation",
       "title": "Factory Production (Rate Calculation)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -822,7 +822,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-070",
+      "id": "OA-TCS-070-nth-term-of-mixed-series-a-n-n-and-b-n-n-2",
       "title": "Nth Term of Mixed Series A(n)=n and B(n)=n^2",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -835,7 +835,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-071",
+      "id": "OA-TCS-071-sort-0s-1s-and-2s-dutch-national-flag-confirmed-2026-pattern",
       "title": "Sort 0s, 1s and 2s — Dutch National Flag (Confirmed 2026 Pattern)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
@@ -848,7 +848,7 @@
       "evidenceNote": "Listed in a public TCS NQT programming PYQ collection and explicitly marked VERIFIED PYQ by its maintainer. Candidate/community evidence; not employer-published confirmation."
     },
     {
-      "id": "OA-TCS-072",
+      "id": "OA-TCS-072-move-zeroes-to-end-chocolate-factory-exact-wording-2026",
       "title": "Move Zeroes to End — Chocolate Factory (Exact Wording 2026)",
       "company": "TCS",
       "assessmentType": "TCS NQT candidate-reported programming PYQ",
