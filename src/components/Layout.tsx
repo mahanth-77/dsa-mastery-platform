@@ -157,9 +157,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               >
                 <item.icon className="w-3.5 h-3.5 shrink-0 opacity-80" />
                 <span className="flex-1">{item.label}</span>
-                <span className="text-[10px] font-mono text-text-quaternary group-hover:text-text-tertiary">
-                  ⌥{item.shortcut}
-                </span>
+                {item.shortcut && (
+                  <span className="text-[10px] font-mono text-text-quaternary group-hover:text-text-tertiary">
+                    ⌥{item.shortcut}
+                  </span>
+                )}
               </NavLink>
             ))}
           </nav>
