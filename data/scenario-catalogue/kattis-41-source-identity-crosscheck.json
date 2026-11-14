@@ -15,7 +15,7 @@
     "notFoundInArchiveIndex": 18,
     "officialStatementsVerified": 0,
     "importApproved": 0,
-    "originalStatementIdentityMatches": 6,
+    "originalStatementIdentityMatches": 8,
     "officialKattisPagesDirectlyVerified": 0
   },
   "gateDecision": "Keep all 41 as candidate-only. Do not promote any record based on this metadata index alone. Resolve the exactchange2/exactchange3 slug conflict. For unmatched entries, obtain official Kattis statements or authoritative contest statements and verify title, scenario, input, output, constraints, and canonical URL.",
@@ -240,13 +240,19 @@
       "id": "SCENARIO-031",
       "title": "Button Bashing",
       "submittedSlug": "buttonbashing",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Button Bashing",
         "slug": "buttonbashing",
         "contest": "bapc-2014"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://chipcie.wisv.ch/archive/2014/bapc/problemset.pdf",
+        "title": "BAPC 2014, Problem B — Button Bashing",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-032",
@@ -280,13 +286,19 @@
       "id": "SCENARIO-051",
       "title": "Restaurant Orders",
       "submittedSlug": "orders",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Restaurant Orders",
         "slug": "orders",
         "contest": "kth-2012"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/kthchallenge/2012/problems.pdf",
+        "title": "KTH Challenge 2012, Problem G — Restaurant Orders",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-052",
