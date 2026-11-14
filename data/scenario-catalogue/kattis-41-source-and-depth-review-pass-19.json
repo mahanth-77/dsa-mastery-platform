@@ -1,0 +1,65 @@
+{
+  "pass": 19,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Targeted source-page and original-statement retrieval follow-up. No candidate approval or import.",
+  "records": [
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "kattisUrl": "https://open.kattis.com/problems/color",
+      "finding": "Search results confirm that the Kattis slug color is used for Coloring Socks, but the consulted ICPC archive index has no exact Coloring Socks entry and no KTH source statement was found. A KTH Challenge 2013 problem PDF is unrelated and must not be used as provenance.",
+      "evidenceLevel": "slug_title_secondary_only",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find KTH source page or original contest statement for the actual candidate."
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "kattisUrl": "https://open.kattis.com/problems/woodcutting",
+      "finding": "ICPC Kattis archive explicitly maps Wood Cutting / woodcutting to alberta-2016. This is a strong title/slug/contest crosswalk, but archive metadata is not the original statement; no official statement captured.",
+      "evidenceLevel": "archive_metadata_corroborated",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve Alberta 2016 official statement and inspect complete constraints and task framing."
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "kattisUrl": "https://open.kattis.com/problems/builddeps",
+      "finding": "Virtual Judge metadata confirms exact Kattis slug, NWERC 2015 Practice source label, and author Jeroen Bransen. A publicly indexed NWERC 2025 practice-slides PDF also contains a Build Dependencies problem by the same author, but it is a different edition and cannot be substituted for the 2015 statement or used to qualify this record.",
+      "evidenceLevel": "secondary_metadata_corroborated_original_2015_statement_missing",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Obtain NWERC 2015 Practice original statement; keep 2025 slide deck as a distinct source."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "kattisUrl": "https://open.kattis.com/problems/commercials",
+      "finding": "Virtual Judge metadata explicitly identifies KTH training 2011-01-26 as the source and Lukáš Poláček as author for the exact Kattis slug. The full KTH training statement was not retrieved; technical shape alone does not qualify it as a long scenario.",
+      "evidenceLevel": "secondary_metadata_corroborated",
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve KTH training statement and assess scenario materiality from the full text."
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "kattisUrl": "https://open.kattis.com/problems/exactchange2",
+      "finding": "ICPC archive lists Exact Change / exactchange3 as PACNW 2024, confirming that this is a distinct slug/source pairing. This does not map exactchange2 to Waterloo 2008; keep the Waterloo statement/source verified separately and the candidate slug crosswalk pending.",
+      "evidenceLevel": "distinct_variant_crosswalk_confirmed_candidate_crosswalk_pending",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find authoritative exactchange2 to Waterloo Problem C mapping."
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "kattisUrl": "https://open.kattis.com/problems/cranes",
+      "finding": "ICPC archive has no exact Cranes entry in the consulted index. Official Waterloo 2008 Problem A statement remains valid source evidence from Pass 16/17, but does not itself establish that Kattis slug cranes is the same problem.",
+      "evidenceLevel": "official_statement_verified_kattis_crosswalk_pending",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find authoritative Kattis problem metadata/source mapping for cranes."
+    }
+  ],
+  "newPrimaryStatementsCaptured": 0,
+  "importApprovals": 0,
+  "candidateRecordsModified": 0,
+  "safety": "All 41 candidate records remain unchanged and candidate-only. No curriculum, learner progress, runtime, Supabase, production data, merge, or deployment changes."
+}
