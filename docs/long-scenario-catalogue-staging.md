@@ -367,3 +367,19 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-17.json` f
 - **Muddy Hike:** third-party catalogue/solution evidence indicates a minimax path problem, but the original statement and MAPS 2017 source link remain unverified. Provisional not-long-scenario only; not an identity disqualification.
 
 Pass 17 adds zero original statements beyond the two Waterloo statements already captured in pass 16. It adds zero import approvals. All candidate records, curriculum placements, learner progress, runtime, Supabase, and production data remain untouched.
+
+
+### Source reconciliation and statement-retrieval pass 18
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-18.json`.
+
+- Wood Cutting: the ICPC Kattis archive maps the exact `woodcutting` slug/title to Alberta 2016. This corroborates source identity only; the original statement was not captured.
+- Interval Scheduling: Virtual Judge metadata identifies `intervalscheduling`, Algorithm Design, ITU 2019, and author Thore Husfeldt. Secondary metadata only; original statement still missing.
+- Build Dependencies: Virtual Judge metadata identifies `builddeps`, NWERC 2015 Practice, and author Jeroen Bransen. Original practice statement not captured. Do not substitute the similarly titled NWERC 2025 test-session problem.
+- Grid: a retrieved Division 2 PDF is a different task and is explicitly excluded as evidence for the submitted Division 1 source claim.
+- Single Source Shortest Path, Time Table: a UCF teaching assignment confirms the Kattis slug and time-dependent Dijkstra technical shape, not the submitted Popup 2005 provenance.
+- Coloring Socks and Radio Commercials: no authoritative source statement retrieved; retain unverified.
+- Muddy Hike and Walrus Weights: only secondary technical/metadata evidence remains; no original statement.
+- Busy Schedule: educational references support a compact sorting-task concern, not the submitted Baylor source provenance; original statement still needed.
+- Exact Change and Cranes: official Waterloo statements remain verified from Pass 16/17, but exact Kattis slug crosswalks remain pending.
+
+Pass 18 reviewed 12 records (10 unresolved candidates plus the two Waterloo slug-crosswalk checks), captured zero new original statements, and approved zero imports. All 41 candidate records remain candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
