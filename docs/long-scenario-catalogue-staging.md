@@ -212,3 +212,32 @@ Pass 7 flags two alternate-source provenance conflicts:
 - Cranes: an accessible statement copy is from Waterloo Contests Selection 2013, while the submitted source claim says Waterloo 2008.
 
 These two alternate statements are not counted as verification of the submitted source claims. The Exact Change slug conflict remains unresolved. No candidate was promoted to import approval.
+
+
+### Statement evidence passes 8–10 and crosswalk correction
+
+Pass 8 reconciled three previously reviewed official statements into the source ledger:
+- The Weight Of Words (Virginia Tech 2017)
+- Counting Subsequences (IPSC 2006; the official page links easy and hard datasets)
+- Perket (COCI 2008/2009)
+
+All three are rejected from the long-scenario quota because their scenario formulations are compact. Their source identities are now counted in the source ledger.
+
+Pass 9 adds:
+- Pripreme (COCI 2014/2015 Round 4; contest statement copy)
+- Introspective Caching (NCPC 2008 Problem I; original contest PDF)
+
+Pass 10 records a secondary statement mirror for Classrooms (Hong Kong Regional Online Preliminary 2016), but does not count it as original official-hosted statement verification.
+
+**Correction to the Exact Change finding:** The earlier wording implied `exactchange2` conflicted with `exactchange3`. That was too broad. These are distinct Exact Change variants; `exactchange2` is cross-referenced to UVa 11517, while the ICPC index's `exactchange3` is a separate PACNW 2024 problem. The candidate's submitted Waterloo 2008 provenance claim remains unsupported, so SCENARIO-057 stays on provenance hold. Do not replace its slug with `exactchange3`.
+
+Updated cumulative gate:
+- 22/41 original contest statement identities corroborated.
+- 19/41 still need original statement evidence or provenance resolution.
+- 6 archive metadata-only matches remain.
+- 1 exactchange2 candidate is held for provenance resolution (not a confirmed slug typo).
+- 2 alternate-source provenance conflicts remain for Train Sorting and Cranes.
+- 0 live Kattis pages directly verified in these passes.
+- 0 long-scenario approvals and 0 imports.
+
+The 22/41 figure is source-identity evidence only. It does not mean 22 candidates are long scenarios. All 41 candidate records remain candidate-only and unapproved.
