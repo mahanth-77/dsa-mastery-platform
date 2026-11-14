@@ -256,3 +256,24 @@ The source cross-check now records additional metadata-only matches:
 These are provenance/slug metadata matches only, not problem-statement evidence. The linked Kattis statement pages returned 403 where directly tested. They do not increase the 22 original-statement count or approve scenario quality.
 
 Current source inventory: 22 original contest statement identities verified; 8 metadata-only matches; 10 not found in the consulted archive index; 1 explicit provenance-mismatch hold (Exact Change); 3 alternate-source provenance conflicts recorded (including Train Sorting and Cranes). Categories overlap where a record has both a metadata observation and a separate provenance issue; do not sum them as mutually exclusive buckets.
+
+
+### Original statement evidence — pass 11
+
+Pass 11 adds:
+- **Water** — original 2016 Southeast USA Regional Division 1 Problem J statement. It is a water utility network that undergoes permanent pipe-capacity improvements; the maximum source-to-mansion flow must be reported after every change. This is a strong contextual candidate for long-scenario review.
+- **Fire** — original BAPC 2012 Problem F statement. It describes escaping a building as fire spreads through rooms; scenario framing is clear, but it is a single time-dependent BFS problem and should receive only moderate-depth consideration.
+- **Train Sorting** — a DMOJ judge mirror identifies the task as Waterloo 2008 Spring A and provides the matching statement. This corroborates the year/source family; the exact submitted June 15 date remains unverified. Its short train-car story and single LIS-style objective do not support strong long-scenario status.
+
+The prior Train Sorting alternate-source conflict is superseded: a Waterloo 2008 Spring A record is now independently corroborated. The Waterloo 2013 copy is treated as an alternate/reused statement, not evidence against the 2008 source claim.
+
+Current source inventory after pass 11:
+- 25/41 original contest statement identities corroborated (including a small number of judge/contest-hosted copies; check each record's sourceType).
+- 6 metadata-only matches.
+- 9 not found in the consulted archive index.
+- 1 explicit provenance-mismatch hold: Exact Change.
+- 2 remaining alternate-source provenance conflicts: Exact Change and Cranes.
+- 0 live Kattis pages directly verified.
+- 0 imports approved.
+
+The 25 count is not a quality pass count. Water is a strong long-scenario candidate for final rubric review; Fire is a possible moderate candidate; Train Sorting is not a long-scenario candidate. None is import-approved.
