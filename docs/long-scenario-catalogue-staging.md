@@ -321,3 +321,13 @@ Pass 13 records five secondary metadata matches, four course/problem-context ref
 The Grid finding is deliberately narrow: the archive index maps the Kattis slug to the 2015 Southeast USA contest family but does not prove the Division 1 claim. A Division 2 statement must not be substituted. Likewise, the KTH course exercise for `shortestpath2` is not evidence for the submitted Popup 2005 provenance.
 
 **Pass 13 result:** 0 new original-statement identity approvals; 0 import approvals. No candidate record, curriculum placement, learner progress, runtime, Supabase, or production data was modified.
+
+
+## Kattis evidence cross-check — pass 14 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-statement-evidence-pass-14.json` for Word Cloud (SCENARIO-083) and Walrus Weights (SCENARIO-052).
+
+- **Word Cloud:** inspected a full secondary statement mirror containing the typography model, font-size and character-width formulas, ordered row-packing rules, input/output, constraints, and sample data. The mirror links to Kattis `wordcloud`; the ICPC archive maps the exact title/slug to MCPC 2014, and VJudge metadata names the same 2014 source and authors Ryan Marshall and Michael Goldwasser. This is strong identity/source metadata corroboration plus statement-content inspection, but it is not the original contest-hosted statement. The candidate's submitted STRONG depth label is reduced to **provisional MODERATE**: there is a concrete data-processing narrative and several layout calculations, but the algorithmic core is still one ordered greedy row-packing task. Human rubric confirmation and original-source retrieval remain open.
+- **Walrus Weights:** VJudge's Kattis problem metadata identifies the exact slug, Popup 2015 Session 1 source, and author Marc Vinyals. The full statement and constraints remain uncaptured, so scenario depth remains unassessed and its human-review flag stays in place.
+
+Pass 14 adds zero original contest-hosted statements and zero import approvals. The 25/41 original-statement identity count is unchanged. No candidate JSON, curriculum, learner progress, runtime, Supabase, or production data was changed.
