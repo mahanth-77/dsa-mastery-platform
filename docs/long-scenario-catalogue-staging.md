@@ -241,3 +241,18 @@ Updated cumulative gate:
 - 0 long-scenario approvals and 0 imports.
 
 The 22/41 figure is source-identity evidence only. It does not mean 22 candidates are long scenarios. All 41 candidate records remain candidate-only and unapproved.
+
+
+### Contest metadata corroboration — additional pass (2026-11-14)
+
+The source cross-check now records additional metadata-only matches:
+- Water — Kattis 2016 Southeast USA Regionals Division 1 source page.
+- Grid — Kattis 2015 Southeast USA Regionals Division 1 source page.
+- Air Conditioned Minions — secondary contest metadata links it to Singapore Regional 2015.
+- Fire — secondary contest metadata links `fire2` to BAPC 2012.
+- Build Dependencies — secondary contest metadata links `builddeps` to NWERC 2015 Practice.
+- Radio Commercials — secondary contest metadata links `commercials` to KTH training 2011-01-26.
+
+These are provenance/slug metadata matches only, not problem-statement evidence. The linked Kattis statement pages returned 403 where directly tested. They do not increase the 22 original-statement count or approve scenario quality.
+
+Current source inventory: 22 original contest statement identities verified; 8 metadata-only matches; 10 not found in the consulted archive index; 1 explicit provenance-mismatch hold (Exact Change); 3 alternate-source provenance conflicts recorded (including Train Sorting and Cranes). Categories overlap where a record has both a metadata observation and a separate provenance issue; do not sum them as mutually exclusive buckets.
