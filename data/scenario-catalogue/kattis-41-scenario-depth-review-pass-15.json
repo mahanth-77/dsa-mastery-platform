@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 15,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Focused scenario-materiality and provenance disposition for four remaining priority candidates, using only inspected secondary descriptions/statements. This pass does not establish original-source approval.",
+  "records": [
+    {
+      "id": "SCENARIO-011",
+      "title": "Air Conditioned Minions",
+      "slug": "airconditioned",
+      "evidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Exact title/slug mapped to Singapore 2015."
+        },
+        {
+          "url": "https://kisekitech.wordpress.com/2015/12/12/icpc-regionals-singapore-2015-review/",
+          "type": "participant_contest_recap",
+          "observation": "Problem F is described as sorting temperature intervals and greedily selecting a minimum number of overlapping interval groups."
+        },
+        {
+          "url": "https://blog.jw910731.me/posts/competitive-prog-icpc-singapore-2015-sim/",
+          "type": "participant_contest_recap",
+          "observation": "Independent contest recap also lists Air Conditioned Minions as Problem F."
+        }
+      ],
+      "sourceIdentity": "secondary_metadata_and_participant_recap_corrobated",
+      "statementStatus": "original_statement_not_captured",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The available descriptions indicate a compact interval-stabbing/greedy grouping problem with one principal optimization objective. The contest identity is well supported, but without the complete statement this remains a provisional depth decision, not an original-statement gate pass.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "slug": "muddyhike",
+      "evidence": [
+        {
+          "url": "https://cpbook.net/methodstosolve?oj=kattis&quality=starred&topic=all",
+          "type": "third_party_problem_catalogue",
+          "observation": "Classifies Muddy Hike as a minimax path problem in the MST variants section."
+        },
+        {
+          "url": "https://github.com/versenyi98/kattis-solutions",
+          "type": "third_party_solution_repository",
+          "observation": "Lists a Muddy Hike solution under the exact Kattis slug."
+        },
+        {
+          "url": "https://maps17.kattis.com/info/submit",
+          "type": "official_contest_site",
+          "observation": "Confirms the MAPS 2017 Kattis contest site, but does not connect this exact problem to the submitted contest source."
+        }
+      ],
+      "sourceIdentity": "problem_identity_supported_source_provenance_unresolved",
+      "statementStatus": "original_statement_not_captured",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The available technical description is a single minimax path problem over a grid. The MAPS 2017 site exists, but the evidence does not yet prove this exact candidate's source provenance or expose its narrative. Retain the provenance gate; do not count it as a long-scenario approval.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-058",
+      "title": "Spiderman's Workout",
+      "slug": "spiderman",
+      "evidence": [
+        {
+          "url": "https://domjudge.inf.usi.ch/domjudge/public/problems/129/text",
+          "type": "secondary_statement_mirror",
+          "observation": "Matching statement with narrative, input/output, examples, and constraints was inspected. It describes choosing up/down moves for a fixed sequence of wall distances, returning to ground level, never going below ground, and minimizing maximum height."
+        }
+      ],
+      "sourceIdentity": "statement_identity_on_secondary_mirror_original_2003_provenance_unresolved",
+      "statementStatus": "secondary_statement_inspected",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The inspected task is a bounded one-sequence dynamic-programming optimization, with at most 40 distances per case and total distance at most 1000. The story is a wrapper around a single compact optimization task. The submitted Norwegian/Swedish Championships 2003 source claim remains unverified.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "slug": "cranes",
+      "evidence": [
+        {
+          "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+          "type": "alternate_contest_statement_copy",
+          "observation": "A same-title/same-slug Waterloo 2013 statement copy exists, but does not corroborate the submitted Waterloo 2008-10-04 provenance."
+        },
+        {
+          "url": "https://www.duwsarchive.com/icpc/data/waterloo/",
+          "type": "contest_archive_index",
+          "observation": "An archive index lists a Waterloo contest on 2008-10-04, but no accessible Cranes statement was found in the reviewed index."
+        }
+      ],
+      "sourceIdentity": "unresolved_provenance_conflict",
+      "statementStatus": "alternate_statement_only",
+      "depthAssessment": "unassessed",
+      "rationale": "No defensible connection between the candidate and the claimed 2008 source has been established. The 2013 copy cannot be substituted. Keep on provenance hold and do not infer quality from the title.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 4,
+    "provisionalNotLongScenario": 3,
+    "unresolvedProvenanceHold": 1,
+    "originalStatementsCaptured": 0,
+    "importApproved": 0
+  },
+  "integrity": {
+    "candidateRecordsModified": false,
+    "originalSourceGatePassed": 0,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}
