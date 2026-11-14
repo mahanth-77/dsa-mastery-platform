@@ -13,7 +13,7 @@
     "originalStatementIdentityVerified": 22,
     "archiveMetadataOnlyMatch": 6,
     "slugConflict": 0,
-    "notFoundInConsultedArchiveIndex": 12,
+    "notFoundInConsultedArchiveIndex": 10,
     "alternateStatementProvenanceConflicts": 3,
     "liveKattisPagesDirectlyVerified": 0,
     "importApproved": 0,
@@ -97,13 +97,21 @@
       "id": "SCENARIO-007",
       "title": "Water",
       "submittedSlug": "water",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Water",
         "slug": "water",
         "contest": "seusa-2016"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "metadataCorroboration": {
+        "url": "https://open.kattis.com/problem-sources/2016%20Southeast%20USA%20Regionals%20Division%201",
+        "source": "Kattis 2016 SEUSA Division 1 source listing",
+        "finding": "Lists Water as a problem in the claimed contest source; its statement link returned 403.",
+        "type": "official_source_catalogue_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      }
     },
     {
       "id": "SCENARIO-008",
@@ -135,18 +143,26 @@
       "id": "SCENARIO-011",
       "title": "Air Conditioned Minions",
       "submittedSlug": "airconditioned",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Air Conditioned Minions",
         "slug": "airconditioned",
         "contest": "singapore-2015"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/airconditioned",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/604028",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis airconditioned / Air Conditioned Minions and source 2015 ACM ICPC Singapore Regional.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
       }
     },
     {
@@ -235,36 +251,52 @@
       "id": "SCENARIO-029",
       "title": "Fire",
       "submittedSlug": "fire2",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Fire",
         "slug": "fire2",
         "contest": "bapc-2012"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/fire2",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/353364",
+        "source": "Virtual Judge BAPC 2012 contest problem list",
+        "finding": "Lists Kattis fire2 / Fire in the BAPC 2012 problem set.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
       }
     },
     {
       "id": "SCENARIO-030",
       "title": "Grid",
       "submittedSlug": "grid",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Grid",
         "slug": "grid",
         "contest": "seusa-2015"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/grid",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://open.kattis.com/problem-sources/2015%20Southeast%20USA%20Regionals%20Division%201",
+        "source": "Kattis 2015 SEUSA Division 1 source listing",
+        "finding": "Lists Grid as a problem in the claimed contest source; its statement link returned 403.",
+        "type": "official_source_catalogue_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
       }
     },
     {
@@ -307,14 +339,22 @@
       "id": "SCENARIO-034",
       "title": "Build Dependencies",
       "submittedSlug": "builddeps",
-      "status": "not_found_in_archive_index",
+      "status": "archive_metadata_only_match",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/builddeps",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/604028",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis builddeps / Build Dependencies with source NWERC 2015 Practice.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
       }
     },
     {
@@ -367,14 +407,22 @@
       "id": "SCENARIO-053",
       "title": "Radio Commercials",
       "submittedSlug": "commercials",
-      "status": "not_found_in_archive_index",
+      "status": "archive_metadata_only_match",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/commercials",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/854275",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis commercials / Radio Commercials with source KTH training 2011-01-26.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
       }
     },
     {
