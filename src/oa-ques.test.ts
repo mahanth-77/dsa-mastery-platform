@@ -46,6 +46,7 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
     expect(oaCatalogue.records).toHaveLength(2531);
     expect(expandedRecords).toHaveLength(2849);
+    expect(new Set(expandedRecords.map((item: any) => item.id)).size).toBe(expandedRecords.length);
     expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(166);
     expect(candidateTcs.records).toHaveLength(66);
     expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(35);
