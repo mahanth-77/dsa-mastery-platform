@@ -52,6 +52,20 @@ describe('VERTEX Long-Scenario Catalogue (162 Records)', () => {
     expect(catalogue.counts.userAccepted).toBe(41);
   });
 
+  it('accurately stratifies evidence gates across statement captures, metadata verifications, and pending additions', () => {
+    const statementCaptured = records.filter(r => r.evidenceGate === 'statement_captured');
+    const metadataVerified = records.filter(r => r.evidenceGate === 'metadata_verified');
+    const pending = records.filter(r => r.evidenceGate === 'pending');
+
+    expect(statementCaptured.length).toBe(7);
+    expect(metadataVerified.length).toBe(114);
+    expect(pending.length).toBe(41);
+
+    expect(catalogue.counts.byEvidenceGate.statement_captured).toBe(7);
+    expect(catalogue.counts.byEvidenceGate.metadata_verified).toBe(114);
+    expect(catalogue.counts.byEvidenceGate.pending).toBe(41);
+  });
+
   it('guarantees complete isolation from core curriculum (importApproved === false)', () => {
     const imported = records.filter(r => r.importApproved === true);
     expect(imported.length).toBe(0);

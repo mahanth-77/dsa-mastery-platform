@@ -66,13 +66,11 @@ export default function ScenarioCatalogue() {
   const records = catalogue.records;
 
   const platforms = useMemo(() => {
-    const list = Array.from(new Set(records.map(r => r.platform))).sort();
-    return list;
+    return Array.from(new Set(records.map(r => r.platform))).sort();
   }, [records]);
 
   const patterns = useMemo(() => {
-    const list = Array.from(new Set(records.map(r => r.primaryPattern))).sort();
-    return list;
+    return Array.from(new Set(records.map(r => r.primaryPattern))).sort();
   }, [records]);
 
   const visible = useMemo(() => {
@@ -90,10 +88,7 @@ export default function ScenarioCatalogue() {
 
       const matchesPlatform = platform === 'all' || r.platform.toLowerCase() === platform.toLowerCase();
       const matchesPattern = pattern === 'all' || r.primaryPattern === pattern;
-      const matchesEvidence =
-        evidence === 'all' ||
-        (evidence === 'verified' && r.evidenceGate === 'verified') ||
-        (evidence === 'pending' && r.evidenceGate === 'pending');
+      const matchesEvidence = evidence === 'all' || r.evidenceGate === evidence;
       const matchesDepth = depth === 'all' || r.scenarioDepth.toUpperCase() === depth.toUpperCase();
 
       return matchesQuery && matchesPlatform && matchesPattern && matchesEvidence && matchesDepth;
@@ -141,19 +136,19 @@ export default function ScenarioCatalogue() {
           <p className="text-[10px] text-text-quaternary">Across {platforms.length} platforms</p>
         </div>
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Historical Certified</p>
-          <p className="text-xl font-bold text-emerald-300 font-mono">{catalogue.counts.historicalCertified}</p>
-          <p className="text-[10px] text-emerald-400/70">Independently verified statements</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Statement Captured</p>
+          <p className="text-xl font-bold text-emerald-300 font-mono">{catalogue.counts.byEvidenceGate.statement_captured || 0}</p>
+          <p className="text-[10px] text-emerald-400/70">Verbatim statement on disk</p>
+        </div>
+        <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 space-y-1">
+          <p className="text-[10px] font-mono uppercase tracking-wider text-blue-400">Metadata Verified</p>
+          <p className="text-xl font-bold text-blue-300 font-mono">{catalogue.counts.byEvidenceGate.metadata_verified || 0}</p>
+          <p className="text-[10px] text-blue-400/70">Platform, URL & domain summary verified</p>
         </div>
         <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3 space-y-1">
           <p className="text-[10px] font-mono uppercase tracking-wider text-amber-400">User-Accepted</p>
           <p className="text-xl font-bold text-amber-300 font-mono">{catalogue.counts.userAccepted}</p>
           <p className="text-[10px] text-amber-400/70">Kattis collection pending deep audit</p>
-        </div>
-        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Curriculum Imports</p>
-          <p className="text-xl font-bold text-text-secondary font-mono">{catalogue.counts.coreCurriculumImports}</p>
-          <p className="text-[10px] text-text-quaternary">Isolated from 941 core placements</p>
         </div>
       </div>
 
@@ -161,11 +156,12 @@ export default function ScenarioCatalogue() {
       <div className="rounded-xl border border-border bg-surface-1/40 p-4 flex gap-3 text-xs leading-relaxed text-text-secondary">
         <ShieldAlert className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
         <div className="space-y-1.5">
-          <p className="text-sm font-semibold text-text-primary">Separate Catalogue Isolation & Evidence Status</p>
+          <p className="text-sm font-semibold text-text-primary">Evidence Stratification & Complete Curriculum Isolation</p>
           <p>
-            This catalogue contains <strong>162 problems</strong> (121 historically certified + 41 user-accepted Kattis additions).
-            Historical problems are verified with captured statements and formal constraints.
-            User-accepted problems are included per your direct approval while source verification remains separate.
+            This catalogue contains <strong>162 problems</strong> across 3 evidentiary tiers:
+            <strong> 7 replacement problems</strong> with verified verbatim statement captures and constraint audits;
+            <strong> 114 historical problems</strong> with verified canonical URLs, platform identities, and factual summaries (raw statement text unextracted);
+            and <strong>41 user-accepted Kattis problems</strong> included per user approval with source review pending.
             <strong> None of these 162 problems are imported into the 21-pattern curriculum, 115 variations, or 941 placements.</strong>
           </p>
         </div>
@@ -224,10 +220,11 @@ export default function ScenarioCatalogue() {
             aria-label="Filter by evidence"
             value={evidence}
             onChange={e => setEvidence(e.target.value)}
-            className="input-field text-xs lg:w-48"
+            className="input-field text-xs lg:w-52"
           >
             <option value="all">All evidence states</option>
-            <option value="verified">Independently Verified ({catalogue.counts.historicalCertified})</option>
+            <option value="statement_captured">Statement Captured ({catalogue.counts.byEvidenceGate.statement_captured || 0})</option>
+            <option value="metadata_verified">Metadata & URL Verified ({catalogue.counts.byEvidenceGate.metadata_verified || 0})</option>
             <option value="pending">User-Accepted / Pending ({catalogue.counts.userAccepted})</option>
           </select>
 
@@ -269,7 +266,6 @@ export default function ScenarioCatalogue() {
       {/* Problem Cards */}
       <div className="grid gap-3.5">
         {visible.map(r => {
-          const isVerified = r.evidenceGate === 'verified';
           const depthBadge = r.scenarioDepth === 'STRONG' ? 'Strong Scenario' : 'Moderate Scenario';
 
           return (
@@ -303,12 +299,17 @@ export default function ScenarioCatalogue() {
                   </p>
                 </div>
 
-                {/* Evidence badge */}
+                {/* Evidence tier badge */}
                 <div className="shrink-0">
-                  {isVerified ? (
+                  {r.evidenceGate === 'statement_captured' ? (
                     <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-mono text-emerald-300">
                       <CheckCircle2 className="h-3.5 w-3.5" />
-                      Independently Verified
+                      Statement Captured
+                    </span>
+                  ) : r.evidenceGate === 'metadata_verified' ? (
+                    <span className="inline-flex items-center gap-1 rounded-md border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-[11px] font-mono text-blue-300">
+                      <BookOpen className="h-3.5 w-3.5" />
+                      Metadata & URL Verified
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-1 rounded-md border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[11px] font-mono text-amber-300">
@@ -319,9 +320,11 @@ export default function ScenarioCatalogue() {
                 </div>
               </div>
 
-              {/* Factual Scenario Context / Rationale */}
+              {/* Factual Scenario Context / Statement Excerpt */}
               <div className="text-xs leading-relaxed text-text-secondary space-y-1">
-                {r.factualScenarioSummary ? (
+                {r.evidence.statementExcerpt ? (
+                  <p className="line-clamp-3 italic text-text-primary/90">"{r.evidence.statementExcerpt}"</p>
+                ) : r.factualScenarioSummary ? (
                   <p className="line-clamp-3">{r.factualScenarioSummary}</p>
                 ) : (
                   <p className="line-clamp-3 text-text-tertiary">{r.review.rationale}</p>
