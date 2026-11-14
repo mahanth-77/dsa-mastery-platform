@@ -331,3 +331,15 @@ Added `data/scenario-catalogue/kattis-41-statement-evidence-pass-14.json` for Wo
 - **Walrus Weights:** VJudge's Kattis problem metadata identifies the exact slug, Popup 2015 Session 1 source, and author Marc Vinyals. The full statement and constraints remain uncaptured, so scenario depth remains unassessed and its human-review flag stays in place.
 
 Pass 14 adds zero original contest-hosted statements and zero import approvals. The 25/41 original-statement identity count is unchanged. No candidate JSON, curriculum, learner progress, runtime, Supabase, or production data was changed.
+
+
+## Focused scenario-depth review — pass 15 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-scenario-depth-review-pass-15.json` for four priority records. This is a materiality review based on secondary descriptions/statements, not an original-source approval pass.
+
+- **Air Conditioned Minions (011):** the ICPC archive maps the exact title/slug to Singapore 2015; two participant recaps identify it as Problem F. One describes sorting temperature intervals and greedily selecting the minimum number of overlap groups. Provisional not-long-scenario: a compact single-objective interval-greedy task. Full original statement not captured.
+- **Muddy Hike (035):** a competitive-programming problem catalogue describes the exact Kattis problem as a minimax path problem; a solution repository lists the exact slug. MAPS 2017's Kattis contest site exists, but no evidence yet connects this exact problem to that source. Provisional not-long-scenario on technical shape only; provenance remains unresolved and statement missing.
+- **Spiderman's Workout (058):** the secondary statement mirror inspected in pass 12 describes a bounded up/down sequence DP minimizing maximum height, with at most 40 moves per case and total distance at most 1000. Provisional not-long-scenario: one compact optimization task; claimed 2003 contest provenance remains unresolved.
+- **Cranes (200):** the Waterloo 2013 alternate statement still does not establish the submitted Waterloo 2008-10-04 provenance. Keep the hold; do not substitute the alternate statement.
+
+Pass 15 adds zero original contest statements and zero import approvals. Three candidates receive provisional not-long-scenario assessments; Cranes remains unassessed on provenance hold. These dispositions are not written into the candidate catalogue, pending the full evidence gate and human review.
