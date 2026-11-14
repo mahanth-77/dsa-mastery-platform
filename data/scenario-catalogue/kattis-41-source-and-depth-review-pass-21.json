@@ -1,0 +1,129 @@
+{
+  "pass": 21,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Follow-up on unresolved statement retrieval and false-positive source matches. Secondary statement copies are not treated as original contest evidence.",
+  "records": [
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "kattisUrl": "https://open.kattis.com/problems/muddyhike",
+      "finding": "A full text copy surfaced on a third-party homework Q&A site. It identifies the task as 'Problem F Muddy Hike' and includes the distinctive problem ID maps17.mu. The text describes a grid of nonnegative mud depths, a path from the leftmost to rightmost column using four-directional moves, and minimizing the maximum mud depth encountered. This is useful statement-content evidence and supports the MAPS17 naming association, but the host is not the contest organizer or an authoritative archive; no original MAPS 2017 package or official-hosted statement was retrieved. The task is a single minimax grid-path optimization problem, not a multi-stage operational scenario. Keep the depth assessment provisional and do not treat the copy as source approval.",
+      "evidenceLevel": "third_party_full_statement_copy_source_identity_not_primary",
+      "sourceEvidence": [
+        {
+          "url": "https://www.transtutors.com/questions/d2l-bright-space-problem-f-muddy-hike-liam-is-planning-out-his-route-for-an-upcoming-2728155.htm",
+          "type": "third_party_statement_copy",
+          "observation": "Full statement text includes Problem F Muddy Hike and problem ID maps17.mu; describes minimax mud-depth path across a grid."
+        },
+        {
+          "url": "https://www.cpbook.net/methodstosolve?oj=kattis&quality=starred&topic=all",
+          "type": "secondary_algorithm_catalogue",
+          "observation": "Classifies muddyhike as a minimax path problem."
+        }
+      ],
+      "statementCaptured": true,
+      "statementHost": "third_party_non_authoritative",
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Retrieve the official MAPS 2017 contest package or an authoritative Kattis source listing; inspect complete input/output and constraints before any final source or depth decision."
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "kattisUrl": "https://open.kattis.com/problems/grid",
+      "finding": "The ICPC Kattis archive maps Grid / grid to Southeast USA 2015, Division 1. A separately retrieved Southeast USA 2015 Division 2 PDF contains a different digit-grid jump problem (move exactly the digit's number of cells; shortest path from top-left to bottom-right). That Division 2 statement is explicitly not accepted as evidence for this Division 1 candidate. No authoritative Division 1 statement was captured in this pass.",
+      "evidenceLevel": "archive_source_crosswalk_division1_statement_missing",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Maps Grid / grid to seusa-2015."
+        },
+        {
+          "url": "https://catsofwywop.com/icpc/data/ser/2015/SER-2015-Problems-D2.pdf",
+          "type": "official_contest_division2_statement",
+          "observation": "Contains a distinct Division 2 Grid task; excluded as evidence for Division 1."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the official 2015 Southeast USA Division 1 problem package and verify the exact Grid problem before assessing depth."
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "kattisUrl": "https://open.kattis.com/problems/busyschedule",
+      "finding": "A DMOJ result titled Busy Schedule was found, but its slug is sched and its statement describes a graph of campus locations, travel times, and engagements. It is not evidence for the candidate Kattis slug busyschedule or the submitted Baylor problem 207 source claim. This is a title collision and is excluded from the candidate's evidence.",
+      "evidenceLevel": "false_positive_same_title_different_problem_excluded",
+      "sourceEvidence": [
+        {
+          "url": "https://dmoj.ca/problem/sched",
+          "type": "unrelated_same_title_problem",
+          "observation": "Different slug and graph-scheduling statement; not evidence for Kattis busyschedule."
+        },
+        {
+          "url": "https://github.com/zcliu99/Kattis-1",
+          "type": "secondary_solution_index",
+          "observation": "Lists a busyschedule.cpp solution file, which supports slug existence only, not Baylor source provenance or statement contents."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find the exact Kattis busyschedule statement or Baylor course problem 207 source; do not use DMOJ sched."
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "kattisUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "finding": "No new primary statement was found. Existing Virtual Judge metadata continues to identify the Kattis slug and ITU 2019 / Algorithm Design context, but this remains secondary metadata and does not establish that the candidate's submitted source attribution is correct. Generic textbook interval-scheduling material is not a substitute for this problem's statement.",
+      "evidenceLevel": "secondary_metadata_only_no_new_primary_source",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/",
+          "type": "secondary_problem_metadata",
+          "observation": "Previously inspected Virtual Judge record identifies intervalscheduling, Algorithm Design, ITU 2019, and author Thore Husfeldt."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Locate the exact Kattis problem-source listing or ITU 2019 assignment/statement containing this problem."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "kattisUrl": "https://open.kattis.com/problems/walrusweights",
+      "finding": "No original Popup 2015 Session 1 statement was located in this pass. Existing VJudge metadata still supports the title/slug/source label and author, while third-party solutions describe the closest-to-1000 subset-sum task. Those sources do not supply authoritative statement wording or constraints. The earlier provisional not-long assessment remains provisional only.",
+      "evidenceLevel": "secondary_metadata_and_solution_shape_only",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_problem_metadata",
+          "observation": "Previously inspected metadata identifies Kattis walrusweights, Popup 2015 Session 1, and author Marc Vinyals."
+        },
+        {
+          "url": "https://github.com/PedroContipelli/Kattis/blob/master/walrusweights.java",
+          "type": "third_party_solution",
+          "observation": "Implementation indicates subset-sum closest to 1000; not a statement."
+        },
+        {
+          "url": "https://stackoverflow.com/questions/36659153/walrus-weights-getting-a-combination-in-an-array-whose-sum-is-closest-1000",
+          "type": "third_party_discussion",
+          "observation": "Discusses selecting a subset whose sum is closest to 1000; not source or statement evidence."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Retrieve Popup 2015 Session 1 official problem package and inspect complete statement, input/output, and constraints."
+    }
+  ],
+  "summary": {
+    "recordsReviewed": 5,
+    "newPrimaryStatementsCaptured": 0,
+    "newSecondaryStatementCopiesCaptured": 1,
+    "falsePositiveTitleMatchesExcluded": 1,
+    "sourceIdentityApprovals": 0,
+    "scenarioDepthApprovals": 0,
+    "importApprovals": 0,
+    "candidateRecordsModified": 0
+  },
+  "safety": "All 41 candidate records remain candidate-only and importApproved=false. No curriculum, learner progress, runtime, Supabase, production data, merge, or deployment changes."
+}
