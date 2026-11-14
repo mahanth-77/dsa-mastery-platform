@@ -10,10 +10,10 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "originalStatementIdentityVerified": 17,
+    "originalStatementIdentityVerified": 20,
     "archiveMetadataOnlyMatch": 7,
     "slugConflict": 1,
-    "notFoundInConsultedArchiveIndex": 16,
+    "notFoundInConsultedArchiveIndex": 13,
     "alternateStatementProvenanceConflicts": 2,
     "liveKattisPagesDirectlyVerified": 0,
     "importApproved": 0
@@ -446,9 +446,15 @@
       "id": "SCENARIO-060",
       "title": "The Weight Of Words",
       "submittedSlug": "weightofwords",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://vthspc.cs.vt.edu/assets/files/vths2017-b9f335cf2da392887f3b828dbc04cb59.pdf",
+        "title": "4th Virginia Tech High School Programming Contest 2017, Problem F — The Weight Of Words",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-082",
@@ -484,9 +490,15 @@
       "id": "SCENARIO-095",
       "title": "Counting Subsequences (Hard)",
       "submittedSlug": "subseqhard",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://ipsc.ksp.sk/2006/real/problems/c.html",
+        "title": "IPSC 2006, Problem C — Counting Subsequences",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_problem_statement"
+      }
     },
     {
       "id": "SCENARIO-096",
@@ -566,9 +578,15 @@
       "id": "SCENARIO-178",
       "title": "Perket",
       "submittedSlug": "perket",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://hsin.hr/2009/coci/contest2_tasks.pdf",
+        "title": "COCI 2008/2009 Contest #2, Task PERKET",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-179",
