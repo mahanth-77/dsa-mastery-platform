@@ -10,11 +10,11 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "originalStatementIdentityVerified": 22,
-    "archiveMetadataOnlyMatch": 8,
-    "notFoundInConsultedArchiveIndex": 10,
+    "originalStatementIdentityVerified": 25,
+    "archiveMetadataOnlyMatch": 6,
+    "notFoundInConsultedArchiveIndex": 9,
     "provenanceMismatchHold": 1,
-    "alternateSourceProvenanceConflicts": 3,
+    "alternateSourceProvenanceConflicts": 2,
     "liveKattisPagesDirectlyVerified": 0,
     "importApproved": 0
   },
@@ -96,13 +96,13 @@
       "id": "SCENARIO-007",
       "title": "Water",
       "submittedSlug": "water",
-      "status": "archive_metadata_only_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Water",
         "slug": "water",
         "contest": "seusa-2016"
       },
-      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
       "metadataCorroboration": {
         "url": "https://open.kattis.com/problem-sources/2016%20Southeast%20USA%20Regionals%20Division%201",
         "source": "Kattis 2016 SEUSA Division 1 source listing",
@@ -110,6 +110,12 @@
         "type": "official_source_catalogue_metadata",
         "reviewedOn": "2026-11-14",
         "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      },
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/southeast/2016/SER-2016-Problems-D1.pdf",
+        "title": "2016 ACM ICPC Southeast USA Regional Division 1, Problem J — Water",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_pdf"
       }
     },
     {
@@ -250,13 +256,13 @@
       "id": "SCENARIO-029",
       "title": "Fire",
       "submittedSlug": "fire2",
-      "status": "archive_metadata_only_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Fire",
         "slug": "fire2",
         "contest": "bapc-2012"
       },
-      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
@@ -270,6 +276,12 @@
         "type": "secondary_contest_metadata",
         "reviewedOn": "2026-11-14",
         "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      },
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/bapc/2012/problemset.pdf",
+        "title": "BAPC 2012, Problem F — Fire",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_pdf"
       }
     },
     {
@@ -428,9 +440,9 @@
       "id": "SCENARIO-055",
       "title": "Train Sorting",
       "submittedSlug": "trainsorting",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "A same-title/same-slug alternate statement was found, but its contest provenance does not match the submitted source claim. Not counted as original-statement verification.",
+      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
@@ -441,7 +453,13 @@
         "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
         "contest": "Waterloo Contests Selection, September 10, 2013",
         "reviewedOn": "2026-11-14",
-        "decision": "Do not count as verified against the submitted source claim. Retain as a possible same-problem alternate statement pending proof that the 2008 contest reused the same statement or that the submitted contest date is erroneous."
+        "decision": "Superseded as a source-conflict flag: Waterloo 2008 Spring A Train Sorting is independently corroborated by the DMOJ judge mirror. The Waterloo 2013 source is an alternate/reused statement, not evidence against the 2008 source claim. Exact submitted June 15 date remains unverified."
+      },
+      "statementEvidence": {
+        "url": "https://dmoj.ca/problem/waterloo2008sa",
+        "title": "Waterloo 2008 Spring A — Trainsorting",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "secondary_contest_statement_mirror"
       }
     },
     {
