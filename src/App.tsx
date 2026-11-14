@@ -12,6 +12,7 @@ const RevisionCenter = lazy(() => import('./pages/RevisionCenter'));
 const Analytics = lazy(() => import('./pages/Analytics'));
 const Settings = lazy(() => import('./pages/Settings'));
 const ScenarioCatalogue = lazy(() => import('./pages/ScenarioCatalogue'));
+const OAQuestions = lazy(() => import('./pages/OAQuestions'));
 
 function AppRoutes() {
   const { state } = useApp();
@@ -31,16 +32,17 @@ function AppRoutes() {
   return (
     <Layout>
       <Suspense fallback={<p className="p-6 text-sm text-text-secondary" role="status">Loading section…</p>}>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/patterns" element={<PatternExplorer />} />
-        <Route path="/patterns/:patternId" element={<PatternDetail />} />
-        <Route path="/revisions" element={<RevisionCenter />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/scenarios" element={<ScenarioCatalogue />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/patterns" element={<PatternExplorer />} />
+          <Route path="/patterns/:patternId" element={<PatternDetail />} />
+          <Route path="/revisions" element={<RevisionCenter />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/scenarios" element={<ScenarioCatalogue />} />
+          <Route path="/oa-ques" element={<OAQuestions />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </Suspense>
     </Layout>
   );

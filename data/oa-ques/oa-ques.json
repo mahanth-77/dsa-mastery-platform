@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0.0",
+  "catalogue": "VERTEX OA Questions",
+  "counts": {
+    "total": 0,
+    "companyVerified": 0,
+    "oaStylePractice": 0,
+    "pendingReview": 0
+  },
+  "records": []
+}
