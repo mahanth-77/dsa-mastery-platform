@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis original statement evidence ledger — pass 11",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "statementRecordsAdded": 3,
+    "originalContestPdfStatements": 2,
+    "secondaryStatementMirrors": 1,
+    "strongLongScenarioCandidates": 1,
+    "moderateScenarioCandidates": 1,
+    "notLongScenario": 1,
+    "importApproved": 0,
+    "liveKattisPagesDirectlyVerified": 0
+  },
+  "method": "Water and Fire were inspected in their original contest problem-set PDFs. Train Sorting was inspected via a secondary judge mirror that identifies Waterloo 2008 Spring A; this does not prove the exact submitted contest date.",
+  "records": [
+    {
+      "id": "SCENARIO-007",
+      "title": "Water",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/water",
+      "statementUrl": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/southeast/2016/SER-2016-Problems-D1.pdf",
+      "statementTitle": "2016 ACM ICPC Southeast USA Regional Division 1, Problem J — Water",
+      "sourceType": "original_contest_statement_pdf",
+      "identity": "Original 2016 SEUSA Division 1 contest PDF contents list Water on page 12 and provide the exact water-company pumping station/mansion statement.",
+      "observed": "A water utility network has bidirectional pipes with capacities. Across a sequence of permanent improvements, it increases existing pipe capacities or installs new pipes. After every improvement, report the maximum water flow from pumping station to mansion.",
+      "excerpt": "A water company is trying to provide water from its pumping station to a mansion.",
+      "inputOutput": "Input: stations, initial pipes and a sequence of capacity increases/new pipes. Output: maximum flow after initial setup and after every improvement.",
+      "constraints": "2 ≤ n ≤ 100; p ≤ n(n−1)/2; 1 ≤ k ≤ 10,000; pipe capacities and increments ≤ 1,000.",
+      "scenarioNotes": "<not used>",
+      "scenarioAssessment": "Strong contextual scenario: real utility-network setting, evolving network state, repeated operational queries, capacity constraints and max-flow objective. Strong candidate for long-scenario qualification, subject to final rubric consistency review.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-029",
+      "title": "Fire",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/fire2",
+      "statementUrl": "https://archive.algo.is/icpc/nwerc/bapc/2012/problemset.pdf",
+      "statementTitle": "BAPC 2012, Problem F — Fire",
+      "sourceType": "original_contest_statement_pdf",
+      "identity": "Original BAPC 2012 problem set identifies Problem F Fire and includes the building-fire escape statement matching Kattis fire2.",
+      "observed": "A person is trapped in a building with spreading fires and walls. Fire advances every second; the person must reach an exit without entering a cell that is burning or about to burn, with simultaneous escape allowed.",
+      "excerpt": "You are trapped in a building consisting of open spaces and walls. Some places are on fire and you have to run for the exit.",
+      "inputOutput": "Input: multiple building maps containing rooms, walls, one person and fire sources. Output: minimum escape time or IMPOSSIBLE.",
+      "constraints": "At most 100 test cases; width and height each from 1 to 1,000.",
+      "scenarioAssessment": "Clear emergency-response context and interacting time-dependent hazards, but a single well-defined multi-source BFS escape problem. Moderate scenario candidate; not automatically long-scenario approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/trainsorting",
+      "statementUrl": "https://dmoj.ca/problem/waterloo2008sa",
+      "statementTitle": "Waterloo 2008 Spring A — Trainsorting",
+      "sourceType": "secondary_contest_statement_mirror",
+      "identity": "DMOJ identifies the task as Waterloo 2008 Spring A, with statement and constraints matching Train Sorting. This corroborates the year/source family but not the submitted exact June 15 date.",
+      "observed": "Erin arranges arriving train cars by adding each new car to the beginning or end of a train, or rejecting it. The resulting train must be ordered by weight and as long as possible.",
+      "excerpt": "Cars arrive at the train station in a predetermined order. When each car arrives, Erin can add it to the beginning or end of her train, or refuse to add it at all.",
+      "inputOutput": "Input: number of cars followed by distinct car weights. Output: maximum possible train length.",
+      "constraints": "0 ≤ n ≤ 2,000; weights are nonnegative and distinct.",
+      "scenarioAssessment": "The 2008 Waterloo provenance is now corroborated by an independent judge mirror. The narrative is short and the task is a single LIS-style optimization; not a strong long-scenario candidate.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}
