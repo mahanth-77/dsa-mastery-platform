@@ -216,10 +216,12 @@
   ],
   "summary": {
     "reviewed": 10,
-    "secondaryMetadataOrCourseContextCorroborated": 8,
+    "secondaryMetadataCorroborated": 5,
+    "courseOrProblemContextOnly": 4,
+    "identityOnlyWithoutSourceProvenance": 1,
     "secondaryStatementMirrorInspected": 1,
     "originalContestStatementsCaptured": 0,
-    "originalSourceProvenanceHolds": 2,
+    "provenanceHolds": 2,
     "provisionalNotLongScenarioAssessments": 1,
     "importApproved": 0
   },
