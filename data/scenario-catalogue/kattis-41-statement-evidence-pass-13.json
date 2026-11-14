@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 13,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Secondary metadata and statement-reference review for ten remaining unresolved candidates. No source is promoted to original-statement verified unless the exact statement was captured and provenance matches.",
+  "records": [
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "slug": "color",
+      "finding": "problem_identity_confirmed_source_not_verified",
+      "sources": [
+        {
+          "url": "https://russelldash332.github.io/kattis/",
+          "type": "secondary_solution_index",
+          "observation": "Lists Coloring Socks with Kattis slug color."
+        },
+        {
+          "url": "https://algo.is/t-414-aflv-competitive-programming-course-2016/",
+          "type": "course_problem_list",
+          "observation": "Lists Coloring Socks among course final-exam problems; does not establish the submitted KTH Training provenance or provide the statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The problem identity is corroborated, but the claimed KTH Training source and complete statement remain unverified.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "slug": "intervalscheduling",
+      "finding": "secondary_judge_metadata_match",
+      "sources": [
+        {
+          "url": "https://vjudge.net/contest/773508",
+          "type": "secondary_judge_metadata",
+          "observation": "Lists Kattis intervalscheduling / Interval Scheduling with source Algorithm Design, ITU 2019."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The submitted source association has secondary metadata support, but no complete statement was retrieved. Do not infer scenario depth from the title or algorithm label.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-014",
+      "title": "Classrooms",
+      "slug": "classrooms",
+      "finding": "secondary_statement_mirror_inspected",
+      "sources": [
+        {
+          "url": "https://www.cnblogs.com/Patt/p/5873114.html",
+          "type": "secondary_statement_mirror",
+          "observation": "Contains a matching Classrooms statement: maximize the number of proposed activities assigned across k classrooms, with activity start/end times and non-overlap constraints."
+        },
+        {
+          "url": "https://vjudge.net/contest/522005",
+          "type": "secondary_judge_metadata",
+          "observation": "Identifies Kattis classrooms and Hong Kong Regional Online Preliminary 2016 as the source."
+        }
+      ],
+      "statementStatus": "secondary_mirror_inspected",
+      "observedContent": {
+        "constraints": "k <= n <= 200000; activity start and finish times are each within 1..10^9.",
+        "output": "Maximum number of activities that can be scheduled."
+      },
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The available statement mirror is a short single-objective resource-allocation problem. It is a valid scheduling exercise, but the narrative/task breadth appears insufficient for the long-scenario quota. Original-host statement still not captured.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "slug": "woodcutting",
+      "finding": "archive_metadata_match_and_solution_description",
+      "sources": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Lists Wood Cutting / woodcutting under Alberta Collegiate Programming Contest 2016."
+        },
+        {
+          "url": "https://solutions.icpc.uclaacm.com/2021-tryout-solutions/tryout-1/d-wood-cutting",
+          "type": "third_party_solution_explanation",
+          "observation": "Describes grouping each customer's wood pieces, summing their sizes, sorting customers by total cutting time, and minimizing average waiting time. This is not the original statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "Problem identity and contest metadata are corroborated. The solution explanation suggests a compact shortest-processing-time scheduling task, but without the statement this is not a final scenario-depth rejection.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-027",
+      "title": "Single source shortest path, time table",
+      "slug": "shortestpath2",
+      "finding": "KTH_course_exercise_content_found_original_source_claim_unresolved",
+      "sources": [
+        {
+          "url": "https://www.csc.kth.se/utbildning/kth/kurser/DD2458/popup08/labbar/labb2.php",
+          "type": "official_university_course_exercise",
+          "observation": "Identifies Kattis problem shortestpath2 as a timetable-graph extension to Dijkstra, where edges can only be used at specified times. This is a course exercise page, not the original contest statement."
+        },
+        {
+          "url": "https://www.csc.kth.se/utbildning/kth/kurser/DD2458/popup09/labbar/labb2.php",
+          "type": "official_university_course_exercise",
+          "observation": "Repeats the timetable-graph assignment and Kattis problem ID."
+        }
+      ],
+      "statementStatus": "course_exercise_description_only",
+      "depthAssessment": "unassessed",
+      "rationale": "The task is described as a graph-algorithm exercise, but the candidate's claimed KTH CSC Popup 2005 provenance has not been corroborated. Do not count this course description as an original contest statement.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "slug": "grid",
+      "finding": "archive_metadata_match",
+      "sources": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Lists Grid / grid under seusa-2015. The index does not distinguish Division 1 versus Division 2."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The title/slug and 2015 Southeast USA contest family are corroborated. The candidate's Division 1 claim is not proven by this index, and a Division 2 statement must not be substituted as evidence for Division 1.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "slug": "builddeps",
+      "finding": "secondary_judge_metadata_match",
+      "sources": [
+        {
+          "url": "https://vjudge.net/contest/838124",
+          "type": "secondary_judge_metadata",
+          "observation": "Lists Kattis builddeps / Build Dependencies with source Northwestern Europe Regional Contest (NWERC) 2015 Practice."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "Source metadata is corroborated, but no original statement content, input/output, constraints, or scenario-depth evidence was retrieved.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "slug": "commercials",
+      "finding": "course_context_found_source_metadata_remains_secondary",
+      "sources": [
+        {
+          "url": "https://algo.is/t-414-aflv-competitive-programming-course-2016/",
+          "type": "course_problem_list",
+          "observation": "Lists Radio Commercials as one of the course final-exam choices; this does not independently prove the candidate's KTH training date or provide the statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The course context supports that the problem was used as a programming exercise, but it does not satisfy the original-statement evidence gate.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "slug": "exactchange2",
+      "finding": "candidate_identity_seen_original_provenance_unresolved",
+      "sources": [
+        {
+          "url": "https://github.com/zcliu99/Kattis-1",
+          "type": "third_party_solution_index",
+          "observation": "Lists an exactchange2.cpp solution titled Exact Change."
+        },
+        {
+          "url": "https://algorithmist.com/wiki/UVa_11517",
+          "type": "secondary_problem_cross_reference",
+          "observation": "The earlier crosswalk associates exactchange2 with the UVa 11517 Exact Change variant; it does not support the submitted Waterloo 2008 provenance."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "The archive's Exact Change row maps exactchange3 to PACNW 2024; exactchange3 is a distinct variant and is not a substitute for exactchange2."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The exactchange2 identity is not a confirmed malformed slug, but the submitted Waterloo 2008 source claim remains unsupported. Keep the provenance hold; do not replace the slug or source with exactchange3.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "slug": "busyschedule",
+      "finding": "official_course_assignment_context_found_statement_not_captured",
+      "sources": [
+        {
+          "url": "https://cs.baylor.edu/~hamerly/courses/4v96_14f/",
+          "type": "official_university_course_page",
+          "observation": "Lists Busy Schedule as problem 207 in the Baylor Competitive Learning course schedule."
+        },
+        {
+          "url": "https://classesarchive.usaco.guide/PAPS.pdf",
+          "type": "textbook_problem_index",
+          "observation": "Lists Busy Schedule among sorting exercises; this is a problem index, not the full statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The Baylor course association is supported, but the full problem statement and constraints have not been retrieved. The textbook index alone is insufficient to approve or reject long-scenario depth.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 10,
+    "secondaryMetadataOrCourseContextCorroborated": 8,
+    "secondaryStatementMirrorInspected": 1,
+    "originalContestStatementsCaptured": 0,
+    "originalSourceProvenanceHolds": 2,
+    "provisionalNotLongScenarioAssessments": 1,
+    "importApproved": 0
+  },
+  "integrity": {
+    "liveKattisPagesDirectlyVerified": 0,
+    "candidateRecordsModified": 0,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}
