@@ -46,8 +46,8 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(expandedRecords).toHaveLength(2748);
     const leetcodeRecords = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice');
     expect(leetcodeRecords).toHaveLength(2615);
-    expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.match(/leetcode\.com\/problems\/([^/?#]+)/i)?.[1]?.toLowerCase()).filter(Boolean)).size).toBe(1629);
-    expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.match(/leetcode\.com\/problems\/([^/?#]+)/i)?.[1]?.toLowerCase()).filter(Boolean)).size).toBe(1629);
+    expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]?.toLowerCase()).filter(Boolean)).size).toBe(1629);
+    expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]?.toLowerCase()).filter(Boolean)).size).toBe(1629);
     expect(hackerRank.records).toHaveLength(68);
     expect(expandedRecords.filter((item: any) => item.sourceType === 'company_verified')).toHaveLength(0);
     expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(65);
@@ -64,10 +64,11 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(duplicateTitles).toEqual([]);
     const curriculumSlugs = new Set<string>();
     curriculum.patterns.forEach((pattern: any) => pattern.variations.forEach((variation: any) => variation.problems.forEach((problem: any) => {
-      const match = (problem.url || '').match(/leetcode\.com\/problems\/([^/?#]+)/i);
-      if (match) curriculumSlugs.add(match[1].toLowerCase());
+      const slug = (problem.url || '').split('/problems/')[1]?.split('/')[0];
+      if (slug) curriculumSlugs.add(slug.toLowerCase());
+
     })));
-    const duplicateLeetCodeSlugs = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice' && curriculumSlugs.has((item.sourceUrl.match(/leetcode\.com\/problems\/([^/?#]+)/i) || [])[1]?.toLowerCase()));
+    const duplicateLeetCodeSlugs = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice' && curriculumSlugs.has((item.sourceUrl.split('/problems/')[1] || '').split('/')[0].toLowerCase()));
     expect(duplicateLeetCodeSlugs).toEqual([]);
   });
 
