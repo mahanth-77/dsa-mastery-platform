@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Search, ExternalLink, ClipboardList, ShieldCheck, Clock3, Building2, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/oa-ques/oa-ques.json';
+import rawHackerRank from '../../data/oa-ques/hackerrank-kit.json';
 
 type OAQuestion = {
   id: string; title: string; company: string | null; assessmentType: string;
@@ -10,15 +11,22 @@ type OAQuestion = {
   verificationStatus: 'verified' | 'pending_review';
   durationMinutes: number | null; statement: string | null;
 };
-type OACatalogue = { schemaVersion: string; catalogue: string; records: OAQuestion[] };
+type OACatalogue = { schemaVersion?: string; catalogue?: string; records: OAQuestion[] };
 const catalogue = rawCatalogue as OACatalogue;
+const hackerRankCatalogue = rawHackerRank as { records: OAQuestion[] };
+const leetcodeBatches = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
+const allRecords: OAQuestion[] = [
+  ...catalogue.records,
+  ...Object.values(leetcodeBatches).flatMap((batch) => batch.records),
+  ...hackerRankCatalogue.records,
+];
 
 export default function OAQuestions() {
   const [query, setQuery] = useState('');
   const [company, setCompany] = useState('all');
   const [type, setType] = useState('all');
   const [source, setSource] = useState('all');
-  const records = catalogue.records;
+  const records = allRecords;
 
   const companyCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -53,15 +61,15 @@ export default function OAQuestions() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-text-primary">OA Ques</h1>
-            <p className="mt-1 max-w-3xl text-sm text-text-secondary">Browse online-assessment coding questions by company. Each question carries a company tag, and searching a company name returns all questions tagged to it.</p>
+            <p className="mt-1 max-w-3xl text-sm text-text-secondary">Browse employer-evidenced and community-reported OA questions alongside clearly labelled company-tagged and platform practice. Practice tags do not prove a question appeared in an actual employer assessment.</p>
           </div>
           <div className="rounded-lg border border-border bg-surface-1 px-3 py-2 text-xs font-mono"><span className="text-accent font-semibold">{visible.length}</span><span className="text-text-tertiary"> / {records.length} questions shown</span></div>
         </div>
       </header>
 
       <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Total Questions</p><p className="text-xl font-bold text-text-primary font-mono">{records.length}</p><p className="text-[10px] text-text-quaternary">All catalogue records</p></div>
-        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Companies</p><p className="text-xl font-bold text-text-primary font-mono">{companies.length}</p><p className="text-[10px] text-text-quaternary">With tagged questions</p></div>
+        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Total Questions</p><p className="text-xl font-bold text-text-primary font-mono">{records.length}</p><p className="text-[10px] text-text-quaternary">All sourced records</p></div>
+        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Companies</p><p className="text-xl font-bold text-text-primary font-mono">{companies.length}</p><p className="text-[10px] text-text-quaternary">With company associations</p></div>
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Company Verified</p><p className="text-xl font-bold text-emerald-300 font-mono">{verifiedCount}</p><p className="text-[10px] text-emerald-400/70">Verified company attribution</p></div>
         <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-violet-400">Candidate-reported OA</p><p className="text-xl font-bold text-violet-300 font-mono">{candidateReportedCount}</p><p className="text-[10px] text-violet-400/70">Community evidence, not employer-published</p></div>
         <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-blue-400">OA-Style Practice</p><p className="text-xl font-bold text-blue-300 font-mono">{practiceCount}</p><p className="text-[10px] text-blue-400/70">Not claimed as actual OAs</p></div>
@@ -70,7 +78,7 @@ export default function OAQuestions() {
 
       <div className="rounded-xl border border-border bg-surface-1/40 p-4 flex gap-3 text-xs leading-relaxed text-text-secondary">
         <ShieldCheck className="h-5 w-5 shrink-0 text-accent mt-0.5" />
-        <div className="space-y-1"><p className="text-sm font-semibold text-text-primary">Evidence-first question labels</p><p>Candidate-reported records are linked to public placement repositories and cohort references where available; this is not the same as employer-published confirmation. Questions without a campus or year tag remain pending review. OA-style practice is kept separate.</p></div>
+        <div className="space-y-1"><p className="text-sm font-semibold text-text-primary">Evidence-first question labels</p><p>Candidate-reported records are linked to public placement repositories and cohort references where available; this is not the same as employer-published confirmation. Questions without a campus or year tag remain pending review. LeetCode company tags and HackerRank preparation-kit problems are practice evidence only, not proof of actual employer OA use. Sponsored contests are not counted as hiring OAs.</p></div>
       </div>
 
       <section className="panel p-3.5 space-y-3">
