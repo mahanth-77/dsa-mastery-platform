@@ -139,7 +139,13 @@
         "slug": "airconditioned",
         "contest": "singapore-2015"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/airconditioned",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-012",
@@ -227,7 +233,13 @@
         "slug": "fire2",
         "contest": "bapc-2012"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/fire2",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-030",
@@ -239,7 +251,13 @@
         "slug": "grid",
         "contest": "seusa-2015"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/grid",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-031",
@@ -283,7 +301,13 @@
       "submittedSlug": "builddeps",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/builddeps",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-035",
@@ -291,7 +315,13 @@
       "submittedSlug": "muddyhike",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/muddyhike",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-051",
@@ -317,7 +347,13 @@
       "submittedSlug": "walrusweights",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/walrusweights",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-053",
@@ -325,7 +361,13 @@
       "submittedSlug": "commercials",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/commercials",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-055",
@@ -333,7 +375,13 @@
       "submittedSlug": "trainsorting",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/trainsorting",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
     },
     {
       "id": "SCENARIO-056",
