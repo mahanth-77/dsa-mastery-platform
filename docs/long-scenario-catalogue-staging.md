@@ -171,3 +171,21 @@ For each, the ledger records the original contest statement URL, matching title/
 **Quality caution:** statement identity is not long-scenario qualification. For example, Planting Trees, Button Bashing, and Restaurant Orders have valid statement evidence but concise problem formulations. Postal Delivery and Canvas Painting have richer operational narratives, but still require the formal scenario-depth gate. No candidate is promoted merely because its statement was found.
 
 No curriculum data, learner progress, runtime code, or production records were changed.
+
+
+### Statement evidence pass 3
+
+A third ledger, `data/scenario-catalogue/kattis-41-statement-evidence-pass-3.json`, adds three more original-statement matches:
+
+- **Coast Length** — KTH Challenge 2011, Problem E.
+- **Nikola** — Croatian Open Competition in Informatics 2007/2008, Croatian Regionals.
+- **Canonical Coin Systems** — North America Qualifier 2017, Problem C.
+
+Updated cumulative source gate:
+- 11/41 candidate identities corroborated against original contest statement sources.
+- 30/41 still require original statement evidence.
+- 0 live Kattis problem pages directly verified in these passes.
+- 0 scenario qualifications approved by these source-evidence passes.
+- 0 imports approved.
+
+The 11 matches are evidence of source identity and statement content, not permission to import. The remaining 30 stay pending. Scenario materiality is deliberately separate; short or abstract tasks do not become long scenarios merely because an original statement was located.
