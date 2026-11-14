@@ -15,7 +15,7 @@
     "notFoundInArchiveIndex": 18,
     "officialStatementsVerified": 0,
     "importApproved": 0,
-    "originalStatementIdentityMatches": 8,
+    "originalStatementIdentityMatches": 11,
     "officialKattisPagesDirectlyVerified": 0
   },
   "gateDecision": "Keep all 41 as candidate-only. Do not promote any record based on this metadata index alone. Resolve the exactchange2/exactchange3 slug conflict. For unmatched entries, obtain official Kattis statements or authoritative contest statements and verify title, scenario, input, output, constraints, and canonical URL.",
@@ -258,13 +258,19 @@
       "id": "SCENARIO-032",
       "title": "Coast Length",
       "submittedSlug": "coast",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Coast Length",
         "slug": "coast",
         "contest": "kth-2011"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://challenge.csc.kth.se/2011/problems.pdf",
+        "title": "KTH Challenge 2011, Problem E — Coast Length",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
     },
     {
       "id": "SCENARIO-034",
@@ -328,13 +334,19 @@
       "id": "SCENARIO-056",
       "title": "Canonical Coin Systems",
       "submittedSlug": "canonical",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Canonical Coin Systems",
         "slug": "canonical",
         "contest": "naq-2017"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://cs.baylor.edu/~hamerly/icpc/qualifier_2017/naq2017_problemset.pdf",
+        "title": "North America Qualifier 2017, Problem C — Canonical Coin Systems",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-057",
@@ -360,9 +372,15 @@
       "id": "SCENARIO-059",
       "title": "Nikola",
       "submittedSlug": "nikola",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.csc.kth.se/contest/training/110414/nikola.pdf",
+        "title": "Croatian Open Competition in Informatics 2007/2008, Croatian Regionals — Task NIKOLA",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-060",
