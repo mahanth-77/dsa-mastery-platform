@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 14,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Additional statement and source-metadata retrieval for Word Cloud and Walrus Weights. Evidence provenance and long-scenario qualification remain separate.",
+  "records": [
+    {
+      "id": "SCENARIO-083",
+      "title": "Word Cloud",
+      "slug": "wordcloud",
+      "finding": "statement_content_inspected_on_secondary_mirror_and_2014_source_metadata_corroborated",
+      "sources": [
+        {
+          "url": "https://mirkwood.cs.edinboro.edu/~bennett/class/csci330/spring2022/hw/two/wordcloud.html",
+          "type": "secondary_statement_mirror",
+          "observation": "The page contains the full Word Cloud problem statement, input/output, constraints, typography formulas, and three sample data sets. It explicitly links to the Kattis wordcloud problem."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_contest_archive_index",
+          "observation": "Maps Word Cloud / wordcloud to mcpc-2014."
+        },
+        {
+          "url": "https://vjudge.net/contest/593282",
+          "type": "secondary_judge_metadata",
+          "observation": "The Kattis problem entry exposes source metadata naming ACM/ICPC Mid-Central USA 2014 Regional Contest and authors Ryan Marshall and Michael Goldwasser."
+        }
+      ],
+      "statementStatus": "full_secondary_mirror_inspected",
+      "observedContent": {
+        "scenario": "A data collector creates word clouds from word-frequency counts; each word receives a point size, fixed-width font dimensions are calculated, and words are packed in their given order into rows under a maximum cloud width.",
+        "mechanics": "Font size formula, character-width ceiling calculation, horizontal spacing, greedy row packing, row height as maximum word font size, total cloud height as sum of row heights.",
+        "constraints": "T <= 20; W <= 5000; 1 <= N <= 100; occurrence counts 5..1000.",
+        "inputOutput": "Multiple data sets with W and N, followed by word/count pairs; output a numbered CLOUD height per data set."
+      },
+      "depthAssessment": "provisional_moderate_long_scenario",
+      "rationale": "The statement has a concrete data-processing narrative and several interacting layout calculations, and is materially richer than a one-formula exercise. However, the core task remains a single ordered greedy row-packing process; the submitted STRONG classification is not yet justified. Provisional MODERATE only, pending original contest-host statement retrieval and human rubric confirmation.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "slug": "walrusweights",
+      "finding": "source_metadata_confirmed_with_named_author_statement_not_retrieved",
+      "sources": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_judge_metadata",
+          "observation": "The Kattis problem entry identifies Walrus Weights / walrusweights, source Popup 2015 Session 1, and author Marc Vinyals."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "No Walrus Weights row was found in the consulted ICPC archive index; this is consistent with Popup being outside that archive's indexed contest set and is not evidence against the source."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "This improves source provenance beyond the earlier generic VJudge listing, but no complete statement, constraints, or scenario evidence has been captured. Keep the human-review flag and do not infer long-scenario eligibility from the title or known algorithm pattern.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 2,
+    "fullSecondaryStatementMirrorsInspected": 1,
+    "secondarySourceMetadataConfirmed": 2,
+    "originalContestHostedStatementsCaptured": 0,
+    "provisionalModerateCandidates": 1,
+    "depthUnassessed": 1,
+    "importApproved": 0
+  },
+  "integrity": {
+    "liveKattisPagesDirectlyVerified": 0,
+    "candidateRecordsModified": 0,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}
