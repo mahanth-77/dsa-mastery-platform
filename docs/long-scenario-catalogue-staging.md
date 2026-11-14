@@ -383,3 +383,16 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-18.json`.
 - Exact Change and Cranes: official Waterloo statements remain verified from Pass 16/17, but exact Kattis slug crosswalks remain pending.
 
 Pass 18 reviewed 12 records (10 unresolved candidates plus the two Waterloo slug-crosswalk checks), captured zero new original statements, and approved zero imports. All 41 candidate records remain candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
+
+
+### Targeted source reconciliation pass 19
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-19.json`.
+
+- Wood Cutting: ICPC archive explicitly maps `woodcutting` to Alberta 2016; this is title/slug/source metadata, not the original statement.
+- Radio Commercials: Virtual Judge metadata identifies exact slug `commercials`, KTH training 2011-01-26, and author Lukáš Poláček; full training statement still missing.
+- Build Dependencies: Virtual Judge metadata identifies `builddeps`, NWERC 2015 Practice, and author Jeroen Bransen. A 2025 NWERC practice-slides PDF contains a same-title problem by the same author, but it is a different edition and is not substituted as 2015 evidence.
+- Coloring Socks: slug/title corroborated only by a solution index; no KTH source statement found. A KTH Challenge 2013 PDF is unrelated and excluded.
+- Exact Change: archive maps `exactchange3` to PACNW 2024, confirming it is a distinct variant; this does not resolve the `exactchange2` Waterloo 2008 crosswalk.
+- Cranes: official Waterloo 2008 statement remains verified, but the Kattis `cranes` slug crosswalk remains pending.
+
+Pass 19 captured zero new original statements and approved zero imports. Candidate records remain unchanged; all 41 remain candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
