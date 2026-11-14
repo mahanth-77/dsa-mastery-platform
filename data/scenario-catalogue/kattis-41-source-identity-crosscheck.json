@@ -11,13 +11,12 @@
   "summary": {
     "totalCandidates": 41,
     "originalStatementIdentityVerified": 22,
-    "archiveMetadataOnlyMatch": 6,
-    "slugConflict": 0,
+    "archiveMetadataOnlyMatch": 8,
     "notFoundInConsultedArchiveIndex": 10,
-    "alternateStatementProvenanceConflicts": 3,
+    "provenanceMismatchHold": 1,
+    "alternateSourceProvenanceConflicts": 3,
     "liveKattisPagesDirectlyVerified": 0,
-    "importApproved": 0,
-    "provenanceMismatchHold": 3
+    "importApproved": 0
   },
   "gateDecision": "Keep all 41 as candidate-only. Do not promote any record based on this metadata index alone. Resolve the exactchange2/exactchange3 slug conflict. For unmatched entries, obtain official Kattis statements or authoritative contest statements and verify title, scenario, input, output, constraints, and canonical URL.",
   "records": [
@@ -217,7 +216,7 @@
       "id": "SCENARIO-016",
       "title": "Wood Cutting",
       "submittedSlug": "woodcutting",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Wood Cutting",
         "slug": "woodcutting",
@@ -539,7 +538,7 @@
       "id": "SCENARIO-083",
       "title": "Word Cloud",
       "submittedSlug": "wordcloud",
-      "status": "archive_index_match",
+      "status": "archive_metadata_only_match",
       "archiveFinding": {
         "title": "Word Cloud",
         "slug": "wordcloud",
