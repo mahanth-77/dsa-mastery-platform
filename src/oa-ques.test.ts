@@ -54,6 +54,6 @@ describe('VERTEX OA Ques company tags and counts', () => {
   });
 
   it('keeps records without cohort evidence pending review', () => {
-    expect(oaCatalogue.records.filter((item: any) => item.verificationStatus === 'pending_review').map((item: any) => item.company).sort()).toEqual(['Adobe', 'DE Shaw']);
+    expect(oaCatalogue.records.filter((item: any) => item.verificationStatus === 'pending_review').map((item: any) => item.company).sort()).toEqual(['Adobe', 'Adobe', 'DE Shaw', 'DE Shaw', 'DE Shaw']);
   });
 });
