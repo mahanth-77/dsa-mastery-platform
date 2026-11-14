@@ -189,3 +189,26 @@ Updated cumulative source gate:
 - 0 imports approved.
 
 The 11 matches are evidence of source identity and statement content, not permission to import. The remaining 30 stay pending. Scenario materiality is deliberately separate; short or abstract tasks do not become long scenarios merely because an original statement was located.
+
+
+### Statement evidence passes 4–7
+
+Pass 4 adds two original NCPC 2007 statements:
+- Shopaholic (Problem H)
+- Phone List (Problem A)
+
+Pass 5 adds four more:
+- Train Passengers (NCPC 2014, Problem K)
+- Financial Planning (BAPC 2018, Problem F)
+- Boggle (GCPC 2013, Problem A; statement is from a mirror and is lower-provenance)
+- Sudoku (NWERC 2006, Problem A)
+
+Cumulative original contest statement identity matches: **17/41**. The other 24 candidates still require evidence or source-provenance resolution. The evidence pass has approved zero long-scenario qualifications and zero imports.
+
+Pass 6 records eight direct Kattis-page fetch attempts that returned HTTP 403. This is a fetcher access restriction, not evidence that those problems are invalid, and it does not count as statement verification.
+
+Pass 7 flags two alternate-source provenance conflicts:
+- Train Sorting: an accessible statement copy is from Waterloo Contests Selection 2013, while the submitted source claim says Waterloo 2008.
+- Cranes: an accessible statement copy is from Waterloo Contests Selection 2013, while the submitted source claim says Waterloo 2008.
+
+These two alternate statements are not counted as verification of the submitted source claims. The Exact Change slug conflict remains unresolved. No candidate was promoted to import approval.
