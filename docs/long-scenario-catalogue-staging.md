@@ -297,3 +297,27 @@ Pass 12 adds **zero original contest statements** and **zero import approvals**.
 The statement-content review for Spiderman's Workout found a short climbing-direction optimization task with at most 101 scenarios, at most 40 distances per scenario, and total distance at most 1000. This is not enough narrative or task breadth for the long-scenario quota under the current rubric. The Air Conditioned Minions assessment is provisional because it relies on a participant recap rather than the full original statement.
 
 **Cumulative integrity status:** all six remain candidate-only; `importApproved: false`; no curriculum, learner-progress, runtime, Supabase, or production data changed. The previously reported 25/41 original-statement identity count is unchanged; pass 12 does not add to that count.
+
+
+## Kattis evidence cross-check — pass 13 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-statement-evidence-pass-13.json` for ten unresolved candidates:
+
+| ID | Candidate | New finding | Gate status |
+|---|---|---|---|
+| 008 | Coloring Socks | Kattis identity and course-use references found; submitted KTH Training source and full statement not verified | Candidate; depth unassessed |
+| 013 | Interval Scheduling | VJudge metadata identifies Kattis slug and Algorithm Design, ITU 2019 source | Metadata only; statement missing |
+| 014 | Classrooms | Matching statement inspected on a secondary mirror; VJudge metadata identifies Hong Kong Regional Online Preliminary 2016 | Provisional not-long-scenario; original-host statement missing |
+| 016 | Wood Cutting | Archive index confirms Alberta 2016 source; a third-party solution explanation describes minimizing average customer wait | Metadata/solution description only; statement missing |
+| 027 | Single source shortest path, time table | KTH course pages describe `shortestpath2` as timetable-graph Dijkstra; submitted Popup 2005 provenance is not corroborated | Course exercise reference only; statement/source unresolved |
+| 030 | Grid | Archive index confirms `grid` under SEUSA 2015, but does not distinguish Division 1 from Division 2 | Metadata only; statement missing |
+| 034 | Build Dependencies | VJudge metadata identifies NWERC 2015 Practice source | Metadata only; statement missing |
+| 053 | Radio Commercials | KTH course page lists it as an exam problem; submitted training-date provenance and statement remain unverified | Course context only |
+| 057 | Exact Change | `exactchange2` identity appears in a solution index; Waterloo 2008 provenance remains unsupported; `exactchange3` is a distinct variant | Keep provenance hold |
+| 096 | Busy Schedule | Baylor course page lists problem 207; textbook index lists it among sorting exercises | Course context only; statement missing |
+
+Pass 13 records five secondary metadata matches, four course/problem-context references without full source corroboration, and one identity-only reference with unresolved provenance. One secondary statement mirror was inspected (Classrooms); zero original contest statements were captured. Only Classrooms receives a provisional not-long-scenario assessment in this pass. The other candidates remain unassessed rather than being rejected from titles, algorithm labels, or solution summaries.
+
+The Grid finding is deliberately narrow: the archive index maps the Kattis slug to the 2015 Southeast USA contest family but does not prove the Division 1 claim. A Division 2 statement must not be substituted. Likewise, the KTH course exercise for `shortestpath2` is not evidence for the submitted Popup 2005 provenance.
+
+**Pass 13 result:** 0 new original-statement identity approvals; 0 import approvals. No candidate record, curriculum placement, learner progress, runtime, Supabase, or production data was modified.
