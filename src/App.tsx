@@ -11,6 +11,7 @@ const PatternDetail = lazy(() => import('./pages/PatternDetail'));
 const RevisionCenter = lazy(() => import('./pages/RevisionCenter'));
 const Analytics = lazy(() => import('./pages/Analytics'));
 const Settings = lazy(() => import('./pages/Settings'));
+const ScenarioCatalogue = lazy(() => import('./pages/ScenarioCatalogue'));
 
 function AppRoutes() {
   const { state } = useApp();
@@ -37,6 +38,7 @@ function AppRoutes() {
         <Route path="/revisions" element={<RevisionCenter />} />
         <Route path="/analytics" element={<Analytics />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/scenarios" element={<ScenarioCatalogue />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       </Suspense>
