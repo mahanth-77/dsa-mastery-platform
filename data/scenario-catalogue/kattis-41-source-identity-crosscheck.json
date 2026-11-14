@@ -10,9 +10,9 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "archiveIndexMatches": 23,
+    "archiveIndexMatches": 22,
     "slugConflicts": 1,
-    "notFoundInArchiveIndex": 17,
+    "notFoundInArchiveIndex": 18,
     "officialStatementsVerified": 0,
     "importApproved": 0
   },
@@ -170,13 +170,9 @@
       "id": "SCENARIO-027",
       "title": "Single source shortest path, time table",
       "submittedSlug": "shortestpath2",
-      "status": "archive_index_match",
-      "archiveFinding": {
-        "title": "Single source shortest path, time table",
-        "slug": "shortestpath2",
-        "contest": null
-      },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
     },
     {
       "id": "SCENARIO-029",
