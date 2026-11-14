@@ -410,3 +410,16 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-20.json`.
 - Cranes: the Waterloo 2008 Problem A statement is verified, but no authoritative Kattis `cranes` slug crosswalk was found. Absence from the consulted secondary archive index is not proof of invalidity.
 
 Pass 20 reviewed 6 records, obtained 1 new direct official Kattis source-list metadata confirmation (Wood Cutting), captured 0 new original statements, approved 0 scenario-depth claims, and approved 0 imports. All 41 candidate records remain candidate-only and unchanged. No curriculum, learner progress, runtime, Supabase, or production data changed. PR remains draft; no merge or deployment.
+
+
+
+### Unresolved statement and false-positive review pass 21
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-21.json`.
+
+- Muddy Hike: located a full third-party statement copy carrying problem ID `maps17.mu`. It describes a four-direction grid path minimizing the maximum mud depth. This is useful statement-content evidence, but the host is not the contest organizer or an authoritative archive. The task is one minimax path optimization, provisionally not long-scenario material; MAPS 2017 primary provenance remains unverified.
+- Grid: the ICPC archive maps `grid` to Southeast USA 2015 Division 1. The available Division 2 PDF describes a different digit-jump task and is explicitly excluded; the Division 1 statement remains missing.
+- Busy Schedule: a DMOJ page with the same title was identified as a false match: it uses slug `sched` and describes a different graph/engagement problem. It is not evidence for Kattis `busyschedule` or Baylor problem 207.
+- Interval Scheduling: only the prior Virtual Judge metadata remains; no primary statement captured.
+- Walrus Weights: Popup 2015 metadata and third-party solution/discussion references remain; no original statement or constraints captured.
+
+Pass 21 reviewed 5 records, captured 0 new primary statements, logged 1 third-party statement copy, excluded 1 false-positive title match, and approved 0 source identities, scenario-depth claims, or imports. All 41 candidate records remain unchanged and candidate-only. No curriculum, learner progress, runtime, Supabase, or production data changed.
