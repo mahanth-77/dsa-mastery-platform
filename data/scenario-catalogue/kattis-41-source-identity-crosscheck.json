@@ -10,8 +10,8 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "originalStatementIdentityVerified": 13,
-    "archiveMetadataOnlyMatch": 11,
+    "originalStatementIdentityVerified": 17,
+    "archiveMetadataOnlyMatch": 7,
     "slugConflict": 1,
     "notFoundInConsultedArchiveIndex": 16,
     "liveKattisPagesDirectlyVerified": 0,
@@ -457,37 +457,55 @@
       "id": "SCENARIO-116",
       "title": "Train Passengers",
       "submittedSlug": "trainpassengers",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Train Passengers",
         "slug": "trainpassengers",
         "contest": "nordic-ukiepc-2014"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://ukiepc.info/2014/ncpc2014problems.pdf",
+        "title": "NCPC 2014, Problem K — Train Passengers",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-167",
       "title": "Financial Planning",
       "submittedSlug": "financialplanning",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Financial Planning",
         "slug": "financialplanning",
         "contest": "bapc-2018"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://icpcarchive.github.io/Europe%20Subcontests/Benelux%20Algorithm%20Programming%20Contest%20%28BAPC%29/2018%20Benelux%20Algorithm%20Programming%20Contest/problems.pdf",
+        "title": "BAPC 2018, Problem F — Financial Planning",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-177",
       "title": "Boggle",
       "submittedSlug": "boggle",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Boggle",
         "slug": "boggle",
         "contest": "germany-2013"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://paperzz.com/doc/8677279/gcpc-2013-15.06.2013",
+        "title": "GCPC 2013, Problem A — Boggle",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "contest_statement_copy_mirror"
+      }
     },
     {
       "id": "SCENARIO-178",
@@ -501,13 +519,19 @@
       "id": "SCENARIO-179",
       "title": "Sudoku",
       "submittedSlug": "sudoku",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Sudoku",
         "slug": "sudoku",
         "contest": "nwerc-2006"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.csc.kth.se/contest/nwerc/2006/problems/nwerc06.pdf",
+        "title": "NWERC 2006, Problem A — Sudoku",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
     },
     {
       "id": "SCENARIO-200",
