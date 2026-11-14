@@ -438,3 +438,15 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-22.json`.
 - **Exact Change:** Waterloo 2008 Problem C remains an official statement match, but the `exactchange2` crosswalk is unresolved. The archive explicitly maps distinct `exactchange3` to PACNW 2024; do not substitute it.
 
 Pass 22 reviewed 10 records, inspected one official contest statement packet, added one archive source crosswalk for Grid, captured zero new original statements, approved zero scenario-depth claims, and approved zero imports. The NWERC packet creates a source-attribution discrepancy to resolve for Build Dependencies; it does not establish that a separate practice package never existed. All 41 candidates remain candidate-only and `importApproved: false`. No candidate records, curriculum, learner progress, runtime, Supabase, or production data changed. PR remains draft; no merge or deployment.
+
+
+### Kattis metadata reconciliation and statement retrieval pass 23
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-23.json`.
+
+- **Build Dependencies:** VJudge exposes Kattis metadata for exact slug `builddeps`, source Northwestern Europe Regional Contest (NWERC) 2015 Practice, author Jeroen Bransen, and an official/mainOfficial description flag. This corroborates the practice-source attribution at the metadata level. Correction to Pass 22 interpretation: the NWERC 2015 main-contest packet contains a separate 11-problem set; its omission of Build Dependencies does not contradict the separately labeled practice source. The original practice statement is still not captured.
+- **Radio Commercials:** VJudge exposes Kattis metadata for `commercials`, KTH training 2011-01-26, author Lukáš Poláček, with official/mainOfficial description flags. This strengthens source metadata corroboration; the original KTH statement is still missing.
+- **Interval Scheduling:** VJudge exposes Kattis metadata for `intervalscheduling`, Algorithm Design, ITU 2019, author Thore Husfeldt, with official/mainOfficial description flags. Original statement remains missing.
+- **Walrus Weights:** VJudge exposes Kattis metadata for `walrusweights`, Popup 2015 Session 1, author Marc Vinyals, with official/mainOfficial description flags. Original statement remains missing; prior provisional not-long assessment is unchanged.
+- **Coloring Socks:** a VJudge contest listing independently matches Kattis slug `color` to the title Coloring Socks. It does not establish source provenance or statement content.
+
+Pass 23 reviewed 5 records, corroborated 4 source/author metadata sets through secondary renderings of Kattis fields, added 1 title/slug identity match, captured 0 original statements, approved 0 scenario-depth claims, and approved 0 imports. These metadata results are not original-statement verification. All 41 candidates remain candidate-only and `importApproved: false`; no candidate records, curriculum, learner progress, runtime, Supabase, or production data changed. PR remains draft; no merge or deployment.
