@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 12,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Secondary-source cross-check for six unresolved Kattis candidates. This pass records only the evidence actually retrieved; it does not approve imports.",
+  "records": [
+    {
+      "id": "SCENARIO-011",
+      "title": "Air Conditioned Minions",
+      "slug": "airconditioned",
+      "finding": "secondary_contest_metadata_match",
+      "sources": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "The Kattis index associates Air Conditioned Minions / airconditioned with singapore-2015."
+        },
+        {
+          "url": "https://vjudge.net/contest/604028",
+          "type": "secondary_judge_metadata",
+          "observation": "The VJudge contest listing identifies the Kattis problem and 2015 ACM ICPC Singapore Regional source."
+        },
+        {
+          "url": "https://kisekitech.wordpress.com/2015/12/12/icpc-regionals-singapore-2015-review/",
+          "type": "participant_contest_recap",
+          "observation": "A participant recap identifies Air Conditioned Minions as Problem F and describes an interval-overlap greedy approach. This is not the original statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The only content-level secondary description indicates a compact interval-greedy task. Because the full original statement was not retrieved, this is a provisional quality concern, not a final source-content rejection.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "slug": "muddyhike",
+      "finding": "problem_identity_seen_but_source_provenance_not_verified",
+      "sources": [
+        {
+          "url": "https://www.mapscontest.com/",
+          "type": "official_contest_organizer_site",
+          "observation": "The organizer site links a MAPS 2017 problem-set page, but the page is hosted on Kattis and was blocked to this retrieval client."
+        },
+        {
+          "url": "https://maps17.kattis.com/info/submit",
+          "type": "official_contest_site",
+          "observation": "Confirms the MAPS 2017 contest site existed; it does not identify Muddy Hike."
+        },
+        {
+          "url": "https://russelldash332.github.io/kattis/",
+          "type": "secondary_solution_index",
+          "observation": "Lists Muddy Hike / muddyhike as a Kattis problem. This does not verify its contest source or statement."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The candidate's claimed MAPS 2017 provenance is not yet tied to this specific problem by an accessible problem-source record or statement. Absence from the consulted ICPC index is not proof of invalidity.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "slug": "walrusweights",
+      "finding": "secondary_contest_metadata_match",
+      "sources": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_judge_metadata",
+          "observation": "The listing identifies Walrus Weights / walrusweights as a Kattis problem and gives Popup 2015 Session 1 as its source."
+        },
+        {
+          "url": "https://github.com/PedroContipelli/Kattis/blob/master/walrusweights.java",
+          "type": "third_party_solution",
+          "observation": "A solution repository contains a walrusweights implementation; this confirms neither original statement wording nor contest provenance independently."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The source association has secondary metadata support, but the full statement, narrative, I/O, and constraints have not been captured. Retain the existing human-review flag.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-058",
+      "title": "Spiderman's Workout",
+      "slug": "spiderman",
+      "finding": "secondary_statement_mirror_content_inspected_source_provenance_unresolved",
+      "sources": [
+        {
+          "url": "https://domjudge.inf.usi.ch/domjudge/public/problems/129/text",
+          "type": "secondary_statement_mirror",
+          "observation": "The page contains a matching Spiderman's Workout statement, including story, input/output, examples, and limits. The mirror does not establish the candidate's claimed Norwegian/Swedish Championships 2003 provenance."
+        }
+      ],
+      "statementStatus": "secondary_mirror_inspected",
+      "observedContent": {
+        "scenario": "A climber chooses up/down directions for a fixed sequence of wall distances, must start and finish at ground level without going below ground, and minimizes the required wall height.",
+        "constraints": "At most 101 test scenarios; M <= 40; total distance <= 1000.",
+        "output": "For each case, output IMPOSSIBLE or an optimal U/D direction string."
+      },
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The inspected statement is concise and describes one bounded dynamic-programming optimization task. Its exact original contest provenance remains unverified; do not promote the candidate based on a mirror alone.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-083",
+      "title": "Word Cloud",
+      "slug": "wordcloud",
+      "finding": "secondary_contest_metadata_match",
+      "sources": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "The Kattis index associates Word Cloud / wordcloud with mcpc-2014."
+        },
+        {
+          "url": "https://vjudge.net/contest/593282",
+          "type": "secondary_judge_metadata",
+          "observation": "The VJudge listing identifies Word Cloud / wordcloud and the ACM/ICPC Mid-Central USA 2014 Regional Contest source."
+        }
+      ],
+      "statementStatus": "not_captured",
+      "depthAssessment": "unassessed",
+      "rationale": "The exact 2014 statement has not been retrieved. A separate 2015 Mid-Central problem titled Word Clouds Revisited is a different problem and must not be substituted as evidence for this candidate.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "slug": "cranes",
+      "finding": "provenance_conflict_unresolved",
+      "sources": [
+        {
+          "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+          "type": "alternate_contest_statement_copy",
+          "observation": "A same-title/same-slug Cranes statement exists in a Waterloo Contests Selection set dated 2013-09-10; this does not corroborate the candidate's claimed Waterloo 2008-10-04 source."
+        },
+        {
+          "url": "https://www.duwsarchive.com/icpc/data/waterloo/",
+          "type": "contest_archive_index",
+          "observation": "The Waterloo archive index lists a contest on 4 October 2008, but the accessible result did not expose a Cranes statement or link target."
+        }
+      ],
+      "statementStatus": "alternate_statement_only",
+      "depthAssessment": "unassessed",
+      "rationale": "Do not use the 2013 statement as evidence for the claimed 2008 provenance. Keep the candidate on hold until the 2008 problem set is obtained or the submitted provenance is corrected with authoritative evidence.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 6,
+    "secondaryMetadataCorroborated": 3,
+    "secondaryStatementContentInspected": 1,
+    "originalStatementsCaptured": 0,
+    "unresolvedSourceProvenance": 3,
+    "provisionalNotLongScenario": 2,
+    "importApproved": 0
+  },
+  "integrity": {
+    "liveKattisPagesDirectlyVerified": 0,
+    "candidateRecordsModified": 0,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}
