@@ -12,11 +12,12 @@
     "totalCandidates": 41,
     "originalStatementIdentityVerified": 22,
     "archiveMetadataOnlyMatch": 6,
-    "slugConflict": 1,
+    "slugConflict": 0,
     "notFoundInConsultedArchiveIndex": 12,
-    "alternateStatementProvenanceConflicts": 2,
+    "alternateStatementProvenanceConflicts": 3,
     "liveKattisPagesDirectlyVerified": 0,
-    "importApproved": 0
+    "importApproved": 0,
+    "provenanceMismatchHold": 3
   },
   "gateDecision": "Keep all 41 as candidate-only. Do not promote any record based on this metadata index alone. Resolve the exactchange2/exactchange3 slug conflict. For unmatched entries, obtain official Kattis statements or authoritative contest statements and verify title, scenario, input, output, constraints, and canonical URL.",
   "records": [
@@ -418,13 +419,19 @@
       "id": "SCENARIO-057",
       "title": "Exact Change",
       "submittedSlug": "exactchange2",
-      "status": "slug_conflict",
+      "status": "provenance_mismatch_hold",
       "archiveFinding": {
         "title": "Exact Change",
         "slug": "exactchange3",
         "contest": "pacnw-2024"
       },
-      "note": "The ICPC archive maps the title Exact Change to exactchange3, not the submitted exactchange2. This does not prove exactchange2 is invalid, but it is an identity conflict requiring direct Kattis statement verification before the URL can be accepted."
+      "note": "The earlier exactchange2 vs exactchange3 flag was too broad: these are distinct Exact Change variants, not proof of a malformed slug. However, the candidate's submitted Waterloo 2008 source provenance is not corroborated. Hold until the exactchange2 statement and its original source are verified.",
+      "alternateSourceConflict": {
+        "url": "https://algorithmist.com/wiki/UVa_11517",
+        "contest": "UVa 11517 equivalent task; Kattis exactchange2",
+        "reviewedOn": "2026-11-14",
+        "decision": "The exactchange2 slug is a distinct Exact Change variant cross-referenced to UVa 11517. The archive's exactchange3 is another distinct problem. The submitted Waterloo 2008 provenance claim remains unsupported; do not silently replace the slug."
+      }
     },
     {
       "id": "SCENARIO-058",
