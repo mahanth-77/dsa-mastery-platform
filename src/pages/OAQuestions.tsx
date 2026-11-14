@@ -46,6 +46,8 @@ export default function OAQuestions() {
   const candidateReportedCount = records.filter((item) => item.sourceType === 'candidate_reported_actual_oa').length;
   const practiceCount = records.filter((item) => item.sourceType === 'oa_style_practice').length;
   const pendingCount = records.filter((item) => item.verificationStatus === 'pending_review').length;
+  const leetcodeRecords = records.filter((item) => item.assessmentType === 'LeetCode company-tagged practice');
+  const leetcodeUniqueQuestions = new Set(leetcodeRecords.map((item) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]).filter(Boolean)).size;
   const sourceCounts = useMemo(() => {
     const counts = new Map<string, number>();
     records.forEach((item) => counts.set(item.assessmentType, (counts.get(item.assessmentType) || 0) + 1));
@@ -78,7 +80,7 @@ export default function OAQuestions() {
       </header>
 
       <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Total Questions</p><p className="text-xl font-bold text-text-primary font-mono">{records.length}</p><p className="text-[10px] text-text-quaternary">All sourced records</p></div>
+        <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary" >Total Records</p><p className="text-xl font-bold text-text-primary font-mono">{records.length}</p><p className="text-[10px] text-text-quaternary">Company-question associations and individual questions</p></div>
         <div className="rounded-xl border border-border bg-surface-1/60 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary">Companies</p><p className="text-xl font-bold text-text-primary font-mono">{companies.length}</p><p className="text-[10px] text-text-quaternary">With company associations</p></div>
         <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Company Verified</p><p className="text-xl font-bold text-emerald-300 font-mono">{verifiedCount}</p><p className="text-[10px] text-emerald-400/70">Verified company attribution</p></div>
         <div className="rounded-xl border border-violet-500/20 bg-violet-500/5 p-3 space-y-1"><p className="text-[10px] font-mono uppercase tracking-wider text-violet-400">Candidate-reported OA</p><p className="text-xl font-bold text-violet-300 font-mono">{candidateReportedCount}</p><p className="text-[10px] text-violet-400/70">Community evidence, not employer-published</p></div>
@@ -92,7 +94,7 @@ export default function OAQuestions() {
       </div>
 
       <section className="space-y-3">
-        <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. Company-tagged practice is not employer-confirmed OA evidence.</p></div>
+        <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. LeetCode currently has {leetcodeRecords.length.toLocaleString()} company-question associations across {leetcodeUniqueQuestions.toLocaleString()} unique problems. Company tags do not prove actual OA use.</p></div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {sourceCounts.map((item) => <div key={item.name} className="rounded-lg border border-border bg-surface-1/50 px-3 py-2.5 flex items-center justify-between gap-3"><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></div>)}
         </div>
