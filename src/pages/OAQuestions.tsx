@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Search, ExternalLink, ClipboardList, ShieldCheck, Clock3, Building2, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/oa-ques/oa-ques.json';
 import rawHackerRank from '../../data/oa-ques/hackerrank-kit.json';
+import rawCandidateTcs from '../../data/oa-ques/candidate-tcs-pyqs.json';
 
 type OAQuestion = {
   id: string; title: string; company: string | null; assessmentType: string;
@@ -15,10 +16,14 @@ type OACatalogue = { schemaVersion?: string; catalogue?: string; records: OAQues
 const catalogue = rawCatalogue as OACatalogue;
 const hackerRankCatalogue = rawHackerRank as { records: OAQuestion[] };
 const leetcodeBatches = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
+const candidatePlacementBatches = import.meta.glob('../../data/oa-ques/candidate-placement-reports-batch-*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
+const candidateTcsCatalogue = rawCandidateTcs as { records: OAQuestion[] };
 const allRecords: OAQuestion[] = [
   ...catalogue.records,
   ...Object.values(leetcodeBatches).flatMap((batch) => batch.records),
   ...hackerRankCatalogue.records,
+  ...candidateTcsCatalogue.records,
+  ...Object.values(candidatePlacementBatches).flatMap((batch) => batch.records),
 ];
 
 export default function OAQuestions() {
