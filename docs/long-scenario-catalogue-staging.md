@@ -136,3 +136,17 @@ A separate review artifact was added at `data/scenario-catalogue/kattis-9-scenar
 **Still pending:** SCENARIO-052 Walrus Weights. Metadata confirms the Kattis slug and Popup 2015 source, but the statement itself must be obtained before a defensible scenario-depth decision.
 
 **Retrieval limitation:** direct Kattis problem-page requests returned 403/blocked in this review session. Independent references and official contest PDFs were used where available. This review does not certify all 41 candidate URLs or replace the missing source-evidence package. The 41 records remain candidate-only, and no import approvals, curriculum placements, or learner-progress changes were made.
+
+
+## Kattis 41 source-identity cross-check (2026-11-14)
+
+A separate metadata cross-check was added at `data/scenario-catalogue/kattis-41-source-identity-crosscheck.json`.
+
+- 41 candidate records checked against the ICPC contest archive's Kattis index.
+- 22 title/slug/contest metadata matches found.
+- 1 slug conflict: the candidate titled **Exact Change** points to `exactchange2`, while the consulted archive maps the title **Exact Change** to `exactchange3`. This is an identity conflict, not proof that the submitted slug is invalid; it requires direct statement verification.
+- 18 records had no matching entry in this particular archive index. Absence from this index is not proof of an invalid Kattis problem.
+- 0 official Kattis statements were independently verified in this pass.
+- 0 candidates were approved for import.
+
+The ICPC archive index is a secondary metadata source. It can corroborate a title/slug/contest association but cannot establish statement content, input/output rules, constraints, or long-scenario depth. Therefore all 41 remain candidate-only. The next gate is direct official statement retrieval or an authoritative original contest statement for each candidate, with an excerpt and retrieval timestamp captured. No URL should be silently substituted to make a row appear to pass.
