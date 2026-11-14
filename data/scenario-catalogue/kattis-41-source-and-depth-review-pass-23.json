@@ -1,0 +1,102 @@
+{
+  "pass": 23,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Reconcile candidate metadata against Kattis source/author fields exposed in Virtual Judge records, correct Pass 22 interpretation for Build Dependencies, and continue primary statement retrieval.",
+  "records": [
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "kattisUrl": "https://open.kattis.com/problems/builddeps",
+      "finding": "Correction/clarification to Pass 22: a VJudge record exposes Kattis problem metadata for slug builddeps with source Northwestern Europe Regional Contest (NWERC) 2015 Practice and author Jeroen Bransen. The record marks the problem description official/mainOfficial, but the content retrieved here is a VJudge rendering of Kattis metadata, not the original practice-session statement. The inspected NWERC 2015 main-contest packet contains a separate set of 11 main-contest problems and does not include Build Dependencies; that observation does not contradict a separately labeled practice source. Source attribution is now metadata-corroborated, not primary-statement-verified.",
+      "evidenceLevel": "kattis_metadata_fields_reproduced_by_secondary_vjudge_record",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/604028",
+          "type": "secondary_mirror_of_kattis_metadata",
+          "observation": "Build Dependencies / builddeps; source field links to official Kattis NWERC 2015 Practice source page; author Jeroen Bransen; description marked official and mainOfficial."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the NWERC 2015 Practice statement/package or the Kattis statement text and inspect its full narrative, input/output, examples, and constraints."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "kattisUrl": "https://open.kattis.com/problems/commercials",
+      "finding": "A VJudge record exposes Kattis metadata for exact slug commercials, source KTH training 2011-01-26, author Lukáš Poláček, and marks the description official/mainOfficial. This corroborates the previously reported source/author metadata more clearly, but it is still a secondary rendering of Kattis fields; no original KTH training package or statement text was inspected.",
+      "evidenceLevel": "kattis_metadata_fields_reproduced_by_secondary_vjudge_record",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/854275",
+          "type": "secondary_mirror_of_kattis_metadata",
+          "observation": "Radio Commercials / commercials; source field links to official Kattis KTH training 2011-01-26 source page; author Lukáš Poláček; description marked official and mainOfficial."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the KTH training 2011-01-26 source package or original Kattis statement and inspect complete statement and constraints."
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "kattisUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "finding": "A VJudge record exposes Kattis metadata for exact slug intervalscheduling, source Algorithm Design, ITU 2019, author Thore Husfeldt, and marks the description official/mainOfficial. This strengthens source identity beyond the earlier VJudge metadata note, but does not provide original statement content or prove long-scenario depth.",
+      "evidenceLevel": "kattis_metadata_fields_reproduced_by_secondary_vjudge_record",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/773508",
+          "type": "secondary_mirror_of_kattis_metadata",
+          "observation": "Interval Scheduling / intervalscheduling; source field links to official Kattis Algorithm Design, ITU 2019 source page; author Thore Husfeldt; description marked official and mainOfficial."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the official ITU 2019 problem package or Kattis statement text; inspect complete scenario and constraints before judging depth."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "kattisUrl": "https://open.kattis.com/problems/walrusweights",
+      "finding": "A VJudge record exposes Kattis metadata for exact slug walrusweights, source Popup 2015 Session 1, author Marc Vinyals, and marks the description official/mainOfficial. This corroborates source/author metadata more clearly than the prior general VJudge metadata reference. No original Popup 2015 statement text or constraints were retrieved.",
+      "evidenceLevel": "kattis_metadata_fields_reproduced_by_secondary_vjudge_record",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_mirror_of_kattis_metadata",
+          "observation": "Walrus Weights / walrusweights; source field links to official Kattis Popup 2015 Session 1 source page; author Marc Vinyals; description marked official and mainOfficial."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Retrieve the original Popup 2015 Session 1 statement/package; inspect full statement and constraints to confirm or revise provisional depth assessment."
+    },
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "kattisUrl": "https://open.kattis.com/problems/color",
+      "finding": "A VJudge contest listing independently renders Kattis slug color with title Coloring Socks. This is additional title/slug identity evidence only. The result does not expose the submitted KTH source attribution or original statement; source provenance and depth remain unassessed.",
+      "evidenceLevel": "secondary_title_slug_identity_only",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/571568",
+          "type": "secondary_contest_listing",
+          "observation": "Lists Kattis color — Coloring Socks; no source/author metadata or original statement captured."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find the Kattis official source metadata or original contest package that establishes source provenance; obtain statement before scenario-depth review."
+    }
+  ],
+  "summary": {
+    "recordsReviewed": 5,
+    "sourceMetadataCorroborated": 4,
+    "additionalTitleSlugIdentityMatches": 1,
+    "newOriginalStatementsCaptured": 0,
+    "scenarioDepthApprovals": 0,
+    "importApprovals": 0,
+    "candidateRecordsModified": 0,
+    "correction": "Pass 22's NWERC main-contest packet finding is retained but clarified: it does not conflict with the distinct NWERC 2015 Practice source metadata now exposed by the VJudge record. Do not describe the practice attribution as disproven."
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis 41 candidate source-identity cross-check",
+  "reviewedOn": "2026-11-14",
+  "referenceSource": {
+    "title": "ICPC contest archive — Kattis judge index",
+    "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+    "scope": "Third-party contest/problem metadata index; it states Kattis problem URLs use /problems/{id} and associates problem IDs with contest sources.",
+    "limitation": "This index is not the official Kattis statement itself. A matching row confirms only the title/slug/contest metadata association, not statement contents, constraints, or long-scenario qualification."
+  },
+  "summary": {
+    "totalCandidates": 41,
+    "originalStatementIdentityVerified": 25,
+    "archiveMetadataOnlyMatch": 6,
+    "notFoundInConsultedArchiveIndex": 7,
+    "provenanceMismatchHold": 1,
+    "alternateSourceProvenanceConflicts": 0,
+    "liveKattisPagesDirectlyVerified": 0,
+    "importApproved": 0,
+    "candidateSourceStatementVerifiedKattisCrosswalkPending": 2
+  },
+  "gateDecision": "Keep all 41 as candidate-only. Two additional official Waterloo source statements now corroborate candidate source claims (Cranes and Exact Change), but their exact Kattis slug crosswalks remain pending. Spiderman's Workout now has an institutionally hosted 2003 statement PDF, but its claimed championship provenance remains unresolved. Do not promote any record based on statement identity alone; verify canonical Kattis mapping and long-scenario qualification separately.",
+  "records": [
+    {
+      "id": "SCENARIO-001",
+      "title": "Bank Queue",
+      "submittedSlug": "bank",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Bank Queue",
+        "slug": "bank",
+        "contest": "kth-2013"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://sas.codeforces.com/gym/100185/attachments/download/1605/2013-kth-challenge-en.pdf",
+        "title": "KTH Challenge 2013, Problem F — Bank Queue",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-002",
+      "title": "Postal Delivery",
+      "submittedSlug": "delivery",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Postal Delivery",
+        "slug": "delivery",
+        "contest": "mcpc-2016"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://neerc.ifmo.ru/trains/today/train-20161108.pdf",
+        "title": "ACM-ICPC 2016 Mid-Central Regional, Problem I — Postal Delivery",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-003",
+      "title": "Planting Trees",
+      "submittedSlug": "plantingtrees",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Planting Trees",
+        "slug": "plantingtrees",
+        "contest": "nordic-ukiepc-2013"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/ncpc/2013/ncpc2013problems.pdf",
+        "title": "NCPC 2013, Problem A — Planting Trees",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-004",
+      "title": "Shopaholic",
+      "submittedSlug": "shopaholic",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Shopaholic",
+        "slug": "shopaholic",
+        "contest": "nordic-2007"
+      },
+      "note": "Problem identity and statement content corroborated against the original NCPC 2007 contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2007/ncpc2007problems.pdf",
+        "title": "NCPC 2007, Problem H — Shopaholic",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-007",
+      "title": "Water",
+      "submittedSlug": "water",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Water",
+        "slug": "water",
+        "contest": "seusa-2016"
+      },
+      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
+      "metadataCorroboration": {
+        "url": "https://open.kattis.com/problem-sources/2016%20Southeast%20USA%20Regionals%20Division%201",
+        "source": "Kattis 2016 SEUSA Division 1 source listing",
+        "finding": "Lists Water as a problem in the claimed contest source; its statement link returned 403.",
+        "type": "official_source_catalogue_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      },
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/southeast/2016/SER-2016-Problems-D1.pdf",
+        "title": "2016 ACM ICPC Southeast USA Regional Division 1, Problem J — Water",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_pdf"
+      }
+    },
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "submittedSlug": "color",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-010",
+      "title": "Daydreaming Stockbroker",
+      "submittedSlug": "stockbroker",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Daydreaming Stockbroker",
+        "slug": "stockbroker",
+        "contest": "nordic-2016"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/ncpc/2016/ncpc2016problems.pdf",
+        "title": "NCPC 2016, Problem D — Daydreaming Stockbroker",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-011",
+      "title": "Air Conditioned Minions",
+      "submittedSlug": "airconditioned",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": {
+        "title": "Air Conditioned Minions",
+        "slug": "airconditioned",
+        "contest": "singapore-2015"
+      },
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/airconditioned",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/604028",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis airconditioned / Air Conditioned Minions and source 2015 ACM ICPC Singapore Regional.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      }
+    },
+    {
+      "id": "SCENARIO-012",
+      "title": "Canvas Painting",
+      "submittedSlug": "canvas",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Canvas Painting",
+        "slug": "canvas",
+        "contest": "swerc-2015"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/swerc/2015/problemset.pdf",
+        "title": "SWERC 2015, Problem C — Canvas Painting",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "submittedSlug": "intervalscheduling",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-014",
+      "title": "Classrooms",
+      "submittedSlug": "classrooms",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-015",
+      "title": "Marbles On A Tree",
+      "submittedSlug": "marblestree",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/040612/E.html",
+        "title": "Waterloo Programming Contest, Problem E — Marbles on a tree",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "submittedSlug": "woodcutting",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": {
+        "title": "Wood Cutting",
+        "slug": "woodcutting",
+        "contest": "alberta-2016"
+      },
+      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+    },
+    {
+      "id": "SCENARIO-023",
+      "title": "Pripreme",
+      "submittedSlug": "pripreme",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Statement identity and submitted contest provenance corroborated. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://qoj.ac/download.php?id=16376&type=statement",
+        "title": "COCI 2014/2015, Round 4 — Task PRIPREME",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-027",
+      "title": "Single source shortest path, time table",
+      "submittedSlug": "shortestpath2",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-029",
+      "title": "Fire",
+      "submittedSlug": "fire2",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Fire",
+        "slug": "fire2",
+        "contest": "bapc-2012"
+      },
+      "note": "Problem identity and statement content corroborated by the cited contest PDF or judge mirror. This does not verify the live Kattis page or approve import.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/fire2",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/353364",
+        "source": "Virtual Judge BAPC 2012 contest problem list",
+        "finding": "Lists Kattis fire2 / Fire in the BAPC 2012 problem set.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      },
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/bapc/2012/problemset.pdf",
+        "title": "BAPC 2012, Problem F — Fire",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_pdf"
+      }
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "submittedSlug": "grid",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": {
+        "title": "Grid",
+        "slug": "grid",
+        "contest": "seusa-2015"
+      },
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/grid",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://open.kattis.com/problem-sources/2015%20Southeast%20USA%20Regionals%20Division%201",
+        "source": "Kattis 2015 SEUSA Division 1 source listing",
+        "finding": "Lists Grid as a problem in the claimed contest source; its statement link returned 403.",
+        "type": "official_source_catalogue_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      }
+    },
+    {
+      "id": "SCENARIO-031",
+      "title": "Button Bashing",
+      "submittedSlug": "buttonbashing",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Button Bashing",
+        "slug": "buttonbashing",
+        "contest": "bapc-2014"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://chipcie.wisv.ch/archive/2014/bapc/problemset.pdf",
+        "title": "BAPC 2014, Problem B — Button Bashing",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-032",
+      "title": "Coast Length",
+      "submittedSlug": "coast",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Coast Length",
+        "slug": "coast",
+        "contest": "kth-2011"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://challenge.csc.kth.se/2011/problems.pdf",
+        "title": "KTH Challenge 2011, Problem E — Coast Length",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "submittedSlug": "builddeps",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": null,
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/builddeps",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/604028",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis builddeps / Build Dependencies with source NWERC 2015 Practice.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      }
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "submittedSlug": "muddyhike",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/muddyhike",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
+    },
+    {
+      "id": "SCENARIO-051",
+      "title": "Restaurant Orders",
+      "submittedSlug": "orders",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Restaurant Orders",
+        "slug": "orders",
+        "contest": "kth-2012"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/kthchallenge/2012/problems.pdf",
+        "title": "KTH Challenge 2012, Problem G — Restaurant Orders",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "submittedSlug": "walrusweights",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/walrusweights",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      }
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "submittedSlug": "commercials",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": null,
+      "note": "Contest source metadata corroborated, but original statement content remains unverified. Keep candidate-only; do not approve import or long-scenario depth from metadata alone.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/commercials",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "metadataCorroboration": {
+        "url": "https://vjudge.net/contest/854275",
+        "source": "Virtual Judge problem metadata",
+        "finding": "Lists Kattis commercials / Radio Commercials with source KTH training 2011-01-26.",
+        "type": "secondary_contest_metadata",
+        "reviewedOn": "2026-11-14",
+        "meaning": "Contest/title/slug metadata corroboration only; no statement content or long-scenario qualification verified."
+      }
+    },
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "submittedSlug": "trainsorting",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Waterloo 2008 Spring A identity and statement corroborated by the DMOJ judge mirror. The exact submitted June 15 date remains unverified. A separate Waterloo 2013 copy exists but is not treated as a provenance conflict.",
+      "liveKattisAccessAttempt": {
+        "attemptedOn": "2026-11-14",
+        "result": "403_forbidden",
+        "sourceUrl": "https://open.kattis.com/problems/trainsorting",
+        "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "statementEvidence": {
+        "url": "https://dmoj.ca/problem/waterloo2008sa",
+        "title": "Waterloo 2008 Spring A — Trainsorting",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "secondary_contest_statement_mirror"
+      }
+    },
+    {
+      "id": "SCENARIO-056",
+      "title": "Canonical Coin Systems",
+      "submittedSlug": "canonical",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Canonical Coin Systems",
+        "slug": "canonical",
+        "contest": "naq-2017"
+      },
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://cs.baylor.edu/~hamerly/icpc/qualifier_2017/naq2017_problemset.pdf",
+        "title": "North America Qualifier 2017, Problem C — Canonical Coin Systems",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "submittedSlug": "exactchange2",
+      "status": "candidate_source_statement_verified_kattis_slug_crosswalk_pending",
+      "archiveFinding": {
+        "title": "Exact Change",
+        "slug": "exactchange3",
+        "contest": "pacnw-2024"
+      },
+      "note": "The official Waterloo 2008-10-04 contest page lists Problem C: Exact Change, and its linked original statement matches the candidate title and submitted contest/source claim. This corroborates the Waterloo source statement, but the exact Kattis `exactchange2` slug-to-source crosswalk remains unverified. Do not substitute `exactchange3`, which is a distinct problem.",
+      "alternateSourceConflict": {
+        "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+        "contest": "Archive index maps exactchange3 to PACNW 2024; it does not map exactchange2.",
+        "reviewedOn": "2026-11-14",
+        "decision": "The official Waterloo 2008 statement supports the candidate's claimed source, but it does not by itself establish the Kattis exactchange2 crosswalk. Retain the slug crosswalk hold; exactchange3 is a separate variant and must not be substituted."
+      },
+      "statementEvidence": {
+        "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/C.html",
+        "title": "Waterloo ACM Programming Contest, October 4, 2008 — Problem C: Exact Change",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_problem_statement",
+        "observation": "For each case, choose bills/coins with total value at least the price, minimizing paid amount then number of bills/coins; price <=10000 cents and n <=100."
+      }
+    },
+    {
+      "id": "SCENARIO-058",
+      "title": "Spiderman's Workout",
+      "submittedSlug": "spiderman",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-059",
+      "title": "Nikola",
+      "submittedSlug": "nikola",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Problem identity and statement content corroborated against the cited original contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.csc.kth.se/contest/training/110414/nikola.pdf",
+        "title": "Croatian Open Competition in Informatics 2007/2008, Croatian Regionals — Task NIKOLA",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-060",
+      "title": "The Weight Of Words",
+      "submittedSlug": "weightofwords",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://vthspc.cs.vt.edu/assets/files/vths2017-b9f335cf2da392887f3b828dbc04cb59.pdf",
+        "title": "4th Virginia Tech High School Programming Contest 2017, Problem F — The Weight Of Words",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-082",
+      "title": "Phone List",
+      "submittedSlug": "phonelist",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Phone List",
+        "slug": "phonelist",
+        "contest": "nordic-2007"
+      },
+      "note": "Problem identity and statement content corroborated against the original NCPC 2007 contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2007/ncpc2007problems.pdf",
+        "title": "NCPC 2007, Problem A — Phone List",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-083",
+      "title": "Word Cloud",
+      "submittedSlug": "wordcloud",
+      "status": "archive_metadata_only_match",
+      "archiveFinding": {
+        "title": "Word Cloud",
+        "slug": "wordcloud",
+        "contest": "mcpc-2014"
+      },
+      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+    },
+    {
+      "id": "SCENARIO-095",
+      "title": "Counting Subsequences (Hard)",
+      "submittedSlug": "subseqhard",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://ipsc.ksp.sk/2006/real/problems/c.html",
+        "title": "IPSC 2006, Problem C — Counting Subsequences",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_problem_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "submittedSlug": "busyschedule",
+      "status": "not_found_in_archive_index",
+      "archiveFinding": null,
+      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+    },
+    {
+      "id": "SCENARIO-097",
+      "title": "Introspective Caching",
+      "submittedSlug": "caching",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Introspective Caching",
+        "slug": "caching",
+        "contest": "nordic-2008"
+      },
+      "note": "Statement identity and submitted contest provenance corroborated. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2008/ncpc2008problems.pdf",
+        "title": "NCPC 2008, Problem I — Introspective Caching",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-116",
+      "title": "Train Passengers",
+      "submittedSlug": "trainpassengers",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Train Passengers",
+        "slug": "trainpassengers",
+        "contest": "nordic-ukiepc-2014"
+      },
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://ukiepc.info/2014/ncpc2014problems.pdf",
+        "title": "NCPC 2014, Problem K — Train Passengers",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-167",
+      "title": "Financial Planning",
+      "submittedSlug": "financialplanning",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Financial Planning",
+        "slug": "financialplanning",
+        "contest": "bapc-2018"
+      },
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://icpcarchive.github.io/Europe%20Subcontests/Benelux%20Algorithm%20Programming%20Contest%20%28BAPC%29/2018%20Benelux%20Algorithm%20Programming%20Contest/problems.pdf",
+        "title": "BAPC 2018, Problem F — Financial Planning",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_copy"
+      }
+    },
+    {
+      "id": "SCENARIO-177",
+      "title": "Boggle",
+      "submittedSlug": "boggle",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Boggle",
+        "slug": "boggle",
+        "contest": "germany-2013"
+      },
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://paperzz.com/doc/8677279/gcpc-2013-15.06.2013",
+        "title": "GCPC 2013, Problem A — Boggle",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "contest_statement_copy_mirror"
+      }
+    },
+    {
+      "id": "SCENARIO-178",
+      "title": "Perket",
+      "submittedSlug": "perket",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": null,
+      "note": "Original contest statement inspected and problem identity corroborated. Long-scenario review separately rejects this record as too compact; not approved for import.",
+      "statementEvidence": {
+        "url": "https://hsin.hr/2009/coci/contest2_tasks.pdf",
+        "title": "COCI 2008/2009 Contest #2, Task PERKET",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_statement"
+      }
+    },
+    {
+      "id": "SCENARIO-179",
+      "title": "Sudoku",
+      "submittedSlug": "sudoku",
+      "status": "original_contest_statement_identity_verified",
+      "archiveFinding": {
+        "title": "Sudoku",
+        "slug": "sudoku",
+        "contest": "nwerc-2006"
+      },
+      "note": "Problem identity and statement content corroborated against the cited contest statement. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://www.csc.kth.se/contest/nwerc/2006/problems/nwerc06.pdf",
+        "title": "NWERC 2006, Problem A — Sudoku",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement_hosted_by_contest_university"
+      }
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "submittedSlug": "cranes",
+      "status": "candidate_source_statement_verified_kattis_slug_crosswalk_pending",
+      "archiveFinding": null,
+      "note": "The official Waterloo 2008-10-04 contest page lists Problem A: Cranes, and its linked original statement matches the candidate title and scenario. This corroborates the submitted contest/source claim. The consulted Kattis archive index still has no Cranes row, so the Kattis slug-to-source crosswalk and live Kattis page remain unverified. The Waterloo 2013 same-title statement is an alternate/reused copy, not the evidence used for this source match.",
+      "alternateSourceConflict": {
+        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+        "contest": "Waterloo Contests Selection, September 10, 2013",
+        "reviewedOn": "2026-11-14",
+        "decision": "Not used as source evidence. The claimed Waterloo 2008-10-04 source is now independently corroborated by the official Waterloo contest archive and Problem A statement."
+      },
+      "statementEvidence": {
+        "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/A.html",
+        "title": "Waterloo ACM Programming Contest, October 4, 2008 — Problem A: Cranes",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "official_contest_problem_statement",
+        "observation": "Square-grid candidate crane locations; each crane covers a radius-r disk; select a subset maximizing total covered area without crane interference; at most 15 candidate locations."
+      }
+    }
+  ]
+}

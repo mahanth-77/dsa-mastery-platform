@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewBatch": "VERTEX Kattis nine-record scenario-materiality review",
+  "reviewedOn": "2026-11-14",
+  "scope": "Additional scenario-materiality review only. This does not approve imports or certify the full 41-record source-evidence gate.",
+  "policy": {
+    "importApproved": false,
+    "candidateRecordsRemainCandidates": true,
+    "learnerProgressModified": false,
+    "curriculumModified": false,
+    "note": "Kattis pages returned 403/blocked to the available browser fetcher. Where an official contest statement or an independent index was accessible, it is cited below. Claims without the actual statement are explicitly left provisional."
+  },
+  "summary": {
+    "reviewed": 9,
+    "rejectAsLongScenario": 4,
+    "provisionalNotLongScenarioEvidenceIncomplete": 4,
+    "statementRequiredBeforeDisposition": 1,
+    "importApproved": 0
+  },
+  "records": [
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "sourceUrl": "https://open.kattis.com/problems/color",
+      "verdict": "provisional_not_long_scenario",
+      "confidence": "medium",
+      "reasoning": "The accessible references identify this as a low-difficulty Kattis exercise (rating 1.9) and as a paired introductory programming assignment. That supports a small greedy batching task, not a substantial multi-stage scenario. The original statement could not be fetched, so this is not a final source-content certification.",
+      "evidence": [
+        {
+          "url": "https://github.com/sammcdo/Kattis-Problems",
+          "kind": "independent_problem_index",
+          "supports": "Maps Coloring Socks to the Kattis /problems/color URL and lists a low difficulty rating."
+        },
+        {
+          "url": "https://sites.cs.ucsb.edu/~suri/cs130b/cs130b.html",
+          "kind": "course_assignment_reference",
+          "supports": "Lists Coloring Socks alongside Air Conditioned Minions as a programming assignment."
+        }
+      ],
+      "action": "Do not count toward the long-scenario quota unless the full statement reveals materially richer context than the available references suggest."
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "sourceUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "verdict": "provisional_not_long_scenario",
+      "confidence": "medium",
+      "reasoning": "The available references identify the Kattis problem as a low-difficulty interval-scheduling task (rating 1.8). The known formulation is the standard abstract maximum-compatible-interval selection problem, not a long contextual scenario. The claimed ITU 2019 provenance was not independently confirmed.",
+      "evidence": [
+        {
+          "url": "https://russelldash332.github.io/kattis/",
+          "kind": "independent_problem_index",
+          "supports": "Lists Interval Scheduling (1) with slug intervalscheduling and low difficulty rating."
+        },
+        {
+          "url": "https://www.cs.purdue.edu/homes/jblocki/courses/580_Spring19/Lectures/CS580-Lecture2Asymptotic.pdf",
+          "kind": "algorithm_reference",
+          "supports": "Shows the standard abstract formulation: jobs with start/finish times and a maximum compatible subset."
+        }
+      ],
+      "action": "Exclude from the long-scenario quota unless a distinct, richer official statement is produced."
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "sourceUrl": "https://open.kattis.com/problems/woodcutting",
+      "verdict": "provisional_not_long_scenario",
+      "confidence": "medium",
+      "reasoning": "An accessible solution reference describes the task as grouping each customer's wood pieces, summing processing time, sorting customers by total work, and minimizing average waiting time. This is a recognizable customer-queue story, but the available evidence points to a compact shortest-job-first exercise rather than a long scenario. Alberta 2016 provenance is not independently established by the retrieved page.",
+      "evidence": [
+        {
+          "url": "https://solutions.icpc.uclaacm.com/2021-tryout-solutions/tryout-1/d-wood-cutting",
+          "kind": "solution-reference",
+          "supports": "Links the exact Kattis slug and explains the customer waiting-time / shortest-job-first reduction."
+        }
+      ],
+      "action": "Keep as a normal greedy/queueing practice problem; do not count as long-scenario without the original statement and a documented depth rationale."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "sourceUrl": "https://open.kattis.com/problems/walrusweights",
+      "verdict": "statement_required_before_disposition",
+      "confidence": "low",
+      "reasoning": "An independent problem listing confirms the Kattis slug and Popup 2015 Session 1 source, but the actual statement was not available in the retrieved evidence. Scenario length and narrative depth cannot be judged reliably from the title or algorithm pattern alone.",
+      "evidence": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "kind": "independent_problem_metadata",
+          "supports": "Identifies Walrus Weights as Kattis problem walrusweights and lists Popup 2015 Session 1 as source."
+        },
+        {
+          "url": "https://stackoverflow.com/questions/36659153/walrus-weights-getting-a-combination-in-an-array-whose-sum-is-closest-1000",
+          "kind": "secondary_problem_reference",
+          "supports": "Describes the task as selecting a combination whose sum is closest to 1000; not a substitute for the official statement."
+        }
+      ],
+      "action": "Keep pending. Obtain the official statement before deciding long-scenario qualification."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "sourceUrl": "https://open.kattis.com/problems/commercials",
+      "verdict": "provisional_not_long_scenario",
+      "confidence": "medium",
+      "reasoning": "Independent metadata confirms the exact Kattis slug and KTH training source. The known algorithmic classification is maximum subarray with a fixed cost offset; no evidence surfaced of a multi-stage or unusually detailed scenario. The official statement itself was not retrieved, so the content-depth verdict remains provisional.",
+      "evidence": [
+        {
+          "url": "https://vjudge.net/contest/854275",
+          "kind": "independent_problem_metadata",
+          "supports": "Identifies Radio Commercials as Kattis problem commercials and lists KTH training 2011-01-26 as source."
+        },
+        {
+          "url": "https://github.com/sammcdo/Kattis-Problems",
+          "kind": "independent_problem_index",
+          "supports": "Maps Radio Commercials to the Kattis /problems/commercials URL."
+        }
+      ],
+      "action": "Do not count toward the long-scenario quota without the original statement and a stronger scenario-depth case."
+    },
+    {
+      "id": "SCENARIO-060",
+      "title": "The Weight Of Words",
+      "sourceUrl": "https://open.kattis.com/problems/weightofwords",
+      "verdict": "reject_as_long_scenario",
+      "confidence": "high",
+      "reasoning": "The official Virginia Tech 2017 contest PDF presents a compact word-construction game: choose a word of given length whose letter weights sum to a target. The statement is self-contained and short; it is a useful constructive/DP exercise but does not meet a long-scenario standard.",
+      "evidence": [
+        {
+          "url": "https://vthspc.cs.vt.edu/assets/files/vths2017-b9f335cf2da392887f3b828dbc04cb59.pdf",
+          "kind": "official_contest_statement",
+          "supports": "Official 4th Virginia Tech High School Programming Contest statement, Problem F; includes the word-weight game, constraints, and examples."
+        },
+        {
+          "url": "https://vthspc.cs.vt.edu/assets/files/outlines-vths-2017-7c9b9ba5045824ec1a46582b926c4a72.pdf",
+          "kind": "official_solution_outline",
+          "supports": "Confirms the compact task is to construct a word with given length and total letter weight."
+        }
+      ],
+      "action": "Retain as ordinary practice; exclude from the long-scenario quota."
+    },
+    {
+      "id": "SCENARIO-095",
+      "title": "Counting Subsequences (Hard)",
+      "sourceUrl": "https://open.kattis.com/problems/subseqhard",
+      "verdict": "reject_as_long_scenario",
+      "confidence": "high",
+      "reasoning": "The official IPSC 2006 Problem C statement is a short numeric-sequence task: count contiguous subsequences whose sum is 47. The hard dataset changes scale, not the scenario. This is a legitimate prefix-sum/frequency problem, not a long contextual scenario.",
+      "evidence": [
+        {
+          "url": "https://ipsc.ksp.sk/2006/real/problems/c.html",
+          "kind": "official_problem_statement",
+          "supports": "Official IPSC 2006 Problem C statement and input/output specification."
+        },
+        {
+          "url": "https://ipsc.ksp.sk/archive",
+          "kind": "official_contest_archive",
+          "supports": "Describes Counting Subsequences as counting contiguous subsequences with sum equal to 47."
+        }
+      ],
+      "action": "Retain as ordinary prefix-sum practice; exclude from the long-scenario quota."
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "sourceUrl": "https://open.kattis.com/problems/busyschedule",
+      "verdict": "reject_as_long_scenario",
+      "confidence": "medium",
+      "reasoning": "The accessible solution reference shows the task reduces to parsing clock strings and sorting by AM/PM, hour, and minute. An independent Kattis index lists it at low difficulty (2.0). This is a compact parsing/sorting exercise, not a long scenario. The claimed Baylor course provenance was not independently confirmed.",
+      "evidence": [
+        {
+          "url": "https://coding-armadillo.github.io/kattis/solutions/",
+          "kind": "solution-reference",
+          "supports": "Shows parsing HH:MM plus AM/PM and sorting the schedule entries."
+        },
+        {
+          "url": "https://russelldash332.github.io/kattis/",
+          "kind": "independent_problem_index",
+          "supports": "Lists Busy Schedule with slug busyschedule and low difficulty rating 2.0."
+        }
+      ],
+      "action": "Retain as ordinary parsing/sorting practice; exclude from the long-scenario quota."
+    },
+    {
+      "id": "SCENARIO-178",
+      "title": "Perket",
+      "sourceUrl": "https://open.kattis.com/problems/perket",
+      "verdict": "reject_as_long_scenario",
+      "confidence": "high",
+      "reasoning": "The official COCI 2008/2009 Contest 2 statement gives a brief cooking/ingredient framing, then asks for a non-empty subset minimizing the difference between product sourness and summed bitterness. With N at most 10, it is a small exhaustive-search exercise. The theme is memorable, but the statement is not long or multi-stage.",
+      "evidence": [
+        {
+          "url": "https://hsin.hr/2009/coci/contest2_tasks.pdf",
+          "kind": "official_contest_statement",
+          "supports": "Official COCI 2008/2009 Contest 2 PDF, Task PERKET; includes the ingredient story, constraints, and examples."
+        }
+      ],
+      "action": "Retain as ordinary brute-force practice; exclude from the long-scenario quota."
+    }
+  ]
+}

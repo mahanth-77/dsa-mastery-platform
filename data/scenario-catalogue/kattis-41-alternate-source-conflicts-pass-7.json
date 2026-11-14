@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis alternate statement provenance conflicts — pass 7",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "reviewed": 2,
+    "verifiedAgainstSubmittedProvenance": 0,
+    "heldForProvenanceResolution": 2,
+    "importApproved": 0
+  },
+  "records": [
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "submittedClaim": "Waterloo Programming Contest 2008-06-15",
+      "alternateStatement": {
+        "title": "Trainsorting",
+        "contest": "Waterloo Contests Selection, September 10, 2013",
+        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+        "problemId": "trainsorting"
+      },
+      "observations": "The alternate statement uses the same distinctive train-car arrangement task and the trainsorting identifier, but its stated contest provenance is 2013, not the submitted 2008 date.",
+      "decision": "Do not count as verified against the submitted source claim. Retain as a possible same-problem alternate statement pending proof that the 2008 contest reused the same statement or that the submitted contest date is erroneous.",
+      "evidenceExcerpt": "Cars arrive at the train station in a predetermined order. When each car arrives, Erin can add it to the beginning or end of her train, or refuse to add it at all."
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "submittedClaim": "Waterloo Programming Contest 2008-10-04",
+      "alternateStatement": {
+        "title": "Cranes",
+        "contest": "Waterloo Contests Selection, September 10, 2013",
+        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+        "problemId": "cranes"
+      },
+      "observations": "The alternate statement is a crane-placement/maximum-covered-area problem with the same generic title and cranes identifier, but its stated contest provenance is 2013, not the submitted 2008 date. The same slug/title is not enough to establish this is the submitted candidate.",
+      "decision": "Do not count as verified. Keep held until the claimed 2008 Waterloo statement is found or the original source claim is corrected with authoritative evidence.",
+      "evidenceExcerpt": "The construction site is laid out as a square grid. Several places on the grid have been marked as possible crane locations."
+    }
+  ]
+}

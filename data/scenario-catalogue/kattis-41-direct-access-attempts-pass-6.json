@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis direct-page access attempts — pass 6",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "attempted": 8,
+    "returned403": 8,
+    "statementContentVerified": 0,
+    "identityVerifiedByThisPass": 0,
+    "importApproved": 0
+  },
+  "records": [
+    {
+      "id": "SCENARIO-011",
+      "title": "Air Conditioned Minions",
+      "url": "https://open.kattis.com/problems/airconditioned",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "url": "https://open.kattis.com/problems/walrusweights",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "url": "https://open.kattis.com/problems/commercials",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-029",
+      "title": "Fire",
+      "url": "https://open.kattis.com/problems/fire2",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "url": "https://open.kattis.com/problems/grid",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "url": "https://open.kattis.com/problems/builddeps",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "url": "https://open.kattis.com/problems/muddyhike",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    },
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "url": "https://open.kattis.com/problems/trainsorting",
+      "result": "403_forbidden",
+      "decision": "hold_for_original_statement",
+      "interpretation": "The fetcher was denied access. This is not proof of a missing or invalid problem and must not be used as a source-verification pass."
+    }
+  ]
+}

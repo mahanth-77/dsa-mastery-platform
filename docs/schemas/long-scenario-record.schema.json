@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vertex.example/schemas/long-scenario-record.schema.json",
+  "title": "VERTEX Long-Scenario Catalogue Record",
+  "description": "Proposed staging contract. Not wired into the runtime curriculum or persistence layer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "platform",
+    "sourceUrl",
+    "reviewStatus",
+    "importApproved",
+    "evidence",
+    "review"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9-]{2,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "platform": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "difficulty": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Easy",
+        "Medium",
+        "Hard",
+        null
+      ]
+    },
+    "primaryPattern": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 120
+    },
+    "secondaryPatterns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 120
+      },
+      "uniqueItems": true
+    },
+    "factualScenarioSummary": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 2000
+    },
+    "reviewStatus": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "source_checked",
+        "statement_captured",
+        "scenario_reviewed",
+        "approved",
+        "hold",
+        "source_unverified",
+        "rewrite_required",
+        "excluded"
+      ]
+    },
+    "importApproved": {
+      "type": "boolean",
+      "default": false
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observedTitle",
+        "observedUrl",
+        "statementExcerpt",
+        "inputObserved",
+        "outputObserved",
+        "constraintsObserved",
+        "retrievedAt",
+        "evidenceKind"
+      ],
+      "properties": {
+        "observedTitle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observedUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "statementExcerpt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 12000
+        },
+        "inputObserved": {
+          "type": "boolean"
+        },
+        "outputObserved": {
+          "type": "boolean"
+        },
+        "constraintsObserved": {
+          "type": "boolean"
+        },
+        "retrievedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "evidenceKind": {
+          "type": "string",
+          "enum": [
+            "none",
+            "historical_assertion",
+            "current_statement_capture",
+            "official_archive_copy"
+          ]
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioFidelity",
+        "scenarioDepth",
+        "disposition",
+        "rationale",
+        "reviewedAt",
+        "reviewer"
+      ],
+      "properties": {
+        "scenarioFidelity": {
+          "type": "string",
+          "enum": [
+            "not_reviewed",
+            "authentic",
+            "embellished",
+            "abstract_or_recast",
+            "mismatch",
+            "inconclusive"
+          ]
+        },
+        "scenarioDepth": {
+          "type": "string",
+          "enum": [
+            "unassessed",
+            "short",
+            "moderate",
+            "long",
+            "strong"
+          ]
+        },
+        "disposition": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "source_unverified_hold",
+            "exclude",
+            "rewrite_and_reassess",
+            "manual_review",
+            "source_mismatch_hold",
+            "approved"
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 3000
+        },
+        "reviewedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "reviewStatus": {
+            "const": "approved"
+          }
+        },
+        "required": [
+          "reviewStatus"
+        ]
+      },
+      "then": {
+        "properties": {
+          "importApproved": {
+            "const": true
+          },
+          "evidence": {
+            "properties": {
+              "statementExcerpt": {
+                "type": "string",
+                "minLength": 40
+              },
+              "observedTitle": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observedUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "inputObserved": {
+                "const": true
+              },
+              "outputObserved": {
+                "const": true
+              },
+              "constraintsObserved": {
+                "const": true
+              },
+              "retrievedAt": {
+                "type": "string",
+                "format": "date"
+              },
+              "evidenceKind": {
+                "enum": [
+                  "current_statement_capture",
+                  "official_archive_copy"
+                ]
+              }
+            }
+          },
+          "review": {
+            "properties": {
+              "scenarioFidelity": {
+                "const": "authentic"
+              },
+              "scenarioDepth": {
+                "enum": [
+                  "moderate",
+                  "long",
+                  "strong"
+                ]
+              },
+              "disposition": {
+                "const": "approved"
+              },
+              "rationale": {
+                "type": "string",
+                "minLength": 20
+              },
+              "reviewedAt": {
+                "type": "string",
+                "format": "date"
+              },
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

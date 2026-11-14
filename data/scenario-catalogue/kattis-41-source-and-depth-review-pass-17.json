@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 17,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Reconcile the new official Waterloo source statements with the earlier cross-check, and make a conservative materiality disposition for remaining secondary-only candidates. No new original statement is claimed in this pass.",
+  "records": [
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "slug": "cranes",
+      "evidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/",
+          "type": "official_contest_archive",
+          "observation": "The October 4, 2008 Waterloo archive page lists Problem A: Cranes."
+        },
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/A.html",
+          "type": "official_contest_statement",
+          "observation": "The full statement specifies a square-grid construction site, candidate crane locations with rotation radii, non-touching crane safety constraints, and maximizing total covered area; at most 15 candidate locations."
+        }
+      ],
+      "sourceStatement": "verified",
+      "kattisSlugCrosswalk": "unverified",
+      "depthAssessment": "provisional_not_long_scenario",
+      "note": "This corrects the earlier pass-16 wording: the statement is a geometric non-overlap selection problem over at most 15 candidate locations. The official contest statement is real; the exact Kattis slug mapping is still not established.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "slug": "exactchange2",
+      "evidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/",
+          "type": "official_contest_archive",
+          "observation": "The October 4, 2008 Waterloo archive page lists Problem C: Exact Change."
+        },
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/C.html",
+          "type": "official_contest_statement",
+          "observation": "The full statement minimizes payment at or above the purchase price, then the number of bills/coins; price <= 10000 cents, at most 100 items."
+        }
+      ],
+      "sourceStatement": "verified",
+      "kattisSlugCrosswalk": "unverified",
+      "depthAssessment": "provisional_not_long_scenario",
+      "note": "The official Waterloo source statement is verified. It does not independently prove the Kattis `exactchange2` crosswalk. `exactchange3` is a distinct Kattis variant and is not a substitute.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "slug": "walrusweights",
+      "evidence": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_judge_metadata",
+          "observation": "The Kattis entry identifies source Popup 2015 Session 1 and author Marc Vinyals."
+        },
+        {
+          "url": "https://github.com/PedroContipelli/Kattis/blob/master/walrusweights.java",
+          "type": "third_party_solution",
+          "observation": "A published solution shows subset-sum reachability and selecting a total nearest 1000; it is implementation evidence, not statement evidence."
+        },
+        {
+          "url": "https://stackoverflow.com/questions/36659153/walrus-weights-getting-a-combination-in-an-array-whose-sum-is-closest-1000",
+          "type": "third_party_problem_discussion",
+          "observation": "A problem discussion describes choosing a subset of plate weights whose sum is closest to 1000; it is not an authoritative statement."
+        }
+      ],
+      "sourceStatement": "not_retrieved",
+      "sourceMetadata": "secondary_metadata_only",
+      "depthAssessment": "provisional_not_long_scenario",
+      "note": "The available technical evidence points to a single bounded subset-sum target-nearest-1000 task, not a multi-stage scenario. This is only a provisional materiality judgement; the original Popup statement and constraints remain unavailable.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-083",
+      "title": "Word Cloud",
+      "slug": "wordcloud",
+      "evidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "The exact title/slug is mapped to MCPC 2014; the distinct Word Clouds Revisited task is mapped to MCPC 2015."
+        },
+        {
+          "url": "https://mirkwood.cs.edinboro.edu/~bennett/class/csci330/spring2022/hw/two/wordcloud.html",
+          "type": "secondary_statement_mirror",
+          "observation": "Full statement mirror inspected, including typography formulas, ordered greedy row packing, input/output, constraints, and examples."
+        },
+        {
+          "url": "https://vjudge.net/contest/593282",
+          "type": "secondary_judge_metadata",
+          "observation": "Problem metadata identifies MCPC USA 2014 Regional Contest and authors Ryan Marshall and Michael Goldwasser."
+        }
+      ],
+      "sourceStatement": "secondary_mirror_only",
+      "sourceMetadata": "corroborated_secondary",
+      "depthAssessment": "provisional_moderate_long_scenario",
+      "note": "The candidate's STRONG label is not supported. The narrative includes typography calculations and row layout, but the core is one ordered greedy packing procedure. Original contest-hosted statement and human rubric review remain pending. Do not confuse `wordcloud` with `wordclouds`.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "slug": "muddyhike",
+      "evidence": [
+        {
+          "url": "https://cpbook.net/methodstosolve?oj=kattis&quality=starred&topic=all",
+          "type": "third_party_problem_catalogue",
+          "observation": "Classifies the problem as a minimax path problem."
+        },
+        {
+          "url": "https://github.com/versenyi98/kattis-solutions",
+          "type": "third_party_solution_repository",
+          "observation": "Lists a solution under the exact `muddyhike` slug."
+        },
+        {
+          "url": "https://maps17.kattis.com/info/submit",
+          "type": "official_contest_site",
+          "observation": "MAPS 2017 site exists, but no inspected source link ties this exact problem to the contest."
+        }
+      ],
+      "sourceStatement": "not_retrieved",
+      "sourceClaim": "MAPS_2017_unverified",
+      "depthAssessment": "provisional_not_long_scenario",
+      "note": "The secondary technical description indicates a single minimax path objective. Neither the original statement nor the submitted MAPS 2017 provenance is verified. This is not an identity disqualification.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 5,
+    "officialContestStatementsInspected": 2,
+    "secondaryStatementMirrorsInspected": 1,
+    "metadataOnlyOrTechnicalSecondaryEvidence": 2,
+    "provisionalNotLongScenario": 3,
+    "provisionalModerateLongScenario": 1,
+    "sourceStatementsStillMissing": 2,
+    "importApproved": 0
+  },
+  "integrity": {
+    "candidateRecordsModified": false,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}

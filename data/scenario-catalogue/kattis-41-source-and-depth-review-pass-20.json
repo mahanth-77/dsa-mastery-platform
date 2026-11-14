@@ -1,0 +1,179 @@
+{
+  "pass": 20,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Targeted primary-source retrieval and Kattis slug-crosswalk follow-up. Statement identity, source metadata, statement content, scenario depth, and import approval remain separate gates.",
+  "records": [
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "kattisUrl": "https://open.kattis.com/problems/woodcutting",
+      "finding": "The official Kattis problem-source page for Alberta Collegiate Programming Contest 2016 lists Wood Cutting and links its Kattis problem page. The ICPC contest archive independently maps Wood Cutting / woodcutting to alberta-2016. This upgrades the source association from archive-only metadata to direct Kattis source-list metadata. The problem statement page and English statement endpoint returned 403 in this retrieval session, so no statement text, I/O, constraints, or examples were inspected.",
+      "evidenceLevel": "official_kattis_source_listing_and_archive_crosswalk_statement_unavailable",
+      "sourceEvidence": [
+        {
+          "url": "https://open.kattis.com/problem-sources/Alberta%20Collegiate%20Programming%20Contest%202016",
+          "type": "official_kattis_problem_source_listing",
+          "observation": "Wood Cutting appears in the Alberta 2016 problem-source list; its linked problem endpoint is /problems/woodcutting."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Wood Cutting / woodcutting maps to alberta-2016."
+        },
+        {
+          "url": "https://open.kattis.com/problems/woodcutting",
+          "type": "official_kattis_problem_page",
+          "observation": "403/disabled fetch; statement unavailable."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Obtain the actual Alberta 2016 statement from an authoritative contest package or accessible Kattis statement; then inspect full framing, input/output, examples, and constraints."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "kattisUrl": "https://open.kattis.com/problems/commercials",
+      "finding": "The existing Virtual Judge metadata identifies the exact Kattis slug, KTH Training 2011-01-26 source label, and author Lukáš Poláček. Direct Kattis problem-page retrieval returned 403, and the Kattis KTH Training source-list endpoint also returned 403. No KTH training statement or source package was captured. No new primary evidence was obtained in this pass.",
+      "evidenceLevel": "secondary_metadata_only_primary_endpoints_blocked",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/610942",
+          "type": "secondary_problem_metadata",
+          "observation": "Previously inspected metadata identifies the Kattis problem and KTH Training 2011-01-26 source."
+        },
+        {
+          "url": "https://open.kattis.com/problems/commercials",
+          "type": "official_kattis_problem_page",
+          "observation": "403 fetch; statement unavailable."
+        },
+        {
+          "url": "https://open.kattis.com/problem-sources/KTH%20Training",
+          "type": "official_kattis_source_listing",
+          "observation": "403 fetch; source listing unavailable."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the dated KTH training statement or authoritative source package; do not infer scenario depth from a solution or algorithm label."
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "kattisUrl": "https://open.kattis.com/problems/builddeps",
+      "finding": "Virtual Judge metadata continues to identify builddeps as NWERC 2015 Practice, author Jeroen Bransen. The official Kattis NWERC 2015 Practice source-list endpoint and direct problem endpoint both returned 403 in this pass. The NWERC 2025 practice-slides item found earlier is a different edition and remains excluded. No original 2015 statement was captured.",
+      "evidenceLevel": "secondary_metadata_only_primary_endpoints_blocked",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/contest/604028",
+          "type": "secondary_problem_metadata",
+          "observation": "Previously inspected metadata identifies builddeps, NWERC 2015 Practice, and Jeroen Bransen."
+        },
+        {
+          "url": "https://open.kattis.com/problem-sources/Northwestern%20Europe%20Regional%20Contest%20%28NWERC%29%202015%20Practice",
+          "type": "official_kattis_source_listing",
+          "observation": "403 fetch; source listing unavailable."
+        },
+        {
+          "url": "https://open.kattis.com/problems/builddeps",
+          "type": "official_kattis_problem_page",
+          "observation": "403 fetch; statement unavailable."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the NWERC 2015 Practice original statement or contest package. Do not substitute NWERC 2025 material."
+    },
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "kattisUrl": "https://open.kattis.com/problems/color",
+      "finding": "The Kattis slug/title association remains supported by public solution indexes and course assignment references, but no authoritative KTH source listing or original KTH statement was retrieved. The KTH Training source endpoint was not the right confirmed source for this record and the KTH Challenge 2013 PDF is unrelated. The exact submitted source label 'KTH Training' remains uncorroborated.",
+      "evidenceLevel": "slug_title_secondary_only_source_provenance_unverified",
+      "sourceEvidence": [
+        {
+          "url": "https://github.com/sammcdo/Kattis-Problems",
+          "type": "secondary_solution_index",
+          "observation": "Lists Coloring Socks with Kattis slug color."
+        },
+        {
+          "url": "https://sites.cs.ucsb.edu/~suri/cs130b/cs130b.html",
+          "type": "course_assignment_reference",
+          "observation": "Lists Coloring Socks as a Kattis course assignment; does not establish original contest/source provenance."
+        },
+        {
+          "url": "https://open.kattis.com/problems/color",
+          "type": "official_kattis_problem_page",
+          "observation": "403 fetch; statement unavailable."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find an authoritative Kattis source association or original statement that establishes the candidate's exact source; retain title/source alias discrepancy."
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "kattisUrl": "https://open.kattis.com/problems/exactchange2",
+      "finding": "The ICPC Kattis archive still maps Exact Change only to exactchange3 / PACNW 2024; this is a distinct variant and does not establish a mapping for exactchange2. The official Waterloo 2008 Problem C statement remains verified from Pass 16/17, but no authoritative crosswalk tying Kattis exactchange2 to that statement was found in this pass.",
+      "evidenceLevel": "candidate_slug_crosswalk_unresolved_distinct_variant_confirmed",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "Exact Change / exactchange3 maps to PACNW 2024; no exactchange2 mapping was found."
+        },
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/C.html",
+          "type": "official_waterloo_2008_statement",
+          "observation": "Problem C: Exact Change; statement source is verified, but Kattis slug mapping is not."
+        },
+        {
+          "url": "https://open.kattis.com/problems/exactchange2",
+          "type": "official_kattis_problem_page",
+          "observation": "No successful authoritative page retrieval in this pass."
+        }
+      ],
+      "statementCaptured": true,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find Kattis metadata, source package mapping, or a trusted cross-reference explicitly identifying exactchange2 as Waterloo 2008 Problem C."
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "kattisUrl": "https://open.kattis.com/problems/cranes",
+      "finding": "The official Waterloo 2008 Problem A statement remains verified, but the consulted ICPC Kattis archive index has no Cranes entry and no authoritative mapping from the Kattis cranes slug to that Waterloo statement was found. The official Kattis problem endpoint could not be inspected in this pass. Absence from the secondary archive is not proof the candidate is invalid.",
+      "evidenceLevel": "official_statement_verified_candidate_slug_crosswalk_unresolved",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/A.html",
+          "type": "official_waterloo_2008_statement",
+          "observation": "Problem A: Cranes; original contest statement verified."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_archive_index",
+          "observation": "No exact Cranes entry found in consulted index."
+        },
+        {
+          "url": "https://open.kattis.com/problems/cranes",
+          "type": "official_kattis_problem_page",
+          "observation": "No successful authoritative page retrieval in this pass."
+        }
+      ],
+      "statementCaptured": true,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find an authoritative Kattis problem-source record or contest-package crosswalk explicitly connecting slug cranes to Waterloo 2008 Problem A."
+    }
+  ],
+  "summary": {
+    "recordsReviewed": 6,
+    "newPrimaryStatementsCaptured": 0,
+    "newOfficialPrimaryMetadataMatches": 1,
+    "officialStatementEndpointsBlockedOrUnavailable": 5,
+    "scenarioDepthApprovals": 0,
+    "importApprovals": 0,
+    "candidateRecordsModified": 0
+  },
+  "safety": "All 41 candidate records remain candidate-only and importApproved=false. No curriculum, learner progress, runtime, Supabase, production data, merge, or deployment changes."
+}

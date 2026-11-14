@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis candidate original-statement evidence ledger — pass 5",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "originalStatementsLocated": 4,
+    "identityAndStatementMatches": 4,
+    "officialKattisPagesDirectlyVerified": 0,
+    "scenarioQualificationApproved": 0,
+    "importApproved": 0,
+    "sourceQualityNote": "Boggle statement source is a mirror; treat provenance as lower confidence pending official contest archive confirmation."
+  },
+  "method": "Inspected original contest statements or contest statement copies for problem identity, narrative, input/output and constraints. These records do not establish current live Kattis page availability or long-scenario eligibility.",
+  "records": [
+    {
+      "id": "SCENARIO-116",
+      "title": "Train Passengers",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/trainpassengers",
+      "statementUrl": "https://ukiepc.info/2014/ncpc2014problems.pdf",
+      "statementTitle": "NCPC 2014, Problem K — Train Passengers",
+      "sourceType": "original_contest_statement",
+      "identity": "PDF explicitly gives problem ID trainpassengers and title Train Passengers",
+      "observed": "Consultants audit station-master counts of people leaving, entering and waiting, and determine whether train capacity, nonnegative passenger counts and final-empty conditions remain consistent across stations.",
+      "excerpt": "The Nordic Company of Passing Carriages is losing money at an alarming rate because most of their trains are empty.",
+      "inputOutput": "Input: train capacity, station count, and per-station leaving/entering/waiting counts. Output: possible or impossible.",
+      "constraints": "2 ≤ n ≤ 100 stations; all values including capacity are between 0 and 10^9.",
+      "scenarioNotes": "Strong operational narrative and sequential consistency checks, but a single-pass simulation. Long-scenario depth not approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-167",
+      "title": "Financial Planning",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/financialplanning",
+      "statementUrl": "https://icpcarchive.github.io/Europe%20Subcontests/Benelux%20Algorithm%20Programming%20Contest%20%28BAPC%29/2018%20Benelux%20Algorithm%20Programming%20Contest/problems.pdf",
+      "statementTitle": "BAPC 2018, Problem F — Financial Planning",
+      "sourceType": "original_contest_statement_copy",
+      "identity": "PDF explicitly gives Problem F Financial Planning and matches the Kattis problem title",
+      "observed": "A young adult needs a retirement target and can borrow arbitrary principal interest-free, investing once in each opportunity; each investment has an initial cost and daily profit, and the goal is minimum time until investments can be repaid and the target retained.",
+      "excerpt": "You are currently broke, but fortunately a generous gazillionaire friend has offered to lend you an arbitrary amount of money",
+      "inputOutput": "Input: number of investments and required retirement amount, then each investment's daily profit and initial cost. Output: minimum days to repay principal and retain at least the target.",
+      "constraints": "1 ≤ n ≤ 100,000; 1 ≤ M ≤ 10^9; each daily profit and initial cost between 1 and 10^9.",
+      "scenarioNotes": "Realistic financial planning narrative with a clear investment decision model and scale constraints; promising contextual candidate, but one optimization task only. Long-scenario qualification remains pending.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-177",
+      "title": "Boggle",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/boggle",
+      "statementUrl": "https://paperzz.com/doc/8677279/gcpc-2013-15.06.2013",
+      "statementTitle": "GCPC 2013, Problem A — Boggle",
+      "sourceType": "contest_statement_copy_mirror",
+      "identity": "Problem set lists A Boggle; Kattis ICPC archive maps Boggle to slug boggle and Germany 2013",
+      "observed": "The statement describes the 4×4 Boggle board game, adjacency in eight directions, no reusing a die within a word, dictionary validation and scoring by word length.",
+      "excerpt": "A Boggle is a 4 × 4 grid of letters where your job is to find as many words as you can.",
+      "inputOutput": "Input: dictionary, then multiple 4×4 boards. Output: maximum score, longest word and number of distinct valid words per board.",
+      "constraints": "Dictionary has 1 < w < 300,000 words, each up to 8 uppercase letters; 1 < b < 30 boards.",
+      "scenarioNotes": "Detailed game rules and multi-part scoring/output, but still a compact search problem. Statement source is a mirror rather than an official contest host; source provenance is weaker than other rows.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-179",
+      "title": "Sudoku",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/sudoku",
+      "statementUrl": "https://www.csc.kth.se/contest/nwerc/2006/problems/nwerc06.pdf",
+      "statementTitle": "NWERC 2006, Problem A — Sudoku",
+      "sourceType": "original_contest_statement_hosted_by_contest_university",
+      "identity": "KTH-hosted original NWERC PDF lists Problem A Sudoku and its full statement; archive metadata maps sudoku to NWERC 2006",
+      "observed": "Bill discovers that this week's Sudoku puzzle may be derived from last week's solved puzzle through rotations, row/column swaps within bands/stacks, band/stack swaps and digit permutations.",
+      "excerpt": "Bill just realized that the sudoku puzzle he had spent the last ten minutes trying to solve essentially was last week’s puzzle, only rotated counterclockwise.",
+      "inputOutput": "Input: prior solved Sudoku and current unsolved puzzle. Output Yes if the current puzzle can be derived using allowed transformations, otherwise No.",
+      "constraints": "0 ≤ N ≤ 50 test cases; each board is 9×9; uniqueness of each unsolved puzzle and validity of prior solutions are guaranteed.",
+      "scenarioNotes": "Rich and explicit transformation story with several operation classes and a clear verification task. More scenario depth than a trivial Sudoku solver, but remains a finite transformation-validation problem. Candidate for human depth review, not auto-approved.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}

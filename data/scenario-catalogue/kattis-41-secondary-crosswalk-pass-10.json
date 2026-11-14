@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis secondary statement and identity crosswalk — pass 10",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "secondaryStatementCopiesLocated": 1,
+    "secondaryProblemCrosswalksLocated": 1,
+    "officialOriginalStatementsVerifiedByThisPass": 0,
+    "provenanceIssuesFlagged": 1,
+    "importApproved": 0
+  },
+  "records": [
+    {
+      "id": "SCENARIO-014",
+      "title": "Classrooms",
+      "candidateUrl": "https://open.kattis.com/problems/classrooms",
+      "statementCopyUrl": "https://www.cnblogs.com/Patt/p/5873114.html",
+      "statementCopyTitle": "Hong Kong Regional Online Preliminary 2016, Problem C — Classrooms",
+      "evidenceType": "secondary_contest_statement_mirror",
+      "identity": "Mirror gives the exact title, problem statement, constraints and sample; a separate contest index records Kattis problem classrooms under Hong Kong Regional Online Preliminary 2016.",
+      "observed": "The new semester's proposed activities must be assigned to k classrooms, each of which can host at most one overlapping activity; maximize the number of scheduled activities.",
+      "excerpt": "The new semester is about to begin, and finding classrooms for orientation activities is always a headache.",
+      "inputOutput": "Input: number of activities and classrooms, then start/end times. Output: maximum activities that can be assigned.",
+      "constraints": "1 ≤ k ≤ n ≤ 200,000; 1 ≤ start ≤ end ≤ 10^9.",
+      "decision": "Statement content and contest identity are corroborated through a secondary mirror and contest metadata, but this is not an original official-hosted statement. Keep source evidence provisional pending authoritative source capture. The task itself is a standard multi-room interval scheduling problem; long-scenario status not approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "candidateUrl": "https://open.kattis.com/problems/exactchange2",
+      "crosswalkEvidenceUrl": "https://algorithmist.com/wiki/UVa_11517",
+      "crosswalkEvidenceType": "secondary_equivalence_reference",
+      "identity": "Kattis exactchange2 is independently cross-referenced as the UVa 11517 Exact Change variant. The ICPC archive index's exactchange3 is a separate PACNW 2024 problem, not proof that exactchange2 is a malformed URL.",
+      "observed": "The exactchange2/UVa 11517 task selects a subset of bills to pay at least the target price while minimizing overpayment, then minimizes the number of bills among solutions at that amount.",
+      "excerpt": "Given n bills (or coins) of certain values. Select a subset of them so that the total value is at least P and is minimum.",
+      "inputOutput": "Input: target price and bill values. Output: minimum payable amount at least the target and minimum number of bills.",
+      "constraints": "The cited secondary reference does not establish the original problem's full constraints or the Kattis statement's exact formatting.",
+      "decision": "Correct the earlier interpretation: this is not a confirmed slug typo. It is a distinct Exact Change variant; however, the candidate's claimed Waterloo 2008 provenance is not supported by the evidence found. Hold for original exactchange2 statement and source provenance. Do not substitute exactchange3.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}

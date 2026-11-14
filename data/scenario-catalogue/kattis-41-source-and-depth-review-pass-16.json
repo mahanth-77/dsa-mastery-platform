@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "pass": 16,
+  "reviewedOn": "2026-11-14",
+  "purpose": "Retrieve primary contest statements for the remaining provenance holds and inspect an institutional 2003 statement copy. Source-statement evidence, Kattis slug crosswalk, and long-scenario qualification are kept as separate gates.",
+  "records": [
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "slug": "cranes",
+      "evidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/",
+          "type": "official_waterloo_contest_archive",
+          "observation": "The official University of Waterloo contest archive identifies the October 4, 2008 contest and lists Problem A: Cranes."
+        },
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/A.html",
+          "type": "official_contest_problem_statement",
+          "observation": "Full Problem A statement inspected. It describes placing cranes at up to 15 candidate points on a square grid, with a radius for each crane, to maximize covered area while preventing crane collisions."
+        }
+      ],
+      "sourceClaim": "corroborated_waterloo_2008_10_04",
+      "statementStatus": "official_contest_statement_inspected",
+      "kattisSlugCrosswalk": "pending_archive_or_official_kattis_mapping",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The source story is real and the original Waterloo statement is now confirmed. However, the task is a single bounded geometric subset-selection optimization with at most 15 candidate locations. It does not demonstrate the multi-stage operational depth expected for the long-scenario quota. Keep candidate-only pending rubric review and Kattis slug crosswalk.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "slug": "exactchange2",
+      "evidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/",
+          "type": "official_waterloo_contest_archive",
+          "observation": "The official University of Waterloo contest archive identifies the October 4, 2008 contest and lists Problem C: Exact Change."
+        },
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/C.html",
+          "type": "official_contest_problem_statement",
+          "observation": "Full Problem C statement inspected. It minimizes the amount paid at or above the purchase price, then minimizes the number of bills/coins; price <=10000 cents and at most 100 items."
+        }
+      ],
+      "sourceClaim": "waterloo_2008_10_04_statement_corroborated",
+      "statementStatus": "official_contest_statement_inspected",
+      "kattisSlugCrosswalk": "pending_exactchange2_mapping",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The official Waterloo source claim is supported, but the exact Kattis `exactchange2` mapping is not yet proven. The problem itself is a compact dual-objective subset-sum/coin-selection DP with bounded inputs, not a long operational scenario. The distinct `exactchange3` variant must not be substituted.",
+      "importApproved": false
+    },
+    {
+      "id": "SCENARIO-058",
+      "title": "Spiderman's Workout",
+      "slug": "spiderman",
+      "evidence": [
+        {
+          "url": "https://www.ida.liu.se/projects/progcontest/progsm/2003/problems/spiderman.pdf",
+          "type": "university_hosted_2003_problem_statement_pdf",
+          "observation": "Full statement inspected: choose up/down directions for a fixed ordered sequence of distances, return to ground level, never go below ground, and minimize the maximum height. M <=40 and total distance <=1000."
+        }
+      ],
+      "sourceClaim": "2003_statement_copy_found_original_championship_provenance_unresolved",
+      "statementStatus": "institutionally_hosted_statement_inspected",
+      "kattisSlugCrosswalk": "not_independently_verified",
+      "depthAssessment": "provisional_not_long_scenario",
+      "rationale": "The university-hosted PDF provides the complete statement and constraints, but the PDF's `source: spiderman.*` marker does not identify the claimed Norwegian/Swedish Championships. The task remains one bounded sequence-DP optimization, so it is provisionally not long-scenario material.",
+      "importApproved": false
+    }
+  ],
+  "summary": {
+    "reviewed": 3,
+    "officialWaterlooSourceStatementsVerified": 2,
+    "institutionalStatementCopiesInspected": 1,
+    "kattisSlugCrosswalksStillPending": 3,
+    "provisionalNotLongScenario": 3,
+    "importApproved": 0
+  },
+  "integrity": {
+    "candidateRecordsModified": false,
+    "curriculumModified": false,
+    "learnerProgressModified": false,
+    "productionImportPerformed": false
+  }
+}

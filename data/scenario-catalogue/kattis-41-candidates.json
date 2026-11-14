@@ -1,0 +1,1261 @@
+{
+  "schemaVersion": "1.0.0",
+  "catalogue": "VERTEX Long-Scenario Catalogue",
+  "importMode": "candidate_only",
+  "sourceBatch": "VERTEX 64-record final approval gate, 2026-11-14",
+  "policy": {
+    "productionImportAllowed": false,
+    "curriculumTrackerMayBeModified": false,
+    "learnerProgressMayBeModified": false,
+    "note": "All 41 records are staged as candidates, not approved records. The submitted CSV reports source inspection, but does not include statement excerpts or retrieval timestamps required by the catalogue approval schema."
+  },
+  "counts": {
+    "submittedApproved": 41,
+    "stagedCandidates": 41,
+    "importApproved": 0,
+    "additionalScenarioReview": 9
+  },
+  "additionalScenarioReviewIds": [
+    "SCENARIO-008",
+    "SCENARIO-013",
+    "SCENARIO-016",
+    "SCENARIO-052",
+    "SCENARIO-053",
+    "SCENARIO-060",
+    "SCENARIO-095",
+    "SCENARIO-096",
+    "SCENARIO-178"
+  ],
+  "records": [
+    {
+      "id": "SCENARIO-001",
+      "title": "Bank Queue",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/bank",
+      "difficulty": null,
+      "primaryPattern": "Greedy Priority Queue / DSU Deadline Slotting",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Bank Queue",
+        "observedUrl": "https://open.kattis.com/problems/bank",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies KTH Challenge 2013 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Bank Queue.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-002",
+      "title": "Postal Delivery",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/delivery",
+      "difficulty": null,
+      "primaryPattern": "Greedy Route Planning / Partitioning",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Postal Delivery",
+        "observedUrl": "https://open.kattis.com/problems/delivery",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies 2016 ICPC Mid-Central Regional as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Package Delivery.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-003",
+      "title": "Planting Trees",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/plantingtrees",
+      "difficulty": null,
+      "primaryPattern": "Greedy Sorting / Schedule Optimization",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Planting Trees",
+        "observedUrl": "https://open.kattis.com/problems/plantingtrees",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2013 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Planting Trees.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-004",
+      "title": "Shopaholic",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/shopaholic",
+      "difficulty": null,
+      "primaryPattern": "Greedy Sorting / Group Discount Maximization",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Shopaholic",
+        "observedUrl": "https://open.kattis.com/problems/shopaholic",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2007 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Shopaholic.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-007",
+      "title": "Water",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/water",
+      "difficulty": null,
+      "primaryPattern": "Incremental Maximum Flow / Dinic Algorithm",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Water",
+        "observedUrl": "https://open.kattis.com/problems/water",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies 2016 Southeast USA Regionals Division 1 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Water.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/color",
+      "difficulty": null,
+      "primaryPattern": "Greedy Interval Partitioning",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Coloring Socks",
+        "observedUrl": "https://open.kattis.com/problems/color",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies KTH Training as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Colorful Socks.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-010",
+      "title": "Daydreaming Stockbroker",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/stockbroker",
+      "difficulty": null,
+      "primaryPattern": "Greedy Peak-Valley Simulation",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Daydreaming Stockbroker",
+        "observedUrl": "https://open.kattis.com/problems/stockbroker",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2016 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Daydreaming Stockbroker.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-011",
+      "title": "Air Conditioned Minions",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/airconditioned",
+      "difficulty": null,
+      "primaryPattern": "Greedy Interval Stabbing / Scheduling",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Air Conditioned Minions",
+        "observedUrl": "https://open.kattis.com/problems/airconditioned",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies 2015 ACM ICPC Singapore Regional as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Air Conditioned Minions.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-012",
+      "title": "Canvas Painting",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/canvas",
+      "difficulty": null,
+      "primaryPattern": "Greedy Huffman Construction / Min-Heap",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Canvas Painting",
+        "observedUrl": "https://open.kattis.com/problems/canvas",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Southwestern Europe Regional Contest (SWERC) 2015 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Painting Canvas.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "difficulty": null,
+      "primaryPattern": "Greedy Interval Scheduling (Earliest Deadline)",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Interval Scheduling",
+        "observedUrl": "https://open.kattis.com/problems/intervalscheduling",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Algorithm Design, ITU 2019 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Interval Scheduling.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-014",
+      "title": "Classrooms",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/classrooms",
+      "difficulty": null,
+      "primaryPattern": "Greedy Multi-Resource Scheduling / Balanced BST",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Classrooms",
+        "observedUrl": "https://open.kattis.com/problems/classrooms",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Hong Kong Regional Online Preliminary 2016 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Classrooms.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-015",
+      "title": "Marbles On A Tree",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/marblestree",
+      "difficulty": null,
+      "primaryPattern": "Tree Dynamic Programming / Flow Balancing",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Marbles On A Tree",
+        "observedUrl": "https://open.kattis.com/problems/marblestree",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Waterloo/Alberta Programming Contest 2004-06-12 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Marbles on a Tree.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-016",
+      "title": "Wood Cutting",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/woodcutting",
+      "difficulty": null,
+      "primaryPattern": "Greedy Shortest Job First / Queueing",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Wood Cutting",
+        "observedUrl": "https://open.kattis.com/problems/woodcutting",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Alberta Collegiate Programming Contest 2016 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Wood Cutting.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-023",
+      "title": "Pripreme",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/pripreme",
+      "difficulty": null,
+      "primaryPattern": "Greedy Scheduling Bottleneck Analysis",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Pripreme",
+        "observedUrl": "https://open.kattis.com/problems/pripreme",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Croatian Open Competition in Informatics 2014/2015, contest #4 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Pripreme.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-027",
+      "title": "Single source shortest path, time table",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/shortestpath2",
+      "difficulty": null,
+      "primaryPattern": "Time-Dependent Dijkstra / Transit Routing",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Single source shortest path, time table",
+        "observedUrl": "https://open.kattis.com/problems/shortestpath2",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies KTH CSC Popup 2005 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Single Source Shortest Path, Time-Table.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-029",
+      "title": "Fire",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/fire2",
+      "difficulty": null,
+      "primaryPattern": "Multi-Source BFS / Grid Hazard Simulation",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Fire",
+        "observedUrl": "https://open.kattis.com/problems/fire2",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Benelux Algorithm Programming Contest (BAPC) 2012 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Fire!.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/grid",
+      "difficulty": null,
+      "primaryPattern": "Breadth-First Search / Digraph Navigation",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Grid",
+        "observedUrl": "https://open.kattis.com/problems/grid",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies 2015 Southeast USA Regionals Division 1 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Grid.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-031",
+      "title": "Button Bashing",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/buttonbashing",
+      "difficulty": null,
+      "primaryPattern": "Breadth-First Search / State Space Clamping",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Button Bashing",
+        "observedUrl": "https://open.kattis.com/problems/buttonbashing",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Benelux Algorithm Programming Contest (BAPC) 2014 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Button Bashing.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-032",
+      "title": "Coast Length",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/coast",
+      "difficulty": null,
+      "primaryPattern": "Flood Fill / Outer Boundary Sea BFS",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Coast Length",
+        "observedUrl": "https://open.kattis.com/problems/coast",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies KTH Challenge 2011 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Coast Length.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/builddeps",
+      "difficulty": null,
+      "primaryPattern": "Topological Sort / Dependency DAG Reachability",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Build Dependencies",
+        "observedUrl": "https://open.kattis.com/problems/builddeps",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Northwestern Europe Regional Contest (NWERC) 2015 Practice as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Build Dependencies.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/muddyhike",
+      "difficulty": null,
+      "primaryPattern": "Minimax Path / Binary Search + BFS",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Muddy Hike",
+        "observedUrl": "https://open.kattis.com/problems/muddyhike",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Mount Allison Programming Showdown (MAPS 2017) as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Muddy Hike.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-051",
+      "title": "Restaurant Orders",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/orders",
+      "difficulty": null,
+      "primaryPattern": "Unbounded Knapsack DP / Ambiguity Tracking",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Restaurant Orders",
+        "observedUrl": "https://open.kattis.com/problems/orders",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies KTH Challenge 2012 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Restaurant Orders.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/walrusweights",
+      "difficulty": null,
+      "primaryPattern": "0/1 Subset Sum Dynamic Programming",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Walrus Weights",
+        "observedUrl": "https://open.kattis.com/problems/walrusweights",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Popup 2015 Session 1 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Walrus Weights.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/commercials",
+      "difficulty": null,
+      "primaryPattern": "Maximum Subarray Sum (Kadane with Cost Offset)",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Radio Commercials",
+        "observedUrl": "https://open.kattis.com/problems/commercials",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies KTH training 2011-01-26 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Radio Commercials.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/trainsorting",
+      "difficulty": null,
+      "primaryPattern": "Longest Increasing & Decreasing Subsequence DP",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Train Sorting",
+        "observedUrl": "https://open.kattis.com/problems/trainsorting",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Waterloo Programming Contest 2008-06-15 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Train Sorting.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-056",
+      "title": "Canonical Coin Systems",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/canonical",
+      "difficulty": null,
+      "primaryPattern": "Pearson Algorithm / Dual Knapsack Verification",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Canonical Coin Systems",
+        "observedUrl": "https://open.kattis.com/problems/canonical",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies 2017 ICPC North American Qualifier Contest as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Canonical Coin Systems.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/exactchange2",
+      "difficulty": null,
+      "primaryPattern": "Dual-Objective Subset Sum DP",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Exact Change",
+        "observedUrl": "https://open.kattis.com/problems/exactchange2",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Waterloo Programming Contest 2008-10-04 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Exact Change.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-058",
+      "title": "Spiderman's Workout",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/spiderman",
+      "difficulty": null,
+      "primaryPattern": "2D Dynamic Programming / Bounded Altitude Walk",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Spiderman's Workout",
+        "observedUrl": "https://open.kattis.com/problems/spiderman",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Norwegian/Swedish Championships 2003 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Spiderman's Workout.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-059",
+      "title": "Nikola",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/nikola",
+      "difficulty": null,
+      "primaryPattern": "2D Dynamic Programming / State-Dependent Jumps",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Nikola",
+        "observedUrl": "https://open.kattis.com/problems/nikola",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Croatian Regional Competition in Informatics 2008 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Nikola.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-060",
+      "title": "The Weight Of Words",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/weightofwords",
+      "difficulty": null,
+      "primaryPattern": "Constructive Greedy / Bounded Partitioning",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "The Weight Of Words",
+        "observedUrl": "https://open.kattis.com/problems/weightofwords",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies 2017 Virginia Tech High School Programming Contest as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Weight of Words.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-082",
+      "title": "Phone List",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/phonelist",
+      "difficulty": null,
+      "primaryPattern": "Trie Data Structure / Prefix Disjointness",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Phone List",
+        "observedUrl": "https://open.kattis.com/problems/phonelist",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2007 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Phone List.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-083",
+      "title": "Word Cloud",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/wordcloud",
+      "difficulty": null,
+      "primaryPattern": "Text Layout Engine Simulation / Word Wrapping",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Word Cloud",
+        "observedUrl": "https://open.kattis.com/problems/wordcloud",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies ACM/ICPC Mid-Central USA 2014 Regional Contest as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Word Cloud.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-095",
+      "title": "Counting Subsequences (Hard)",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/subseqhard",
+      "difficulty": null,
+      "primaryPattern": "Prefix Sum Hash Map / Frequency Counting",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Counting Subsequences (Hard)",
+        "observedUrl": "https://open.kattis.com/problems/subseqhard",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies IPSC 2006 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Subsequence Hard.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/busyschedule",
+      "difficulty": null,
+      "primaryPattern": "Time Parsing / Chronological Sorting",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Busy Schedule",
+        "observedUrl": "https://open.kattis.com/problems/busyschedule",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Baylor Competitive Learning course as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Busy Schedule.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-097",
+      "title": "Introspective Caching",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/caching",
+      "difficulty": null,
+      "primaryPattern": "Bélády Optimal Caching / Max-Heap Simulation",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Introspective Caching",
+        "observedUrl": "https://open.kattis.com/problems/caching",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2008 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Caching.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-116",
+      "title": "Train Passengers",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/trainpassengers",
+      "difficulty": null,
+      "primaryPattern": "State Machine Invariant Verification",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Train Passengers",
+        "observedUrl": "https://open.kattis.com/problems/trainpassengers",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Nordic Collegiate Programming Contest (NCPC) 2014 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Train Passengers.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-167",
+      "title": "Financial Planning",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/financialplanning",
+      "difficulty": null,
+      "primaryPattern": "Binary Search on Answer / Investment Amortization",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Financial Planning",
+        "observedUrl": "https://open.kattis.com/problems/financialplanning",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Benelux Algorithm Programming Contest (BAPC) 2018 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Financial Planning.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-177",
+      "title": "Boggle",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/boggle",
+      "difficulty": null,
+      "primaryPattern": "Trie-Guided Grid Backtracking / Lexicon Search",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Boggle",
+        "observedUrl": "https://open.kattis.com/problems/boggle",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies German Collegiate Programming Contest (GCPC) 2013 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Boggle.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-178",
+      "title": "Perket",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/perket",
+      "difficulty": null,
+      "primaryPattern": "Complete Search / Bitmask State Enumeration",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Perket",
+        "observedUrl": "https://open.kattis.com/problems/perket",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims MODERATE_LONG_SCENARIO and identifies Croatian Open Competition in Informatics 2008/2009, contest #2 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Flagged for an additional scenario-materiality review before any approval. Original submitted title: Perket.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-179",
+      "title": "Sudoku",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/sudoku",
+      "difficulty": null,
+      "primaryPattern": "Constraint Satisfaction / Backtracking with Heuristics",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Sudoku",
+        "observedUrl": "https://open.kattis.com/problems/sudoku",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Northwestern Europe Programming Contest (NWERC) 2006 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Sudoku.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "platform": "Kattis",
+      "sourceUrl": "https://open.kattis.com/problems/cranes",
+      "difficulty": null,
+      "primaryPattern": "Maximum Weight Independent Set / Bitmask DP",
+      "secondaryPatterns": [],
+      "factualScenarioSummary": null,
+      "reviewStatus": "candidate",
+      "importApproved": false,
+      "evidence": {
+        "observedTitle": "Cranes",
+        "observedUrl": "https://open.kattis.com/problems/cranes",
+        "statementExcerpt": null,
+        "inputObserved": true,
+        "outputObserved": true,
+        "constraintsObserved": true,
+        "retrievedAt": null,
+        "evidenceKind": "historical_assertion"
+      },
+      "review": {
+        "scenarioFidelity": "inconclusive",
+        "scenarioDepth": "unassessed",
+        "disposition": "pending",
+        "rationale": "Submitted 2026-11-14 audit claims STRONG_LONG_SCENARIO and identifies Waterloo Programming Contest 2008-10-04 as the contest/source. This is retained as an audit claim only: no statement excerpt, capture date, or reproducible evidence artifact was included in the supplied CSV. Requires evidence-backed review before any approval. Original submitted title: Cranes.",
+        "reviewedAt": null,
+        "reviewer": null
+      }
+    }
+  ]
+}

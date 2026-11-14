@@ -1,0 +1,223 @@
+{
+  "pass": 22,
+  "reviewedAt": "2026-11-14",
+  "purpose": "Targeted primary-source retrieval and exact source/slug reconciliation. Distinguish official contest statements, official judge source metadata, secondary metadata, and absent evidence.",
+  "records": [
+    {
+      "id": "SCENARIO-034",
+      "title": "Build Dependencies",
+      "kattisUrl": "https://open.kattis.com/problems/builddeps",
+      "finding": "Prior Virtual Judge metadata labels this as NWERC 2015 Practice and names Jeroen Bransen. Retrieved the complete 24-page NWERC 2015 official contest statement PDF from the Codeforces contest materials page and inspected its problem index and all problem headings: the 11 official problems are Assigning Workstations, Better Productivity, Cleaning Pipes, Debugging, Elementary Math, Flight Plan Evaluation, Guessing Camels, Hole in One, Identifying Map Tiles, Jumbled Communication, and Kitchen Combinatorics. Build Dependencies is not among them. This does not disprove a separate practice-session association, but the specific source label is not corroborated by the official main-contest packet. No Build Dependencies statement was captured; keep source attribution unresolved and do not substitute another year's same-title task.",
+      "evidenceLevel": "official_main_contest_packet_checked_candidate_practice_source_not_confirmed",
+      "sourceEvidence": [
+        {
+          "url": "https://codeforces.com/gym/101485/attachments",
+          "type": "contest_materials_index",
+          "observation": "NWERC 2015 contest materials lists an English statements PDF."
+        },
+        {
+          "url": "https://codeforces.com/gym/101485/attachments/download/5845/20152016-northwestern-european-regional-contest-nwerc-2015-en.pdf",
+          "type": "official_contest_statement_packet_copy",
+          "observation": "Full NWERC 2015 statement packet inspected; problem index contains 11 problems and no Build Dependencies."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/source/by-role/problemset.html",
+          "type": "archive_problemset_source_index",
+          "observation": "Lists the NWERC 2015 official problemset source URL."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the distinct NWERC 2015 practice-session problem package or an authoritative Kattis source-page export that explicitly lists builddeps; inspect the original statement and constraints."
+    },
+    {
+      "id": "SCENARIO-053",
+      "title": "Radio Commercials",
+      "kattisUrl": "https://open.kattis.com/problems/commercials",
+      "finding": "Prior Virtual Judge metadata identifies Kattis slug commercials, KTH training 2011-01-26, and author Lukáš Poláček. A fresh ICPC Kattis judge-index search did not surface a Radio Commercials entry, and no original KTH training statement or official source listing was retrieved. This absence is not proof that the source claim is false. The statement content, input/output, and constraints remain uninspected in primary evidence.",
+      "evidenceLevel": "secondary_metadata_only_primary_statement_not_found",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_judge_source_index",
+          "observation": "No Radio Commercials entry found in the consulted Kattis archive index."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Obtain the KTH training 2011-01-26 original package or an authoritative Kattis source export; do not treat VJudge metadata as statement verification."
+    },
+    {
+      "id": "SCENARIO-008",
+      "title": "Coloring Socks",
+      "kattisUrl": "https://open.kattis.com/problems/color",
+      "finding": "Fresh search again found only solution-index references associating the title with slug color. The ICPC Kattis judge index contains no Coloring Socks entry, and the submitted KTH source claim remains unsupported. The KTH Challenge 2013 PDF previously inspected is unrelated and remains excluded. No original statement or constraints were captured.",
+      "evidenceLevel": "secondary_slug_reference_only_source_unverified",
+      "sourceEvidence": [
+        {
+          "url": "https://github.com/sammcdo/Kattis-Problems",
+          "type": "third_party_solution_index",
+          "observation": "Lists Coloring Socks and the Kattis problem URL /problems/color."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_judge_source_index",
+          "observation": "No Coloring Socks entry found in the consulted archive index."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find the original contest package or authoritative Kattis problem-source export for slug color; preserve submitted KTH provenance as unverified."
+    },
+    {
+      "id": "SCENARIO-030",
+      "title": "Grid",
+      "kattisUrl": "https://open.kattis.com/problems/grid",
+      "finding": "The ICPC Kattis judge index explicitly maps Grid / grid to seusa-2015. Its contest-page index identifies the source as 2015 Southeast USA Regionals Division 1, and the Kattis judge page lists the source page as live. The archive problem-set catalogue marks seusa-2015 as partial (18 of 21 problems listed); no Division 1 original statement was retrieved. The Division 2 PDF previously inspected remains a different problem and is not used.",
+      "evidenceLevel": "archive_slug_and_contest_source_crosswalk_statement_missing",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "archive_judge_crosswalk",
+          "observation": "Exact mapping Grid / grid / seusa-2015; contest page links 2015 Southeast USA Regionals Division 1 Kattis source."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/problemset/index.html",
+          "type": "archive_problemset_coverage",
+          "observation": "seusa-2015 is marked partial, with 18 of 21 problems listed."
+        },
+        {
+          "url": "https://open.kattis.com/problem-sources/2015%20Southeast%20USA%20Regionals%20Division%201",
+          "type": "official_kattis_source_page",
+          "observation": "Official Kattis source page URL is listed as live by the archive; page content was not directly retrieved in this pass."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the official SEUSA 2015 Division 1 problem package and verify that its Grid statement matches Kattis slug grid; inspect full statement and constraints."
+    },
+    {
+      "id": "SCENARIO-035",
+      "title": "Muddy Hike",
+      "kattisUrl": "https://open.kattis.com/problems/muddyhike",
+      "finding": "No official MAPS 2017 package or authoritative Kattis source-page crosswalk was obtained in this pass. The previously logged Transtutors statement copy remains third-party content evidence only; it is not upgraded to primary evidence. The minimax-path technical description and provisional not-long assessment remain unchanged.",
+      "evidenceLevel": "third_party_statement_copy_only_primary_source_not_retrieved",
+      "sourceEvidence": [
+        {
+          "url": "https://www.transtutors.com/questions/d2l-bright-space-problem-f-muddy-hike-liam-is-planning-out-his-route-for-an-upcoming-2728155.htm",
+          "type": "third_party_statement_copy",
+          "observation": "Previously inspected full text copy identifies maps17.mu; not organizer-hosted."
+        },
+        {
+          "url": "https://maps17.kattis.com/info/submit",
+          "type": "contest_site",
+          "observation": "MAPS 2017 Kattis contest site exists, but no exact problem-to-source crosswalk was obtained."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Retrieve MAPS 2017 organizer package or official source export that lists muddyhike; do not promote the third-party copy to primary evidence."
+    },
+    {
+      "id": "SCENARIO-013",
+      "title": "Interval Scheduling",
+      "kattisUrl": "https://open.kattis.com/problems/intervalscheduling",
+      "finding": "No original ITU 2019 statement or official source package was retrieved. Prior Virtual Judge metadata remains secondary-only and cannot establish the statement content, constraints, or long-scenario depth.",
+      "evidenceLevel": "secondary_metadata_only_primary_statement_not_found",
+      "sourceEvidence": [],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Retrieve the official ITU 2019 problem package and verify the exact title/slug crosswalk."
+    },
+    {
+      "id": "SCENARIO-052",
+      "title": "Walrus Weights",
+      "kattisUrl": "https://open.kattis.com/problems/walrusweights",
+      "finding": "No Popup 2015 Session 1 original statement or authoritative source export was retrieved. VJudge metadata and third-party solution/discussion references remain secondary evidence for the closest-to-1000 subset-sum task. Do not treat them as statement capture or source approval; the prior provisional not-long assessment remains provisional.",
+      "evidenceLevel": "secondary_metadata_and_solution_references_only",
+      "sourceEvidence": [
+        {
+          "url": "https://vjudge.net/problem/Kattis-walrusweights",
+          "type": "secondary_problem_metadata",
+          "observation": "Previously inspected metadata associates the slug with Popup 2015 Session 1 and author Marc Vinyals."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Retrieve the original Popup 2015 Session 1 package or an official Kattis source-page export, then inspect complete statement and constraints."
+    },
+    {
+      "id": "SCENARIO-096",
+      "title": "Busy Schedule",
+      "kattisUrl": "https://open.kattis.com/problems/busyschedule",
+      "finding": "No authoritative Baylor problem 207 statement or exact Kattis source crosswalk was retrieved. The same-title DMOJ sched page remains a confirmed false positive and is excluded. Do not infer source identity or final scenario depth from the title or the unrelated task.",
+      "evidenceLevel": "candidate_slug_only_false_positive_excluded_primary_source_missing",
+      "sourceEvidence": [
+        {
+          "url": "https://dmoj.ca/problem/sched",
+          "type": "false_positive_title_match",
+          "observation": "Different slug and different graph/engagement scheduling task; explicitly excluded as evidence for busyschedule."
+        }
+      ],
+      "statementCaptured": false,
+      "scenarioDepth": "unassessed",
+      "nextGate": "Find the exact Kattis busyschedule source package and Baylor problem 207 original statement; exclude same-title unrelated tasks."
+    },
+    {
+      "id": "SCENARIO-200",
+      "title": "Cranes",
+      "kattisUrl": "https://open.kattis.com/problems/cranes",
+      "finding": "The official Waterloo October 4, 2008 Problem A statement remains verified from earlier passes. A fresh check of the ICPC Kattis judge index found no Cranes entry, so it supplies no Kattis slug crosswalk. The Waterloo statement cannot by itself prove that Kattis slug cranes is the same problem. Keep the crosswalk pending; prior provisional not-long assessment is unchanged.",
+      "evidenceLevel": "official_contest_statement_verified_kattis_slug_crosswalk_pending",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/A.html",
+          "type": "official_contest_statement",
+          "observation": "Previously inspected Waterloo 2008 Problem A: Cranes."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_judge_source_index",
+          "observation": "No Cranes entry found in the consulted Kattis archive index."
+        }
+      ],
+      "statementCaptured": true,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Obtain an authoritative Kattis problem-source export or canonical statement crosswalk linking slug cranes to Waterloo 2008 Problem A."
+    },
+    {
+      "id": "SCENARIO-057",
+      "title": "Exact Change",
+      "kattisUrl": "https://open.kattis.com/problems/exactchange2",
+      "finding": "The official Waterloo October 4, 2008 Problem C statement remains verified from earlier passes, but the exact Kattis slug exactchange2 is not mapped to it by the consulted ICPC Kattis judge index. The index explicitly maps Exact Change / exactchange3 to PACNW 2024; this confirms exactchange3 is a distinct source/slug pairing and must not be substituted. No evidence in this pass resolves exactchange2. Keep the candidate on crosswalk hold.",
+      "evidenceLevel": "official_contest_statement_verified_slug_crosswalk_unresolved_distinct_variant_confirmed",
+      "sourceEvidence": [
+        {
+          "url": "https://icpc.student.cs.uwaterloo.ca/~acm00/081004/C.html",
+          "type": "official_contest_statement",
+          "observation": "Previously inspected Waterloo 2008 Problem C: Exact Change."
+        },
+        {
+          "url": "https://icpc-contest-archive.github.io/contests/judge/kattis.html",
+          "type": "secondary_judge_source_index",
+          "observation": "Maps Exact Change / exactchange3 to pacnw-2024; no exactchange2 mapping found."
+        }
+      ],
+      "statementCaptured": true,
+      "scenarioDepth": "provisional_not_long_scenario",
+      "nextGate": "Find an authoritative Kattis source export or original Kattis problem metadata linking exactchange2 to Waterloo 2008 Problem C; do not substitute exactchange3."
+    }
+  ],
+  "summary": {
+    "recordsReviewed": 10,
+    "newOriginalStatementsCaptured": 0,
+    "officialContestPacketsInspected": 1,
+    "sourceCrosswalksNewlyConfirmed": 1,
+    "sourceAttributionsNeedingCorrectionOrResolution": 1,
+    "primaryStatementRetrievalsBlockedOrMissing": 10,
+    "scenarioDepthApprovals": 0,
+    "importApprovals": 0,
+    "candidateRecordsModified": 0,
+    "notes": "The NWERC 2015 main-contest packet is primary evidence that Build Dependencies is not one of the 11 main-contest problems; it does not rule out a separate practice-session package. Grid's archive crosswalk is metadata, not statement content. Existing provisional depth findings are not upgraded."
+  }
+}

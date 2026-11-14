@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis candidate original-statement evidence ledger — pass 3",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "originalStatementsLocated": 3,
+    "identityAndStatementMatches": 3,
+    "officialKattisPagesDirectlyVerified": 0,
+    "scenarioQualificationApproved": 0,
+    "importApproved": 0
+  },
+  "method": "Original contest statement sources were inspected for title/problem identity, narrative, input/output, and constraints. Statement identity does not independently verify live Kattis URL or long-scenario qualification.",
+  "records": [
+    {
+      "id": "SCENARIO-032",
+      "title": "Coast Length",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/coast",
+      "statementUrl": "https://challenge.csc.kth.se/2011/problems.pdf",
+      "statementTitle": "KTH Challenge 2011, Problem E — Coast Length",
+      "sourceType": "original_contest_statement_hosted_by_contest_university",
+      "identity": "title and problem ID coast explicitly match",
+      "observed": "The municipality of Soteholm models sea-level scenarios on a grid and asks for the length of the coastline, excluding lakes and inland water not connected to map edges.",
+      "excerpt": "The residents of Soteholm value their coast highly and therefore want to maximize its total length.",
+      "inputOutput": "Input: N×M binary land/water map. Output: total sea-coast length.",
+      "constraints": "N and M each at most 1,000; grid dimensions and connectivity rules are specified.",
+      "scenarioNotes": "Distinctive climate/municipal planning context and explicit topological distinction between sea and lakes, but the algorithmic task remains a single grid flood-fill. Long-scenario qualification not approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-059",
+      "title": "Nikola",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/nikola",
+      "statementUrl": "https://www.csc.kth.se/contest/training/110414/nikola.pdf",
+      "statementTitle": "Croatian Open Competition in Informatics 2007/2008, Croatian Regionals — Task NIKOLA",
+      "sourceType": "original_contest_statement_copy",
+      "identity": "title Nikola and game description match; candidate source year is corroborated as 2007/2008",
+      "observed": "Nikola moves along numbered squares, with jump length depending on the previous jump and direction; entering a square incurs a fee and the goal is minimum total cost.",
+      "excerpt": "Against his own will, Nikola has become the main character in a game. The game is played on a row of N squares, numbered 1 to N.",
+      "inputOutput": "Input: N and entry fees for each square. Output: minimum total cost to reach square N.",
+      "constraints": "2 ≤ N ≤ 1,000; each entry fee is positive and less than 500.",
+      "scenarioNotes": "Narrative is only a light game wrapper around a constrained-jump shortest-path/DP problem; likely not a long scenario. Formal quality gate remains pending.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-056",
+      "title": "Canonical Coin Systems",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/canonical",
+      "statementUrl": "https://cs.baylor.edu/~hamerly/icpc/qualifier_2017/naq2017_problemset.pdf",
+      "statementTitle": "North America Qualifier 2017, Problem C — Canonical Coin Systems",
+      "sourceType": "original_contest_statement_copy",
+      "identity": "title and contest problem C match; Kattis slug canonical corroborated by candidate source metadata",
+      "observed": "The statement defines coin denominations and asks whether greedy change-making always yields an optimal number of coins, using cashier/change-making as context.",
+      "excerpt": "A coin system S is a finite (nonempty) set of distinct positive integers corresponding to coin values, also called denominations, in a real or imagined monetary system.",
+      "inputOutput": "Input: coin denominations with required conditions. Output: whether the system is canonical, according to the statement's specified contract.",
+      "constraints": "The original statement provides denomination count and maximum denomination limits; preserve exact values when enriching the canonical record.",
+      "scenarioNotes": "Real-world cashier/change-making context, but the scenario is a standard coin-system property test and likely too compact for long-scenario classification.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}

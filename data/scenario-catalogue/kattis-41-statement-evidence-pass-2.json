@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis candidate original-statement evidence ledger — pass 2",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "originalStatementsLocated": 2,
+    "identityAndStatementMatches": 2,
+    "officialKattisPagesDirectlyVerified": 0,
+    "scenarioQualificationApproved": 0,
+    "importApproved": 0
+  },
+  "method": "Original contest statement copies were inspected for title/problem identity, story, input/output, and constraints. This is statement evidence only; it does not independently verify the live Kattis page or qualify long-scenario depth.",
+  "records": [
+    {
+      "id": "SCENARIO-031",
+      "title": "Button Bashing",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/buttonbashing",
+      "statementUrl": "https://chipcie.wisv.ch/archive/2014/bapc/problemset.pdf",
+      "statementTitle": "BAPC 2014, Problem B — Button Bashing",
+      "sourceType": "original_contest_statement_copy",
+      "identity": "title and problem B match; contest archive confirms the corresponding Kattis slug",
+      "observed": "The statement defines a microwave timer with increment/decrement buttons, clamping at zero and one hour, and asks for the minimum presses to reach or exceed a target.",
+      "excerpt": "You recently acquired a new microwave, and noticed that it provides a large number of buttons",
+      "inputOutput": "Input: test cases, button count, target seconds, and signed time changes. Output: minimum button presses and smallest overshoot.",
+      "constraints": "At most 100 test cases; up to 16 buttons; target up to 3,600 seconds; button changes between -3,600 and 3,600.",
+      "scenarioNotes": "Concrete device-control framing with state clamping, but short, self-contained state-space problem. Long-scenario depth not approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-051",
+      "title": "Restaurant Orders",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/orders",
+      "statementUrl": "https://archive.algo.is/icpc/nwerc/ncpc/kthchallenge/2012/problems.pdf",
+      "statementTitle": "KTH Challenge 2012, Problem G — Restaurant Orders",
+      "sourceType": "original_contest_statement_copy",
+      "identity": "title and problem ID orders explicitly match",
+      "observed": "A waiter must infer menu item combinations from order totals; the output distinguishes unique, impossible and ambiguous combinations.",
+      "excerpt": "A friend of yours who is working as a waiter has a problem.",
+      "inputOutput": "Input: menu item prices and order totals. Output: the item indices for a unique combination, Impossible, or Ambiguous.",
+      "constraints": "Up to 100 menu items and 1,000 orders; individual prices up to 1,000 SEK and order totals up to 30,000 SEK.",
+      "scenarioNotes": "Has a concrete waiter/menu setting and ambiguity handling, but the scenario is concise and the core task is bounded knapsack reconstruction. Long-scenario status not approved.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}
