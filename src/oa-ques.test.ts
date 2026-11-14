@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import oaCatalogue from '../data/oa-ques/oa-ques.json';
+import curriculum from '../dsa_pattern_mastery_tracker.json';
 
 type Record = { id: string; title: string; company: string | null; assessmentType: string };
 
@@ -16,6 +17,8 @@ function searchRecords(records: Record[], query: string) {
   const q = query.trim().toLowerCase();
   return records.filter((item) => !q || [item.title, item.id, item.company || '', item.assessmentType].some((value) => value.toLowerCase().includes(q)));
 }
+
+const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 describe('VERTEX OA Ques company tags and counts', () => {
   const sample: Record[] = [
@@ -34,8 +37,23 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(searchRecords(sample, 'MICROSOFT').map((item) => item.id)).toEqual(['OA-003']);
   });
 
-  it('does not fabricate OA records to fill the catalogue', () => {
+  it('imports only source-linked candidate-reported OA records with company and title', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
-    expect(oaCatalogue.records).toEqual([]);
+    expect(oaCatalogue.records).toHaveLength(65);
+    expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(24);
+    expect(oaCatalogue.records.every((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toBe(true);
+    expect(oaCatalogue.records.every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
+    expect(new Set(oaCatalogue.records.map((item: any) => item.id)).size).toBe(oaCatalogue.records.length);
+  });
+
+  it('does not import exact-title duplicates already in the DSA curriculum', () => {
+    const curriculumTitles = new Set<string>();
+    curriculum.patterns.forEach((pattern: any) => pattern.variations.forEach((variation: any) => variation.problems.forEach((problem: any) => curriculumTitles.add(normalize(problem.title)))));
+    const duplicateTitles = oaCatalogue.records.filter((item: any) => curriculumTitles.has(normalize(item.title)));
+    expect(duplicateTitles).toEqual([]);
+  });
+
+  it('keeps records without cohort evidence pending review', () => {
+    expect(oaCatalogue.records.filter((item: any) => item.verificationStatus === 'pending_review').map((item: any) => item.company).sort()).toEqual(['Adobe', 'DE Shaw']);
   });
 });
