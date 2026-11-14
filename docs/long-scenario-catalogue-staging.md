@@ -343,3 +343,14 @@ Added `data/scenario-catalogue/kattis-41-scenario-depth-review-pass-15.json` for
 - **Cranes (200):** the Waterloo 2013 alternate statement still does not establish the submitted Waterloo 2008-10-04 provenance. Keep the hold; do not substitute the alternate statement.
 
 Pass 15 adds zero original contest statements and zero import approvals. Three candidates receive provisional not-long-scenario assessments; Cranes remains unassessed on provenance hold. These dispositions are not written into the candidate catalogue, pending the full evidence gate and human review.
+
+
+## Primary-source and scenario-depth review — pass 16 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-16.json` for Cranes (SCENARIO-200), Exact Change (SCENARIO-057), and Spiderman's Workout (SCENARIO-058).
+
+- **Cranes:** the official University of Waterloo archive identifies the October 4, 2008 contest and lists Problem A: Cranes. Its original statement was inspected. This corroborates the submitted Waterloo source claim and supersedes the earlier concern based solely on the unrelated/reused Waterloo 2013 statement. The exact Kattis `cranes` slug crosswalk is still not independently established. The statement is a bounded geometric subset-selection problem with at most 15 candidate locations; provisional not-long-scenario.
+- **Exact Change:** the official Waterloo archive lists Problem C: Exact Change on October 4, 2008, and its original statement was inspected. This corroborates the claimed Waterloo source statement, but not the exact Kattis `exactchange2` slug crosswalk. The separate `exactchange3` entry remains a different problem and must not be substituted. The task is a bounded dual-objective subset-sum/coin-selection DP; provisional not-long-scenario.
+- **Spiderman's Workout:** found and inspected a complete 2003 statement PDF hosted by Linköping University. It confirms the bounded up/down sequence optimization (M <= 40; total distance <= 1000). The PDF's source marker does not independently establish the claimed Norwegian/Swedish Championships provenance or the Kattis slug crosswalk. Provisional not-long-scenario.
+
+The cross-check now distinguishes **candidate source statement verified, Kattis slug crosswalk pending** (2 records) from fully cross-checked Kattis source identities. The archive-index-only count remains separate. Pass 16 adds two official Waterloo statements and one institutionally hosted statement copy; it adds zero import approvals. All 41 candidate records remain candidate-only; no curriculum, learner progress, runtime, Supabase, or production data was changed.
