@@ -59,7 +59,6 @@ const catalogue = rawCatalogue as unknown as CatalogueData;
 export default function ScenarioCatalogue() {
   const [query, setQuery] = useState('');
   const [platform, setPlatform] = useState('all');
-  const [pattern, setPattern] = useState('all');
   const [evidence, setEvidence] = useState('all');
   const [depth, setDepth] = useState('all');
 
@@ -69,17 +68,12 @@ export default function ScenarioCatalogue() {
     return Array.from(new Set(records.map(r => r.platform))).sort();
   }, [records]);
 
-  const patterns = useMemo(() => {
-    return Array.from(new Set(records.map(r => r.primaryPattern))).sort();
-  }, [records]);
-
   const visible = useMemo(() => {
     return records.filter(r => {
       const q = query.trim().toLowerCase();
       const matchesQuery = !q || [
         r.title,
         r.id,
-        r.primaryPattern,
         r.platform,
         r.sourceUrl,
         r.factualScenarioSummary || '',
@@ -87,20 +81,18 @@ export default function ScenarioCatalogue() {
       ].some(v => v.toLowerCase().includes(q));
 
       const matchesPlatform = platform === 'all' || r.platform.toLowerCase() === platform.toLowerCase();
-      const matchesPattern = pattern === 'all' || r.primaryPattern === pattern;
       const matchesEvidence = evidence === 'all' || r.evidenceGate === evidence;
       const matchesDepth = depth === 'all' || r.scenarioDepth.toUpperCase() === depth.toUpperCase();
 
-      return matchesQuery && matchesPlatform && matchesPattern && matchesEvidence && matchesDepth;
+      return matchesQuery && matchesPlatform && matchesEvidence && matchesDepth;
     });
-  }, [records, query, platform, pattern, evidence, depth]);
+  }, [records, query, platform, evidence, depth]);
 
-  const hasActiveFilters = query !== '' || platform !== 'all' || pattern !== 'all' || evidence !== 'all' || depth !== 'all';
+  const hasActiveFilters = query !== '' || platform !== 'all' || evidence !== 'all' || depth !== 'all';
 
   const resetFilters = () => {
     setQuery('');
     setPlatform('all');
-    setPattern('all');
     setEvidence('all');
     setDepth('all');
   };
@@ -177,7 +169,7 @@ export default function ScenarioCatalogue() {
               aria-label="Search scenario questions"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="Search title, ID, pattern, context, contest..."
+              placeholder="Search title, ID, context, contest..."
               className="input-field pl-9 text-xs w-full"
             />
           </div>
@@ -198,21 +190,6 @@ export default function ScenarioCatalogue() {
                 </option>
               );
             })}
-          </select>
-
-          {/* Pattern filter */}
-          <select
-            aria-label="Filter by pattern"
-            value={pattern}
-            onChange={e => setPattern(e.target.value)}
-            className="input-field text-xs lg:w-60"
-          >
-            <option value="all">All patterns</option>
-            {patterns.map(p => (
-              <option key={p} value={p}>
-                {p}
-              </option>
-            ))}
           </select>
 
           {/* Evidence filter */}
@@ -294,9 +271,6 @@ export default function ScenarioCatalogue() {
                   <h2 className="text-base font-semibold text-text-primary tracking-tight">
                     {r.title}
                   </h2>
-                  <p className="text-xs font-medium text-accent">
-                    {r.primaryPattern}
-                  </p>
                 </div>
 
                 {/* Evidence tier badge */}
@@ -330,20 +304,6 @@ export default function ScenarioCatalogue() {
                   <p className="line-clamp-3 text-text-tertiary">{r.review.rationale}</p>
                 )}
               </div>
-
-              {/* Secondary patterns if present */}
-              {r.secondaryPatterns && r.secondaryPatterns.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 pt-0.5">
-                  {r.secondaryPatterns.map(sp => (
-                    <span
-                      key={sp}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-2/60 text-text-tertiary border border-border/60"
-                    >
-                      {sp}
-                    </span>
-                  ))}
-                </div>
-              )}
 
               {/* Footer */}
               <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-border/50 text-[11px] font-mono text-text-tertiary">
