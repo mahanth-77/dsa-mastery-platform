@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import rawCatalogue from '../data/scenario-catalogue/scenario-catalogue.json';
 
-describe('VERTEX Long-Scenario Catalogue (162 Records)', () => {
+describe('VERTEX Scenario Questions (162 Records)', () => {
   const catalogue = rawCatalogue;
   const records = catalogue.records;
 
