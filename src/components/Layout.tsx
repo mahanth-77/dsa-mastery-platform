@@ -12,6 +12,7 @@ import {
   Search,
   HardDrive,
   Layers,
+  BookOpen,
 } from 'lucide-react';
 import { useApp } from '../context';
 import { getGlobalStats, getStreak } from '../store';
@@ -26,6 +27,7 @@ const navItems = [
   { to: '/revisions', label: 'Revision Queue', icon: Clock, shortcut: '3' },
   { to: '/analytics', label: 'Analytics', icon: BarChart2, shortcut: '4' },
   { to: '/settings', label: 'Settings', icon: Sliders, shortcut: '5' },
+  { to: '/scenarios', label: 'Scenario Catalogue', icon: BookOpen },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
