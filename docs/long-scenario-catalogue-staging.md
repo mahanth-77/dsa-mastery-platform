@@ -115,3 +115,24 @@ The report's pre-existing baseline of 121 and combined total of 162 remain **rep
 - No curriculum placement, learner progress, runtime component, Supabase migration, or production dataset was changed.
 - These files are candidate/audit data only; they are not wired into the application.
 - No production import, merge, or deployment was performed.
+
+
+## Kattis nine-record scenario-materiality review (2026-11-14)
+
+A separate review artifact was added at `data/scenario-catalogue/kattis-9-scenario-materiality-review.json`.
+
+| Review outcome | Count |
+|---|---:|
+| Reviewed | 9 |
+| Rejected as long scenarios on accessible official statements | 4 |
+| Provisional not-long-scenario assessment; original statement still needed for final source-content judgement | 4 |
+| Statement required before disposition | 1 |
+| Import approved | 0 |
+
+**Rejected as long scenarios:** SCENARIO-060 The Weight Of Words; SCENARIO-095 Counting Subsequences (Hard); SCENARIO-096 Busy Schedule; SCENARIO-178 Perket. These are valid practice problems, but their accessible statements/tasks are compact and do not meet the long-scenario standard.
+
+**Provisional not-long-scenario:** SCENARIO-008 Coloring Socks; SCENARIO-013 Interval Scheduling; SCENARIO-016 Wood Cutting; SCENARIO-053 Radio Commercials. Available indexes/solution references indicate compact low-difficulty or standard algorithm exercises, but the original full statement was not retrieved for each. These remain candidates with a provisional quality concern, not final source-content rejections.
+
+**Still pending:** SCENARIO-052 Walrus Weights. Metadata confirms the Kattis slug and Popup 2015 source, but the statement itself must be obtained before a defensible scenario-depth decision.
+
+**Retrieval limitation:** direct Kattis problem-page requests returned 403/blocked in this review session. Independent references and official contest PDFs were used where available. This review does not certify all 41 candidate URLs or replace the missing source-evidence package. The 41 records remain candidate-only, and no import approvals, curriculum placements, or learner-progress changes were made.
