@@ -10,10 +10,10 @@
   },
   "summary": {
     "totalCandidates": 41,
-    "originalStatementIdentityVerified": 20,
-    "archiveMetadataOnlyMatch": 7,
+    "originalStatementIdentityVerified": 22,
+    "archiveMetadataOnlyMatch": 6,
     "slugConflict": 1,
-    "notFoundInConsultedArchiveIndex": 13,
+    "notFoundInConsultedArchiveIndex": 12,
     "alternateStatementProvenanceConflicts": 2,
     "liveKattisPagesDirectlyVerified": 0,
     "importApproved": 0
@@ -212,9 +212,15 @@
       "id": "SCENARIO-023",
       "title": "Pripreme",
       "submittedSlug": "pripreme",
-      "status": "not_found_in_archive_index",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "Statement identity and submitted contest provenance corroborated. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://qoj.ac/download.php?id=16376&type=statement",
+        "title": "COCI 2014/2015, Round 4 — Task PRIPREME",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "contest_statement_copy"
+      }
     },
     {
       "id": "SCENARIO-027",
@@ -512,13 +518,19 @@
       "id": "SCENARIO-097",
       "title": "Introspective Caching",
       "submittedSlug": "caching",
-      "status": "archive_index_match",
+      "status": "original_contest_statement_identity_verified",
       "archiveFinding": {
         "title": "Introspective Caching",
         "slug": "caching",
         "contest": "nordic-2008"
       },
-      "note": "Title and slug are listed together in the ICPC contest archive Kattis index. This is metadata corroboration only; it does not verify the full problem statement or input/output constraints."
+      "note": "Statement identity and submitted contest provenance corroborated. This does not verify the live Kattis page or approve long-scenario qualification/import.",
+      "statementEvidence": {
+        "url": "https://archive.algo.is/icpc/nwerc/ncpc/2008/ncpc2008problems.pdf",
+        "title": "NCPC 2008, Problem I — Introspective Caching",
+        "verifiedOn": "2026-11-14",
+        "sourceType": "original_contest_statement"
+      }
     },
     {
       "id": "SCENARIO-116",
