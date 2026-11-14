@@ -2,8 +2,10 @@ import { describe, expect, it } from 'vitest';
 import oaCatalogue from '../data/oa-ques/oa-ques.json';
 import curriculum from '../dsa_pattern_mastery_tracker.json';
 import hackerRank from '../data/oa-ques/hackerrank-kit.json';
+import candidateTcs from '../data/oa-ques/candidate-tcs-pyqs.json';
 const leetcodeBatches = import.meta.glob('../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: any[] }>;
-const expandedRecords = [...oaCatalogue.records, ...Object.values(leetcodeBatches).flatMap((batch) => batch.records), ...hackerRank.records];
+const candidatePlacementBatches = import.meta.glob('../data/oa-ques/candidate-placement-reports-batch-*.json', { eager: true, import: 'default' }) as Record<string, { records: any[] }>;
+const expandedRecords = [...oaCatalogue.records, ...Object.values(leetcodeBatches).flatMap((batch) => batch.records), ...hackerRank.records, ...candidateTcs.records, ...Object.values(candidatePlacementBatches).flatMap((batch) => batch.records)];
 
 type Record = { id: string; title: string; company: string | null; assessmentType: string };
 
@@ -43,7 +45,10 @@ describe('VERTEX OA Ques company tags and counts', () => {
   it('imports the audited source batches with explicit evidence classifications', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
     expect(oaCatalogue.records).toHaveLength(2531);
-    expect(expandedRecords).toHaveLength(2748);
+    expect(expandedRecords).toHaveLength(2849);
+    expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(166);
+    expect(candidateTcs.records).toHaveLength(66);
+    expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(35);
     const leetcodeRecords = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice');
     expect(leetcodeRecords).toHaveLength(2615);
     expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]?.toLowerCase()).filter(Boolean)).size).toBe(1629);
