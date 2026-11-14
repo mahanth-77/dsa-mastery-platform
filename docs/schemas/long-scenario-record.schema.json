@@ -84,7 +84,7 @@
     },
     "importApproved": {
       "type": "boolean",
-      "const": false
+      "default": false
     },
     "evidence": {
       "type": "object",
