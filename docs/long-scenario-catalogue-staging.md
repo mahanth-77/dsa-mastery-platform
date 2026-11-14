@@ -354,3 +354,16 @@ Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-16.json` f
 - **Spiderman's Workout:** found and inspected a complete 2003 statement PDF hosted by Linköping University. It confirms the bounded up/down sequence optimization (M <= 40; total distance <= 1000). The PDF's source marker does not independently establish the claimed Norwegian/Swedish Championships provenance or the Kattis slug crosswalk. Provisional not-long-scenario.
 
 The cross-check now distinguishes **candidate source statement verified, Kattis slug crosswalk pending** (2 records) from fully cross-checked Kattis source identities. The archive-index-only count remains separate. Pass 16 adds two official Waterloo statements and one institutionally hosted statement copy; it adds zero import approvals. All 41 candidate records remain candidate-only; no curriculum, learner progress, runtime, Supabase, or production data was changed.
+
+
+## Source reconciliation and materiality review — pass 17 (2026-11-14)
+
+Added `data/scenario-catalogue/kattis-41-source-and-depth-review-pass-17.json` for Cranes, Exact Change, Walrus Weights, Word Cloud, and Muddy Hike.
+
+- **Cranes:** inspected the official Waterloo October 4, 2008 contest index and Problem A statement. It describes candidate crane sites on a square grid, radii, non-touching safety constraints, and maximizing covered area with at most 15 candidate sites. This confirms the Waterloo source statement, but not the exact Kattis `cranes` slug crosswalk. Provisional not-long-scenario.
+- **Exact Change:** inspected the same official contest index and Problem C statement. It minimizes the amount paid at or above the price, then the number of bills/coins (price <= 10,000 cents; n <= 100). This confirms the Waterloo source statement, but not the exact Kattis `exactchange2` crosswalk. Do not substitute distinct `exactchange3`. Provisional not-long-scenario.
+- **Walrus Weights:** source metadata continues to identify Popup 2015 Session 1 and author Marc Vinyals. Third-party solutions/discussions indicate a single subset-sum task choosing plate weights closest to 1000. The original statement and constraints remain unavailable; provisional not-long-scenario only, not source-approved.
+- **Word Cloud:** archive metadata maps `wordcloud` to MCPC 2014, distinct from `wordclouds` / Word Clouds Revisited (MCPC 2015). A full secondary statement mirror and VJudge metadata were previously inspected. Keep provisional MODERATE, not STRONG; original contest-hosted statement and human rubric review remain open.
+- **Muddy Hike:** third-party catalogue/solution evidence indicates a minimax path problem, but the original statement and MAPS 2017 source link remain unverified. Provisional not-long-scenario only; not an identity disqualification.
+
+Pass 17 adds zero original statements beyond the two Waterloo statements already captured in pass 16. It adds zero import approvals. All candidate records, curriculum placements, learner progress, runtime, Supabase, and production data remain untouched.
