@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis original statement evidence ledger — pass 11",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "statementRecordsAdded": 3,
+    "originalContestPdfStatements": 2,
+    "secondaryStatementMirrors": 1,
+    "strongLongScenarioCandidates": 1,
+    "moderateScenarioCandidates": 1,
+    "notLongScenario": 1,
+    "importApproved": 0,
+    "liveKattisPagesDirectlyVerified": 0
+  },
+  "method": "Water and Fire were inspected in original contest problem-set PDFs. Train Sorting was inspected via a secondary judge mirror that identifies Waterloo 2008 Spring A; this corroborates the year/source family but not the exact submitted June 15 date.",
+  "records": [
+    {
+      "id": "SCENARIO-007",
+      "title": "Water",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/water",
+      "statementUrl": "https://www.cs.ucf.edu/~dmarino/progcontests/mysols/collegeregional/southeast/2016/SER-2016-Problems-D1.pdf",
+      "statementTitle": "2016 ACM ICPC Southeast USA Regional Division 1, Problem J — Water",
+      "sourceType": "original_contest_statement_pdf",
+      "observed": "A water utility network has bidirectional pipes with capacities. Across a sequence of permanent improvements, it increases existing pipe capacities or installs new pipes. After every improvement, report the maximum water flow from pumping station to mansion.",
+      "inputOutput": "Input: stations, initial pipes and a sequence of capacity increases/new pipes. Output: maximum flow after initial setup and after every improvement.",
+      "constraints": "2 ≤ n ≤ 100; p ≤ n(n−1)/2; 1 ≤ k ≤ 10,000; pipe capacities and increments ≤ 1,000.",
+      "scenarioAssessment": "Strong contextual candidate: real utility-network setting, evolving network state, repeated operational queries, capacity constraints and max-flow objective. Needs final rubric consistency review; not approved for import.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-029",
+      "title": "Fire",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/fire2",
+      "statementUrl": "https://archive.algo.is/icpc/nwerc/bapc/2012/problemset.pdf",
+      "statementTitle": "BAPC 2012, Problem F — Fire",
+      "sourceType": "original_contest_statement_pdf",
+      "observed": "A person is trapped in a building with spreading fires and walls. Fire advances every second; the person must reach an exit without entering a cell that is burning or about to burn, with simultaneous escape allowed.",
+      "inputOutput": "Input: multiple building maps containing rooms, walls, one person and fire sources. Output: minimum escape time or IMPOSSIBLE.",
+      "constraints": "At most 100 test cases; width and height each from 1 to 1,000.",
+      "scenarioAssessment": "Clear emergency-response context and interacting time-dependent hazards, but a single time-dependent BFS escape problem. Moderate scenario candidate; not automatically long-scenario approved.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-055",
+      "title": "Train Sorting",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/trainsorting",
+      "statementUrl": "https://dmoj.ca/problem/waterloo2008sa",
+      "statementTitle": "Waterloo 2008 Spring A — Trainsorting",
+      "sourceType": "secondary_contest_statement_mirror",
+      "observed": "Erin arranges arriving train cars by adding each new car to the beginning or end of a train, or rejecting it. The resulting train must be ordered by weight and as long as possible.",
+      "inputOutput": "Input: number of cars followed by distinct car weights. Output: maximum possible train length.",
+      "constraints": "0 ≤ n ≤ 2,000; weights are nonnegative and distinct.",
+      "scenarioAssessment": "Waterloo 2008 Spring A source family corroborated by an independent judge mirror; exact submitted June 15 date remains unverified. Short train-car story and single LIS-style objective; not a long-scenario candidate.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}
