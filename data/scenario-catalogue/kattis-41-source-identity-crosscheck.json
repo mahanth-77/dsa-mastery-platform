@@ -375,12 +375,18 @@
       "submittedSlug": "trainsorting",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required.",
+      "note": "A same-title/same-slug alternate statement was found, but its contest provenance does not match the submitted source claim. Not counted as original-statement verification.",
       "liveKattisAccessAttempt": {
         "attemptedOn": "2026-11-14",
         "result": "403_forbidden",
         "sourceUrl": "https://open.kattis.com/problems/trainsorting",
         "evidenceMeaning": "Access blocked by fetcher; this is not evidence that the problem is missing or invalid and does not verify its statement."
+      },
+      "alternateSourceConflict": {
+        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+        "contest": "Waterloo Contests Selection, September 10, 2013",
+        "reviewedOn": "2026-11-14",
+        "decision": "Do not count as verified against the submitted source claim. Retain as a possible same-problem alternate statement pending proof that the 2008 contest reused the same statement or that the submitted contest date is erroneous."
       }
     },
     {
@@ -587,7 +593,13 @@
       "submittedSlug": "cranes",
       "status": "not_found_in_archive_index",
       "archiveFinding": null,
-      "note": "No matching title/slug entry was found in the consulted ICPC contest archive Kattis index. This is not proof the Kattis problem is invalid; direct official statement or another authoritative archive is still required."
+      "note": "A same-title/same-slug alternate statement was found, but its contest provenance does not match the submitted source claim. Not counted as original-statement verification.",
+      "alternateSourceConflict": {
+        "url": "https://neerc.ifmo.ru/trains/archive/problems/train-20130910.pdf",
+        "contest": "Waterloo Contests Selection, September 10, 2013",
+        "reviewedOn": "2026-11-14",
+        "decision": "Do not count as verified. Keep held until the claimed 2008 Waterloo statement is found or the original source claim is corrected with authoritative evidence."
+      }
     }
   ]
 }
