@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0.0",
+  "audit": "VERTEX Kattis candidate original-statement evidence ledger — pass 8",
+  "reviewedOn": "2026-11-14",
+  "summary": {
+    "originalStatementsLocated": 3,
+    "identityAndStatementMatches": 3,
+    "officialKattisPagesDirectlyVerified": 0,
+    "scenarioQualificationApproved": 0,
+    "importApproved": 0,
+    "qualityOutcome": "All three have original statement evidence but are rejected from the long-scenario quota for compact scenario depth."
+  },
+  "method": "Inspected original contest statements. For Counting Subsequences, the official IPSC page identifies the task and its easy/hard dataset links; it does not expose the complete hard-data constraints in the inspected page. The candidate's live Kattis URL remains unverified due fetch restrictions.",
+  "records": [
+    {
+      "id": "SCENARIO-060",
+      "title": "The Weight Of Words",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/weightofwords",
+      "statementUrl": "https://vthspc.cs.vt.edu/assets/files/vths2017-b9f335cf2da392887f3b828dbc04cb59.pdf",
+      "statementTitle": "4th Virginia Tech High School Programming Contest 2017, Problem F — The Weight Of Words",
+      "sourceType": "official_contest_statement",
+      "identity": "Original contest PDF explicitly identifies Problem F as The Weight Of Words; title and Kattis slug match",
+      "observed": "A game asks a player to construct a lowercase word with a specified length and sum of letter weights; the problem asks an AI to find any valid word or report impossible.",
+      "excerpt": "Justin likes to play a game called “Weight of Words.” In this game, a player must find words of a given length and a given weight.",
+      "inputOutput": "Input: target length and total letter weight. Output: any lowercase word satisfying both, or impossible.",
+      "constraints": "0 < l ≤ 40; 0 < w ≤ 1,000; letters a-z have weights 1-26.",
+      "scenarioNotes": "Officially verified, but compact single-constraint word construction. Exclude from long-scenario quota; retain as ordinary practice.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-095",
+      "title": "Counting Subsequences (Hard)",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/subseqhard",
+      "statementUrl": "https://ipsc.ksp.sk/2006/real/problems/c.html",
+      "statementTitle": "IPSC 2006, Problem C — Counting Subsequences",
+      "sourceType": "official_contest_problem_statement",
+      "identity": "Official IPSC archive identifies Problem C; the Kattis candidate slug subseqhard is consistent with the hard data set C2, but live Kattis page remains blocked",
+      "observed": "Given a sequence of integers, count continuous subsequences whose sum is exactly 47, framed as a humorous 47-society claim.",
+      "excerpt": "We will call a continuous subsequence of S interesting if the sum of its terms is equal to 47.",
+      "inputOutput": "Input: multiple test cases with sequence length and integer sequence. Output: count of interesting contiguous subsequences.",
+      "constraints": "The accessible page specifies the general task and data-set links but does not expose full numeric limits in the statement body inspected; hard dataset C2 link is explicitly present.",
+      "scenarioNotes": "The narrative is a short numerical joke and the task is a standard contiguous-subarray count. Exclude from long-scenario quota; ordinary prefix-sum practice.",
+      "retrievedOn": "2026-11-14"
+    },
+    {
+      "id": "SCENARIO-178",
+      "title": "Perket",
+      "canonicalKattisUrl": "https://open.kattis.com/problems/perket",
+      "statementUrl": "https://hsin.hr/2009/coci/contest2_tasks.pdf",
+      "statementTitle": "COCI 2008/2009 Contest #2, Task PERKET",
+      "sourceType": "official_contest_statement",
+      "identity": "Original COCI contest PDF identifies Task PERKET and provides the statement; title and Kattis slug match",
+      "observed": "Cooks choose a nonempty subset of ingredients. Sourness multiplies across selected ingredients while bitterness sums; choose the subset minimizing the absolute difference.",
+      "excerpt": "For perket to be what it is, cooks must carefully choose the ingredients to get the fullest taste possible",
+      "inputOutput": "Input: ingredient count and each ingredient's sourness and bitterness. Output: minimum possible absolute difference.",
+      "constraints": "1 ≤ N ≤ 10; if all ingredients are used, both aggregate sourness and bitterness are less than 1,000,000,000.",
+      "scenarioNotes": "Official source verified, but the narrative is a short cooking wrapper around a small subset-enumeration task. Exclude from long-scenario quota; ordinary brute-force practice.",
+      "retrievedOn": "2026-11-14"
+    }
+  ]
+}
