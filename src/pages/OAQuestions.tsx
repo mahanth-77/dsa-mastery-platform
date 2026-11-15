@@ -130,7 +130,7 @@ export default function OAQuestions() {
       <section className="space-y-3">
         <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. LeetCode currently has {leetcodeRecords.length.toLocaleString()} company-question associations across {leetcodeUniqueQuestions.toLocaleString()} unique problems. Company tags do not prove actual OA use.</p></div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {sourceCounts.map((item) => <button type="button" key={item.name} aria-pressed={type === item.name} onClick={() => { setType(item.name); setCompany('all'); setQuery(''); setSource('all'); setPlatform('all'); }} className={`rounded-lg border px-3 py-2.5 flex items-center justify-between gap-3 text-left transition-colors hover:border-accent/50 hover:bg-accent/5 ${type === item.name ? 'border-accent/50 bg-accent/5' : 'border-border bg-surface-1/50'}`}><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></button>)}
+          {sourceCounts.map((item) => <button type="button" key={item.name} aria-pressed={type === item.name} aria-label={`Show all ${item.count} questions from ${item.name}`} onClick={() => { setType(item.name); setCompany('all'); setQuery(''); setSource('all'); setPlatform('all'); window.setTimeout(() => document.getElementById('oa-question-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0); }} className={`rounded-lg border px-3 py-2.5 flex items-center justify-between gap-3 text-left transition-colors hover:border-accent/50 hover:bg-accent/5 ${type === item.name ? 'border-accent/50 bg-accent/5' : 'border-border bg-surface-1/50'}`}><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></button>)}
         </div>
       </section>
 
@@ -154,6 +154,11 @@ export default function OAQuestions() {
         </div> : <div className="rounded-xl border border-dashed border-border px-4 py-6 text-center text-xs text-text-tertiary">No company counts yet. Counts will appear automatically as company-tagged OA questions are added.</div>}
       </section>
 
+      <section id="oa-question-results" className="scroll-mt-6 space-y-3">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-sm font-semibold text-text-primary">Matching questions</h2>
+          <span className="text-[11px] font-mono text-text-tertiary">{visible.length.toLocaleString()} results</span>
+        </div>
       <div className="grid gap-3.5">
         {visible.map((item) => <article key={item.id} className="rounded-xl border border-border bg-surface-1/60 hover:border-border-focus p-4 space-y-3 transition-colors">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -169,6 +174,7 @@ export default function OAQuestions() {
         </article>)}
         {visible.length === 0 && <div className="rounded-xl border border-dashed border-border p-12 text-center space-y-3"><ClipboardList className="h-8 w-8 text-text-quaternary mx-auto" /><p className="text-sm font-medium text-text-secondary">{records.length === 0 ? 'OA Ques is ready for its first question set.' : 'No OA questions match your search or filters.'}</p><p className="text-xs text-text-quaternary max-w-xl mx-auto">{records.length === 0 ? 'There are currently no question records in this catalogue. Company tags, searchable company names and per-company counts will populate automatically when questions are added.' : 'Try clearing a filter or searching for a different keyword.'}</p>{hasFilters && <button onClick={reset} className="mt-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-2 text-xs text-text-secondary hover:text-text-primary transition-colors"><RotateCcw className="h-3.5 w-3.5" /> Reset filters</button>}</div>}
       </div>
+      </section>
     </div>
   );
 }
