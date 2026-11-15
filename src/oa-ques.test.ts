@@ -70,11 +70,11 @@ describe('VERTEX OA Ques company tags and counts', () => {
   it('imports the audited source batches with explicit evidence classifications', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
     expect(oaCatalogue.records).toHaveLength(2531);
-    expect(expandedRecords).toHaveLength(6297);
+    expect(expandedRecords).toHaveLength(6299);
     expect(new Set(expandedRecords.map((item: any) => item.id)).size).toBe(expandedRecords.length);
-    expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(269);
+    expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(271);
     expect(candidateTcs.records).toHaveLength(66);
-    expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(138);
+    expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(140);
     const leetcodeRecords = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice');
     expect(leetcodeRecords).toHaveLength(4323);
     expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]?.toLowerCase()).filter(Boolean)).size).toBe(2056);
