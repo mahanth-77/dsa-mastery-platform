@@ -1,0 +1,19 @@
+{
+  "batch": "candidate-placement-reports-batch-07",
+  "description": "Additional candidate-reported OA questions found through non-LeetCode interview reports. Only the factor-counting problem passed exact, curriculum, and semantic duplicate checks with a matching canonical problem link.",
+  "records": [
+    {
+      "id": "OA-CRX-WALMART-COUNT-FACTORS-ARRAY",
+      "title": "Count the Number of Factors for Every Array Element",
+      "company": "Walmart",
+      "assessmentType": "Walmart SDE on-campus OA (HirePro, candidate-reported)",
+      "difficulty": "Easy",
+      "sourceUrl": "https://www.geeksforgeeks.org/dsa/efficient-program-print-number-factors-n-numbers/",
+      "sourceType": "candidate_reported_actual_oa",
+      "evidenceNote": "The candidate report describes a Walmart SDE on-campus OA conducted on HirePro for 75 minutes, with 22 technical MCQs and two coding questions. Its first coding question asks for the number of factors of each number in an input array. The linked GeeksforGeeks problem matches that task. Evidence report: https://www.geeksforgeeks.org/interview-experiences/walmart-interview-experience-for-sde-on-campus-2024-physical/",
+      "verificationStatus": "verified",
+      "durationMinutes": 75,
+      "statement": "Given an array of integers, determine and output the number of positive factors (divisors) of every element in the array."
+    }
+  ]
+}
