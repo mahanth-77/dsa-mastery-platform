@@ -2,6 +2,9 @@ import React, { useMemo, useState } from 'react';
 import { Search, ExternalLink, ClipboardList, ShieldCheck, Clock3, Building2, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/oa-ques/oa-ques.json';
 import rawHackerRank from '../../data/oa-ques/hackerrank-kit.json';
+import rawHackerRankChallenges from '../../data/oa-ques/hackerrank-challenges.json';
+import rawCodeforcesSponsored from '../../data/oa-ques/codeforces-sponsored-contests.json';
+import rawAtCoderSponsored from '../../data/oa-ques/atcoder-sponsored-contests.json';
 import rawCandidateTcs from '../../data/oa-ques/candidate-tcs-pyqs.json';
 
 type OAQuestion = {
@@ -30,6 +33,9 @@ function SourceMark({ platform }: { platform: SourcePlatform }) {
 }
 const catalogue = rawCatalogue as OACatalogue;
 const hackerRankCatalogue = rawHackerRank as { records: OAQuestion[] };
+const hackerRankChallenges = rawHackerRankChallenges as { records: OAQuestion[] };
+const codeforcesSponsored = rawCodeforcesSponsored as { records: OAQuestion[] };
+const atCoderSponsored = rawAtCoderSponsored as { records: OAQuestion[] };
 const leetcodeBatches = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
 const candidatePlacementBatches = import.meta.glob('../../data/oa-ques/candidate-placement-reports-batch-*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
 const candidateTcsCatalogue = rawCandidateTcs as { records: OAQuestion[] };
@@ -37,6 +43,9 @@ const allRecords: OAQuestion[] = [
   ...catalogue.records,
   ...Object.values(leetcodeBatches).flatMap((batch) => batch.records),
   ...hackerRankCatalogue.records,
+  ...hackerRankChallenges.records,
+  ...codeforcesSponsored.records,
+  ...atCoderSponsored.records,
   ...candidateTcsCatalogue.records,
   ...Object.values(candidatePlacementBatches).flatMap((batch) => batch.records),
 ];
