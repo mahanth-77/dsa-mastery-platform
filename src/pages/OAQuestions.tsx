@@ -13,6 +13,21 @@ type OAQuestion = {
   durationMinutes: number | null; statement: string | null;
 };
 type OACatalogue = { schemaVersion?: string; catalogue?: string; records: OAQuestion[] };
+type SourcePlatform = 'LeetCode' | 'HackerRank' | 'GitHub' | 'Codeforces' | 'AtCoder' | 'Other';
+const SOURCE_META: Record<SourcePlatform, { domain: string; label: string }> = { LeetCode: { domain: 'leetcode.com', label: 'LeetCode' }, HackerRank: { domain: 'hackerrank.com', label: 'HackerRank' }, GitHub: { domain: 'github.com', label: 'GitHub' }, Codeforces: { domain: 'codeforces.com', label: 'Codeforces' }, AtCoder: { domain: 'atcoder.jp', label: 'AtCoder' }, Other: { domain: 'globe', label: 'Other source' } };
+function getSourcePlatform(item: OAQuestion): SourcePlatform {
+  const descriptor = (item.assessmentType + ' ' + item.sourceUrl).toLowerCase();
+  if (descriptor.includes('leetcode')) return 'LeetCode';
+  if (descriptor.includes('hackerrank')) return 'HackerRank';
+  if (descriptor.includes('codeforces')) return 'Codeforces';
+  if (descriptor.includes('atcoder')) return 'AtCoder';
+  try { const host = new URL(item.sourceUrl).hostname.replace(/^www\\./, ''); if (host === 'github.com' || host.endsWith('.github.com')) return 'GitHub'; } catch { /* Invalid URLs are covered by catalogue integrity checks. */ }
+  return 'Other';
+}
+function SourceMark({ platform }: { platform: SourcePlatform }) {
+  const meta = SOURCE_META[platform];
+  return <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface-2 px-2 py-1 text-[10px] font-semibold text-text-secondary" title={meta.label}>{platform === 'Other' ? <span aria-hidden="true">↗</span> : <img src={'https://www.google.com/s2/favicons?domain=' + meta.domain + '&sz=32'} alt="" loading="lazy" className="h-4 w-4 rounded-sm" />}{meta.label}</span>;
+}
 const catalogue = rawCatalogue as OACatalogue;
 const hackerRankCatalogue = rawHackerRank as { records: OAQuestion[] };
 const leetcodeBatches = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OAQuestion[] }>;
@@ -31,6 +46,7 @@ export default function OAQuestions() {
   const [company, setCompany] = useState('all');
   const [type, setType] = useState('all');
   const [source, setSource] = useState('all');
+  const [platform, setPlatform] = useState<SourcePlatform | 'all'>('all');
   const records = allRecords;
 
   const companyCounts = useMemo(() => {
@@ -48,6 +64,11 @@ export default function OAQuestions() {
   const pendingCount = records.filter((item) => item.verificationStatus === 'pending_review').length;
   const leetcodeRecords = records.filter((item) => item.assessmentType === 'LeetCode company-tagged practice');
   const leetcodeUniqueQuestions = new Set(leetcodeRecords.map((item) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]).filter(Boolean)).size;
+  const platformCounts = useMemo(() => {
+    const counts = new Map<SourcePlatform, number>();
+    records.forEach((item) => { const key = getSourcePlatform(item); counts.set(key, (counts.get(key) || 0) + 1); });
+    return Array.from(counts, ([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name));
+  }, [records]);
   const sourceCounts = useMemo(() => {
     const counts = new Map<string, number>();
     records.forEach((item) => counts.set(item.assessmentType, (counts.get(item.assessmentType) || 0) + 1));
@@ -56,15 +77,16 @@ export default function OAQuestions() {
 
   const visible = useMemo(() => records.filter((item) => {
     const q = query.trim().toLowerCase();
-    const matchesQuery = !q || [item.title, item.id, item.company || '', item.assessmentType, item.statement || ''].some((value) => value.toLowerCase().includes(q));
+    const matchesQuery = !q || [item.title, item.id, item.company || '', item.assessmentType, item.statement || '', getSourcePlatform(item)].some((value) => value.toLowerCase().includes(q));
     const matchesCompany = company === 'all' || item.company?.trim() === company;
     const matchesType = type === 'all' || item.assessmentType === type;
     const matchesSource = source === 'all' || item.sourceType === source;
-    return matchesQuery && matchesCompany && matchesType && matchesSource;
-  }), [records, query, company, type, source]);
+    const matchesPlatform = platform === 'all' || getSourcePlatform(item) === platform;
+    return matchesQuery && matchesCompany && matchesType && matchesSource && matchesPlatform;
+  }), [records, query, company, type, source, platform]);
 
-  const hasFilters = query !== '' || company !== 'all' || type !== 'all' || source !== 'all';
-  const reset = () => { setQuery(''); setCompany('all'); setType('all'); setSource('all'); };
+  const hasFilters = query !== '' || company !== 'all' || type !== 'all' || source !== 'all' || platform !== 'all';
+  const reset = () => { setQuery(''); setCompany('all'); setType('all'); setSource('all'); setPlatform('all'); };
 
   return (
     <div className="space-y-6 animate-fade-in pb-12">
@@ -102,9 +124,10 @@ export default function OAQuestions() {
 
       <section className="panel p-3.5 space-y-3">
         <div className="flex flex-col lg:flex-row gap-2.5">
-          <div className="relative flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-quaternary" /><input aria-label="Search OA questions" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search question or company name (e.g. Amazon)..." className="input-field pl-9 text-xs w-full" /></div>
+          <div className="relative flex-1"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-quaternary" /><input aria-label="Search OA questions" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search question, company or site (e.g. HackerRank)..." className="input-field pl-9 text-xs w-full" /></div>
           <select aria-label="Filter by company" value={company} onChange={(event) => setCompany(event.target.value)} className="input-field text-xs lg:w-48"><option value="all">All companies</option>{companies.map((name) => <option key={name} value={name}>{name} ({companyCounts.find((item) => item.name === name)?.count || 0})</option>)}</select>
           <select aria-label="Filter by assessment type" value={type} onChange={(event) => setType(event.target.value)} className="input-field text-xs lg:w-48"><option value="all">All assessment types</option>{Array.from(new Set(records.map((item) => item.assessmentType))).sort().map((name) => <option key={name} value={name}>{name}</option>)}</select>
+          <select aria-label="Filter by platform" value={platform} onChange={(event) => setPlatform(event.target.value as SourcePlatform | 'all')} className="input-field text-xs lg:w-44"><option value="all">All platforms</option>{platformCounts.map((item) => <option key={item.name} value={item.name}>{item.name} ({item.count})</option>)}</select>
           <select aria-label="Filter by source type" value={source} onChange={(event) => setSource(event.target.value)} className="input-field text-xs lg:w-52"><option value="all">All question types</option><option value="company_verified">Employer-verified</option><option value="candidate_reported_actual_oa">Candidate-reported OA</option><option value="oa_style_practice">OA-style practice</option></select>
           {hasFilters && <button onClick={reset} className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-2 hover:bg-surface-3 text-xs text-text-secondary transition-colors shrink-0"><RotateCcw className="h-3.5 w-3.5" /> Reset</button>}
         </div>
@@ -123,7 +146,7 @@ export default function OAQuestions() {
         {visible.map((item) => <article key={item.id} className="rounded-xl border border-border bg-surface-1/60 hover:border-border-focus p-4 space-y-3 transition-colors">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div className="space-y-1 min-w-0"><div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
-              <span className="px-2 py-0.5 rounded bg-surface-2 text-text-secondary border border-border">{item.id}</span>
+              <span className="px-2 py-0.5 rounded bg-surface-2 text-text-secondary border border-border">{item.id}</span><SourceMark platform={getSourcePlatform(item)} />
               {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-tertiary border border-border">{item.difficulty || 'Difficulty unverified'}</span>
               {item.durationMinutes && <span className="inline-flex items-center gap-1 text-text-tertiary"><Clock3 className="h-3 w-3" /> {item.durationMinutes} min</span>}
