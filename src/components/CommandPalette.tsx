@@ -17,7 +17,7 @@ type OARecord = { id: string; title: string; company: string | null; assessmentT
 type ScenarioRecord = { id: string; title: string; platform: string; sourceUrl: string; difficulty?: string | null; factualScenarioSummary?: string | null; evidence: { statementExcerpt: string | null; contestSource?: string | null } };
 type SearchItem =
   | { kind: 'curriculum'; key: string; title: string; subtitle: string; problem: CurriculumProblem; patternId: string; patternName: string; variationName: string }
-  | { kind: 'oa'; key: string; title: string; subtitle: string; difficulty: string | null; id: string }
+  | { kind: 'oa'; key: string; title: string; subtitle: string; difficulty: string | null; id: string; searchText: string }
   | { kind: 'scenario'; key: string; title: string; subtitle: string; difficulty: string | null; id: string };
 
 const oaLeetCode = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OARecord[] }>;
@@ -69,10 +69,10 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
       }
     }
     for (const item of allOARecords) {
-      list.push({ kind: 'oa', key: 'oa:' + item.id, title: item.title, subtitle: 'OA Ques · ' + (item.company || item.assessmentType) + ' · ' + item.assessmentType, difficulty: item.difficulty, id: item.id });
+      list.push({ kind: 'oa', key: 'oa:' + item.id, title: item.title, subtitle: 'OA Ques · ' + (item.company || item.assessmentType) + ' · ' + item.assessmentType, difficulty: item.difficulty, id: item.id, searchText: [item.id, item.company || '', item.assessmentType, item.statement || '', item.sourceUrl].join(' ') });
     }
     for (const item of allScenarioRecords) {
-      list.push({ kind: 'scenario', key: 'scenario:' + item.id, title: item.title, subtitle: 'Long Scenario Questions · ' + item.platform, difficulty: item.difficulty, id: item.id });
+      list.push({ kind: 'scenario', key: 'scenario:' + item.id, title: item.title, subtitle: 'Long Scenario Questions · ' + item.platform, difficulty: item.difficulty, id: item.id, searchText: [item.id, item.platform, item.sourceUrl, item.factualScenarioSummary || '', item.evidence.statementExcerpt || '', item.evidence.contestSource || ''].join(' ') });
     }
     return list;
   }, [curriculum]);
@@ -84,8 +84,8 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
       const extra = item.kind === 'curriculum'
         ? [item.patternName, item.variationName, item.problem.url]
         : item.kind === 'oa'
-          ? [item.id, item.subtitle]
-          : [item.id, item.subtitle];
+          ? [item.id, item.subtitle, item.searchText]
+          : [item.id, item.subtitle, item.searchText];
       return [item.title, item.subtitle, ...extra].some(value => value.toLowerCase().includes(q));
     }).slice(0, 15);
   }, [allItems, query]);
