@@ -150,7 +150,7 @@ export default function OAQuestions() {
         <div className="flex items-end justify-between gap-2"><div><h2 className="text-sm font-semibold text-text-primary">Questions by company</h2><p className="text-xs text-text-tertiary">Select a company to show all of its tagged questions.</p></div><span className="text-[11px] font-mono text-text-tertiary">{companies.length} companies</span></div>
         {companyCounts.length > 0 ? <div className="overflow-hidden rounded-xl border border-border">
           <div className="grid grid-cols-[1fr_auto] gap-3 bg-surface-2 px-4 py-2 text-[10px] uppercase tracking-wider font-mono text-text-tertiary"><span>Company</span><span>Questions</span></div>
-          {companyCounts.map((item) => <button key={item.name} onClick={() => { setCompany(item.name); setQuery(''); }} className={`grid w-full grid-cols-[1fr_auto] gap-3 px-4 py-3 text-left text-xs border-t border-border/70 hover:bg-surface-2 transition-colors ${company === item.name ? 'bg-accent/5' : ''}`}><span className="font-medium text-text-primary">{item.name}</span><span className="font-mono tabular-nums text-accent">{item.count}</span></button>)}
+          {companyCounts.map((item) => <button key={item.name} onClick={() => { setCompany(item.name); setQuery(''); setType('all'); setSource('all'); setPlatform('all'); }} className={`grid w-full grid-cols-[1fr_auto] gap-3 px-4 py-3 text-left text-xs border-t border-border/70 hover:bg-surface-2 transition-colors ${company === item.name ? 'bg-accent/5' : ''}`}><span className="font-medium text-text-primary">{item.name}</span><span className="font-mono tabular-nums text-accent">{item.count}</span></button>)}
         </div> : <div className="rounded-xl border border-dashed border-border px-4 py-6 text-center text-xs text-text-tertiary">No company counts yet. Counts will appear automatically as company-tagged OA questions are added.</div>}
       </section>
 
@@ -159,7 +159,7 @@ export default function OAQuestions() {
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div className="space-y-1 min-w-0"><div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-secondary border border-border">{item.id}</span><SourceMark platform={getSourcePlatform(item)} />
-              {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
+              {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); setType('all'); setSource('all'); setPlatform('all'); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-tertiary border border-border">{item.difficulty || 'Difficulty unverified'}</span>
               {item.durationMinutes && <span className="inline-flex items-center gap-1 text-text-tertiary"><Clock3 className="h-3 w-3" /> {item.durationMinutes} min</span>}
             </div><h2 className="text-base font-semibold text-text-primary">{item.title}</h2><p className="text-xs text-text-secondary">{item.statement || 'Question statement is available at the original source.'}</p>{item.evidenceNote && <p className="text-[10px] text-text-tertiary">Source context: {item.evidenceNote}</p>}</div>
