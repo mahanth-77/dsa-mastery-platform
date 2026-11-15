@@ -42,6 +42,12 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(searchRecords(sample, 'MICROSOFT').map((item) => item.id)).toEqual(['OA-003']);
   });
 
+  it('makes platform names searchable and separates HackerRank from LeetCode records', () => {
+    expect(searchRecords(expandedRecords as Record[], 'HackerRank')).toHaveLength(68);
+    expect(searchRecords(expandedRecords as Record[], 'LeetCode')).toHaveLength(2615);
+    expect(hackerRank.records.every((item: any) => item.sourceUrl.startsWith('https://www.hackerrank.com/'))).toBe(true);
+  });
+
   it('imports the audited source batches with explicit evidence classifications', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
     expect(oaCatalogue.records).toHaveLength(2531);
