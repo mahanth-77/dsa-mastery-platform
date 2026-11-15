@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Search, ExternalLink, ClipboardList, ShieldCheck, Clock3, Building2, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/oa-ques/oa-ques.json';
 import rawHackerRank from '../../data/oa-ques/hackerrank-kit.json';
@@ -51,7 +52,9 @@ const allRecords: OAQuestion[] = [
 ];
 
 export default function OAQuestions() {
-  const [query, setQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get('search') || '');
+  useEffect(() => { setQuery(searchParams.get('search') || ''); }, [searchParams]);
   const [company, setCompany] = useState('all');
   const [type, setType] = useState('all');
   const [source, setSource] = useState('all');
@@ -127,7 +130,7 @@ export default function OAQuestions() {
       <section className="space-y-3">
         <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. LeetCode currently has {leetcodeRecords.length.toLocaleString()} company-question associations across {leetcodeUniqueQuestions.toLocaleString()} unique problems. Company tags do not prove actual OA use.</p></div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {sourceCounts.map((item) => <div key={item.name} className="rounded-lg border border-border bg-surface-1/50 px-3 py-2.5 flex items-center justify-between gap-3"><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></div>)}
+          {sourceCounts.map((item) => <button type="button" key={item.name} aria-pressed={type === item.name} onClick={() => { setType(item.name); setCompany('all'); setQuery(''); setSource('all'); setPlatform('all'); }} className={`rounded-lg border px-3 py-2.5 flex items-center justify-between gap-3 text-left transition-colors hover:border-accent/50 hover:bg-accent/5 ${type === item.name ? 'border-accent/50 bg-accent/5' : 'border-border bg-surface-1/50'}`}><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></button>)}
         </div>
       </section>
 
