@@ -75,7 +75,7 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(271);
     expect(candidateTcs.records).toHaveLength(66);
     expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(142);
-    const requestedResearchLeads = candidatePlacementBatches['../../data/oa-ques/candidate-placement-reports-batch-06.json']?.records || [];
+    const requestedResearchLeads = candidatePlacementBatches['../data/oa-ques/candidate-placement-reports-batch-06.json']?.records || [];
     expect(requestedResearchLeads).toHaveLength(2);
     expect(requestedResearchLeads.every((item: any) => item.sourceType === 'oa_style_practice' && item.verificationStatus === 'pending_review')).toBe(true);
     expect(requestedResearchLeads.map((item: any) => item.company).sort()).toEqual(['Goldman Sachs', 'JPMorgan Chase']);
