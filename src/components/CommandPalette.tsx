@@ -80,14 +80,28 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
   const filteredItems = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return allItems.filter(item => {
+    const matches = allItems.filter(item => {
       const extra = item.kind === 'curriculum'
         ? [item.patternName, item.variationName, item.problem.url]
-        : item.kind === 'oa'
-          ? [item.id, item.subtitle, item.searchText]
-          : [item.id, item.subtitle, item.searchText];
-      return [item.title, item.subtitle, ...extra].some(value => value.toLowerCase().includes(q));
-    }).slice(0, 15);
+        : [item.id, item.subtitle, item.searchText];
+      return [item.title, item.subtitle, ...extra].some(value => String(value || '').toLowerCase().includes(q));
+    });
+
+    // Put the requested catalogue first for section-specific searches. Otherwise
+    // retain relevance across all three catalogues instead of letting the 941
+    // curriculum placements crowd OA and scenario results out of the shortlist.
+    const sectionBoost = (item: SearchItem) => {
+      if (/^(oa|oas|online assessment|online assessments)$/.test(q)) return item.kind === 'oa' ? 100 : 0;
+      if (/^(scenario|scenarios|long scenario|long scenario questions)$/.test(q)) return item.kind === 'scenario' ? 100 : 0;
+      if (/^(dsa|curriculum|placements|patterns)$/.test(q)) return item.kind === 'curriculum' ? 100 : 0;
+      return 0;
+    };
+    const score = (item: SearchItem) => {
+      const title = item.title.toLowerCase();
+      const subtitle = item.subtitle.toLowerCase();
+      return sectionBoost(item) + (title === q ? 80 : title.startsWith(q) ? 40 : title.includes(q) ? 20 : 0) + (subtitle.includes(q) ? 5 : 0);
+    };
+    return matches.sort((a, b) => score(b) - score(a)).slice(0, 50);
   }, [allItems, query]);
 
   const selectItem = (item: SearchItem) => {
