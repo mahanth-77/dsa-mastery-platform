@@ -18,7 +18,7 @@ type ScenarioRecord = { id: string; title: string; platform: string; sourceUrl: 
 type SearchItem =
   | { kind: 'curriculum'; key: string; title: string; subtitle: string; problem: CurriculumProblem; patternId: string; patternName: string; variationName: string }
   | { kind: 'oa'; key: string; title: string; subtitle: string; difficulty: string | null; id: string; searchText: string }
-  | { kind: 'scenario'; key: string; title: string; subtitle: string; difficulty: string | null; id: string };
+  | { kind: 'scenario'; key: string; title: string; subtitle: string; difficulty: string | null; id: string; searchText: string };
 
 const oaLeetCode = import.meta.glob('../../data/oa-ques/leetcode-batches/*.json', { eager: true, import: 'default' }) as Record<string, { records: OARecord[] }>;
 const oaCandidateBatches = import.meta.glob('../../data/oa-ques/candidate-placement-reports-batch-*.json', { eager: true, import: 'default' }) as Record<string, { records: OARecord[] }>;
@@ -72,7 +72,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
       list.push({ kind: 'oa', key: 'oa:' + item.id, title: item.title, subtitle: 'OA Ques · ' + (item.company || item.assessmentType) + ' · ' + item.assessmentType, difficulty: item.difficulty, id: item.id, searchText: [item.id, item.company || '', item.assessmentType, item.statement || '', item.sourceUrl].join(' ') });
     }
     for (const item of allScenarioRecords) {
-      list.push({ kind: 'scenario', key: 'scenario:' + item.id, title: item.title, subtitle: 'Long Scenario Questions · ' + item.platform, difficulty: item.difficulty, id: item.id, searchText: [item.id, item.platform, item.sourceUrl, item.factualScenarioSummary || '', item.evidence.statementExcerpt || '', item.evidence.contestSource || ''].join(' ') });
+      list.push({ kind: 'scenario', key: 'scenario:' + item.id, title: item.title, subtitle: 'Long Scenario Questions · ' + item.platform, difficulty: item.difficulty ?? null, id: item.id, searchText: [item.id, item.platform, item.sourceUrl, item.factualScenarioSummary || '', item.evidence.statementExcerpt || '', item.evidence.contestSource || ''].join(' ') });
     }
     return list;
   }, [curriculum]);
