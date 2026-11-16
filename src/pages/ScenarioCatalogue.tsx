@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Search, ExternalLink, ShieldAlert, CheckCircle2, BookOpen, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/scenario-catalogue/scenario-catalogue.json';
 
@@ -57,7 +58,9 @@ type CatalogueData = {
 const catalogue = rawCatalogue as unknown as CatalogueData;
 
 export default function ScenarioCatalogue() {
-  const [query, setQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get('search') || '');
+  useEffect(() => { setQuery(searchParams.get('search') || ''); }, [searchParams]);
   const [platform, setPlatform] = useState('all');
   const [evidence, setEvidence] = useState('all');
   const [depth, setDepth] = useState('all');

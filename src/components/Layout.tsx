@@ -220,7 +220,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
               <Search className="w-3.5 h-3.5 text-text-quaternary" />
               <span className="font-mono text-[11px]">
-                Search {curriculumStats ? countLabel(curriculumStats.placementCount, 'placement', 'placements') : 'placements'}, patterns, invariants...
+                Search all questions, companies, platforms, patterns...
               </span>
               <kbd className="px-1.5 py-0.5 text-[9px] font-mono kbd-key ml-4">
                 ⌘K

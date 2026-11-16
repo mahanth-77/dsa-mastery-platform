@@ -70,11 +70,21 @@ describe('VERTEX OA Ques company tags and counts', () => {
   it('imports the audited source batches with explicit evidence classifications', () => {
     expect(oaCatalogue.catalogue).toBe('VERTEX OA Questions');
     expect(oaCatalogue.records).toHaveLength(2531);
-    expect(expandedRecords).toHaveLength(6297);
+    expect(expandedRecords).toHaveLength(6302);
     expect(new Set(expandedRecords.map((item: any) => item.id)).size).toBe(expandedRecords.length);
-    expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(269);
+    expect(expandedRecords.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(272);
     expect(candidateTcs.records).toHaveLength(66);
-    expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(138);
+    expect(Object.values(candidatePlacementBatches).reduce((n, batch) => n + batch.records.length, 0)).toBe(143);
+    const requestedResearchLeads = candidatePlacementBatches['../data/oa-ques/candidate-placement-reports-batch-06.json']?.records || [];
+    expect(requestedResearchLeads).toHaveLength(2);
+    expect(requestedResearchLeads.every((item: any) => item.sourceType === 'oa_style_practice' && item.verificationStatus === 'pending_review')).toBe(true);
+    expect(requestedResearchLeads.map((item: any) => item.company).sort()).toEqual(['Goldman Sachs', 'JPMorgan Chase']);
+    const batch07 = candidatePlacementBatches['../data/oa-ques/candidate-placement-reports-batch-07.json']?.records || [];
+    expect(batch07).toHaveLength(1);
+    expect(batch07[0].title).toBe('Count the Number of Factors for Every Array Element');
+    expect(batch07[0].company).toBe('Walmart');
+    expect(batch07[0].sourceType).toBe('candidate_reported_actual_oa');
+    expect(batch07[0].verificationStatus).toBe('verified');
     const leetcodeRecords = expandedRecords.filter((item: any) => item.assessmentType === 'LeetCode company-tagged practice');
     expect(leetcodeRecords).toHaveLength(4323);
     expect(new Set(leetcodeRecords.map((item: any) => item.sourceUrl.split('/problems/')[1]?.split('/')[0]?.toLowerCase()).filter(Boolean)).size).toBe(2056);
@@ -85,7 +95,7 @@ describe('VERTEX OA Ques company tags and counts', () => {
     expect(expandedRecords.filter((item: any) => item.sourceType === 'company_verified')).toHaveLength(0);
     expect(new Set(oaCatalogue.records.map((item: any) => item.company)).size).toBe(65);
     expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa')).toHaveLength(65);
-    expect(expandedRecords.filter((item: any) => item.sourceType === 'oa_style_practice')).toHaveLength(6028);
+    expect(expandedRecords.filter((item: any) => item.sourceType === 'oa_style_practice')).toHaveLength(6030);
     expect(oaCatalogue.records.filter((item: any) => item.sourceType === 'candidate_reported_actual_oa').every((item: any) => item.sourceUrl.startsWith('https://github.com/mrsac7/placement-resources/'))).toBe(true);
     expect(new Set(oaCatalogue.records.map((item: any) => item.id)).size).toBe(oaCatalogue.records.length);
   });

@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Search, ExternalLink, ClipboardList, ShieldCheck, Clock3, Building2, RotateCcw } from 'lucide-react';
 import rawCatalogue from '../../data/oa-ques/oa-ques.json';
 import rawHackerRank from '../../data/oa-ques/hackerrank-kit.json';
@@ -51,7 +52,9 @@ const allRecords: OAQuestion[] = [
 ];
 
 export default function OAQuestions() {
-  const [query, setQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get('search') || '');
+  useEffect(() => { setQuery(searchParams.get('search') || ''); }, [searchParams]);
   const [company, setCompany] = useState('all');
   const [type, setType] = useState('all');
   const [source, setSource] = useState('all');
@@ -127,7 +130,7 @@ export default function OAQuestions() {
       <section className="space-y-3">
         <div><h2 className="text-sm font-semibold text-text-primary">Question counts by source</h2><p className="text-xs text-text-tertiary">Counts update from the imported catalogue. LeetCode currently has {leetcodeRecords.length.toLocaleString()} company-question associations across {leetcodeUniqueQuestions.toLocaleString()} unique problems. Company tags do not prove actual OA use.</p></div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {sourceCounts.map((item) => <div key={item.name} className="rounded-lg border border-border bg-surface-1/50 px-3 py-2.5 flex items-center justify-between gap-3"><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></div>)}
+          {sourceCounts.map((item) => <button type="button" key={item.name} aria-pressed={type === item.name} aria-label={`Show all ${item.count} questions from ${item.name}`} onClick={() => { setType(item.name); setCompany('all'); setQuery(''); setSource('all'); setPlatform('all'); window.setTimeout(() => document.getElementById('oa-question-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 0); }} className={`rounded-lg border px-3 py-2.5 flex items-center justify-between gap-3 text-left transition-colors hover:border-accent/50 hover:bg-accent/5 ${type === item.name ? 'border-accent/50 bg-accent/5' : 'border-border bg-surface-1/50'}`}><span className="text-xs text-text-secondary">{item.name}</span><span className="font-mono text-sm font-semibold text-text-primary tabular-nums">{item.count}</span></button>)}
         </div>
       </section>
 
@@ -147,16 +150,21 @@ export default function OAQuestions() {
         <div className="flex items-end justify-between gap-2"><div><h2 className="text-sm font-semibold text-text-primary">Questions by company</h2><p className="text-xs text-text-tertiary">Select a company to show all of its tagged questions.</p></div><span className="text-[11px] font-mono text-text-tertiary">{companies.length} companies</span></div>
         {companyCounts.length > 0 ? <div className="overflow-hidden rounded-xl border border-border">
           <div className="grid grid-cols-[1fr_auto] gap-3 bg-surface-2 px-4 py-2 text-[10px] uppercase tracking-wider font-mono text-text-tertiary"><span>Company</span><span>Questions</span></div>
-          {companyCounts.map((item) => <button key={item.name} onClick={() => { setCompany(item.name); setQuery(''); }} className={`grid w-full grid-cols-[1fr_auto] gap-3 px-4 py-3 text-left text-xs border-t border-border/70 hover:bg-surface-2 transition-colors ${company === item.name ? 'bg-accent/5' : ''}`}><span className="font-medium text-text-primary">{item.name}</span><span className="font-mono tabular-nums text-accent">{item.count}</span></button>)}
+          {companyCounts.map((item) => <button key={item.name} onClick={() => { setCompany(item.name); setQuery(''); setType('all'); setSource('all'); setPlatform('all'); }} className={`grid w-full grid-cols-[1fr_auto] gap-3 px-4 py-3 text-left text-xs border-t border-border/70 hover:bg-surface-2 transition-colors ${company === item.name ? 'bg-accent/5' : ''}`}><span className="font-medium text-text-primary">{item.name}</span><span className="font-mono tabular-nums text-accent">{item.count}</span></button>)}
         </div> : <div className="rounded-xl border border-dashed border-border px-4 py-6 text-center text-xs text-text-tertiary">No company counts yet. Counts will appear automatically as company-tagged OA questions are added.</div>}
       </section>
 
+      <section id="oa-question-results" className="scroll-mt-6 space-y-3">
+        <div className="flex items-center justify-between gap-3">
+          <h2 className="text-sm font-semibold text-text-primary">Matching questions</h2>
+          <span className="text-[11px] font-mono text-text-tertiary">{visible.length.toLocaleString()} results</span>
+        </div>
       <div className="grid gap-3.5">
         {visible.map((item) => <article key={item.id} className="rounded-xl border border-border bg-surface-1/60 hover:border-border-focus p-4 space-y-3 transition-colors">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div className="space-y-1 min-w-0"><div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-secondary border border-border">{item.id}</span><SourceMark platform={getSourcePlatform(item)} />
-              {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
+              {item.company && <button onClick={() => { setCompany(item.company!.trim()); setQuery(''); setType('all'); setSource('all'); setPlatform('all'); }} className="px-2 py-0.5 rounded bg-surface-2 text-accent border border-accent/20 hover:bg-accent/10">{item.company}</button>}
               <span className="px-2 py-0.5 rounded bg-surface-2 text-text-tertiary border border-border">{item.difficulty || 'Difficulty unverified'}</span>
               {item.durationMinutes && <span className="inline-flex items-center gap-1 text-text-tertiary"><Clock3 className="h-3 w-3" /> {item.durationMinutes} min</span>}
             </div><h2 className="text-base font-semibold text-text-primary">{item.title}</h2><p className="text-xs text-text-secondary">{item.statement || 'Question statement is available at the original source.'}</p>{item.evidenceNote && <p className="text-[10px] text-text-tertiary">Source context: {item.evidenceNote}</p>}</div>
@@ -166,6 +174,7 @@ export default function OAQuestions() {
         </article>)}
         {visible.length === 0 && <div className="rounded-xl border border-dashed border-border p-12 text-center space-y-3"><ClipboardList className="h-8 w-8 text-text-quaternary mx-auto" /><p className="text-sm font-medium text-text-secondary">{records.length === 0 ? 'OA Ques is ready for its first question set.' : 'No OA questions match your search or filters.'}</p><p className="text-xs text-text-quaternary max-w-xl mx-auto">{records.length === 0 ? 'There are currently no question records in this catalogue. Company tags, searchable company names and per-company counts will populate automatically when questions are added.' : 'Try clearing a filter or searching for a different keyword.'}</p>{hasFilters && <button onClick={reset} className="mt-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-surface-2 text-xs text-text-secondary hover:text-text-primary transition-colors"><RotateCcw className="h-3.5 w-3.5" /> Reset filters</button>}</div>}
       </div>
+      </section>
     </div>
   );
 }

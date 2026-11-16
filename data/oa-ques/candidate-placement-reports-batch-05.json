@@ -1,0 +1,32 @@
+{
+  "batch": "candidate-placement-reports-batch-05",
+  "description": "Additional non-LeetCode candidate-reported company OA questions after duplicate exclusion.",
+  "records": [
+    {
+      "id": "OA-CRX-SIEMENS-EDA-GCD-PAIRS",
+      "title": "Count Pairs of Natural Numbers with GCD Equal to a Given Number",
+      "company": "Siemens EDA",
+      "assessmentType": "Siemens EDA on-campus HackerEarth OA (candidate-reported)",
+      "difficulty": "Medium",
+      "sourceUrl": "https://www.geeksforgeeks.org/dsa/count-pairs-natural-numbers-gcd-equal-given-number/",
+      "sourceType": "candidate_reported_actual_oa",
+      "evidenceNote": "Reported in the Siemens EDA SDE on-campus interview experience. The report specifies a 90-minute HackerEarth OA with two coding questions and identifies this as the first coding question. Evidence report: https://www.geeksforgeeks.org/interview-experiences/siemens-eda-interview-experience-for-sde-role-on-campus/",
+      "verificationStatus": "verified",
+      "durationMinutes": 90,
+      "statement": "Count the number of pairs of natural numbers whose greatest common divisor equals a given integer, subject to the assessment constraints."
+    },
+    {
+      "id": "OA-CRX-MORGAN-STANLEY-CONNECT-ROPES",
+      "title": "Connect N Ropes with Minimum Cost (Min-Heap Variation)",
+      "company": "Morgan Stanley",
+      "assessmentType": "Morgan Stanley 2021 Mettl OA (candidate-reported)",
+      "difficulty": "Medium",
+      "sourceUrl": "https://www.geeksforgeeks.org/dsa/connect-n-ropes-minimum-cost/",
+      "sourceType": "candidate_reported_actual_oa",
+      "evidenceNote": "Reported as the second coding problem in a Morgan Stanley summer-intern Mettl OA. The candidate describes it as a min-heap variation of the minimum-cost rope-joining problem. Evidence report: https://www.geeksforgeeks.org/interview-experiences/morgan-stanley-interview-experience-2021-2/",
+      "verificationStatus": "verified",
+      "durationMinutes": 90,
+      "statement": "Given ropes of different lengths, repeatedly connect two ropes at a time. The cost of each connection is the sum of the two rope lengths. Determine the minimum total cost to connect all ropes into one rope."
+    }
+  ]
+}

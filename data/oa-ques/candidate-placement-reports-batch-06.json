@@ -1,0 +1,32 @@
+{
+  "batch": "candidate-placement-reports-batch-06",
+  "description": "User-requested Goldman Sachs and JPMorgan-associated research leads. Both are deliberately classified as pending-review practice records because available evidence does not establish actual OA use.",
+  "records": [
+    {
+      "id": "OA-CRX-GOLDMAN-SACHS-RUN-LENGTH-ENCODING",
+      "title": "Run Length Encoding",
+      "company": "Goldman Sachs",
+      "assessmentType": "Goldman Sachs candidate-reported interview question (not OA-confirmed)",
+      "difficulty": "Easy",
+      "sourceUrl": "https://www.geeksforgeeks.org/problems/run-length-encoding/1",
+      "sourceType": "oa_style_practice",
+      "evidenceNote": "A public Goldman Sachs interview experience for a 2+ years experienced Software Engineer reports Run-length encoding in a CoderPad interview round, not the online assessment. The GeeksforGeeks practice page also lists Goldman Sachs among company tags. This is retained as an employer-associated practice reference, not a verified OA. It overlaps conceptually with String Compression in the DSA curriculum. Interview report: https://www.geeksforgeeks.org/interview-experiences/goldman-sachs-interview-experience-for-software-engineer-2-yrs-experienced-september-2020/",
+      "verificationStatus": "pending_review",
+      "durationMinutes": null,
+      "statement": "Given a string, encode consecutive runs of the same character by writing the character followed by the number of consecutive occurrences. For example, aaaabbbccc becomes a4b3c3."
+    },
+    {
+      "id": "OA-CRX-JPMORGAN-MAXIMIZE-INCREASING-PAIRS",
+      "title": "Maximize Count of Increasing Pairs",
+      "company": "JPMorgan Chase",
+      "assessmentType": "JPMorgan Chase unverified company association (research lead; not OA-confirmed)",
+      "difficulty": "Medium",
+      "sourceUrl": "https://www.geeksforgeeks.org/dsa/maximize-count-of-pairs-i-j-from-two-arrays-having-element-from-first-array-not-exceeding-that-from-second-array/",
+      "sourceType": "oa_style_practice",
+      "evidenceNote": "The canonical GeeksforGeeks problem is available, but the company attribution as a JPMorgan OA could not be independently corroborated in the sources checked. Included at the user's request as a pending research lead only; do not treat this as proof of a JPMorgan assessment.",
+      "verificationStatus": "pending_review",
+      "durationMinutes": null,
+      "statement": "Given two arrays a1 and a2, maximize the number of disjoint pairs (i, j) such that 2 * a1[i] <= a2[j]. Each element may be used in at most one pair."
+    }
+  ]
+}
