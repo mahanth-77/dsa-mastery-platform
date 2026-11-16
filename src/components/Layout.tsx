@@ -1,39 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import {
-  LayoutDashboard,
-  Binary,
-  Clock,
-  BarChart2,
-  Sliders,
-  Menu,
-  X,
-  Flame,
-  Search,
-  HardDrive,
-  Layers,
-  BookOpen,
-  ClipboardList,
-} from 'lucide-react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../context';
-import { getGlobalStats, getStreak } from '../store';
-import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
+import { getStreak } from '../store';
 import CommandPalette from './CommandPalette';
 import ProblemWorkspaceModal from './ProblemWorkspaceModal';
 import type { CurriculumProblem } from '../types';
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard, shortcut: '1' },
-  { to: '/patterns', label: 'Pattern Explorer', icon: Binary, shortcut: '2' },
-  { to: '/revisions', label: 'Revision Queue', icon: Clock, shortcut: '3' },
-  { to: '/analytics', label: 'Analytics', icon: BarChart2, shortcut: '4' },
-  { to: '/settings', label: 'Settings', icon: Sliders, shortcut: '5' },
-  { to: '/scenarios', label: 'Scenario Questions', icon: BookOpen },
-  { to: '/oa-ques', label: 'OA Ques', icon: ClipboardList },
+  { to: '/', label: 'Today', shortcut: '1' },
+  { to: '/patterns', label: 'Index', shortcut: '2' },
+  { to: '/revisions', label: 'Review', shortcut: '3' },
+  { to: '/analytics', label: 'Ledger', shortcut: '4' },
+  { to: '/settings', label: 'Settings', shortcut: '5' },
+  { to: '/scenarios', label: 'Scenarios' },
+  { to: '/oa-ques', label: 'OA' },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [activeWorkspace, setActiveWorkspace] = useState<{
     problem: CurriculumProblem;
@@ -44,10 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const navigate = useNavigate();
   const { state } = useApp();
-  const { curriculum, progress } = state;
-
-  const stats = curriculum ? getGlobalStats(curriculum, progress) : null;
-  const curriculumStats = curriculum ? getCurriculumStats(curriculum) : null;
+  const { progress } = state;
   const streak = getStreak(progress);
 
   // Global keyboard shortcuts (Cmd+K / Ctrl+K for search, Alt+1-5 for nav)
@@ -67,209 +47,57 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [navigate]);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-canvas text-text-primary antialiased">
-      {/* Mobile backdrop */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-xs z-40 lg:hidden transition-opacity"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
+    <div className="min-h-screen bg-canvas text-text-primary antialiased">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-10">
+        {/* Running head */}
+        <header className="font-serif flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 border-b border-border">
+          <Link to="/" className="flex items-baseline gap-3.5 group">
+            <svg width="26" height="14" viewBox="0 0 26 14" aria-hidden="true" className="self-center">
+              <line x1="1" y1="7" x2="25" y2="7" stroke="#e9e4d8" strokeWidth="1.2" opacity="0.6" />
+              <circle cx="19" cy="7" r="3.2" className="fill-accent" />
+            </svg>
+            <span className="font-mono text-[13px] font-medium tracking-[0.22em]">VERTEX</span>
+            <span className="lbl hidden sm:inline">Codex · Vol. I</span>
+          </Link>
 
-      {/* Sidebar */}
-      <aside
-        className={`
-          fixed lg:static inset-y-0 left-0 z-50
-          w-60 bg-surface-0 border-r border-border
-          flex flex-col justify-between
-          transform transition-transform duration-200 ease-out
-          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        `}
-      >
-        <div className="flex flex-col flex-1 min-h-0">
-          {/* Brand header */}
-          <div className="flex items-center justify-between px-4 h-14 border-b border-border shrink-0">
-            <NavLink to="/" className="flex items-center gap-2.5 group">
-              {/* Minimalist Vertex geometric glyph */}
-              <div className="w-7 h-7 rounded-lg bg-surface-2 border border-border flex items-center justify-center group-hover:border-accent/40 group-hover:bg-surface-3 transition-colors shadow-glow">
-                <div className="relative w-3.5 h-3.5">
-                  <span className="absolute top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent" />
-                  <span className="absolute bottom-0 right-0 w-1.5 h-1.5 rounded-full bg-accent" />
-                  <span className="absolute inset-0 border-t border-accent/40 rotate-45" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-bold tracking-wider text-text-primary font-mono uppercase">
-                    VERTEX
-                  </span>
-                  <span className="text-[9px] font-mono px-1 py-0.2 bg-accent-muted text-accent border border-accent-border rounded">
-                    DSA
-                  </span>
-                </div>
-                <span className="text-[10px] text-text-tertiary font-mono -mt-0.5">
-                  PATTERN ENGINE
-                </span>
-              </div>
-            </NavLink>
-
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="lg:hidden p-1 text-text-tertiary hover:text-text-primary rounded-md"
-              aria-label="Close menu"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Quick Search Button in Sidebar */}
-          <div className="px-3 pt-3 pb-2">
-            <button
-              onClick={() => setCommandPaletteOpen(true)}
-              className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-surface-1 hover:bg-surface-2 border border-border text-text-tertiary hover:text-text-secondary text-xs font-mono transition-colors group"
-            >
-              <div className="flex items-center gap-2">
-                <Search className="w-3.5 h-3.5 text-text-quaternary group-hover:text-text-secondary" />
-                <span>Quick search...</span>
-              </div>
-              <kbd className="px-1.5 py-0.5 text-[9px] font-mono kbd-key">
-                ⌘K
-              </kbd>
-            </button>
-          </div>
-
-          {/* Navigation Section */}
-          <nav className="flex-1 px-2.5 py-1.5 space-y-1 overflow-y-auto">
-            <div className="px-2 pb-1 pt-1 flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-text-quaternary font-semibold">
-                Platform
-              </span>
-            </div>
+          <nav aria-label="Primary" className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
-                onClick={() => setSidebarOpen(false)}
-                className={({ isActive }) =>
-                  isActive ? 'nav-item-active' : 'nav-item'
-                }
                 end={item.to === '/'}
+                className={({ isActive }) =>
+                  `text-[16px] transition-colors ${
+                    isActive ? 'text-text-primary italic' : 'text-text-tertiary hover:text-text-primary'
+                  }`
+                }
               >
-                <item.icon className="w-3.5 h-3.5 shrink-0 opacity-80" />
-                <span className="flex-1">{item.label}</span>
+                {item.label}
                 {item.shortcut && (
-                  <span className="text-[10px] font-mono text-text-quaternary group-hover:text-text-tertiary">
-                    ⌥{item.shortcut}
-                  </span>
+                  <sup className="font-mono text-[9px] ml-0.5 opacity-70">⌥{item.shortcut}</sup>
                 )}
               </NavLink>
             ))}
           </nav>
-        </div>
 
-        {/* Sidebar Footer with Streak & Local-First Indicator */}
-        <div className="p-3 border-t border-border shrink-0 bg-surface-0 space-y-2">
-          {/* Active streak widget */}
-          <div className="p-2.5 rounded-lg bg-surface-1 border border-border flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md bg-warning-muted border border-warning-border flex items-center justify-center">
-                <Flame className="w-3.5 h-3.5 text-warning" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xxs font-semibold text-text-primary">
-                  {streak.current} Day Streak
-                </span>
-                <span className="text-[10px] text-text-tertiary font-mono">
-                  Personal Best: {streak.best}d
-                </span>
-              </div>
-            </div>
-            {streak.current > 0 && (
-              <span className="w-1.5 h-1.5 rounded-full bg-warning" />
-            )}
-          </div>
-
-          {/* Local-First Architecture Badge */}
-          <div className="px-2.5 py-1.5 rounded-lg bg-surface-1/60 border border-border-subtle flex items-center justify-between text-[10px] font-mono text-text-tertiary">
-            <span className="flex items-center gap-1.5">
-              <HardDrive className="w-3 h-3 text-text-quaternary" />
-              Local Storage
-            </span>
-            <span className="text-success font-medium">Verified</span>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top Navbar */}
-        <header className="h-14 shrink-0 border-b border-border bg-surface-0/80 backdrop-blur-xl flex items-center justify-between px-4 lg:px-7 z-10">
-          <div className="flex items-center gap-3">
-            <button
-              className="lg:hidden p-1.5 text-text-tertiary hover:text-text-primary rounded-md hover:bg-surface-2"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Toggle navigation"
-            >
-              <Menu className="w-4 h-4" />
-            </button>
-
-            {/* Quick jump search trigger */}
-            <button
-              onClick={() => setCommandPaletteOpen(true)}
-              className="hidden sm:flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-surface-1 hover:bg-surface-2 border border-border text-xs text-text-tertiary hover:text-text-secondary transition-colors"
-            >
-              <Search className="w-3.5 h-3.5 text-text-quaternary" />
-              <span className="font-mono text-[11px]">
-                Search all questions, companies, platforms, patterns...
-              </span>
-              <kbd className="px-1.5 py-0.5 text-[9px] font-mono kbd-key ml-4">
-                ⌘K
-              </kbd>
-            </button>
-          </div>
-
-          <div className="flex items-center gap-3.5">
-            {stats && (
-              <div className="hidden md:flex items-center gap-3 pr-3 border-r border-border text-xxs font-mono text-text-secondary">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
-                  Easy: <strong className="text-text-primary tnum">{stats.easySolved}</strong>/{stats.easy}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-warning" />
-                  Med: <strong className="text-text-primary tnum">{stats.mediumSolved}</strong>/{stats.medium}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-danger" />
-                  Hard: <strong className="text-text-primary tnum">{stats.hardSolved}</strong>/{stats.hard}
-                </span>
-              </div>
-            )}
-
-            <div className="text-xxs text-text-tertiary font-mono">
-              {new Date().toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-            </div>
-
-            <div className="pl-3 border-l border-border hidden sm:flex items-center gap-1.5 text-xxs font-mono text-text-tertiary">
-              <span className="w-1.5 h-1.5 rounded-full bg-success" />
-              <span>Offline-Ready</span>
-            </div>
-          </div>
+          <button
+            onClick={() => setCommandPaletteOpen(true)}
+            aria-label="Search the codex"
+            className="flex items-center justify-between gap-3 min-w-[200px] py-1.5 border-b border-border-hover text-[15px] italic text-text-tertiary hover:text-text-primary hover:border-text-primary transition-colors"
+          >
+            Search the codex
+            <kbd className="kbd-key not-italic">⌘K</kbd>
+          </button>
         </header>
 
-        {/* Page Content Container */}
-        <main
-          className="flex-1 overflow-y-auto"
-          style={{ backgroundImage: 'radial-gradient(900px 360px at 72% -8%, rgba(255,106,61,0.055), transparent 62%)' }}
-        >
-          <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 lg:py-7">
-            {children}
-          </div>
-        </main>
+        <main>{children}</main>
+
+        <footer className="mt-24 py-7 border-t border-border-hover flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <span className="lbl">VERTEX Codex · progress is kept on this device</span>
+          <span className="lbl tnum">
+            {streak.current} day run · best {streak.best}
+          </span>
+        </footer>
       </div>
 
       {/* Global Command Palette */}

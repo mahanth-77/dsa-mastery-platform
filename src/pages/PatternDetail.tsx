@@ -1,24 +1,65 @@
 import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useApp } from '../context';
-import {
-  getPatternStats,
-  getProblemProgress,
-  difficultyBg,
-} from '../store';
+import { getPatternStats, getProblemProgress } from '../store';
 import type { CurriculumProblem, StatusOption } from '../types';
-import {
-  ArrowLeft,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  CheckCircle2,
-  Clock,
-  RotateCcw,
-  FileEdit,
-} from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, FileEdit } from 'lucide-react';
 import ProblemWorkspaceModal from '../components/ProblemWorkspaceModal';
+import PatternPlate from '../components/PatternPlate';
 import { studyFrame } from '../lib/studyFrames';
+
+const linkCls =
+  'text-[16px] italic text-text-tertiary hover:text-text-primary transition-colors inline-flex items-center gap-1.5';
+
+/** Tick colour per status: bone = solved, ring = needs review, dim = attempted, outline = not started. */
+function tickStyle(status: StatusOption): React.CSSProperties {
+  switch (status) {
+    case 'solved':
+      return { background: '#e9e4d8', borderColor: '#e9e4d8' };
+    case 'revisit':
+      return { background: 'transparent', borderColor: '#ff5b2e' };
+    case 'attempted':
+      return { background: 'rgba(233,228,216,.38)', borderColor: 'rgba(233,228,216,.38)' };
+    default:
+      return { background: 'transparent', borderColor: 'rgba(233,228,216,.26)' };
+  }
+}
+
+function statusMark(status: StatusOption): string {
+  switch (status) {
+    case 'solved':
+      return 'bg-text-primary border-text-primary';
+    case 'revisit':
+      return 'border-accent';
+    case 'attempted':
+      return 'bg-text-primary/40 border-text-primary/40';
+    default:
+      return 'border-border-hover';
+  }
+}
+
+const STATUS_LABEL: Record<StatusOption, string> = {
+  not_started: 'Not started',
+  attempted: 'Attempted',
+  solved: 'Solved',
+  revisit: 'Needs revision',
+};
+
+function DifficultyDots({ level }: { level: string }) {
+  const n = level === 'Easy' ? 1 : level === 'Medium' ? 2 : 3;
+  return (
+    <span className="inline-flex gap-1" role="img" aria-label={level}>
+      {[1, 2, 3].map((i) => (
+        <i
+          key={i}
+          className={`w-1.5 h-1.5 rounded-full border ${
+            i <= n ? 'bg-text-primary border-text-primary' : 'border-border-hover'
+          }`}
+        />
+      ))}
+    </span>
+  );
+}
 
 export default function PatternDetail() {
   const { patternId } = useParams<{ patternId: string }>();
@@ -39,10 +80,10 @@ export default function PatternDetail() {
 
   if (!pattern) {
     return (
-      <div className="panel p-12 text-center space-y-3">
-        <p className="text-sm text-text-secondary">Pattern not found in curriculum index.</p>
+      <div className="py-24 text-center space-y-4">
+        <p className="text-[20px] italic text-text-tertiary">Pattern not found in the curriculum index.</p>
         <Link to="/patterns" className="btn-primary inline-flex">
-          Return to Pattern Explorer
+          Return to the Index
         </Link>
       </div>
     );
@@ -95,290 +136,286 @@ export default function PatternDetail() {
     updateProblem(problemId, { status: newStatus }, pattern.id);
   };
 
-  const label = 'text-[12px] text-text-tertiary';
-  const statusCell = (st: string) =>
-    st === 'solved'
-      ? 'bg-accent'
-      : st === 'revisit'
-      ? 'bg-accent/40'
-      : st === 'attempted'
-      ? 'bg-warning/70'
-      : 'bg-surface-4';
-
   return (
-    <div className="space-y-14 animate-fade-in pb-10">
+    <>
+    <div className="animate-fade-in pb-6 font-serif">
       {/* Navigator */}
-      <div className="flex items-center justify-between">
-        <Link
-          to="/patterns"
-          className="inline-flex items-center gap-1.5 text-[12px] text-text-tertiary hover:text-text-primary transition-colors"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" /> All patterns
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-7">
+        <Link to="/patterns" className={linkCls}>
+          <ArrowLeft className="w-3.5 h-3.5" /> The Index
         </Link>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-7">
           {prevPattern && (
-            <Link to={`/patterns/${prevPattern.id}`} className="btn-ghost" title={prevPattern.name}>
-              <ChevronLeft className="w-3 h-3" /> Previous
+            <Link to={`/patterns/${prevPattern.id}`} className={linkCls} title={prevPattern.name}>
+              <ChevronLeft className="w-3.5 h-3.5" />
+              {String(currentPatternIndex).padStart(2, '0')} {prevPattern.name}
             </Link>
           )}
           {nextPattern && (
-            <Link to={`/patterns/${nextPattern.id}`} className="btn-ghost" title={nextPattern.name}>
-              Next <ChevronRight className="w-3 h-3" />
+            <Link to={`/patterns/${nextPattern.id}`} className={linkCls} title={nextPattern.name}>
+              {String(currentPatternIndex + 2).padStart(2, '0')} {nextPattern.name}
+              <ChevronRight className="w-3.5 h-3.5" />
             </Link>
           )}
         </div>
       </div>
 
-      {/* Header */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-8">
-        <div className="lg:col-span-7">
-          <p className={`${label} tnum`}>
-            Pattern {String(currentPatternIndex + 1).padStart(2, '0')} of {curriculum.patterns.length}
-            <span className="text-text-quaternary"> · </span>
-            {pattern.variations.length} variations
-            <span className="text-text-quaternary"> · </span>
-            {stats.total} problems
+      {/* Title and plate */}
+      <section className="flex flex-wrap items-end gap-x-16 gap-y-12 pt-14 pb-20 sm:pb-24">
+        <div className="flex-[1_1_520px] min-w-0">
+          <p className="lbl tnum">
+            PLATE {String(currentPatternIndex + 1).padStart(2, '0')} · {pattern.variations.length} VARIATIONS ·{' '}
+            {stats.total} PROBLEMS
           </p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tighter leading-[1.05] text-text-primary">
+          <h1 className="font-display mt-6 text-[clamp(52px,9.4vw,150px)] leading-[0.92] tracking-[-0.05em] text-text-primary">
             {pattern.name}
           </h1>
-          <p className="mt-4 text-sm text-text-secondary max-w-xl">
+          <p className="mt-7 text-[clamp(20px,2.2vw,28px)] italic font-light text-text-tertiary">
             {pattern.name} <span className="text-text-quaternary">&rarr;</span> sub-variations{' '}
             <span className="text-text-quaternary">&rarr;</span> targeted problem practice.
           </p>
         </div>
-
-        <div className="lg:col-span-5 lg:pl-10 lg:border-l border-border">
-          <div className="flex items-baseline gap-3">
-            <span className="text-6xl font-semibold tracking-tighter leading-none text-text-primary tnum">
-              {stats.solved}
-            </span>
-            <span className="text-xl text-text-tertiary tnum">/ {stats.total}</span>
-            <span className="ml-auto text-sm text-accent tnum">{completionPct}%</span>
-          </div>
-
-          {/* Problem strip: one cell per problem, coloured by status */}
-          <div className="mt-6 flex flex-wrap gap-[3px]" aria-label="Problem status strip">
-            {pattern.variations.flatMap((v) =>
-              v.problems.map((pr) => {
-                const st = getProblemProgress(progress, pr.id).status;
-                return (
-                  <span
-                    key={pr.id}
-                    title={`${pr.title} · ${st.replace('_', ' ')}`}
-                    className={`h-2.5 w-2.5 rounded-[3px] ${statusCell(st)}`}
-                    style={st === 'solved' ? { boxShadow: '0 0 8px rgba(255,106,61,0.4)' } : undefined}
-                  />
-                );
-              })
-            )}
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-[12px] text-text-tertiary tnum">
-            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-success mr-2" />Easy {stats.easySolved}/{stats.easy}</span>
-            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-warning mr-2" />Medium {stats.mediumSolved}/{stats.medium}</span>
-            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-danger mr-2" />Hard {stats.hardSolved}/{stats.hard}</span>
-            {stats.revisit > 0 && (
-              <span className="text-accent inline-flex items-center gap-1.5">
-                <Clock className="w-3 h-3" />
-                {stats.revisit} scheduled for review
-              </span>
-            )}
-          </div>
+        <div className="flex-[0_1_480px] min-w-[280px] w-full">
+          <PatternPlate
+            patternId={pattern.id}
+            name={pattern.name}
+            note={`${pattern.variations.length} variations`}
+          />
         </div>
       </section>
 
+      {/* Ledger for this pattern */}
+      <section aria-label="Progress in this pattern" className="flex flex-wrap border-y border-border-hover">
+        {[
+          { k: 'Solved', v: `${stats.solved}`, tail: ` / ${stats.total}` },
+          { k: 'Complete', v: completionPct, tail: '%' },
+          { k: 'Scheduled for review', v: `${stats.revisit}`, tail: '' },
+          { k: 'Hard', v: `${stats.hardSolved}`, tail: ` / ${stats.hard}` },
+        ].map((m, i) => (
+          <div
+            key={m.k}
+            className={`flex-[1_1_200px] py-7 pr-6 ${i > 0 ? 'pl-6 border-l border-border' : ''}`}
+          >
+            <div className="lbl">{m.k}</div>
+            <div className="font-display mt-2.5 text-[52px] leading-none tracking-[-0.04em] lining">
+              {m.v}
+              {m.tail && <span className="text-[24px] text-text-tertiary tracking-normal">{m.tail}</span>}
+            </div>
+          </div>
+        ))}
+      </section>
+
       {/* Variations */}
-      <div className="space-y-16">
-        {pattern.variations.map((variation, vIdx) => {
-          const varSolvedCount = variation.problems.filter(
-            (p) => getProblemProgress(progress, p.id).status === 'solved'
-          ).length;
-          const frame = studyFrame(pattern.id, variation.name);
-          const siblings = pattern.variations.filter((item) => item.id !== variation.id).map((item) => item.name);
-          const term = 'text-[12px] text-text-tertiary mb-1';
-          const desc = 'text-sm text-text-secondary leading-relaxed';
+      <section className="pt-28" aria-labelledby="variations-heading">
+        <div className="flex flex-wrap items-baseline justify-between gap-5 pb-5 border-b border-border-hover">
+          <h2 id="variations-heading" className="font-display text-[clamp(34px,4vw,56px)] leading-none">
+            {pattern.variations.length} <em className="italic">variations</em>
+          </h2>
+          <span className="lbl">each tick is a problem · bone: solved · ring: revisit · dim: attempted</span>
+        </div>
 
-          return (
-            <section key={variation.id}>
-              <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-border">
-                <h2 className="text-xl font-semibold tracking-tighter text-text-primary">
-                  <span className="text-text-quaternary tnum mr-3">{String(vIdx + 1).padStart(2, '0')}</span>
-                  {variation.name}
-                </h2>
-                <span className="text-[12px] text-text-tertiary tnum shrink-0">
-                  {varSolvedCount}/{variation.problems.length} solved
-                </span>
-              </div>
+        <div>
+          {pattern.variations.map((variation, vIdx) => {
+            const varSolvedCount = variation.problems.filter(
+              (p) => getProblemProgress(progress, p.id).status === 'solved'
+            ).length;
+            const frame = studyFrame(pattern.id, variation.name);
+            const siblings = pattern.variations.filter((item) => item.id !== variation.id).map((item) => item.name);
+            const term = 'lbl mb-1.5';
+            const desc = 'text-[17px] leading-[1.55] text-text-secondary';
 
-              <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
-                <div className="md:col-span-2">
-                  <p className={term}>Concept</p>
-                  <p className="text-[15px] text-text-primary leading-relaxed">{frame.concept}</p>
-                </div>
-                <div>
-                  <p className={term}>Recognize</p>
-                  <p className={desc}>{frame.recognize} This variation is “{variation.name}”.</p>
-                </div>
-                <div>
-                  <p className={term}>Use when</p>
-                  <p className={desc}>{frame.useWhen}</p>
-                </div>
-                <div>
-                  <p className={term}>Avoid when</p>
-                  <p className={desc}>{frame.avoidWhen}</p>
-                </div>
-                <div>
-                  <p className={term}>Mistake</p>
-                  <p className={desc}>{frame.mistake}</p>
-                </div>
-                <div>
-                  <p className={term}>Complexity</p>
-                  <p className={`${desc} tnum`}>{frame.complexity}</p>
-                </div>
-                {siblings.length > 0 && (
-                  <div>
-                    <p className={term}>Differs from</p>
-                    <p className={desc}>{siblings.join('; ')}.</p>
+            return (
+              <section key={variation.id} className="pt-16">
+                <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pb-4 border-b border-border">
+                  <h3 className="font-display text-[clamp(24px,2.6vw,34px)] leading-[1.1]">
+                    <span className="font-mono text-[12px] text-text-tertiary tracking-normal mr-4 align-middle">
+                      {String(vIdx + 1).padStart(2, '0')}
+                    </span>
+                    {variation.name}
+                  </h3>
+                  <div className="flex items-center gap-5">
+                    <span className="hidden sm:flex items-center" aria-hidden="true">
+                      {variation.problems.map((p) => (
+                        <i
+                          key={p.id}
+                          className="inline-block w-[7px] h-4 ml-[3px] rounded-[1px] border"
+                          style={tickStyle(getProblemProgress(progress, p.id).status)}
+                        />
+                      ))}
+                    </span>
+                    <span className="font-mono text-[13px] tnum">
+                      {varSolvedCount} / {variation.problems.length}
+                    </span>
                   </div>
-                )}
-                {vIdx > 0 && (
+                </div>
+
+                <div className="py-7 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                   <div className="md:col-span-2">
-                    <p className={term}>Earlier in this pattern</p>
-                    <p className={desc}>{pattern.variations[vIdx - 1].name}. That order is the curriculum sequence, not a proof that it is a formal prerequisite.</p>
+                    <p className={term}>CONCEPT</p>
+                    <p className="text-[19px] leading-[1.5] text-text-primary">{frame.concept}</p>
                   </div>
-                )}
-              </div>
+                  <div>
+                    <p className={term}>RECOGNIZE</p>
+                    <p className={desc}>{frame.recognize} This variation is “{variation.name}”.</p>
+                  </div>
+                  <div>
+                    <p className={term}>USE WHEN</p>
+                    <p className={desc}>{frame.useWhen}</p>
+                  </div>
+                  <div>
+                    <p className={term}>AVOID WHEN</p>
+                    <p className={desc}>{frame.avoidWhen}</p>
+                  </div>
+                  <div>
+                    <p className={term}>MISTAKE</p>
+                    <p className={desc}>{frame.mistake}</p>
+                  </div>
+                  <div>
+                    <p className={term}>COMPLEXITY</p>
+                    <p className={`${desc} tnum`}>{frame.complexity}</p>
+                  </div>
+                  {siblings.length > 0 && (
+                    <div>
+                      <p className={term}>DIFFERS FROM</p>
+                      <p className={desc}>{siblings.join('; ')}.</p>
+                    </div>
+                  )}
+                  {vIdx > 0 && (
+                    <div className="md:col-span-2">
+                      <p className={term}>EARLIER IN THIS PATTERN</p>
+                      <p className={desc}>
+                        {pattern.variations[vIdx - 1].name}. That order is the curriculum sequence, not a proof that it is a formal prerequisite.
+                      </p>
+                    </div>
+                  )}
+                </div>
 
-              {/* Problem rows */}
-              <div className="divide-y divide-border border-y border-border">
-                {variation.problems.map((problem, pIdx) => {
-                  const probProgress = getProblemProgress(progress, problem.id);
-                  const status = probProgress.status;
+                {/* Problem rows */}
+                <div className="divide-y divide-border border-y border-border">
+                  {variation.problems.map((problem, pIdx) => {
+                    const probProgress = getProblemProgress(progress, problem.id);
+                    const status = probProgress.status;
 
-                  return (
-                    <div
-                      key={problem.id}
-                      onClick={() =>
-                        setActiveWorkspace({
-                          problem,
-                          variationName: variation.name,
-                          index: pIdx,
-                          variationIndex: vIdx,
-                        })
-                      }
-                      className="py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 hover:bg-white/[0.02] cursor-pointer transition-colors group"
-                    >
-                      <div className="flex items-start sm:items-center gap-4 min-w-0">
-                        <div className="pt-0.5 sm:pt-0 shrink-0">
-                          {status === 'solved' ? (
-                            <CheckCircle2 className="w-4 h-4 text-accent" />
-                          ) : status === 'attempted' ? (
-                            <Clock className="w-4 h-4 text-warning" />
-                          ) : status === 'revisit' ? (
-                            <RotateCcw className="w-4 h-4 text-accent" />
-                          ) : (
-                            <span className="w-4 h-4 rounded-full border border-surface-5 block" />
-                          )}
-                        </div>
-
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-2.5">
-                            <span className="text-sm text-text-primary group-hover:text-accent transition-colors truncate">
-                              {problem.title}
-                            </span>
-                            {probProgress.notes && (
-                              <span className="text-[11px] text-text-tertiary border border-border rounded px-1.5">
-                                Notes
+                    return (
+                      <div
+                        key={problem.id}
+                        onClick={() =>
+                          setActiveWorkspace({
+                            problem,
+                            variationName: variation.name,
+                            index: pIdx,
+                            variationIndex: vIdx,
+                          })
+                        }
+                        className="group py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 cursor-pointer transition-[padding] duration-200 hover:pl-2.5"
+                      >
+                        <div className="flex items-start sm:items-center gap-4 min-w-0">
+                          <span
+                            className={`shrink-0 w-[11px] h-[11px] rounded-full border mt-1.5 sm:mt-0 ${statusMark(status)}`}
+                            role="img"
+                            aria-label={STATUS_LABEL[status]}
+                          />
+                          <div className="min-w-0">
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                              <span className="text-[21px] tracking-[-0.01em] text-text-primary group-hover:italic truncate">
+                                {problem.title}
                               </span>
-                            )}
-                            {probProgress.confidence > 0 && (
-                              <span className="text-[11px] text-warning tnum">
-                                ★{probProgress.confidence}
-                              </span>
+                              {probProgress.notes && (
+                                <span className="font-mono text-[11px] text-text-tertiary border border-border rounded px-1.5">
+                                  notes
+                                </span>
+                              )}
+                              {probProgress.confidence > 0 && (
+                                <span className="font-mono text-[11px] text-text-secondary tnum">
+                                  ★{probProgress.confidence}
+                                </span>
+                              )}
+                            </div>
+                            {probProgress.approach && (
+                              <p className="text-[14px] italic text-text-tertiary truncate max-w-md mt-0.5">
+                                {probProgress.approach}
+                              </p>
                             )}
                           </div>
-                          {probProgress.approach && (
-                            <p className="text-[12px] text-text-tertiary truncate max-w-md mt-0.5">
-                              {probProgress.approach}
-                            </p>
-                          )}
+                        </div>
+
+                        <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
+                          <DifficultyDots level={problem.difficulty} />
+
+                          <select
+                            value={status}
+                            aria-label={`Status for ${problem.title}`}
+                            onClick={(e) => e.stopPropagation()}
+                            onChange={(e) =>
+                              handleQuickStatusChange(
+                                e as any,
+                                problem.id,
+                                e.target.value as StatusOption
+                              )
+                            }
+                            className="bg-canvas border border-border text-text-secondary hover:text-text-primary text-[12px] font-mono rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
+                          >
+                            <option value="not_started">Not Started</option>
+                            <option value="attempted">Attempted</option>
+                            <option value="solved">Solved</option>
+                            <option value="revisit">Needs Revision</option>
+                          </select>
+
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveWorkspace({
+                                problem,
+                                variationName: variation.name,
+                                index: pIdx,
+                                variationIndex: vIdx,
+                              });
+                            }}
+                            className="p-1.5 text-text-tertiary hover:text-text-primary rounded-md transition-colors"
+                            title="Open workspace"
+                            aria-label={`Open workspace for ${problem.title}`}
+                          >
+                            <FileEdit className="w-3.5 h-3.5" />
+                          </button>
+
+                          <a
+                            href={problem.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-1.5 text-text-tertiary hover:text-accent rounded-md transition-colors"
+                            title="Open original problem in new tab"
+                            aria-label={`Open ${problem.title} in a new tab`}
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </section>
 
-                      <div className="flex items-center gap-2.5 shrink-0 self-end sm:self-center">
-                        <span className={`badge ${difficultyBg(problem.difficulty)} text-[9px]`}>
-                          {problem.difficulty}
-                        </span>
-
-                        <select
-                          value={status}
-                          onClick={(e) => e.stopPropagation()}
-                          onChange={(e) =>
-                            handleQuickStatusChange(
-                              e as any,
-                              problem.id,
-                              e.target.value as StatusOption
-                            )
-                          }
-                          className="bg-surface-1 border border-border text-text-secondary hover:text-text-primary text-[12px] rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
-                        >
-                          <option value="not_started">Not Started</option>
-                          <option value="attempted">Attempted</option>
-                          <option value="solved">Solved</option>
-                          <option value="revisit">Needs Revision</option>
-                        </select>
-
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveWorkspace({
-                              problem,
-                              variationName: variation.name,
-                              index: pIdx,
-                              variationIndex: vIdx,
-                            });
-                          }}
-                          className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-3 rounded-md transition-colors"
-                          title="Open workspace"
-                        >
-                          <FileEdit className="w-3.5 h-3.5" />
-                        </button>
-
-                        <a
-                          href={problem.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="p-1.5 text-text-tertiary hover:text-accent hover:bg-surface-3 rounded-md transition-colors"
-                          title="Open original problem in new tab"
-                        >
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-
-      {/* Workspace modal */}
-      {activeWorkspace && (
-        <ProblemWorkspaceModal
-          problem={activeWorkspace.problem}
-          patternId={pattern.id}
-          patternName={pattern.name}
-          variationName={activeWorkspace.variationName}
-          onClose={() => setActiveWorkspace(null)}
-          onNavigate={handleNavigateWorkspace}
-          hasPrev={activeProblemFlatIndex > 0}
-          hasNext={activeProblemFlatIndex < allProblemsFlat.length - 1}
-        />
-      )}
     </div>
+
+    {/* Workspace modal */}
+    {activeWorkspace && (
+      <ProblemWorkspaceModal
+        problem={activeWorkspace.problem}
+        patternId={pattern.id}
+        patternName={pattern.name}
+        variationName={activeWorkspace.variationName}
+        onClose={() => setActiveWorkspace(null)}
+        onNavigate={handleNavigateWorkspace}
+        hasPrev={activeProblemFlatIndex > 0}
+        hasNext={activeProblemFlatIndex < allProblemsFlat.length - 1}
+      />
+    )}
+    </>
   );
 }

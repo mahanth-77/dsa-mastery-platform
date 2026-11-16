@@ -6,7 +6,7 @@ export default {
     extend: {
       colors: {
         // Ember — dark-only warm graphite with a single accent
-        canvas: '#0a0a09',
+        canvas: '#0b0b0a',
         surface: {
           0: '#0d0d0c',
           1: '#111110',
@@ -16,20 +16,20 @@ export default {
           5: '#32322d',
         },
         border: {
-          subtle: 'rgba(255, 255, 255, 0.045)',
-          DEFAULT: 'rgba(255, 255, 255, 0.07)',
-          hover: 'rgba(255, 255, 255, 0.13)',
-          active: 'rgba(255, 255, 255, 0.24)',
+          subtle: 'rgba(233, 228, 216, 0.07)',
+          DEFAULT: 'rgba(233, 228, 216, 0.12)',
+          hover: 'rgba(233, 228, 216, 0.26)',
+          active: 'rgba(233, 228, 216, 0.42)',
         },
         // Ember: the only accent. Reserved for progress, focus and the primary action.
         accent: {
-          DEFAULT: '#ff6a3d',
-          hover: '#ff7d55',
-          active: '#e85a2e',
-          muted: 'rgba(255, 106, 61, 0.12)',
-          subtle: 'rgba(255, 106, 61, 0.06)',
-          border: 'rgba(255, 106, 61, 0.30)',
-          text: '#140a06',
+          DEFAULT: '#ff5b2e',
+          hover: '#ff7048',
+          active: '#e64a1e',
+          muted: 'rgba(255, 91, 46, 0.12)',
+          subtle: 'rgba(255, 91, 46, 0.06)',
+          border: 'rgba(255, 91, 46, 0.30)',
+          text: '#0b0b0a',
         },
         success: {
           DEFAULT: '#4cc38a',
@@ -53,13 +53,14 @@ export default {
           border: 'rgba(155, 151, 140, 0.25)',
         },
         text: {
-          primary: '#eceae4',
-          secondary: '#b4b0a5',
-          tertiary: '#8e8a7f',
+          primary: '#e9e4d8',
+          secondary: '#c9c4b8',
+          tertiary: '#9a9488',
           quaternary: '#6e6a61',
         },
       },
       fontFamily: {
+        serif: ['Newsreader', '"Iowan Old Style"', 'Georgia', 'serif'],
         sans: [
           'Inter',
           '-apple-system',
@@ -90,7 +91,7 @@ export default {
       boxShadow: {
         elevated: '0 8px 30px rgba(0, 0, 0, 0.55)',
         card: '0 1px 3px rgba(0, 0, 0, 0.25)',
-        glow: '0 0 24px rgba(255, 106, 61, 0.22)',
+        glow: '0 0 24px rgba(255, 91, 46, 0.22)',
         lift: '0 1px 0 rgba(255,255,255,0.06) inset, 0 12px 32px -12px rgba(0, 0, 0, 0.8)',
         subtle: '0 1px 2px rgba(0, 0, 0, 0.2)',
       },

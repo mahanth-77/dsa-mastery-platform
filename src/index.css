@@ -61,7 +61,7 @@
   }
 
   ::selection {
-    background: rgba(255, 106, 61, 0.35);
+    background: rgba(255, 91, 46, 0.35);
     color: #ffffff;
   }
 
@@ -87,14 +87,15 @@
   }
 
   /* Linear-grade Buttons */
+  /* Primary action: bone on ink. Ember is reserved for the moving point and "needs you now". */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-3.5 py-1.5 text-xs font-semibold
-      bg-accent text-accent-text rounded-lg
-      hover:bg-accent-hover active:bg-accent-active
-      focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-1 focus:ring-offset-canvas
-      transition-all duration-150
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-[13px] font-mono font-medium
+      bg-text-primary text-canvas rounded-[10px]
+      hover:bg-white hover:-translate-y-px
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-canvas
+      transition-all duration-200
       disabled:opacity-40 disabled:cursor-not-allowed select-none;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 0 0 1px rgba(255, 106, 61, 0.55), 0 8px 24px -8px rgba(255, 106, 61, 0.38);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 18px 40px -18px rgba(233, 228, 216, 0.35);
   }
 
   .btn-secondary {
@@ -193,6 +194,98 @@
   }
 
   .track-fill.bg-accent {
-    box-shadow: 0 0 10px rgba(255, 106, 61, 0.45);
+    box-shadow: 0 0 10px rgba(255, 91, 46, 0.45);
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Codex: editorial type, registration marks, pattern mechanism marks  */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .font-display {
+    font-family: theme('fontFamily.serif');
+    font-optical-sizing: auto;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+
+  .lbl {
+    @apply font-mono text-[12px] text-text-tertiary;
+    letter-spacing: 0.04em;
+  }
+
+  .lining {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .plate {
+    @apply relative border border-border-hover;
+    background: linear-gradient(180deg, rgba(233, 228, 216, 0.035), rgba(233, 228, 216, 0) 60%);
+  }
+
+  .rg {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+  }
+  .rg::before,
+  .rg::after {
+    content: '';
+    position: absolute;
+    background: theme('colors.border.hover');
+  }
+  .rg::before { left: 5px; top: 0; width: 1px; height: 11px; }
+  .rg::after { top: 5px; left: 0; height: 1px; width: 11px; }
+  .rg.a { left: -6px; top: -6px; }
+  .rg.b { right: -6px; top: -6px; }
+  .rg.c { left: -6px; bottom: -6px; }
+  .rg.d { right: -6px; bottom: -6px; }
+
+  /* Pattern mechanism marks */
+  .pg { overflow: visible; color: theme('colors.text.primary'); flex: none; }
+  .pg-l { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: 0.62; vector-effect: non-scaling-stroke; }
+  .pg-f { fill: currentColor; opacity: 0.3; stroke: none; }
+  .pg-d { fill: theme('colors.accent.DEFAULT'); stroke: none; }
+  .pg-live .pg-d { r: 2; }
+  .pg-m {
+    animation: pg-mv 2.6s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    animation-play-state: paused;
+  }
+  .pg-orb {
+    transform-origin: 24px 24px;
+    animation: pg-rot 3.2s linear infinite;
+    animation-play-state: paused;
+  }
+  .pg-live .pg-m,
+  .pg-live .pg-orb,
+  .group:hover .pg-m,
+  .group:hover .pg-orb {
+    animation-play-state: running;
+  }
+}
+
+@keyframes pg-mv {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(var(--dx, 0px), var(--dy, 0px)); }
+}
+@keyframes pg-rot {
+  to { transform: rotate(360deg); }
+}
+@keyframes cx-up {
+  from { opacity: 0; transform: translateY(10px); }
+}
+
+.cx-rise {
+  animation: cx-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 32ms);
+}
+
+/* Index rows: hovering one dims the rest */
+.idx-row { transition: opacity 0.3s; }
+.idx:hover .idx-row { opacity: 0.34; }
+.idx .idx-row:hover { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-rise { animation: none; }
+  .pg-m, .pg-orb { animation: none !important; }
 }
