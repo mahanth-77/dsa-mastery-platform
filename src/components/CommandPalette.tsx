@@ -157,7 +157,7 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
             const active = idx === selectedIndex;
             return <button key={item.key} onClick={() => selectItem(item)} onMouseEnter={() => setSelectedIndex(idx)} className={`w-full flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${active ? 'bg-surface-2 border border-border shadow-xs' : 'hover:bg-surface-2/60 border border-transparent'}`}>
               <span className="flex items-center gap-2.5 min-w-0">
-                <span className={`w-2 h-2 rounded-full shrink-0 ${item.kind === 'curriculum' ? (status === 'solved' ? 'bg-emerald-400' : status === 'attempted' ? 'bg-amber-400' : 'bg-surface-4') : item.kind === 'oa' ? 'bg-violet-400' : 'bg-sky-400'}`} />
+                <span className={`w-2 h-2 rounded-full shrink-0 ${item.kind === 'curriculum' ? (status === 'solved' ? 'bg-success' : status === 'attempted' ? 'bg-warning' : 'bg-surface-4') : item.kind === 'oa' ? 'bg-accent' : 'bg-sky-400'}`} />
                 <span className="min-w-0"><span className="block text-xs font-semibold text-text-primary truncate">{item.title}</span><span className="block text-[10px] font-mono text-text-tertiary truncate">{item.subtitle}</span></span>
               </span>
               <span className="flex items-center gap-2 shrink-0">

@@ -134,12 +134,12 @@ export default function Settings() {
         <div
           className={`p-3 rounded-lg border flex items-center gap-2 text-xs font-mono animate-fade-in ${
             statusMessage.type === 'success'
-              ? 'bg-success-muted text-emerald-400 border-success-border'
+              ? 'bg-success-muted text-success border-success-border'
               : 'bg-danger-muted text-danger border-danger-border'
           }`}
         >
           {statusMessage.type === 'success' ? (
-            <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 shrink-0 text-success" />
           ) : (
             <AlertTriangle className="w-4 h-4 shrink-0 text-danger" />
           )}
@@ -259,7 +259,7 @@ export default function Settings() {
       {curriculum && (
         <div className="panel p-5 space-y-3">
           <h2 className="text-xs font-semibold uppercase tracking-wider font-mono text-text-primary flex items-center gap-2 pb-2 border-b border-border">
-            <FileCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <FileCheck className="w-3.5 h-3.5 text-success" />
             Curriculum Verification
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">

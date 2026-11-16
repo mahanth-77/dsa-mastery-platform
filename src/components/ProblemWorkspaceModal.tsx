@@ -291,13 +291,13 @@ export default function ProblemWorkspaceModal({
                     key={lvl}
                     type="button"
                     onClick={() => setConfidence(lvl)}
-                    className="p-1 text-text-tertiary hover:text-amber-400 transition-colors"
+                    className="p-1 text-text-tertiary hover:text-warning transition-colors"
                     title={CONFIDENCE_LEVELS[lvl - 1].label}
                   >
                     <Star
                       className={`w-3.5 h-3.5 ${
                         lvl <= confidence
-                          ? 'fill-amber-400 text-amber-400'
+                          ? 'fill-warning text-warning'
                           : 'text-surface-4'
                       }`}
                     />
@@ -412,7 +412,7 @@ export default function ProblemWorkspaceModal({
                 {currentProgress.reviewHistory.map((rev, i) => (
                   <div key={i} className="flex items-center justify-between text-[11px] font-mono text-text-secondary">
                     <span>{rev.date}</span>
-                    <span className="text-amber-400">Score: {rev.confidence}/5</span>
+                    <span className="text-warning">Score: {rev.confidence}/5</span>
                   </div>
                 ))}
               </div>
@@ -425,8 +425,8 @@ export default function ProblemWorkspaceModal({
           <div className="flex items-center gap-2">
             {savedToast && (
               <span className="text-xs text-accent flex items-center gap-1 font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400">CHANGES PERSISTED</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-success" />
+                <span className="text-success">CHANGES PERSISTED</span>
               </span>
             )}
             {currentProgress.lastSolvedAt && !savedToast && (

@@ -61,7 +61,7 @@
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.35);
+    background: rgba(255, 106, 61, 0.35);
     color: #ffffff;
   }
 
@@ -75,7 +75,7 @@
   /* Surface Containers with Apple/Linear-grade micro-highlights */
   .panel {
     @apply bg-surface-1 border border-border rounded-xl;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 12px 32px -18px rgba(0, 0, 0, 0.8);
   }
 
   .panel-subtle {
@@ -93,8 +93,8 @@
       hover:bg-accent-hover active:bg-accent-active
       focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-1 focus:ring-offset-canvas
       transition-all duration-150
-      disabled:opacity-40 disabled:cursor-not-allowed select-none shadow-sm;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+      disabled:opacity-40 disabled:cursor-not-allowed select-none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 0 0 1px rgba(255, 106, 61, 0.55), 0 8px 24px -8px rgba(255, 106, 61, 0.38);
   }
 
   .btn-secondary {
@@ -151,15 +151,15 @@
   }
 
   .badge-easy {
-    @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
+    @apply bg-success-muted text-success border-success-border;
   }
 
   .badge-medium {
-    @apply bg-amber-500/10 text-amber-400 border-amber-500/20;
+    @apply bg-warning-muted text-warning border-warning-border;
   }
 
   .badge-hard {
-    @apply bg-rose-500/10 text-rose-400 border-rose-500/20;
+    @apply bg-danger-muted text-danger border-danger-border;
   }
 
   /* Navigation Links */
@@ -171,12 +171,16 @@
   }
 
   .nav-item-active {
-    @apply nav-item bg-surface-2 text-text-primary border-l-2 border-accent font-semibold;
+    @apply nav-item bg-surface-2 text-text-primary font-semibold relative;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 2px 0 0 theme('colors.accent.DEFAULT');
   }
 
   /* Keyboard shortcut pill */
   .kbd-key {
-    @apply px-1.5 py-0.5 text-[10px] font-mono text-text-tertiary bg-surface-2 border border-border rounded;
+    @apply px-1.5 py-0.5 text-[10px] font-mono text-text-secondary border border-border-hover;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 1px 0 rgba(0,0,0,0.6);
   }
 
   /* Progress bars */
@@ -186,5 +190,9 @@
 
   .track-fill {
     @apply h-full rounded-full transition-all duration-300 ease-out;
+  }
+
+  .track-fill.bg-accent {
+    box-shadow: 0 0 10px rgba(255, 106, 61, 0.45);
   }
 }

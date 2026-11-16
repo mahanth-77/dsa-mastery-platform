@@ -95,148 +95,163 @@ export default function PatternDetail() {
     updateProblem(problemId, { status: newStatus }, pattern.id);
   };
 
+  const label = 'text-[12px] text-text-tertiary';
+  const statusCell = (st: string) =>
+    st === 'solved'
+      ? 'bg-accent'
+      : st === 'revisit'
+      ? 'bg-accent/40'
+      : st === 'attempted'
+      ? 'bg-warning/70'
+      : 'bg-surface-4';
+
   return (
-    <div className="space-y-6 animate-fade-in">
-      {/* Top Nav Breadcrumb & Pattern Navigator */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-3 border-b border-border">
+    <div className="space-y-14 animate-fade-in pb-10">
+      {/* Navigator */}
+      <div className="flex items-center justify-between">
         <Link
           to="/patterns"
-          className="inline-flex items-center gap-1.5 text-xs font-mono text-text-tertiary hover:text-text-primary transition-colors"
+          className="inline-flex items-center gap-1.5 text-[12px] text-text-tertiary hover:text-text-primary transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" /> ALL PATTERNS
+          <ArrowLeft className="w-3.5 h-3.5" /> All patterns
         </Link>
-
-        {/* Prev / Next pattern quick switcher */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {prevPattern && (
-            <Link
-              to={`/patterns/${prevPattern.id}`}
-              className="btn-secondary text-xxs py-1 px-2.5 font-mono flex items-center gap-1"
-              title={prevPattern.name}
-            >
-              <ChevronLeft className="w-3 h-3" /> Prev Pattern
+            <Link to={`/patterns/${prevPattern.id}`} className="btn-ghost" title={prevPattern.name}>
+              <ChevronLeft className="w-3 h-3" /> Previous
             </Link>
           )}
           {nextPattern && (
-            <Link
-              to={`/patterns/${nextPattern.id}`}
-              className="btn-secondary text-xxs py-1 px-2.5 font-mono flex items-center gap-1"
-              title={nextPattern.name}
-            >
-              Next Pattern <ChevronRight className="w-3 h-3" />
+            <Link to={`/patterns/${nextPattern.id}`} className="btn-ghost" title={nextPattern.name}>
+              Next <ChevronRight className="w-3 h-3" />
             </Link>
           )}
         </div>
       </div>
 
-      {/* Pattern Master Banner Card */}
-      <div className="panel p-5 space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="badge badge-accent">
-                PATTERN {String(currentPatternIndex + 1).padStart(2, '0')} OF 21
-              </span>
-              <span className="text-[10px] font-mono text-text-tertiary">
-                {pattern.variations.length} VARIATIONS · {stats.total} TOTAL PROBLEMS
-              </span>
-            </div>
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary">
-              {pattern.name}
-            </h1>
-            <p className="text-xs text-text-secondary mt-1 max-w-2xl">
-              Hierarchy: <strong>{pattern.name}</strong> &rarr; Sub-Variations &rarr; Targeted Problem Practice
-            </p>
-          </div>
-
-          {/* Progress metric box */}
-          <div className="flex items-center gap-4 bg-surface-2 p-3 rounded-lg border border-border shrink-0">
-            <div className="text-right">
-              <span className="text-[10px] font-mono text-text-tertiary block">COMPLETION</span>
-              <span className="text-lg font-bold font-mono text-text-primary tnum">
-                {stats.solved} / {stats.total}
-              </span>
-            </div>
-            <div className="w-24 flex flex-col gap-1">
-              <div className="track-bar h-1.5">
-                <div
-                  className="track-fill bg-accent"
-                  style={{ width: `${completionPct}%` }}
-                />
-              </div>
-              <span className="text-[10px] font-mono text-accent text-right tnum font-semibold">
-                {completionPct}%
-              </span>
-            </div>
-          </div>
+      {/* Header */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-8">
+        <div className="lg:col-span-7">
+          <p className={`${label} tnum`}>
+            Pattern {String(currentPatternIndex + 1).padStart(2, '0')} of {curriculum.patterns.length}
+            <span className="text-text-quaternary"> · </span>
+            {pattern.variations.length} variations
+            <span className="text-text-quaternary"> · </span>
+            {stats.total} problems
+          </p>
+          <h1 className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tighter leading-[1.05] text-text-primary">
+            {pattern.name}
+          </h1>
+          <p className="mt-4 text-sm text-text-secondary max-w-xl">
+            {pattern.name} <span className="text-text-quaternary">&rarr;</span> sub-variations{' '}
+            <span className="text-text-quaternary">&rarr;</span> targeted problem practice.
+          </p>
         </div>
 
-        {/* Difficulty breakdown pills */}
-        <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-border/60 text-xs font-mono text-text-secondary">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            Easy: <strong className="text-text-primary tnum">{stats.easySolved}</strong>/{stats.easy}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            Med: <strong className="text-text-primary tnum">{stats.mediumSolved}</strong>/{stats.medium}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-rose-400" />
-            Hard: <strong className="text-text-primary tnum">{stats.hardSolved}</strong>/{stats.hard}
-          </span>
-          {stats.revisit > 0 && (
-            <span className="flex items-center gap-1.5 text-indigo-400 font-medium ml-auto">
-              <Clock className="w-3.5 h-3.5" />
-              {stats.revisit} Scheduled for Review
+        <div className="lg:col-span-5 lg:pl-10 lg:border-l border-border">
+          <div className="flex items-baseline gap-3">
+            <span className="text-6xl font-semibold tracking-tighter leading-none text-text-primary tnum">
+              {stats.solved}
             </span>
-          )}
-        </div>
-      </div>
+            <span className="text-xl text-text-tertiary tnum">/ {stats.total}</span>
+            <span className="ml-auto text-sm text-accent tnum">{completionPct}%</span>
+          </div>
 
-      {/* Variations & Problem Lists */}
-      <div className="space-y-4">
+          {/* Problem strip: one cell per problem, coloured by status */}
+          <div className="mt-6 flex flex-wrap gap-[3px]" aria-label="Problem status strip">
+            {pattern.variations.flatMap((v) =>
+              v.problems.map((pr) => {
+                const st = getProblemProgress(progress, pr.id).status;
+                return (
+                  <span
+                    key={pr.id}
+                    title={`${pr.title} · ${st.replace('_', ' ')}`}
+                    className={`h-2.5 w-2.5 rounded-[3px] ${statusCell(st)}`}
+                    style={st === 'solved' ? { boxShadow: '0 0 8px rgba(255,106,61,0.4)' } : undefined}
+                  />
+                );
+              })
+            )}
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-[12px] text-text-tertiary tnum">
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-success mr-2" />Easy {stats.easySolved}/{stats.easy}</span>
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-warning mr-2" />Medium {stats.mediumSolved}/{stats.medium}</span>
+            <span><span className="inline-block w-1.5 h-1.5 rounded-full bg-danger mr-2" />Hard {stats.hardSolved}/{stats.hard}</span>
+            {stats.revisit > 0 && (
+              <span className="text-accent inline-flex items-center gap-1.5">
+                <Clock className="w-3 h-3" />
+                {stats.revisit} scheduled for review
+              </span>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Variations */}
+      <div className="space-y-16">
         {pattern.variations.map((variation, vIdx) => {
           const varSolvedCount = variation.problems.filter(
             (p) => getProblemProgress(progress, p.id).status === 'solved'
           ).length;
           const frame = studyFrame(pattern.id, variation.name);
           const siblings = pattern.variations.filter((item) => item.id !== variation.id).map((item) => item.name);
+          const term = 'text-[12px] text-text-tertiary mb-1';
+          const desc = 'text-sm text-text-secondary leading-relaxed';
 
           return (
-            <div
-              key={variation.id}
-              className="panel overflow-hidden border-border hover:border-border-hover transition-colors"
-            >
-              {/* Variation Header */}
-              <div className="px-4 py-3 bg-surface-2/60 border-b border-border flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  <h2 className="text-xs font-bold text-text-primary tracking-tight">
-                    Variation {vIdx + 1}: {variation.name}
-                  </h2>
-                </div>
-                <span className="text-[10px] font-mono text-text-tertiary tnum">
-                  {varSolvedCount}/{variation.problems.length} SOLVED
+            <section key={variation.id}>
+              <div className="flex items-baseline justify-between gap-4 pb-4 border-b border-border">
+                <h2 className="text-xl font-semibold tracking-tighter text-text-primary">
+                  <span className="text-text-quaternary tnum mr-3">{String(vIdx + 1).padStart(2, '0')}</span>
+                  {variation.name}
+                </h2>
+                <span className="text-[12px] text-text-tertiary tnum shrink-0">
+                  {varSolvedCount}/{variation.problems.length} solved
                 </span>
               </div>
-              <div className="px-4 py-3 text-xs text-text-secondary space-y-1 border-b border-border/60 bg-surface-0/40">
-                <p><span className="text-text-primary font-medium">Concept. </span>{frame.concept}</p>
-                <p><span className="text-text-primary font-medium">Recognize. </span>{frame.recognize} This variation is “{variation.name}”.</p>
-                <p><span className="text-text-primary font-medium">Use when. </span>{frame.useWhen}</p>
-                <p><span className="text-text-primary font-medium">Avoid when. </span>{frame.avoidWhen}</p>
-                <p><span className="text-text-primary font-medium">Mistake. </span>{frame.mistake}</p>
-                <p><span className="text-text-primary font-medium">Complexity. </span>{frame.complexity}</p>
+
+              <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
+                <div className="md:col-span-2">
+                  <p className={term}>Concept</p>
+                  <p className="text-[15px] text-text-primary leading-relaxed">{frame.concept}</p>
+                </div>
+                <div>
+                  <p className={term}>Recognize</p>
+                  <p className={desc}>{frame.recognize} This variation is “{variation.name}”.</p>
+                </div>
+                <div>
+                  <p className={term}>Use when</p>
+                  <p className={desc}>{frame.useWhen}</p>
+                </div>
+                <div>
+                  <p className={term}>Avoid when</p>
+                  <p className={desc}>{frame.avoidWhen}</p>
+                </div>
+                <div>
+                  <p className={term}>Mistake</p>
+                  <p className={desc}>{frame.mistake}</p>
+                </div>
+                <div>
+                  <p className={term}>Complexity</p>
+                  <p className={`${desc} tnum`}>{frame.complexity}</p>
+                </div>
                 {siblings.length > 0 && (
-                  <p><span className="text-text-primary font-medium">Differs from. </span>{siblings.join('; ')}.</p>
+                  <div>
+                    <p className={term}>Differs from</p>
+                    <p className={desc}>{siblings.join('; ')}.</p>
+                  </div>
                 )}
                 {vIdx > 0 && (
-                  <p><span className="text-text-primary font-medium">Earlier in this pattern. </span>{pattern.variations[vIdx - 1].name}. That order is the curriculum sequence, not a proof that it is a formal prerequisite.</p>
+                  <div className="md:col-span-2">
+                    <p className={term}>Earlier in this pattern</p>
+                    <p className={desc}>{pattern.variations[vIdx - 1].name}. That order is the curriculum sequence, not a proof that it is a formal prerequisite.</p>
+                  </div>
                 )}
               </div>
 
-              {/* Problem Rows */}
-              <div className="divide-y divide-border/60">
+              {/* Problem rows */}
+              <div className="divide-y divide-border border-y border-border">
                 {variation.problems.map((problem, pIdx) => {
                   const probProgress = getProblemProgress(progress, problem.id);
                   const status = probProgress.status;
@@ -252,53 +267,50 @@ export default function PatternDetail() {
                           variationIndex: vIdx,
                         })
                       }
-                      className="px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-surface-1 hover:bg-surface-2/50 cursor-pointer transition-colors group"
+                      className="py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 hover:bg-white/[0.02] cursor-pointer transition-colors group"
                     >
-                      {/* Left: Status icon, title, notes snippet */}
-                      <div className="flex items-start sm:items-center gap-3 min-w-0">
+                      <div className="flex items-start sm:items-center gap-4 min-w-0">
                         <div className="pt-0.5 sm:pt-0 shrink-0">
                           {status === 'solved' ? (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                            <CheckCircle2 className="w-4 h-4 text-accent" />
                           ) : status === 'attempted' ? (
-                            <Clock className="w-4 h-4 text-amber-400" />
+                            <Clock className="w-4 h-4 text-warning" />
                           ) : status === 'revisit' ? (
-                            <RotateCcw className="w-4 h-4 text-indigo-400" />
+                            <RotateCcw className="w-4 h-4 text-accent" />
                           ) : (
-                            <span className="w-4 h-4 rounded-full border border-surface-4 block" />
+                            <span className="w-4 h-4 rounded-full border border-surface-5 block" />
                           )}
                         </div>
 
                         <div className="min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-semibold text-text-primary group-hover:text-accent transition-colors truncate">
+                          <div className="flex items-center gap-2.5">
+                            <span className="text-sm text-text-primary group-hover:text-accent transition-colors truncate">
                               {problem.title}
                             </span>
                             {probProgress.notes && (
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-surface-3 text-text-tertiary border border-border">
-                                NOTES
+                              <span className="text-[11px] text-text-tertiary border border-border rounded px-1.5">
+                                Notes
                               </span>
                             )}
                             {probProgress.confidence > 0 && (
-                              <span className="text-[10px] font-mono text-amber-400">
+                              <span className="text-[11px] text-warning tnum">
                                 ★{probProgress.confidence}
                               </span>
                             )}
                           </div>
                           {probProgress.approach && (
-                            <p className="text-[11px] text-text-tertiary truncate max-w-md mt-0.5 font-mono">
+                            <p className="text-[12px] text-text-tertiary truncate max-w-md mt-0.5">
                               {probProgress.approach}
                             </p>
                           )}
                         </div>
                       </div>
 
-                      {/* Right: Difficulty badge, Quick Status Changer, Link */}
                       <div className="flex items-center gap-2.5 shrink-0 self-end sm:self-center">
                         <span className={`badge ${difficultyBg(problem.difficulty)} text-[9px]`}>
                           {problem.difficulty}
                         </span>
 
-                        {/* Status Select dropdown */}
                         <select
                           value={status}
                           onClick={(e) => e.stopPropagation()}
@@ -309,7 +321,7 @@ export default function PatternDetail() {
                               e.target.value as StatusOption
                             )
                           }
-                          className="bg-surface-2 border border-border text-text-secondary hover:text-text-primary text-[11px] font-mono rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
+                          className="bg-surface-1 border border-border text-text-secondary hover:text-text-primary text-[12px] rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:border-accent"
                         >
                           <option value="not_started">Not Started</option>
                           <option value="attempted">Attempted</option>
@@ -317,7 +329,6 @@ export default function PatternDetail() {
                           <option value="revisit">Needs Revision</option>
                         </select>
 
-                        {/* Open Problem Workspace button */}
                         <button
                           type="button"
                           onClick={(e) => {
@@ -335,7 +346,6 @@ export default function PatternDetail() {
                           <FileEdit className="w-3.5 h-3.5" />
                         </button>
 
-                        {/* External LeetCode link */}
                         <a
                           href={problem.url}
                           target="_blank"
@@ -351,7 +361,7 @@ export default function PatternDetail() {
                   );
                 })}
               </div>
-            </div>
+            </section>
           );
         })}
       </div>

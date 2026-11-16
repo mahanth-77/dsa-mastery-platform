@@ -201,7 +201,7 @@ export default function RevisionCenter() {
       <div className="space-y-2.5">
         {displayedList.length === 0 ? (
           <div className="panel p-12 text-center space-y-2">
-            <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto opacity-70" />
+            <CheckCircle2 className="w-8 h-8 text-success mx-auto opacity-70" />
             <h3 className="text-sm font-bold text-text-primary">
               No revisions pending in this view
             </h3>
@@ -229,7 +229,7 @@ export default function RevisionCenter() {
                         isOverdue
                           ? 'bg-danger shadow-xs shadow-danger/50'
                           : isToday
-                          ? 'bg-amber-400 shadow-xs shadow-warning/50'
+                          ? 'bg-warning shadow-xs shadow-warning/50'
                           : 'bg-accent'
                       }`}
                     />
@@ -270,7 +270,7 @@ export default function RevisionCenter() {
                       isOverdue
                         ? 'text-danger'
                         : isToday
-                        ? 'text-amber-400'
+                        ? 'text-warning'
                         : 'text-text-tertiary'
                     }`}
                   >

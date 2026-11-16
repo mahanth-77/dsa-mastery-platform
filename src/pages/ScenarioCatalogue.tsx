@@ -130,26 +130,26 @@ export default function ScenarioCatalogue() {
           <p className="text-xl font-bold text-text-primary font-mono">{catalogue.counts.total}</p>
           <p className="text-[10px] text-text-quaternary">Across {platforms.length} platforms</p>
         </div>
-        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Statement Captured</p>
-          <p className="text-xl font-bold text-emerald-300 font-mono">{catalogue.counts.byEvidenceGate.statement_captured || 0}</p>
-          <p className="text-[10px] text-emerald-400/70">Verbatim statement on disk</p>
+        <div className="rounded-xl border border-success/20 bg-success/5 p-3 space-y-1">
+          <p className="text-[10px] font-mono uppercase tracking-wider text-success">Statement Captured</p>
+          <p className="text-xl font-bold text-success font-mono">{catalogue.counts.byEvidenceGate.statement_captured || 0}</p>
+          <p className="text-[10px] text-success/70">Verbatim statement on disk</p>
         </div>
-        <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-blue-400">Metadata Verified</p>
-          <p className="text-xl font-bold text-blue-300 font-mono">{catalogue.counts.byEvidenceGate.metadata_verified || 0}</p>
-          <p className="text-[10px] text-blue-400/70">Platform, URL & domain summary verified</p>
+        <div className="rounded-xl border border-border-hover bg-surface-2/60 p-3 space-y-1">
+          <p className="text-[10px] font-mono uppercase tracking-wider text-text-secondary">Metadata Verified</p>
+          <p className="text-xl font-bold text-text-secondary font-mono">{catalogue.counts.byEvidenceGate.metadata_verified || 0}</p>
+          <p className="text-[10px] text-text-secondary">Platform, URL & domain summary verified</p>
         </div>
-        <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3 space-y-1">
-          <p className="text-[10px] font-mono uppercase tracking-wider text-amber-400">User-Accepted</p>
-          <p className="text-xl font-bold text-amber-300 font-mono">{catalogue.counts.userAccepted}</p>
-          <p className="text-[10px] text-amber-400/70">Kattis collection pending deep audit</p>
+        <div className="rounded-xl border border-warning/20 bg-warning/5 p-3 space-y-1">
+          <p className="text-[10px] font-mono uppercase tracking-wider text-warning">User-Accepted</p>
+          <p className="text-xl font-bold text-warning font-mono">{catalogue.counts.userAccepted}</p>
+          <p className="text-[10px] text-warning/70">Kattis collection pending deep audit</p>
         </div>
       </div>
 
       {/* Scope and Evidence Notice */}
       <div className="rounded-xl border border-border bg-surface-1/40 p-4 flex gap-3 text-xs leading-relaxed text-text-secondary">
-        <ShieldAlert className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
+        <ShieldAlert className="h-5 w-5 shrink-0 text-warning mt-0.5" />
         <div className="space-y-1.5">
           <p className="text-sm font-semibold text-text-primary">Evidence Stratification & Complete Curriculum Isolation</p>
           <p>
@@ -279,17 +279,17 @@ export default function ScenarioCatalogue() {
                 {/* Evidence tier badge */}
                 <div className="shrink-0">
                   {r.evidenceGate === 'statement_captured' ? (
-                    <span className="inline-flex items-center gap-1 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-mono text-emerald-300">
+                    <span className="inline-flex items-center gap-1 rounded-md border border-success/30 bg-success/10 px-2.5 py-1 text-[11px] font-mono text-success">
                       <CheckCircle2 className="h-3.5 w-3.5" />
                       Statement Captured
                     </span>
                   ) : r.evidenceGate === 'metadata_verified' ? (
-                    <span className="inline-flex items-center gap-1 rounded-md border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-[11px] font-mono text-blue-300">
+                    <span className="inline-flex items-center gap-1 rounded-md border border-border-hover bg-surface-2/60 px-2.5 py-1 text-[11px] font-mono text-text-secondary">
                       <BookOpen className="h-3.5 w-3.5" />
                       Metadata & URL Verified
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-1 rounded-md border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[11px] font-mono text-amber-300">
+                    <span className="inline-flex items-center gap-1 rounded-md border border-warning/30 bg-warning/10 px-2.5 py-1 text-[11px] font-mono text-warning">
                       <ShieldAlert className="h-3.5 w-3.5" />
                       User-Accepted · Evidence Pending
                     </span>
