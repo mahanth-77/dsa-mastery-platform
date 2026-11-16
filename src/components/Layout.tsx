@@ -91,7 +91,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-between px-4 h-14 border-b border-border shrink-0">
             <NavLink to="/" className="flex items-center gap-2.5 group">
               {/* Minimalist Vertex geometric glyph */}
-              <div className="w-7 h-7 rounded-lg bg-surface-2 border border-border flex items-center justify-center group-hover:border-accent/40 group-hover:bg-surface-3 transition-colors shadow-xs">
+              <div className="w-7 h-7 rounded-lg bg-surface-2 border border-border flex items-center justify-center group-hover:border-accent/40 group-hover:bg-surface-3 transition-colors shadow-glow">
                 <div className="relative w-3.5 h-3.5">
                   <span className="absolute top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent" />
                   <span className="absolute bottom-0 right-0 w-1.5 h-1.5 rounded-full bg-accent" />
@@ -132,7 +132,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <Search className="w-3.5 h-3.5 text-text-quaternary group-hover:text-text-secondary" />
                 <span>Quick search...</span>
               </div>
-              <kbd className="px-1.5 py-0.5 text-[9px] font-mono bg-surface-2 border border-border rounded text-text-quaternary">
+              <kbd className="px-1.5 py-0.5 text-[9px] font-mono kbd-key">
                 ⌘K
               </kbd>
             </button>
@@ -195,7 +195,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <HardDrive className="w-3 h-3 text-text-quaternary" />
               Local Storage
             </span>
-            <span className="text-emerald-400 font-medium">Verified</span>
+            <span className="text-success font-medium">Verified</span>
           </div>
         </div>
       </aside>
@@ -203,7 +203,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Navbar */}
-        <header className="h-14 shrink-0 border-b border-border bg-surface-0/90 backdrop-blur-md flex items-center justify-between px-4 lg:px-7 z-10">
+        <header className="h-14 shrink-0 border-b border-border bg-surface-0/80 backdrop-blur-xl flex items-center justify-between px-4 lg:px-7 z-10">
           <div className="flex items-center gap-3">
             <button
               className="lg:hidden p-1.5 text-text-tertiary hover:text-text-primary rounded-md hover:bg-surface-2"
@@ -222,7 +222,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <span className="font-mono text-[11px]">
                 Search {curriculumStats ? countLabel(curriculumStats.placementCount, 'placement', 'placements') : 'placements'}, patterns, invariants...
               </span>
-              <kbd className="px-1.5 py-0.5 text-[9px] font-mono bg-surface-2 border border-border rounded text-text-quaternary ml-4">
+              <kbd className="px-1.5 py-0.5 text-[9px] font-mono kbd-key ml-4">
                 ⌘K
               </kbd>
             </button>
@@ -232,15 +232,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {stats && (
               <div className="hidden md:flex items-center gap-3 pr-3 border-r border-border text-xxs font-mono text-text-secondary">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-success" />
                   Easy: <strong className="text-text-primary tnum">{stats.easySolved}</strong>/{stats.easy}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-warning" />
                   Med: <strong className="text-text-primary tnum">{stats.mediumSolved}</strong>/{stats.medium}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-danger" />
                   Hard: <strong className="text-text-primary tnum">{stats.hardSolved}</strong>/{stats.hard}
                 </span>
               </div>
@@ -255,14 +255,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             <div className="pl-3 border-l border-border hidden sm:flex items-center gap-1.5 text-xxs font-mono text-text-tertiary">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-success" />
               <span>Offline-Ready</span>
             </div>
           </div>
         </header>
 
         {/* Page Content Container */}
-        <main className="flex-1 overflow-y-auto">
+        <main
+          className="flex-1 overflow-y-auto"
+          style={{ backgroundImage: 'radial-gradient(900px 360px at 72% -8%, rgba(255,106,61,0.055), transparent 62%)' }}
+        >
           <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 lg:py-7">
             {children}
           </div>

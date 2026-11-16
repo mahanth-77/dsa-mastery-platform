@@ -169,11 +169,11 @@ export default function CommandPalette({ isOpen, onClose, onSelectProblem }: Com
                     <span
                       className={`w-2 h-2 rounded-full shrink-0 ${
                         status === 'solved'
-                          ? 'bg-emerald-400'
+                          ? 'bg-success'
                           : status === 'attempted'
-                          ? 'bg-amber-400'
+                          ? 'bg-warning'
                           : status === 'revisit'
-                          ? 'bg-indigo-400'
+                          ? 'bg-accent'
                           : 'bg-surface-4'
                       }`}
                     />

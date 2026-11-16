@@ -44,19 +44,19 @@ export default function Analytics() {
       name: 'Easy',
       total: globalStats.easy,
       solved: globalStats.easySolved,
-      color: '#34d399', // emerald
+      color: '#4cc38a', // emerald
     },
     {
       name: 'Medium',
       total: globalStats.medium,
       solved: globalStats.mediumSolved,
-      color: '#fbbf24', // amber
+      color: '#e0a43a', // amber
     },
     {
       name: 'Hard',
       total: globalStats.hard,
       solved: globalStats.hardSolved,
-      color: '#f87171', // rose
+      color: '#f0647e', // rose
     },
   ];
 
@@ -160,7 +160,7 @@ export default function Analytics() {
           <span className="text-[10px] font-mono uppercase tracking-wider text-text-tertiary block">
             Marked revisit
           </span>
-          <p className="text-2xl font-bold font-mono text-indigo-400 mt-1 tnum">
+          <p className="text-2xl font-bold font-mono text-accent mt-1 tnum">
             {globalStats.revisit}
           </p>
           <p className="text-[10px] font-mono text-text-tertiary mt-1">
@@ -277,8 +277,8 @@ export default function Analytics() {
                 data={difficultyData}
                 margin={{ top: 20, right: 15, left: -20, bottom: 5 }}
               >
-                <XAxis dataKey="name" stroke="#6b7280" fontSize={11} tickLine={false} />
-                <YAxis stroke="#6b7280" fontSize={11} tickLine={false} />
+                <XAxis dataKey="name" stroke="#8e8a7f" fontSize={11} tickLine={false} />
+                <YAxis stroke="#8e8a7f" fontSize={11} tickLine={false} />
                 <Tooltip
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
@@ -297,7 +297,7 @@ export default function Analytics() {
                     return null;
                   }}
                 />
-                <Bar dataKey="total" fill="#181c22" radius={[3, 3, 0, 0]} name="Total" />
+                <Bar dataKey="total" fill="#1e1e1b" radius={[3, 3, 0, 0]} name="Total" />
                 <Bar dataKey="solved" radius={[3, 3, 0, 0]} name="Solved">
                   {difficultyData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />

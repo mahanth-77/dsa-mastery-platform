@@ -174,19 +174,19 @@ export default function PatternDetail() {
         {/* Difficulty breakdown pills */}
         <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-border/60 text-xs font-mono text-text-secondary">
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="w-2 h-2 rounded-full bg-success" />
             Easy: <strong className="text-text-primary tnum">{stats.easySolved}</strong>/{stats.easy}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <span className="w-2 h-2 rounded-full bg-warning" />
             Med: <strong className="text-text-primary tnum">{stats.mediumSolved}</strong>/{stats.medium}
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-rose-400" />
+            <span className="w-2 h-2 rounded-full bg-danger" />
             Hard: <strong className="text-text-primary tnum">{stats.hardSolved}</strong>/{stats.hard}
           </span>
           {stats.revisit > 0 && (
-            <span className="flex items-center gap-1.5 text-indigo-400 font-medium ml-auto">
+            <span className="flex items-center gap-1.5 text-accent font-medium ml-auto">
               <Clock className="w-3.5 h-3.5" />
               {stats.revisit} Scheduled for Review
             </span>
@@ -258,11 +258,11 @@ export default function PatternDetail() {
                       <div className="flex items-start sm:items-center gap-3 min-w-0">
                         <div className="pt-0.5 sm:pt-0 shrink-0">
                           {status === 'solved' ? (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                            <CheckCircle2 className="w-4 h-4 text-success" />
                           ) : status === 'attempted' ? (
-                            <Clock className="w-4 h-4 text-amber-400" />
+                            <Clock className="w-4 h-4 text-warning" />
                           ) : status === 'revisit' ? (
-                            <RotateCcw className="w-4 h-4 text-indigo-400" />
+                            <RotateCcw className="w-4 h-4 text-accent" />
                           ) : (
                             <span className="w-4 h-4 rounded-full border border-surface-4 block" />
                           )}
@@ -279,7 +279,7 @@ export default function PatternDetail() {
                               </span>
                             )}
                             {probProgress.confidence > 0 && (
-                              <span className="text-[10px] font-mono text-amber-400">
+                              <span className="text-[10px] font-mono text-warning">
                                 ★{probProgress.confidence}
                               </span>
                             )}

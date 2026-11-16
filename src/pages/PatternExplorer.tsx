@@ -481,11 +481,11 @@ export default function PatternExplorer() {
 function StatusDot({ status }: { status: StatusOption }) {
   switch (status) {
     case 'solved':
-      return <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Solved" />;
+      return <span className="w-2 h-2 rounded-full bg-success shrink-0" title="Solved" />;
     case 'attempted':
-      return <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" title="Attempted" />;
+      return <span className="w-2 h-2 rounded-full bg-warning shrink-0" title="Attempted" />;
     case 'revisit':
-      return <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" title="Needs Revision" />;
+      return <span className="w-2 h-2 rounded-full bg-accent shrink-0" title="Needs Revision" />;
     default:
       return <span className="w-2 h-2 rounded-full bg-surface-4 shrink-0" title="Not Started" />;
   }

@@ -20,8 +20,8 @@ function AppRoutes() {
   if (state.error) {
     return (
       <div className="flex h-screen items-center justify-center bg-surface-0 p-4">
-        <div className="card p-8 max-w-md text-center space-y-4 border-red-500/30">
-          <AlertTriangle className="w-10 h-10 text-red-400 mx-auto" />
+        <div className="panel p-8 max-w-md text-center space-y-4 border-danger-border">
+          <AlertTriangle className="w-10 h-10 text-danger mx-auto" />
           <h2 className="text-lg font-semibold text-text-primary">Curriculum Error</h2>
           <p className="text-xs text-text-secondary">{state.error}</p>
         </div>
