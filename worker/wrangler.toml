@@ -13,5 +13,5 @@ database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
 [vars]
 # The public origin of the website. Used for the Google redirect URI,
 # cookie flags and the CSRF origin check. No trailing slash.
-APP_ORIGIN = "https://YOUR-SITE.vercel.app"
+APP_ORIGIN = "https://dsa.startora.tech"
 MAIL_FROM_NAME = "VERTEX"
