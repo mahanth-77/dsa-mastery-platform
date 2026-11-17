@@ -21,7 +21,6 @@ import {
     clearedCookie,
   codeDigest,
   cookieName,
-  decodeJwtPayload,
   verifyGoogleIdToken,
   oauthStateCookie,
   clearedOauthStateCookie,
@@ -338,10 +337,10 @@ async function googleCallback(request: Request, env: Env): Promise<Response> {
 
   const user = await findOrCreateUser(env, result.email, result.sub);
   const session = await createSession(env, user.id);
-  const headers = new Headers();
+  const headers = new Headers({ Location: `${env.APP_ORIGIN}/?signin=ok`, 'Cache-Control': 'no-store' });
   headers.append('Set-Cookie', session);
   headers.append('Set-Cookie', clearStateCookie);
-  return new Response(null, { status: 302, headers: { Location: `${env.APP_ORIGIN}/?signin=ok`, 'Cache-Control': 'no-store', 'Set-Cookie': [session, clearStateCookie].join(', ') } });
+  return new Response(null, { status: 302, headers });
 }
 
 async function signOut(request: Request, env: Env): Promise<Response> {
