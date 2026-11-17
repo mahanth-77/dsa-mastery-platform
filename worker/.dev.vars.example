@@ -1,0 +1,11 @@
+# Copy to .dev.vars for `wrangler dev`. Never commit the real file.
+APP_ORIGIN=http://localhost:5173
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+CODE_PEPPER=any-long-random-string
+# Prints sign-in codes to the worker console instead of emailing them (local use only).
+DEV_LOG_CODES=1
+# Optional email providers for production (set one):
+# BREVO_API_KEY=
+# MAIL_FROM=you@yourdomain.com
+# RESEND_API_KEY=

@@ -1,0 +1,16 @@
+name = "vertex-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Existing Cloudflare D1 database created for VERTEX.
+[[d1_databases]]
+binding = "DB"
+database_name = "vertex-db"
+database_id = "1bc0c71c-16a2-41e7-87d4-2b527c5e426c"
+
+# Non-secret settings. Secrets are set with `wrangler secret put` (see README.md).
+[vars]
+# The public origin of the website. Used for the Google redirect URI,
+# cookie flags and the CSRF origin check. No trailing slash.
+APP_ORIGIN = "https://dsa.startora.tech"
+MAIL_FROM_NAME = "VERTEX"

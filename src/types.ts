@@ -55,6 +55,8 @@ export interface ProblemProgress {
   spaceComplexity: string;
   confidence: number; // 1-5
   reviewHistory: ReviewEvent[];
+  /** ISO timestamp of the last edit. Optional so older saved progress still loads; used to merge across devices. */
+  updatedAt?: string;
 }
 
 export interface ActivityEvent {

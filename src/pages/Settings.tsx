@@ -1,5 +1,8 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { useApp } from '../context';
+import AccountPanel from '../components/AccountPanel';
+import AuthModal from '../components/AuthModal';
+import { useSync } from '../context/SyncContext';
 import { exportProgress, importProgress } from '../store';
 import { getCurriculumStats, countLabel } from '../lib/curriculumStats';
 import {
@@ -22,6 +25,8 @@ export default function Settings() {
 
   const [dailyGoal, setDailyGoal] = useState<number>(progress.settings?.dailyGoal || 5);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const { afterReset } = useSync();
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -102,6 +107,7 @@ export default function Settings() {
 
   const handleConfirmReset = () => {
     dispatch({ type: 'CLEAR_PROGRESS' });
+    afterReset();
     setShowResetConfirm(false);
     setStatusMessage({ type: 'success', text: 'All personal progress has been reset.' });
     setTimeout(() => setStatusMessage(null), 3000);
@@ -293,6 +299,9 @@ export default function Settings() {
           </div>
         </div>
       )}
+
+      <AccountPanel onSignInClick={() => setShowSignIn(true)} />
+      <AuthModal isOpen={showSignIn} onClose={() => setShowSignIn(false)} />
 
       {/* Danger Zone: Reset Progress */}
       <div className="panel p-5 border-danger/30 bg-danger-muted/5 space-y-3">

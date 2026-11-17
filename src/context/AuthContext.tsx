@@ -1,141 +1,135 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import type { User, Session } from '@supabase/supabase-js';
-import * as authService from '../services/authService';
-import { isSupabaseConfigured } from '../lib/supabase';
+import { accountApi, ApiError, type AccountUser } from '../lib/accountApi';
 
 /**
- * VERTEX 3.44 — React Authentication Context
+ * Account state for the VERTEX account API (sign in with Google or an emailed code).
  *
- * Exposes user state, session lifecycle, and authentication operations to the application.
- * Completely decoupled from the DSA curriculum and progress stores.
+ * The app is fully usable signed out: progress lives in the browser. If the API is
+ * not deployed (or unreachable at start-up) `available` is false and the account UI
+ * stays hidden rather than showing a broken sign-in.
  */
 
+export type EmailStartResult = { ok: true } | { ok: false; error: string };
+export type EmailVerifyResult = { ok: true } | { ok: false; error: string };
+
 interface AuthContextType {
-  user: User | null;
-  session: Session | null;
-  isLoading: boolean;
-  error: string | null;
-  isConfigured: boolean;
-  signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
-  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
-  signOut: () => Promise<void>;
-  clearError: () => void;
+  user: AccountUser | null;
+  /** True once we know whether a session exists. */
+  ready: boolean;
+  /** False when the account API cannot be reached at all. */
+  available: boolean;
+  /** Set when a Google redirect returned with a problem. */
+  notice: string | null;
+  dismissNotice: () => void;
+  refresh: () => Promise<void>;
+  startEmail: (email: string) => Promise<EmailStartResult>;
+  verifyEmail: (email: string, code: string) => Promise<EmailVerifyResult>;
+  /** Ends the session on the server. Prefer `useSync().signOut`, which saves progress first. */
+  endSession: () => Promise<void>;
+  clearUser: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+const NOTICES: Record<string, string> = {
+  failed: 'Google sign-in did not complete. Please try again.',
+  cancelled: 'Google sign-in was cancelled.',
+  unavailable: 'Google sign-in is not set up on this site yet.',
+};
+
+const ERROR_TEXT: Record<string, string> = {
+  invalid_email: 'Enter a valid email address.',
+  invalid_code: 'That code is wrong or has expired.',
+  rate_limited: 'Too many attempts. Please wait a while and try again.',
+  email_unavailable: 'Email sign-in is not available right now. Try Google instead.',
+};
+
+function describe(err: unknown): string {
+  if (err instanceof ApiError) return ERROR_TEXT[err.code] || 'Something went wrong. Please try again.';
+  return 'Could not reach the server. Check your connection and try again.';
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [isConfigured] = useState<boolean>(() => isSupabaseConfigured());
+  const [user, setUser] = useState<AccountUser | null>(null);
+  const [ready, setReady] = useState(false);
+  const [available, setAvailable] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
 
-  // Restore session on mount and subscribe to auth lifecycle events
-  useEffect(() => {
-    let isMounted = true;
-
-    if (!isConfigured) {
-      setIsLoading(false);
-      return;
-    }
-
-    // 1. Restore stored session
-    authService.getSession().then((initialSession) => {
-      if (!isMounted) return;
-      if (initialSession) {
-        setSession(initialSession);
-        setUser(initialSession.user);
-      }
-      setIsLoading(false);
-    }).catch(() => {
-      if (isMounted) setIsLoading(false);
-    });
-
-    // 2. Subscribe to auth state transitions
-    const listener = authService.onAuthStateChange((event, newSession) => {
-      if (!isMounted) return;
-
-      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED') {
-        setSession(newSession);
-        setUser(newSession?.user ?? null);
-        setError(null);
-      } else if (event === 'SIGNED_OUT') {
-        setSession(null);
+  const refresh = useCallback(async () => {
+    try {
+      const res = await accountApi.me();
+      setUser(res.user);
+      setAvailable(true);
+    } catch (err) {
+      if (err instanceof ApiError && err.code === 'unauthenticated') {
+        setUser(null);
+        setAvailable(true); // the API answered; there is simply no session
+      } else if (err instanceof ApiError || err instanceof TypeError) {
+        // Not deployed (HTML or 404) or unreachable: keep working locally.
+        setUser(null);
+        setAvailable(false);
+      } else {
         setUser(null);
       }
-    });
-
-    return () => {
-      isMounted = false;
-      listener.unsubscribe();
-    };
-  }, [isConfigured]);
-
-  const clearError = useCallback(() => {
-    setError(null);
+    } finally {
+      setReady(true);
+    }
   }, []);
 
-  const handleSignUp = useCallback(async (email: string, password: string) => {
-    setError(null);
-    setIsLoading(true);
-    const res = await authService.signUp(email, password);
-    setIsLoading(false);
-
-    if (!res.success) {
-      const err = res.error || 'Failed to create account.';
-      setError(err);
-      return { success: false, error: err };
+  useEffect(() => {
+    // Google redirects back to /?signin=ok|failed|cancelled|unavailable
+    try {
+      const url = new URL(window.location.href);
+      const flag = url.searchParams.get('signin');
+      if (flag) {
+        if (NOTICES[flag]) setNotice(NOTICES[flag]);
+        url.searchParams.delete('signin');
+        window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+      }
+    } catch {
+      /* ignore */
     }
+    void refresh();
+  }, [refresh]);
 
-    if (res.data?.session) {
-      setSession(res.data.session);
-      setUser(res.data.user);
+  const startEmail = useCallback(async (email: string): Promise<EmailStartResult> => {
+    try {
+      await accountApi.emailStart(email);
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: describe(err) };
     }
-    return { success: true };
   }, []);
 
-  const handleSignIn = useCallback(async (email: string, password: string) => {
-    setError(null);
-    setIsLoading(true);
-    const res = await authService.signIn(email, password);
-    setIsLoading(false);
-
-    if (!res.success) {
-      const err = res.error || 'Failed to sign in.';
-      setError(err);
-      return { success: false, error: err };
+  const verifyEmail = useCallback(async (email: string, code: string): Promise<EmailVerifyResult> => {
+    try {
+      const res = await accountApi.emailVerify(email, code);
+      setUser(res.user);
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: describe(err) };
     }
-
-    if (res.data?.session) {
-      setSession(res.data.session);
-      setUser(res.data.user);
-    }
-    return { success: true };
   }, []);
 
-  const handleSignOut = useCallback(async () => {
-    setError(null);
-    setIsLoading(true);
-    await authService.signOut();
-    setSession(null);
+  const endSession = useCallback(async () => {
+    try {
+      await accountApi.signOut();
+    } catch {
+      /* the cookie is cleared server-side when reachable; clear local state regardless */
+    }
     setUser(null);
-    setIsLoading(false);
   }, []);
 
-  const value: AuthContextType = {
-    user,
-    session,
-    isLoading,
-    error,
-    isConfigured,
-    signUp: handleSignUp,
-    signIn: handleSignIn,
-    signOut: handleSignOut,
-    clearError,
-  };
+  const clearUser = useCallback(() => setUser(null), []);
+  const dismissNotice = useCallback(() => setNotice(null), []);
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{ user, ready, available, notice, dismissNotice, refresh, startEmail, verifyEmail, endSession, clearUser }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export function useAuth(): AuthContextType {
@@ -145,4 +139,3 @@ export function useAuth(): AuthContextType {
   }
   return context;
 }
-
