@@ -18,11 +18,13 @@ import {
   CODE_TTL_MS,
   MAX_CODE_ATTEMPTS,
   SESSION_TTL_MS,
-  checkGoogleClaims,
-  clearedCookie,
+    clearedCookie,
   codeDigest,
   cookieName,
   decodeJwtPayload,
+  verifyGoogleIdToken,
+  oauthStateCookie,
+  clearedOauthStateCookie,
   generateCode,
   isAllowedOrigin,
   isValidEmail,
@@ -273,9 +275,10 @@ async function emailVerify(request: Request, env: Env): Promise<Response> {
 async function googleStart(env: Env): Promise<Response> {
   if (!env.GOOGLE_CLIENT_ID) return redirect(`${env.APP_ORIGIN}/?signin=unavailable`);
   const state = randomToken(24);
+  const nonce = randomToken(24);
   const verifier = randomToken(48);
-  await env.DB.prepare('INSERT INTO oauth_states (state, verifier, expires_at) VALUES (?, ?, ?)')
-    .bind(state, verifier, Date.now() + CODE_TTL_MS)
+  await env.DB.prepare('INSERT INTO oauth_states (state, verifier, nonce, expires_at) VALUES (?, ?, ?, ?)')
+    .bind(state, verifier, nonce, Date.now() + CODE_TTL_MS)
     .run();
 
   const url = new URL('https://accounts.google.com/o/oauth2/v2/auth');
@@ -284,25 +287,29 @@ async function googleStart(env: Env): Promise<Response> {
   url.searchParams.set('response_type', 'code');
   url.searchParams.set('scope', 'openid email');
   url.searchParams.set('state', state);
+  url.searchParams.set('nonce', nonce);
   url.searchParams.set('code_challenge', await pkceChallenge(verifier));
   url.searchParams.set('code_challenge_method', 'S256');
   url.searchParams.set('prompt', 'select_account');
-  return redirect(url.toString());
+  return redirect(url.toString(), oauthStateCookie(state, isSecure(env)));
 }
 
 async function googleCallback(request: Request, env: Env): Promise<Response> {
   const params = new URL(request.url).searchParams;
-  const back = (flag: string) => redirect(`${env.APP_ORIGIN}/?signin=${flag}`);
+  const secure = isSecure(env);
+  const clearStateCookie = clearedOauthStateCookie(secure);
+  const back = (flag: string) => redirect(`${env.APP_ORIGIN}/?signin=${flag}`, clearStateCookie);
 
   if (params.get('error')) return back('cancelled');
   const code = params.get('code');
   const state = params.get('state');
-  if (!code || !state) return back('failed');
+  const browserState = parseCookies(request.headers.get('Cookie')).vertex_oauth_state;
+  if (!code || !state || !browserState || !timingSafeEqual(state, browserState)) return back('failed');
 
-  // The state is single use: fetching it also deletes it.
-  const saved = await env.DB.prepare('DELETE FROM oauth_states WHERE state = ? AND expires_at > ? RETURNING verifier')
+  // State is bound to the initiating browser and consumed exactly once.
+  const saved = await env.DB.prepare('DELETE FROM oauth_states WHERE state = ? AND expires_at > ? RETURNING verifier, nonce')
     .bind(state, Date.now())
-    .first<{ verifier: string }>();
+    .first<{ verifier: string; nonce: string }>();
   if (!saved) return back('failed');
 
   let idToken: string | undefined;
@@ -326,11 +333,15 @@ async function googleCallback(request: Request, env: Env): Promise<Response> {
   }
   if (!idToken) return back('failed');
 
-  const result = checkGoogleClaims(decodeJwtPayload(idToken), env.GOOGLE_CLIENT_ID, Math.floor(Date.now() / 1000));
+  const result = await verifyGoogleIdToken(idToken, env.GOOGLE_CLIENT_ID, saved.nonce, Math.floor(Date.now() / 1000));
   if (!result.ok) return back('failed');
 
   const user = await findOrCreateUser(env, result.email, result.sub);
-  return redirect(`${env.APP_ORIGIN}/?signin=ok`, await createSession(env, user.id));
+  const session = await createSession(env, user.id);
+  const headers = new Headers();
+  headers.append('Set-Cookie', session);
+  headers.append('Set-Cookie', clearStateCookie);
+  return new Response(null, { status: 302, headers: { Location: `${env.APP_ORIGIN}/?signin=ok`, 'Cache-Control': 'no-store', 'Set-Cookie': [session, clearStateCookie].join(', ') } });
 }
 
 async function signOut(request: Request, env: Env): Promise<Response> {
