@@ -1,0 +1,34 @@
+name: Worker security checks
+
+on:
+  pull_request:
+    paths:
+      - "worker/**"
+      - ".github/workflows/worker-security.yml"
+      - "package.json"
+      - "package-lock.json"
+  push:
+    branches: [main, master]
+    paths:
+      - "worker/**"
+      - ".github/workflows/worker-security.yml"
+      - "package.json"
+      - "package-lock.json"
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Install Worker dependencies
+        working-directory: worker
+        run: npm install --no-package-lock
+      - name: Typecheck Cloudflare Worker
+        working-directory: worker
+        run: npm run typecheck
