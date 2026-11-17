@@ -2,12 +2,11 @@ name = "vertex-api"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 
-# Create the database once:  npx wrangler d1 create vertex
-# then paste the printed database_id below.
+# Existing Cloudflare D1 database created for VERTEX.
 [[d1_databases]]
 binding = "DB"
-database_name = "vertex"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_name = "vertex-db"
+database_id = "1bc0c71c-16a2-41e7-87d4-2b527c5e426c"
 
 # Non-secret settings. Secrets are set with `wrangler secret put` (see README.md).
 [vars]
