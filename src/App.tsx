@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { SyncProvider } from './context/SyncContext';
 import Layout from './components/Layout';
 import { AlertTriangle } from 'lucide-react';
+import { ENTERED_KEY, isFirstVisit } from './pages/Landing';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const PatternExplorer = lazy(() => import('./pages/PatternExplorer'));
@@ -14,6 +15,19 @@ const Analytics = lazy(() => import('./pages/Analytics'));
 const Settings = lazy(() => import('./pages/Settings'));
 const ScenarioCatalogue = lazy(() => import('./pages/ScenarioCatalogue'));
 const OAQuestions = lazy(() => import('./pages/OAQuestions'));
+const Landing = lazy(() => import('./pages/Landing'));
+
+function Home() {
+  const { state } = useApp();
+  const [entered, setEntered] = React.useState(false);
+  const hasProgress = Object.keys(state.progress.problems || {}).length > 0;
+  if (entered || !isFirstVisit(hasProgress)) return <Dashboard />;
+  const enter = () => {
+    try { localStorage.setItem(ENTERED_KEY, '1'); } catch { /* private mode */ }
+    setEntered(true);
+  };
+  return <Landing onEnter={enter} />;
+}
 
 function AppRoutes() {
   const { state } = useApp();
@@ -34,7 +48,7 @@ function AppRoutes() {
     <Layout>
       <Suspense fallback={<p className="p-6 text-sm text-text-secondary" role="status">Loading section…</p>}>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
           <Route path="/patterns" element={<PatternExplorer />} />
           <Route path="/patterns/:patternId" element={<PatternDetail />} />
           <Route path="/revisions" element={<RevisionCenter />} />
