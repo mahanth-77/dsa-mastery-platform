@@ -192,7 +192,8 @@ export function validateProgressData(data: unknown): ValidationResult {
       return { ok: false, error: `problem ${id} has an invalid status` };
     }
   }
-  const size = JSON.stringify(data).length;
+  // D1 stores UTF-8 text; JS string length counts UTF-16 code units, not bytes.
+  const size = new TextEncoder().encode(JSON.stringify(data)).byteLength;
   if (size > MAX_PROGRESS_BYTES) return { ok: false, error: 'progress is too large' };
   return { ok: true };
 }
