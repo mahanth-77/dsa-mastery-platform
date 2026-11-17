@@ -121,41 +121,52 @@ interface UserRow {
 }
 
 async function findOrCreateUser(env: Env, email: string, googleSub?: string): Promise<UserRow> {
-  let user: UserRow | null = null;
   if (googleSub) {
-    user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE google_sub = ?')
-      .bind(googleSub)
-      .first<UserRow>();
+    const byGoogle = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE google_sub = ?')
+      .bind(googleSub).first<UserRow>();
+    if (byGoogle) return byGoogle;
   }
-  if (!user) {
-    user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE email = ?')
-      .bind(email)
-      .first<UserRow>();
-  }
+
+  let user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE email = ?')
+    .bind(email).first<UserRow>();
   if (user) {
-    if (googleSub && !user.google_sub) {
-      await env.DB.prepare('UPDATE users SET google_sub = ? WHERE id = ?').bind(googleSub, user.id).run();
+    if (!googleSub) return user;
+    if (user.google_sub && user.google_sub !== googleSub) throw new Error('google_account_conflict');
+    if (!user.google_sub) {
+      await env.DB.prepare('UPDATE users SET google_sub = ? WHERE id = ? AND google_sub IS NULL')
+        .bind(googleSub, user.id).run();
+      user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE id = ?')
+        .bind(user.id).first<UserRow>();
+      if (!user || user.google_sub !== googleSub) throw new Error('google_account_conflict');
     }
     return user;
   }
+
   const id = crypto.randomUUID();
   await env.DB.prepare('INSERT OR IGNORE INTO users (id, email, google_sub, created_at) VALUES (?, ?, ?, ?)')
-    .bind(id, email, googleSub ?? null, Date.now())
-    .run();
-  // A concurrent first sign-in may have inserted the same email or Google subject.
-  const createdOrConcurrent = googleSub
-    ? await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE google_sub = ? OR email = ?')
-        .bind(googleSub, email).first<UserRow>()
-    : await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE email = ?')
-        .bind(email).first<UserRow>();
-  if (!createdOrConcurrent) throw new Error('user_creation_failed');
-  if (googleSub && !createdOrConcurrent.google_sub) {
-    await env.DB.prepare('UPDATE users SET google_sub = ? WHERE id = ?').bind(googleSub, createdOrConcurrent.id).run();
-    return { ...createdOrConcurrent, google_sub: googleSub };
-  }
-  return createdOrConcurrent;
-}
+    .bind(id, email, googleSub ?? null, Date.now()).run();
 
+  // Resolve uniqueness races without ever linking a different Google subject by email.
+  if (googleSub) {
+    const byGoogle = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE google_sub = ?')
+      .bind(googleSub).first<UserRow>();
+    if (byGoogle) return byGoogle;
+  }
+  user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE email = ?')
+    .bind(email).first<UserRow>();
+  if (!user) throw new Error('user_creation_failed');
+  if (googleSub) {
+    if (user.google_sub && user.google_sub !== googleSub) throw new Error('google_account_conflict');
+    if (!user.google_sub) {
+      await env.DB.prepare('UPDATE users SET google_sub = ? WHERE id = ? AND google_sub IS NULL')
+        .bind(googleSub, user.id).run();
+      user = await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE id = ?')
+        .bind(user.id).first<UserRow>();
+      if (!user || user.google_sub !== googleSub) throw new Error('google_account_conflict');
+    }
+  }
+  return user;
+}
 async function createSession(env: Env, userId: string): Promise<string> {
   const token = randomToken(32);
   const now = Date.now();
