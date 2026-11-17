@@ -282,7 +282,7 @@ async function emailVerify(request: Request, env: Env): Promise<Response> {
 
   if (!row) return json({ error: 'invalid_code' }, 400);
   if (row.attempts > MAX_CODE_ATTEMPTS) {
-    await env.DB.prepare('DELETE FROM email_codes WHERE email = ?').bind(email).run();
+    await env.DB.prepare('DELETE FROM email_codes WHERE email = ? AND code_hash = ?').bind(email, row.code_hash).run();
     return json({ error: 'invalid_code' }, 400);
   }
   if (!timingSafeEqual(row.code_hash, await codeDigest(email, body.code, env.CODE_PEPPER))) {
@@ -290,8 +290,8 @@ async function emailVerify(request: Request, env: Env): Promise<Response> {
   }
 
   // Consume the exact code hash atomically; only one concurrent verifier can create a session.
-  const consumed = await env.DB.prepare('DELETE FROM email_codes WHERE email = ? AND code_hash = ? RETURNING email')
-    .bind(email, row.code_hash).first<{ email: string }>();
+  const consumed = await env.DB.prepare('DELETE FROM email_codes WHERE email = ? AND code_hash = ? AND expires_at > ? RETURNING email')
+    .bind(email, row.code_hash, Date.now()).first<{ email: string }>();
   if (!consumed) return json({ error: 'invalid_code' }, 400);
   const user = await findOrCreateUser(env, email);
   const cookie = await createSession(env, user.id);
