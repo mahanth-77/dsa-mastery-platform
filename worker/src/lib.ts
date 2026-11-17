@@ -114,7 +114,7 @@ export async function verifyGoogleIdToken(
     const response = await fetcher('https://www.googleapis.com/oauth2/v3/certs', { headers: { Accept: 'application/json' } });
     if (!response.ok) return { ok: false, reason: 'jwks_unavailable' };
     const jwks = await response.json() as { keys?: Array<JsonWebKey & { kid?: string; alg?: string; use?: string }> };
-    const jwk = jwks.keys?.find(key => key.kid === header.kid && key.kty === 'RSA' && (!key.use || key.use === 'sig'));
+    const jwk = jwks.keys?.find(key => key.kid === header.kid && key.kty === 'RSA' && (!key.use || key.use === 'sig') && (!key.alg || key.alg === 'RS256'));
     if (!jwk) return { ok: false, reason: 'unknown_signing_key' };
     const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
     const encoded = parts[2].replace(/-/g, '+').replace(/_/g, '/');
@@ -133,9 +133,7 @@ export type GoogleClaimResult =
   | { ok: false; reason: string };
 
 /**
- * The ID token is received straight from Google's token endpoint over TLS, which
- * OpenID Connect allows us to trust without re-verifying the signature. We still
- * validate who it is for, who issued it, that it is fresh, and that the email is verified.
+ * Validate the claims only after verifyGoogleIdToken has checked the RS256 signature.
  */
 export function checkGoogleClaims(
   claims: Record<string, unknown> | null,
@@ -148,7 +146,7 @@ export function checkGoogleClaims(
   if (iss !== 'https://accounts.google.com' && iss !== 'accounts.google.com') return { ok: false, reason: 'bad_issuer' };
   const aud = claims.aud;
   const audOk = Array.isArray(aud) ? aud.includes(clientId) : aud === clientId;
-  if (!audOk || (typeof claims.azp === 'string' && claims.azp !== clientId)) return { ok: false, reason: 'bad_audience' };
+  if (!audOk || (claims.azp !== undefined && claims.azp !== clientId)) return { ok: false, reason: 'bad_audience' };
   if (Array.isArray(aud) && aud.length > 1 && claims.azp !== clientId) return { ok: false, reason: 'bad_authorized_party' };
   if (typeof claims.exp !== 'number' || claims.exp <= nowSec) return { ok: false, reason: 'expired' };
   if (typeof claims.iat !== 'number' || claims.iat > nowSec + 60 || nowSec - claims.iat > 3600) return { ok: false, reason: 'bad_issued_at' };
@@ -187,13 +185,18 @@ export function clearedCookie(name: string, secure: boolean): string {
   return `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure ? '; Secure' : ''}`;
 }
 
+/** Use the __Host- prefix on HTTPS to prevent sibling subdomains setting this cookie. */
+export function oauthStateCookieName(secure: boolean): string {
+  return secure ? '__Host-vertex_oauth_state' : 'vertex_oauth_state';
+}
+
 /** Short-lived browser binding for the OAuth authorization response. */
 export function oauthStateCookie(state: string, secure: boolean): string {
-  return `vertex_oauth_state=${state}; Path=/; HttpOnly; SameSite=Lax; Max-Age=600${secure ? '; Secure' : ''}`;
+  return `${oauthStateCookieName(secure)}=${state}; Path=/; HttpOnly; SameSite=Lax; Max-Age=600${secure ? '; Secure' : ''}`;
 }
 
 export function clearedOauthStateCookie(secure: boolean): string {
-  return `vertex_oauth_state=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure ? '; Secure' : ''}`;
+  return `${oauthStateCookieName(secure)}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure ? '; Secure' : ''}`;
 }
 
 /** State-changing requests must come from our own origin (CSRF defence in depth). */
