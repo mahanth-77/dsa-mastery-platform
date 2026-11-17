@@ -102,6 +102,32 @@ export function decodeJwtPayload(jwt: string): Record<string, unknown> | null {
   }
 }
 
+/** Verify Google's RS256 ID-token signature against its published JWKS before trusting claims. */
+export async function verifyGoogleIdToken(
+  jwt: string, clientId: string, expectedNonce: string, nowSec: number, fetcher: typeof fetch = fetch
+): Promise<GoogleClaimResult> {
+  const parts = jwt.split('.');
+  if (parts.length !== 3) return { ok: false, reason: 'malformed_token' };
+  try {
+    const header = JSON.parse(base64UrlDecodeToString(parts[0])) as Record<string, unknown>;
+    if (header.alg !== 'RS256' || typeof header.kid !== 'string' || !header.kid) return { ok: false, reason: 'bad_token_header' };
+    const response = await fetcher('https://www.googleapis.com/oauth2/v3/certs', { headers: { Accept: 'application/json' } });
+    if (!response.ok) return { ok: false, reason: 'jwks_unavailable' };
+    const jwks = await response.json() as { keys?: Array<JsonWebKey & { kid?: string; alg?: string; use?: string }> };
+    const jwk = jwks.keys?.find(key => key.kid === header.kid && key.kty === 'RSA' && (!key.use || key.use === 'sig'));
+    if (!jwk) return { ok: false, reason: 'unknown_signing_key' };
+    const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
+    const encoded = parts[2].replace(/-/g, '+').replace(/_/g, '/');
+    const binary = atob(encoded + '='.repeat((4 - (encoded.length % 4)) % 4));
+    const signature = Uint8Array.from(binary, char => char.charCodeAt(0));
+    const input = new TextEncoder().encode(parts[0] + '.' + parts[1]);
+    if (!(await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, signature, input))) return { ok: false, reason: 'bad_signature' };
+    return checkGoogleClaims(decodeJwtPayload(jwt), clientId, expectedNonce, nowSec);
+  } catch {
+    return { ok: false, reason: 'token_verification_failed' };
+  }
+}
+
 export type GoogleClaimResult =
   | { ok: true; sub: string; email: string }
   | { ok: false; reason: string };
@@ -114,21 +140,21 @@ export type GoogleClaimResult =
 export function checkGoogleClaims(
   claims: Record<string, unknown> | null,
   clientId: string,
+  expectedNonce: string,
   nowSec: number
 ): GoogleClaimResult {
   if (!claims) return { ok: false, reason: 'unreadable_token' };
   const iss = claims.iss;
-  if (iss !== 'https://accounts.google.com' && iss !== 'accounts.google.com') {
-    return { ok: false, reason: 'bad_issuer' };
-  }
+  if (iss !== 'https://accounts.google.com' && iss !== 'accounts.google.com') return { ok: false, reason: 'bad_issuer' };
   const aud = claims.aud;
   const audOk = Array.isArray(aud) ? aud.includes(clientId) : aud === clientId;
-  if (!audOk) return { ok: false, reason: 'bad_audience' };
+  if (!audOk || (typeof claims.azp === 'string' && claims.azp !== clientId)) return { ok: false, reason: 'bad_audience' };
+  if (Array.isArray(aud) && aud.length > 1 && claims.azp !== clientId) return { ok: false, reason: 'bad_authorized_party' };
   if (typeof claims.exp !== 'number' || claims.exp <= nowSec) return { ok: false, reason: 'expired' };
+  if (typeof claims.iat !== 'number' || claims.iat > nowSec + 60 || nowSec - claims.iat > 3600) return { ok: false, reason: 'bad_issued_at' };
+  if (typeof claims.nonce !== 'string' || !timingSafeEqual(claims.nonce, expectedNonce)) return { ok: false, reason: 'bad_nonce' };
   if (typeof claims.sub !== 'string' || !claims.sub) return { ok: false, reason: 'no_subject' };
-  if (typeof claims.email !== 'string' || !isValidEmail(claims.email)) {
-    return { ok: false, reason: 'no_email' };
-  }
+  if (typeof claims.email !== 'string' || !isValidEmail(claims.email)) return { ok: false, reason: 'no_email' };
   if (claims.email_verified !== true) return { ok: false, reason: 'email_unverified' };
   return { ok: true, sub: claims.sub, email: normalizeEmail(claims.email) };
 }
@@ -159,6 +185,15 @@ export function sessionCookie(name: string, token: string, maxAgeSec: number, se
 
 export function clearedCookie(name: string, secure: boolean): string {
   return `${name}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure ? '; Secure' : ''}`;
+}
+
+/** Short-lived browser binding for the OAuth authorization response. */
+export function oauthStateCookie(state: string, secure: boolean): string {
+  return `vertex_oauth_state=${state}; Path=/; HttpOnly; SameSite=Lax; Max-Age=600${secure ? '; Secure' : ''}`;
+}
+
+export function clearedOauthStateCookie(secure: boolean): string {
+  return `vertex_oauth_state=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure ? '; Secure' : ''}`;
 }
 
 /** State-changing requests must come from our own origin (CSRF defence in depth). */
