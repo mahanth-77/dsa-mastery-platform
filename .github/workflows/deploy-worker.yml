@@ -1,0 +1,50 @@
+name: Deploy VERTEX Cloudflare Worker
+
+on:
+  workflow_dispatch:
+    inputs:
+      initialize_schema:
+        description: Apply the current schema to the confirmed-empty vertex-db database
+        required: true
+        type: boolean
+        default: true
+      deploy_worker:
+        description: Deploy the vertex-api Worker after schema setup
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out selected branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Worker dependencies
+        working-directory: worker
+        run: npm install --no-package-lock
+
+      - name: Apply D1 schema
+        if: inputs.initialize_schema
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler d1 execute vertex-db --remote --file=schema.sql
+
+      - name: Deploy Worker
+        if: inputs.deploy_worker
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy
