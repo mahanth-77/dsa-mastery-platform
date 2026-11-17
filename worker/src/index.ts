@@ -139,10 +139,21 @@ async function findOrCreateUser(env: Env, email: string, googleSub?: string): Pr
     return user;
   }
   const id = crypto.randomUUID();
-  await env.DB.prepare('INSERT INTO users (id, email, google_sub, created_at) VALUES (?, ?, ?, ?)')
+  await env.DB.prepare('INSERT OR IGNORE INTO users (id, email, google_sub, created_at) VALUES (?, ?, ?, ?)')
     .bind(id, email, googleSub ?? null, Date.now())
     .run();
-  return { id, email, google_sub: googleSub ?? null };
+  // A concurrent first sign-in may have inserted the same email or Google subject.
+  const createdOrConcurrent = googleSub
+    ? await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE google_sub = ? OR email = ?')
+        .bind(googleSub, email).first<UserRow>()
+    : await env.DB.prepare('SELECT id, email, google_sub FROM users WHERE email = ?')
+        .bind(email).first<UserRow>();
+  if (!createdOrConcurrent) throw new Error('user_creation_failed');
+  if (googleSub && !createdOrConcurrent.google_sub) {
+    await env.DB.prepare('UPDATE users SET google_sub = ? WHERE id = ?').bind(googleSub, createdOrConcurrent.id).run();
+    return { ...createdOrConcurrent, google_sub: googleSub };
+  }
+  return createdOrConcurrent;
 }
 
 async function createSession(env: Env, userId: string): Promise<string> {
@@ -223,17 +234,18 @@ async function emailStart(request: Request, env: Env): Promise<Response> {
   }
 
   const code = generateCode();
+  const codeHash = await codeDigest(email, code, env.CODE_PEPPER);
   await env.DB.prepare(
     `INSERT INTO email_codes (email, code_hash, expires_at, attempts) VALUES (?, ?, ?, 0)
      ON CONFLICT(email) DO UPDATE SET code_hash = excluded.code_hash,
                                       expires_at = excluded.expires_at,
                                       attempts = 0`
   )
-    .bind(email, await codeDigest(email, code, env.CODE_PEPPER), Date.now() + CODE_TTL_MS)
+    .bind(email, codeHash, Date.now() + CODE_TTL_MS)
     .run();
 
   if (!(await sendCodeEmail(env, email, code))) {
-    await env.DB.prepare('DELETE FROM email_codes WHERE email = ?').bind(email).run();
+    await env.DB.prepare('DELETE FROM email_codes WHERE email = ? AND code_hash = ?').bind(email, codeHash).run();
     return json({ error: 'email_unavailable' }, 503);
   }
   // Same answer whether or not the address already has an account.
@@ -266,7 +278,10 @@ async function emailVerify(request: Request, env: Env): Promise<Response> {
     return json({ error: 'invalid_code' }, 400);
   }
 
-  await env.DB.prepare('DELETE FROM email_codes WHERE email = ?').bind(email).run();
+  // Consume the exact code hash atomically; only one concurrent verifier can create a session.
+  const consumed = await env.DB.prepare('DELETE FROM email_codes WHERE email = ? AND code_hash = ? RETURNING email')
+    .bind(email, row.code_hash).first<{ email: string }>();
+  if (!consumed) return json({ error: 'invalid_code' }, 400);
   const user = await findOrCreateUser(env, email);
   const cookie = await createSession(env, user.id);
   return json({ user: { id: user.id, email: user.email } }, 200, { 'Set-Cookie': cookie });
