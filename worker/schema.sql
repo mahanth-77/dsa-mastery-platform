@@ -1,6 +1,6 @@
 -- VERTEX account API: Cloudflare D1 schema.
--- Apply with: npx wrangler d1 execute vertex --file=schema.sql          (local)
---             npx wrangler d1 execute vertex --file=schema.sql --remote (production)
+-- Apply with: npx wrangler d1 execute vertex-db --file=schema.sql          (local)
+--             npx wrangler d1 execute vertex-db --file=schema.sql --remote (production)
 
 CREATE TABLE IF NOT EXISTS users (
   id          TEXT PRIMARY KEY,
