@@ -3,6 +3,7 @@ import {
   checkGoogleClaims,
   clearedOauthStateCookie,
   oauthStateCookie,
+  oauthStateCookieName,
   validateProgressData,
   verifyGoogleIdToken,
 } from './lib';
@@ -94,7 +95,9 @@ describe('OAuth browser binding cookies', () => {
   });
 
   it('clears the OAuth state cookie after callback', () => {
-    expect(clearedOauthStateCookie(true)).toContain('vertex_oauth_state=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure');
+    expect(clearedOauthStateCookie(true)).toContain('__Host-vertex_oauth_state=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure');
+    expect(oauthStateCookieName(true)).toBe('__Host-vertex_oauth_state');
+    expect(oauthStateCookieName(false)).toBe('vertex_oauth_state');
   });
 });
 
