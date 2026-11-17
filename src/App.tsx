@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider, useApp } from './context';
 import { AuthProvider } from './context/AuthContext';
+import { SyncProvider } from './context/SyncContext';
 import Layout from './components/Layout';
 import { AlertTriangle } from 'lucide-react';
 
@@ -52,9 +53,11 @@ export default function App() {
   return (
     <AuthProvider>
       <AppProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <SyncProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </SyncProvider>
       </AppProvider>
     </AuthProvider>
   );

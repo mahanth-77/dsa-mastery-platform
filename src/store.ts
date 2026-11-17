@@ -200,6 +200,7 @@ export function updateProblemProgress(
   const merged: ProblemProgress = {
     ...existing,
     ...update,
+    updatedAt: now.toISOString(),
   };
 
   // Auto-set solved date
@@ -272,6 +273,7 @@ export function completeRevision(
     confidence,
     nextRevisionAt: nextDate.toISOString().slice(0, 10),
     lastSolvedAt: now.toISOString(),
+    updatedAt: now.toISOString(),
     reviewHistory: [
       ...existing.reviewHistory,
       { date: todayStr, confidence },

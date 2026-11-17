@@ -1,0 +1,17 @@
+name = "vertex-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+# Create the database once:  npx wrangler d1 create vertex
+# then paste the printed database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "vertex"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Non-secret settings. Secrets are set with `wrangler secret put` (see README.md).
+[vars]
+# The public origin of the website. Used for the Google redirect URI,
+# cookie flags and the CSRF origin check. No trailing slash.
+APP_ORIGIN = "https://YOUR-SITE.vercel.app"
+MAIL_FROM_NAME = "VERTEX"

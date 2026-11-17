@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../context';
 import { getStreak } from '../store';
+import { useAuth } from '../context/AuthContext';
+import { useSync } from '../context/SyncContext';
+import AuthModal from './AuthModal';
 import CommandPalette from './CommandPalette';
 import ProblemWorkspaceModal from './ProblemWorkspaceModal';
 import type { CurriculumProblem } from '../types';
@@ -26,6 +29,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   } | null>(null);
 
   const navigate = useNavigate();
+  const auth = useAuth();
+  const sync = useSync();
+  const [signInOpen, setSignInOpen] = useState(false);
   const { state } = useApp();
   const { progress } = state;
   const streak = getStreak(progress);
@@ -88,7 +94,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             Search the codex
             <kbd className="kbd-key not-italic">⌘K</kbd>
           </button>
+          {auth.available && (
+            auth.user ? (
+              <Link to="/settings" className="lbl hover:text-text-primary" aria-label="Account and sync settings">
+                {sync.status === 'syncing' ? 'Syncing…' : sync.status === 'synced' ? 'Synced' : sync.status === 'offline' ? 'Offline' : sync.status === 'error' ? 'Sync issue' : 'Account'}
+              </Link>
+            ) : (
+              <button type="button" onClick={() => setSignInOpen(true)} className="lbl hover:text-text-primary">Sign in</button>
+            )
+          )}
         </header>
+        {auth.notice && (
+          <div role="status" className="font-serif flex items-baseline justify-between gap-4 py-2.5 border-b border-border text-[15px] text-accent">
+            <span>{auth.notice}</span>
+            <button type="button" onClick={auth.dismissNotice} className="lbl hover:text-text-primary">Dismiss</button>
+          </div>
+        )}
 
         <main>{children}</main>
 
@@ -99,6 +120,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </span>
         </footer>
       </div>
+
+      <AuthModal isOpen={signInOpen} onClose={() => setSignInOpen(false)} />
 
       {/* Global Command Palette */}
       <CommandPalette
