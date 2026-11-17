@@ -6,7 +6,7 @@ import { renderIndexPage, renderPatternPage, renderRobots, renderSitemap } from 
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
-const site = (process.env.SITE_URL || 'https://dsa-mastery-platform.vercel.app').replace(/\/+$/, '');
+const site = (process.env.SITE_URL || 'https://dsa.startora.tech').replace(/\/+$/, '');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'dsa_pattern_mastery_tracker.json'), 'utf8'));
 const patterns = data.patterns;
 

@@ -5,7 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { SyncProvider } from './context/SyncContext';
 import Layout from './components/Layout';
 import { AlertTriangle } from 'lucide-react';
-import { ENTERED_KEY, isFirstVisit } from './pages/Landing';
+import Landing, { ENTERED_KEY, isFirstVisit } from './pages/Landing';
 
 const Dashboard = lazy(() => import('./pages/Dashboard'));
 const PatternExplorer = lazy(() => import('./pages/PatternExplorer'));
@@ -15,7 +15,6 @@ const Analytics = lazy(() => import('./pages/Analytics'));
 const Settings = lazy(() => import('./pages/Settings'));
 const ScenarioCatalogue = lazy(() => import('./pages/ScenarioCatalogue'));
 const OAQuestions = lazy(() => import('./pages/OAQuestions'));
-const Landing = lazy(() => import('./pages/Landing'));
 
 function Home() {
   const { state } = useApp();

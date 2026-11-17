@@ -48,9 +48,9 @@ export default function Landing({ onEnter }: { onEnter: () => void }) {
           >
             Start the first pattern
           </Link>
-          <Link to="/learn/" className="text-[16px] italic text-text-secondary hover:text-text-primary border-b border-border-hover">
+          <a href="/learn/" className="text-[16px] italic text-text-secondary hover:text-text-primary border-b border-border-hover">
             Read the pattern guide
-          </Link>
+          </a>
         </div>
         <p className="lbl mt-6">Free to start · no sign-up needed · progress is kept on this device</p>
       </section>

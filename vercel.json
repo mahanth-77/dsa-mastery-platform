@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/learn",
+      "destination": "/learn/",
+      "permanent": true
+    },
+    {
+      "source": "/learn/:slug",
+      "destination": "/learn/:slug/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
