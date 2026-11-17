@@ -6,7 +6,7 @@ Sign-in (Google, or a 6-digit emailed code) and cross-device progress sync. Free
 1. `cd worker && npm install`
 2. `npx wrangler login`, then `npx wrangler d1 create vertex` and paste the `database_id` into `wrangler.toml`.
 3. Apply the schema: `npx wrangler d1 execute vertex --remote --file=schema.sql`. For an existing database created before the OIDC nonce change, also apply `npx wrangler d1 execute vertex --remote --file=migrations/0002_oauth_nonce.sql` before deploying.
-4. Set `APP_ORIGIN` in `wrangler.toml` to your site, for production, `https://dsa.startora.tech`.
+4. Set `APP_ORIGIN` in `wrangler.toml` to `https://dsa.startora.tech` for production (or your local origin during local development).
 5. Secrets (`npx wrangler secret put NAME`):
    - `CODE_PEPPER`: any long random string.
    - `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`: Google Cloud Console > APIs & Services > Credentials > OAuth client (Web). Authorised redirect URI: `${APP_ORIGIN}/api/auth/google/callback`.
