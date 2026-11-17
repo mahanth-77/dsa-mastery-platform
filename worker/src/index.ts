@@ -23,6 +23,7 @@ import {
   cookieName,
   verifyGoogleIdToken,
   oauthStateCookie,
+  oauthStateCookieName,
   clearedOauthStateCookie,
   generateCode,
   isAllowedOrigin,
@@ -302,7 +303,7 @@ async function googleCallback(request: Request, env: Env): Promise<Response> {
   if (params.get('error')) return back('cancelled');
   const code = params.get('code');
   const state = params.get('state');
-  const browserState = parseCookies(request.headers.get('Cookie')).vertex_oauth_state;
+  const browserState = parseCookies(request.headers.get('Cookie'))[oauthStateCookieName(secure)];
   if (!code || !state || !browserState || !timingSafeEqual(state, browserState)) return back('failed');
 
   // State is bound to the initiating browser and consumed exactly once.
