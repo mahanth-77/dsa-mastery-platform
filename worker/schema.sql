@@ -30,6 +30,7 @@ CREATE INDEX IF NOT EXISTS sessions_user ON sessions(user_id);
 CREATE TABLE IF NOT EXISTS oauth_states (
   state       TEXT PRIMARY KEY,
   verifier    TEXT NOT NULL,
+  nonce       TEXT NOT NULL,
   expires_at  INTEGER NOT NULL
 );
 
