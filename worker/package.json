@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "db:local": "wrangler d1 execute vertex --file=schema.sql",
-    "db:remote": "wrangler d1 execute vertex --file=schema.sql --remote",
+    "db:local": "wrangler d1 execute vertex-db --file=schema.sql",
+    "db:remote": "wrangler d1 execute vertex-db --file=schema.sql --remote",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
