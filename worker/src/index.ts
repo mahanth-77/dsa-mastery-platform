@@ -194,6 +194,26 @@ function isSecure(env: Env): boolean {
 
 // ─── Email delivery ──────────────────────────────────────────────────────────
 
+function sanitizeErrorDetail(raw: unknown): string {
+  if (typeof raw === 'string') {
+    return raw
+      .replace(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g, '[REDACTED_EMAIL]')
+      .replace(/re_[a-zA-Z0-9_]+/g, '[REDACTED_KEY]')
+      .replace(/[\r\n]+/g, ' ')
+      .trim()
+      .slice(0, 300);
+  }
+  if (raw && typeof raw === 'object') {
+    const obj = raw as Record<string, unknown>;
+    const name = typeof obj.name === 'string' ? obj.name : '';
+    const message = typeof obj.message === 'string' ? obj.message : '';
+    const statusCode = typeof obj.statusCode === 'number' ? ` (${obj.statusCode})` : '';
+    const detail = name && message ? `${name}${statusCode}: ${message}` : message || name || JSON.stringify(obj);
+    return sanitizeErrorDetail(detail);
+  }
+  return String(raw || 'unknown_error').slice(0, 300);
+}
+
 async function sendCodeEmail(env: Env, to: string, code: string): Promise<boolean> {
   const subject = `Your VERTEX sign-in code: ${code}`;
   const text =
@@ -201,8 +221,24 @@ async function sendCodeEmail(env: Env, to: string, code: string): Promise<boolea
     `It expires in 10 minutes. If you did not ask for it, you can ignore this email.`;
   const fromName = env.MAIL_FROM_NAME || 'VERTEX';
 
-  try {
-    if (env.BREVO_API_KEY && env.MAIL_FROM) {
+  // 1. Missing environment variable checks
+  if (!env.BREVO_API_KEY && !env.RESEND_API_KEY) {
+    if (env.DEV_LOG_CODES === '1') {
+      console.log(`[dev] sign-in code for ${to}: ${code}`);
+      return true;
+    }
+    console.error('[email] Delivery failed: missing email provider configuration (neither RESEND_API_KEY nor BREVO_API_KEY is configured)');
+    return false;
+  }
+
+  if (!env.MAIL_FROM) {
+    console.error('[email] Delivery failed: missing MAIL_FROM configuration');
+    return false;
+  }
+
+  // 2. Brevo provider
+  if (env.BREVO_API_KEY) {
+    try {
       const res = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
@@ -213,23 +249,64 @@ async function sendCodeEmail(env: Env, to: string, code: string): Promise<boolea
           textContent: text,
         }),
       });
-      return res.ok;
+      if (!res.ok) {
+        let errBody: unknown;
+        try {
+          const rawText = await res.text();
+          try {
+            errBody = JSON.parse(rawText);
+          } catch {
+            errBody = rawText;
+          }
+        } catch {
+          errBody = '';
+        }
+        console.error('[email] Brevo HTTP error', {
+          status: res.status,
+          error: sanitizeErrorDetail(errBody),
+        });
+        return false;
+      }
+      return true;
+    } catch (err) {
+      console.error('[email] Brevo network exception:', err instanceof Error ? err.message : String(err));
+      return false;
     }
-    if (env.RESEND_API_KEY && env.MAIL_FROM) {
+  }
+
+  // 3. Resend provider
+  if (env.RESEND_API_KEY) {
+    try {
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ from: `${fromName} <${env.MAIL_FROM}>`, to: [to], subject, text }),
       });
-      return res.ok;
+      if (!res.ok) {
+        let errBody: unknown;
+        try {
+          const rawText = await res.text();
+          try {
+            errBody = JSON.parse(rawText);
+          } catch {
+            errBody = rawText;
+          }
+        } catch {
+          errBody = '';
+        }
+        console.error('[email] Resend HTTP error', {
+          status: res.status,
+          error: sanitizeErrorDetail(errBody),
+        });
+        return false;
+      }
+      return true;
+    } catch (err) {
+      console.error('[email] Resend network exception:', err instanceof Error ? err.message : String(err));
+      return false;
     }
-  } catch {
-    return false;
   }
-  if (env.DEV_LOG_CODES === '1') {
-    console.log(`[dev] sign-in code for ${to}: ${code}`);
-    return true;
-  }
+
   return false;
 }
 
